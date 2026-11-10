@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-i18n-title="resize.title">
+<html lang="en" data-i18n-title="resize.metaTitle">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resize Image</title>
-  <meta name="description" content="Resize game screenshots online — change width/height or scale by percentage. PNG, JPG, WebP output. Local browser processing.">
+  <title>Resize Image Online — Steam Capsule, Discord Emoji & Avatar Sizes</title>
+  <meta name="description" content="Resize images to exact platform sizes: Steam capsules (231×87, 460×215, 616×353), Discord emoji 128×128, Twitch emotes, YouTube thumbnails. Presets included, runs in your browser.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
 
@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GameImage.tools">
   <meta property="og:url" content="https://gameimageeditor.netlify.app/resize.html">
-  <meta property="og:title" content="Resize Image">
-  <meta property="og:description" content="Resize game screenshots online by pixels or percentage. Keep aspect ratio. PNG, JPG, WebP output. Local browser processing.">
+  <meta property="og:title" content="Resize Image Online — Steam Capsule, Discord Emoji & Avatar Sizes">
+  <meta property="og:description" content="Resize images to exact platform sizes: Steam capsules, Discord emoji 128×128, Twitch emotes, YouTube thumbnails. Presets included, runs in your browser.">
   <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Resize Image">
-  <meta name="twitter:description" content="Resize game screenshots online by pixels or percentage. Keep aspect ratio. PNG, JPG, WebP output. Local browser processing.">
+  <meta name="twitter:title" content="Resize Image Online — Steam Capsule, Discord Emoji & Avatar Sizes">
+  <meta name="twitter:description" content="Resize images to exact platform sizes: Steam capsules, Discord emoji 128×128, Twitch emotes, YouTube thumbnails. Presets included, runs in your browser.">
   <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
     </head>
 <body>
@@ -77,6 +77,56 @@
       </div>
 
       <div class="controls">
+        <div class="control-group">
+          <label for="sizePreset" data-i18n="label.preset">Size preset</label>
+          <select id="sizePreset">
+            <option value="" data-i18n="preset.custom">Custom size</option>
+            <optgroup label="Common">
+              <option value="1920x1080">1080p — 1920 × 1080</option>
+              <option value="1280x720">720p — 1280 × 720</option>
+              <option value="3840x2160">4K — 3840 × 2160</option>
+            </optgroup>
+            <optgroup label="Steam">
+              <option value="231x87">Small capsule — 231 × 87</option>
+              <option value="460x215">Main capsule — 460 × 215</option>
+              <option value="374x448">Vertical capsule — 374 × 448</option>
+              <option value="616x353">Large capsule — 616 × 353</option>
+              <option value="920x430">Header capsule — 920 × 430</option>
+              <option value="600x900">Library capsule — 600 × 900</option>
+              <option value="184x184">Community icon — 184 × 184</option>
+            </optgroup>
+            <optgroup label="Discord">
+              <option value="128x128">Emoji / avatar — 128 × 128</option>
+              <option value="600x240">Server banner — 600 × 240</option>
+            </optgroup>
+            <optgroup label="Twitch">
+              <option value="112x112">Emote — 112 × 112</option>
+              <option value="72x72">Badge — 72 × 72</option>
+              <option value="320x100">Panel — 320 × 100</option>
+              <option value="1200x480">Offline banner — 1200 × 480</option>
+            </optgroup>
+            <optgroup label="Roblox">
+              <option value="256x256">Decal — 256 × 256</option>
+              <option value="512x512">Game icon — 512 × 512</option>
+            </optgroup>
+            <optgroup label="itch.io">
+              <option value="630x500">Cover — 630 × 500</option>
+              <option value="315x250">Thumbnail — 315 × 250</option>
+            </optgroup>
+            <optgroup label="YouTube">
+              <option value="1280x720">Thumbnail — 1280 × 720</option>
+              <option value="2560x1440">Channel banner — 2560 × 1440</option>
+            </optgroup>
+            <optgroup label="Social">
+              <option value="1080x1080">Instagram post — 1080 × 1080</option>
+              <option value="1080x1350">Instagram portrait — 1080 × 1350</option>
+              <option value="1080x1920">Instagram story — 1080 × 1920</option>
+              <option value="1200x675">X / Twitter post — 1200 × 675</option>
+            </optgroup>
+          </select>
+          <p class="hint" data-i18n="preset.hint">Presets set the exact output size and unlock the aspect ratio.</p>
+        </div>
+
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
           <div class="control-group">
             <label data-i18n="label.width">Width (px)</label>
@@ -129,12 +179,31 @@
     <ol>
       <li><strong>Upload</strong> — Drag a screenshot onto the drop zone or click to browse. PNG, JPG, and WebP files up to 20MB are supported.</li>
       <li><strong>Set exact pixels</strong> — Type a width or height. With "Keep aspect ratio" checked (the default), the other dimension updates automatically so nothing gets stretched.</li>
+      <li><strong>Or pick a platform preset</strong> — The preset menu already knows the official dimensions: Steam capsules (231×87, 460×215, 616×353, 920×430), Discord emoji at 128×128, Twitch emotes at 112×112, YouTube thumbnails at 1280×720 and more. Choosing one fills in both values and unlocks the aspect ratio, because platform uploads require the exact size.</li>
       <li><strong>Or scale by percentage</strong> — Drag the slider (5–200%) or type a precise percentage. The new dimensions and scale factor update live above the preview.</li>
       <li><strong>Download</strong> — Pick PNG, JPEG, or WebP output and hit Download. The before/after preview shows exactly what you'll get.</li>
     </ol>
 
     <h2>Resize Screenshots for Discord, Steam, and Avatars</h2>
     <p>Every platform wants different dimensions. Discord avatars look sharpest at 128×128, Steam library artwork expects 460×215, and forum signatures often cap height at 150px. Instead of trial and error, type the target width here and let the resizer preserve your proportions. Shrinking a 4K capture to 1920px wide also makes uploads dramatically faster — most platforms re-compress big images anyway, so resizing first costs you nothing and keeps you in control of the final look.</p>
+
+    <table>
+      <thead>
+        <tr><th>Platform</th><th>Asset</th><th>Pixels</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Steam</td><td>Small capsule</td><td>231 × 87</td></tr>
+        <tr><td>Steam</td><td>Main capsule</td><td>460 × 215</td></tr>
+        <tr><td>Steam</td><td>Header capsule</td><td>920 × 430</td></tr>
+        <tr><td>Steam</td><td>Library capsule</td><td>600 × 900</td></tr>
+        <tr><td>Steam</td><td>Community icon</td><td>184 × 184</td></tr>
+        <tr><td>Discord</td><td>Emoji / avatar</td><td>128 × 128</td></tr>
+        <tr><td>Twitch</td><td>Emote</td><td>112 × 112</td></tr>
+        <tr><td>Roblox</td><td>Decal</td><td>256 × 256</td></tr>
+        <tr><td>itch.io</td><td>Cover image</td><td>630 × 500</td></tr>
+        <tr><td>YouTube</td><td>Thumbnail</td><td>1280 × 720</td></tr>
+      </tbody>
+    </table>
 
     <h2>Does Resizing Hurt Image Quality?</h2>
     <p>Scaling down almost always looks great: pixels are blended together, so text and edges stay crisp. Enlarging beyond 100% is different — the browser has to invent pixels, which softens detail. If you must upscale, stay under roughly 150% and export as PNG to avoid adding compression artifacts on top.</p>
@@ -152,6 +221,10 @@
       <summary>Is my screenshot uploaded to a server?</summary>
       <p>No — resizing runs entirely in your browser using the Canvas API. The tool is free, needs no account, and your image never leaves your device.</p>
     </details>
+    <details>
+      <summary>Do the size presets prevent stretching?</summary>
+      <p>No. Presets unlock the aspect ratio on purpose, because platforms reject anything that is not the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize — otherwise it will be stretched.</p>
+    </details>
   </section>
 
 <script type="application/ld+json">
@@ -162,9 +235,9 @@
   "url": "https://gameimageeditor.netlify.app/resize.html",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "Web",
-  "description": "Resize game screenshots online by exact pixels or percentage. Aspect-ratio lock, live before/after preview, PNG/JPG/WebP output. 100% local browser processing.",
+  "description": "Resize game screenshots online by exact pixels or percentage, with presets for Steam capsules, Discord emoji, Twitch emotes and YouTube thumbnails. Aspect-ratio lock, live before/after preview, PNG/JPG/WebP output. 100% local browser processing.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["Resize by exact pixels or percentage", "Aspect-ratio lock", "Live before/after preview", "PNG, JPEG, and WebP output", "Local browser processing, no upload"]
+  "featureList": ["Resize by exact pixels or percentage", "Platform size presets (Steam, Discord, Twitch, Roblox, itch.io, YouTube, Instagram)", "Aspect-ratio lock", "Live before/after preview", "PNG, JPEG, and WebP output", "Local browser processing, no upload"]
 }
 </script>
 <script type="application/ld+json">
@@ -174,7 +247,8 @@
   "mainEntity": [
     {"@type": "Question", "name": "Can I stretch an image to exact dimensions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — uncheck Keep aspect ratio and set width and height independently. Mismatched ratios will visibly stretch the image."}},
     {"@type": "Question", "name": "Why does my upscaled image look blurry?", "acceptedAnswer": {"@type": "Answer", "text": "Upscaling cannot recreate detail that was never captured. Scale down, or keep enlargements under about 150%."}},
-    {"@type": "Question", "name": "Is my screenshot uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No — resizing runs entirely in your browser. Your image never leaves your device."}}
+    {"@type": "Question", "name": "Is my screenshot uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No — resizing runs entirely in your browser. Your image never leaves your device."}},
+    {"@type": "Question", "name": "Do the size presets prevent stretching?", "acceptedAnswer": {"@type": "Answer", "text": "No. Presets unlock the aspect ratio on purpose, because platforms require the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize."}}
   ]
 }
 </script>

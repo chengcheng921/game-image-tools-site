@@ -15,6 +15,7 @@
   const scalePctEl = document.getElementById('scalePct');
   const downloadBtn = document.getElementById('downloadBtn');
   const resetBtn = document.getElementById('resetBtn');
+  const presetSelect = document.getElementById('sizePreset');
 
   let sourceImage = null;
   let sourceFileName = '';
@@ -55,6 +56,7 @@
     heightInput.value = origHeight;
     scaleSlider.value = 100;
     scaleInput.value = 100;
+    presetSelect.value = '';
 
     dropZone.style.display = 'none';
     editorPanel.style.display = 'block';
@@ -63,6 +65,7 @@
 
   widthInput.addEventListener('input', () => {
     if (isUpdating) return;
+    presetSelect.value = '';
     const w = parseInt(widthInput.value, 10);
     if (!w || w < 1) return;
     if (lockRatio.checked && origWidth) {
@@ -77,6 +80,7 @@
 
   heightInput.addEventListener('input', () => {
     if (isUpdating) return;
+    presetSelect.value = '';
     const h = parseInt(heightInput.value, 10);
     if (!h || h < 1) return;
     if (lockRatio.checked && origHeight) {
@@ -110,6 +114,21 @@
     heightInput.value = h;
     isUpdating = false;
     scheduleRender();
+  });
+
+  // 平台尺寸预设：填入精确宽高并解锁比例（平台要求精确像素，不允许等比）
+  presetSelect.addEventListener('change', () => {
+    const parts = (presetSelect.value || '').split('x').map(Number);
+    const w = parts[0];
+    const h = parts[1];
+    if (!w || !h) return;
+    lockRatio.checked = false;
+    isUpdating = true;
+    widthInput.value = w;
+    heightInput.value = h;
+    isUpdating = false;
+    updateScaleFromPixels();
+    render();
   });
 
   formatSelect.addEventListener('change', scheduleRender);

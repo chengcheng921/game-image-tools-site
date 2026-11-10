@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Emoji Size: 128×128 Rules and Upload Limits</title>
+  <meta name="description" content="Discord emoji size explained: 128×128 px recommended, 256 KB hard limit, PNG JPG GIF rules, animated emoji, server slot limits and a transparent PNG workflow.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/blog/discord-emoji-size.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/blog/discord-emoji-size.html">
+  <meta property="og:title" content="Discord Emoji Size: 128×128 Rules and Upload Limits">
+  <meta property="og:description" content="Discord emoji size explained: 128×128 px recommended, 256 KB hard limit, PNG JPG GIF rules, animated emoji, server slot limits and a transparent PNG workflow.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Discord Emoji Size: 128×128 Rules and Upload Limits">
+  <meta name="twitter:description" content="Discord emoji size explained: 128×128 px recommended, 256 KB hard limit, PNG JPG GIF rules, animated emoji, server slot limits and a transparent PNG workflow.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Discord Emoji Size: 128×128 Rules and Upload Limits",
+  "description": "Discord emoji size explained: 128×128 px recommended, 256 KB hard limit, PNG JPG GIF rules, animated emoji, server slot limits and a transparent PNG workflow.",
+  "image": [
+    "https://gameimageeditor.netlify.app/og-image.png"
+  ],
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.netlify.app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.netlify.app/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.netlify.app/blog/discord-emoji-size.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the max file size for a Discord emoji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The hard limit is 256 KB per emoji, whether it is static or animated. Discord does not shrink oversized files for you, so the upload is rejected until the file is under that limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my emoji blurry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually the source image was smaller than 128 pixels and got enlarged, or the art is too detailed to survive at the roughly 32 pixel size used in chat. Start from at least 512 pixels and downscale once to 128."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does resizing to 128×128 keep transparency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, as long as the output is PNG. Resizing preserves the alpha channel, while JPEG has no transparency and will fill the background with a solid color."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many emoji can a Discord server have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cap depends on the boost tier: 50 emoji at tier 0, 100 at tier 1, 150 at tier 2 and 250 at tier 3. Animated emoji count against the same total."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../compress.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>Discord Emoji Size: 128×128 Rules and Upload Limits</h1>
+      <p class="meta">Published on Nov 10, 2026 · 5 min read</p>
+
+      <p>An emoji that looks crisp in your editor can arrive in Discord as a fuzzy blob, and the upload dialog rarely tells you which number caused the problem. Two limits decide almost everything: 128 × 128 pixels and 256 KB. Format, animation and transparency matter, but only after those two. This guide explains how the limits interact, why rejected uploads happen, and how to produce a clean emoji without guessing.</p>
+
+      <h2>The Two Numbers That Matter</h2>
+      <p>Discord recommends 128 × 128 pixels for server emoji. In a message, an emoji is drawn at roughly 32 pixels, so a 128-pixel source leaves comfortable headroom for high-density displays and for the larger rendering used in reactions and the picker. If you upload something bigger, Discord scales it down to 128 rather than rejecting it, which means extra pixels buy you nothing except a larger file.</p>
+      <p>The second number is a hard cap: 256 KB per emoji. Discord does not recompress an oversized file for you. The upload simply fails until the file is small enough. That is why a beautiful 512 × 512 PNG can be refused while a much simpler 128 × 128 version of the same art goes through instantly.</p>
+      <p>Accepted formats are PNG, JPG and GIF. PNG is the right choice for anything with transparency or sharp edges, JPG works for full-frame art with no alpha, and GIF is the only option for animation. WebP is not part of the emoji upload list, so convert it before you try.</p>
+
+      <h2>Emoji Slots by Boost Tier</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Server tier</th><th>Emoji slots</th><th>Typical use</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tier 0</td><td>50</td><td>Small friend servers and new communities</td></tr>
+            <tr><td>Tier 1</td><td>100</td><td>Active communities with a themed set</td></tr>
+            <tr><td>Tier 2</td><td>150</td><td>Larger servers with per-channel sets</td></tr>
+            <tr><td>Tier 3</td><td>250</td><td>Full emoji libraries and reaction menus</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Animated emoji occupy one slot each, exactly like static ones, and they share the same 256 KB budget. If you plan a large animated set, budget your slots before you commission art: a 30-frame GIF can look impressive in the picker and still leave no room for the static utility emoji your moderators actually use.</p>
+
+      <h2>Why Oversized Uploads Get Rejected</h2>
+      <p>The file-size check happens on Discord's side after the file is sent, which is why the error appears at the end of the upload rather than when you select the file. The message usually says the file must be 256 KB or smaller. Nothing is wrong with your image dimensions in that case; the encoder simply produced too many bytes.</p>
+      <p>There are two other failure modes worth knowing. If the server has no free slots, the upload is refused regardless of file size, so check Server Settings before you blame the artwork. If the format is not PNG, JPG or GIF, the picker may accept the file and then fail silently or reject it, which is common when exporting from design tools that default to WebP or AVIF.</p>
+
+      <h2>Why Your Emoji Looks Blurry</h2>
+      <p>Blur almost always comes from scaling in the wrong direction. A 64 × 64 image enlarged to 128 has to invent every other pixel, and the softness is permanent. Start from a 512 × 512 master and reduce once to 128; a single high-quality downscale keeps edges tight.</p>
+      <p>Detail density is the second cause. Chat renders emoji at around 32 pixels, so fine line work, small text and intricate shading collapse into noise. Bold silhouettes, two or three colors and a clear outline survive. If the emoji only reads at 128 and not at 32, it is the wrong design, not the wrong export setting.</p>
+      <p>JPEG adds a third problem: it has no alpha channel, so transparent areas become a solid block, usually white. Around a dark-theme chat that reads as a bright square with fringed edges. Keep transparency in PNG, and avoid semi-transparent drop shadows, which turn into gray halos once the emoji is scaled down.</p>
+
+      <h2>Step-by-Step: Resize and Compress an Emoji</h2>
+      <ul>
+        <li><strong>Step 1.</strong> Crop the art to a square. If the subject is off-center, use the <a href="../crop.html">free image cropper</a> first. Discord does not require a square file, but a square canvas prevents uneven padding in the picker.</li>
+        <li><strong>Step 2.</strong> Open the <a href="../resize.html">online image resizer</a>, upload the PNG master and choose the 128 × 128 Discord preset. Keep the aspect ratio locked and export as PNG so the alpha channel survives.</li>
+        <li><strong>Step 3.</strong> Check the downloaded file. At 128 × 128, most clean PNGs land between 10 KB and 60 KB. If yours is over 256 KB, the artwork is unusually noisy or the canvas is larger than you think.</li>
+        <li><strong>Step 4.</strong> For a still image that is still too large, run it through the <a href="../compress.html">browser-based image compressor</a> with PNG output. Palette reduction typically cuts a flat-color emoji by half without visible damage.</li>
+        <li><strong>Step 5.</strong> For an animated GIF, the compressor does not apply. Reduce the frame count, shorten the loop or cut the canvas size in your editor until the GIF is under 256 KB, then upload.</li>
+        <li><strong>Step 6.</strong> In Discord, open Server Settings, go to Emoji, and upload. You need the Manage Expressions permission. Give the emoji a short, memorable name; it becomes the text trigger.</li>
+      </ul>
+
+      <h2>Use Transparent PNG for Clean Emoji</h2>
+      <p>A transparent background is what separates a native-looking emoji from a pasted rectangle. Export with a real alpha channel, not a white or checkerboard-pattern background, and remove stray pixels left by selection tools. Leave one or two pixels of clear space around the artwork so the glyph does not touch the edge of the emoji box.</p>
+      <p>Test the result on both Discord themes before uploading. Light gray fringes that vanish on white will glow on dark mode, and dark outlines can disappear on the light theme. A one-pixel contrasting outline solves both cases. If you need to convert a flattened image with a solid background, note that removing that background is an editing job, not something resizing can do.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>What is the max file size for a Discord emoji?</h3>
+      <p>The hard limit is 256 KB per emoji, whether it is static or animated. Discord does not shrink oversized files for you, so the upload is rejected until the file is under that limit.</p>
+
+      <h3>Why is my emoji blurry?</h3>
+      <p>Usually the source image was smaller than 128 pixels and got enlarged, or the art is too detailed to survive at the roughly 32 pixel size used in chat. Start from at least 512 pixels and downscale once to 128.</p>
+
+      <h3>Does resizing to 128×128 keep transparency?</h3>
+      <p>Yes, as long as the output is PNG. Resizing preserves the alpha channel, while JPEG has no transparency and will fill the background with a solid color.</p>
+
+      <h3>How many emoji can a Discord server have?</h3>
+      <p>The cap depends on the boost tier: 50 emoji at tier 0, 100 at tier 1, 150 at tier 2 and 250 at tier 3. Animated emoji count against the same total.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
+        <li><a href="compress-image-under-500kb.html">How to Compress an Image to Under 500 KB (Free, No Upload)</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

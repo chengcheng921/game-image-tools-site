@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Compress an Image to Under 500 KB (Free, No Upload)</title>
+  <meta name="description" content="Compress any image under 500 KB in your browser. The three settings that control file size, recommended values for screenshots, photos and transparent PNGs, plus a fix for stubborn files.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/blog/compress-image-under-500kb.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/blog/compress-image-under-500kb.html">
+  <meta property="og:title" content="How to Compress an Image to Under 500 KB (Free, No Upload)">
+  <meta property="og:description" content="Compress any image under 500 KB in your browser. The three settings that control file size, recommended values for screenshots, photos and transparent PNGs, plus a fix for stubborn files.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Compress an Image to Under 500 KB (Free, No Upload)">
+  <meta name="twitter:description" content="Compress any image under 500 KB in your browser. The three settings that control file size, recommended values for screenshots, photos and transparent PNGs, plus a fix for stubborn files.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Compress an Image to Under 500 KB (Free, No Upload)",
+  "description": "Compress any image under 500 KB in your browser. The three settings that control file size, recommended values for screenshots, photos and transparent PNGs, plus a fix for stubborn files.",
+  "image": [
+    "https://gameimageeditor.netlify.app/og-image.png"
+  ],
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.netlify.app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.netlify.app/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.netlify.app/blog/compress-image-under-500kb.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is 500 KB too compressed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not by itself. A 1920 pixel JPEG at quality 75 is usually around 300 to 500 KB and looks clean on any screen. The same file squeezed into 800 pixels will look soft. Judge quality by dimensions and compression level, not by the byte count alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I compress a PNG to 500 KB without losing transparency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use palette reduction on the PNG, or convert it to WebP, which keeps the alpha channel and is typically much smaller. JPEG cannot preserve transparency, so it is not an option if the background must stay clear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What quality should I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start at 80 for photos and 85 for screenshots containing text. Drop in steps of five until the file fits, and stop at 60 for images with small type. Below 50, JPEG blocking becomes visible around edges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why did my PNG get bigger after compressing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Re-encoding an already optimized file can add overhead, and palette reduction on a photographic PNG often produces a larger or worse-looking result. Convert photos to JPEG or WebP instead of recompressing the PNG."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../compress.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>How to Compress an Image to Under 500 KB (Free, No Upload)</h1>
+      <p class="meta">Published on Nov 10, 2026 · 5 min read</p>
+
+      <p>A 500 KB upload limit is everywhere: job application portals, university forms, government services, forum attachments, email gateways and internal ticketing systems. The rejection usually arrives after the upload finishes, with no hint about which setting to change. File size is not a single control. It is the product of pixel count, file format and encoder quality, and changing them in the right order takes a 6 MB photo down to 300 KB with no visible damage.</p>
+
+      <h2>Why 500 KB Is Such a Common Limit</h2>
+      <p>Most of these portals were built when storage and bandwidth were expensive, and the limits never moved. A 500 KB ceiling lets a hiring system store thousands of candidate photos, keeps email attachments moving through older gateways, and prevents a single scanned document from filling a form database. The same logic appears at 200 KB for ID photos and 1 MB or 2 MB for forum uploads.</p>
+      <p>The practical consequence is that the limit is enforced on the server after transfer, not in your file picker. Resizing and compressing locally is faster than retrying an upload, and it also avoids sending a full-resolution personal photo to a service you may not trust. Every step below runs in the browser, so the file never leaves your device.</p>
+
+      <h2>The Three Levers That Control File Size</h2>
+      <p><strong>Dimensions.</strong> Pixel count is the biggest lever. A 4000 × 3000 phone photo contains 12 million pixels; scaled to 1920 × 1440 it contains 2.7 million. You removed 77% of the data before compression even starts, and the remaining pixels are still enough for any screen.</p>
+      <p><strong>Format.</strong> PNG stores pixels losslessly, so it cannot discard detail to save space. JPEG and WebP are lossy and can shrink a photographic image by an order of magnitude. At the same visual quality, WebP is typically 25–35% smaller than JPEG, though not every portal accepts it.</p>
+      <p><strong>Quality.</strong> For JPEG and WebP, the quality value controls how aggressively detail is discarded. The useful range is roughly 60–90. Below 50, flat areas develop blocks and text edges smear; above 90, file size climbs quickly for detail nobody can see.</p>
+      <p>The efficient order is crop, then resize, then choose a format, then tune quality.</p>
+
+      <h2>Recommended Settings by Image Type</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Content</th><th>Long edge</th><th>Format</th><th>Quality</th><th>Typical size</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1080p game screenshot</td><td>1920 px</td><td>JPEG</td><td>75–80</td><td>250–450 KB</td></tr>
+            <tr><td>4K game screenshot</td><td>1920 px</td><td>JPEG</td><td>75</td><td>300–500 KB</td></tr>
+            <tr><td>Phone photo (12 MP)</td><td>1920 px</td><td>JPEG</td><td>70–75</td><td>200–400 KB</td></tr>
+            <tr><td>Logo with transparency</td><td>Original</td><td>PNG palette or WebP</td><td>80 (WebP)</td><td>20–120 KB</td></tr>
+            <tr><td>Scanned document</td><td>1600–2000 px</td><td>JPEG</td><td>70–75</td><td>150–350 KB</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>These are starting points, not guarantees. A screenshot of a busy forest scene carries far more detail than a screenshot of a menu, so the same quality setting can produce very different byte counts. Always read the output size before downloading and adjust one step at a time.</p>
+
+      <h2>Why a PNG of a Photo Can Never Get Small</h2>
+      <p>PNG is lossless. Every pixel is stored, and the only savings come from compressing repeated patterns. A photograph has smooth gradients, sensor noise and tiny color variations in every area, which is close to the worst case for that kind of compression. A 1920-pixel PNG photo routinely lands between 3 MB and 6 MB, and no quality slider will fix it because PNG does not have one in the lossy sense.</p>
+      <p>Palette reduction helps graphics with flat colors, which is why it works well on logos, pixel art and UI screenshots. Applied to a photo, it caps the image at 256 colors and produces banding in skies, skin tones and shadows while often still missing the 500 KB target. The real fix is to change format: JPEG for photos with no transparency, WebP when the background must stay transparent.</p>
+      <p>That is also why renaming a file from .png to .jpg does nothing. The extension is a label; the bytes inside are still PNG. You need an actual re-encode, which is what a converter does.</p>
+
+      <h2>Step-by-Step: Get Under 500 KB</h2>
+      <ul>
+        <li><strong>Step 1.</strong> Open the <a href="../compress.html">free image compressor</a> and drop in your file. Note the original size and dimensions shown in the preview.</li>
+        <li><strong>Step 2.</strong> Choose JPEG for photos and screenshots, or WebP if the destination accepts it and you need a smaller file.</li>
+        <li><strong>Step 3.</strong> Set quality to 75–80 for photos, 85 for screenshots with small text. The size readout updates as you move the slider.</li>
+        <li><strong>Step 4.</strong> Download when the file is under 500 KB. Zoom to 100% and check that small text and sharp edges still look clean.</li>
+        <li><strong>Step 5.</strong> If the file is still too large, open the <a href="../convert.html">image format converter</a> to switch to WebP, or return to the resizer and reduce the long edge to 1600 pixels.</li>
+        <li><strong>Step 6.</strong> If the subject is small inside a wide frame, crop the empty margins with the <a href="../crop.html">image cropper</a>. Cropping removes pixels without touching quality, which is the cheapest saving available.</li>
+      </ul>
+
+      <h2>Still Over 500 KB? Use This Escalation Ladder</h2>
+      <p>Work through these in order and stop as soon as the file fits. Each step costs a little more quality than the one before it.</p>
+      <ul>
+        <li><strong>1. Lower quality in small steps.</strong> Go from 80 to 75, then 70, then 65. Most images remain acceptable at 70, and the savings are immediate.</li>
+        <li><strong>2. Downscale the long edge.</strong> Try 1920, then 1600, then 1280. Reducing linear dimensions by 20% removes roughly 36% of the pixels, which is usually more effective than crushing quality.</li>
+        <li><strong>3. Switch to WebP.</strong> If the portal accepts it, WebP at quality 80 often beats JPEG at 70 in both size and appearance. Check the accepted extensions before you upload, because many application forms only allow JPG or PNG.</li>
+        <li><strong>4. Crop dead space.</strong> Remove borders, toolbars, duplicate screenshots and empty background. This is the only step that improves the file without any quality loss.</li>
+      </ul>
+      <p>Stop before quality 50 for anything containing text. If the file still will not fit at that point, the dimensions are wrong for the job, not the encoder. A 4000-pixel scan does not need to stay 4000 pixels for a form that displays it at 600 pixels wide.</p>
+
+      <h2>Verify Before You Submit</h2>
+      <p>Check the file size in your operating system's file browser rather than trusting the preview, confirm the extension matches the format the portal requires, and open the downloaded file once at 100% to inspect text edges. Re-encoding also strips EXIF metadata, including GPS coordinates, which is a useful side effect when the image is going to a stranger. If the portal shows a thumbnail after upload, compare it against the original: a correct result should look identical at normal viewing size, with no colored fringes around high-contrast edges.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is 500 KB too compressed?</h3>
+      <p>Not by itself. A 1920 pixel JPEG at quality 75 is usually around 300 to 500 KB and looks clean on any screen. The same file squeezed into 800 pixels will look soft. Judge quality by dimensions and compression level, not by the byte count alone.</p>
+
+      <h3>How do I compress a PNG to 500 KB without losing transparency?</h3>
+      <p>Use palette reduction on the PNG, or convert it to WebP, which keeps the alpha channel and is typically much smaller. JPEG cannot preserve transparency, so it is not an option if the background must stay clear.</p>
+
+      <h3>What quality should I use?</h3>
+      <p>Start at 80 for photos and 85 for screenshots containing text. Drop in steps of five until the file fits, and stop at 60 for images with small type. Below 50, JPEG blocking becomes visible around edges.</p>
+
+      <h3>Why did my PNG get bigger after compressing?</h3>
+      <p>Re-encoding an already optimized file can add overhead, and palette reduction on a photographic PNG often produces a larger or worse-looking result. Convert photos to JPEG or WebP instead of recompressing the PNG.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
+        <li><a href="discord-emoji-size.html">Discord Emoji Size: 128×128 Rules and Upload Limits</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>
