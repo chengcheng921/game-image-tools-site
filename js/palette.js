@@ -188,4 +188,12 @@
   });
 
   // 触屏 tap 兜底（click 在多数移动浏览器会触发，这里不做 touchstart 以免点不准）
+
+  // 图片接力：接收上一步传来的图片，直接取色（取色结果不产生新图，所以不挂接力按钮）
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();

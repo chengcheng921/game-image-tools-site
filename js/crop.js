@@ -339,4 +339,20 @@
     // 恢复编辑态布局，下次上传直接可裁
     showEditState();
   });
+
+  // 图片接力：按钮条挂在结果面板内，随裁剪结果一起出现
+  const cropResultPanel = document.getElementById('cropResult');
+  ImageHandoff.mount({
+    current: 'crop',
+    appendTo: cropResultPanel,
+    getBlob: () => croppedBlob,
+    getName: () => makeOutputName(sourceFileName, 'cropped', (croppedBlob.type || 'image/jpeg').split('/')[1].replace('jpeg', 'jpg')),
+  });
+
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();

@@ -116,4 +116,24 @@
     dropZone.style.display = 'block';
     preview.src = '';
   });
+
+  // 图片接力：旋转结果需要现场按原始分辨率编码，所以 getBlob 返回 Promise
+  ImageHandoff.mount({
+    current: 'rotate',
+    getBlob: () => new Promise((resolve) => {
+      if (!sourceImage) { resolve(null); return; }
+      const canvas = getTransformedCanvas();
+      let type = formatSelect.value;
+      if (type === 'image/webp' && !WEBP_OK) type = 'image/png';
+      canvas.toBlob((blob) => resolve(blob), type, type === 'image/png' ? undefined : 0.92);
+    }),
+    getName: () => makeOutputName(sourceFileName, 'rotated', formatSelect.value.split('/')[1].replace('jpeg', 'jpg')),
+  });
+
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();

@@ -142,4 +142,12 @@
     editorPanel.style.display = 'none';
     dropZone.style.display = 'block';
   });
+
+  // 图片接力：HEIC 转出的第一张图可直接带进压缩/改尺寸等工具
+  ImageHandoff.mount({
+    current: 'heic',
+    after: document.getElementById('downloadAllBtn'),
+    getBlob: () => (results.length ? results[0].blob : null),
+    getName: () => (results.length ? results[0].name : 'image.jpg'),
+  });
 })();

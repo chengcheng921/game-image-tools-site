@@ -152,4 +152,18 @@
     targetFormat.value = 'image/jpeg';
     qualityGroup.style.display = 'block';
   });
+
+  // 图片接力：把转换结果带进下一个工具
+  ImageHandoff.mount({
+    current: 'convert',
+    getBlob: () => resultBlob,
+    getName: () => makeOutputName(sourceFileName, 'converted', (resultBlob.type || 'image/jpeg').split('/')[1].replace('jpeg', 'jpg')),
+  });
+
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();

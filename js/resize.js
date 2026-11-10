@@ -163,4 +163,18 @@
     origPreview.src = '';
     newPreview.src = '';
   });
+
+  // 图片接力：把改尺寸结果带进下一个工具
+  ImageHandoff.mount({
+    current: 'resize',
+    getBlob: () => resultBlob,
+    getName: () => makeOutputName(sourceFileName, 'resized', (resultBlob.type || 'image/jpeg').split('/')[1].replace('jpeg', 'jpg')),
+  });
+
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();

@@ -211,4 +211,19 @@
     if (compPreview.src) { URL.revokeObjectURL(compPreview.src); compPreview.src = ''; }
     origPreview.src = '';
   });
+
+  // 图片接力：把压缩结果带进裁剪/改尺寸等工具，不用重新上传
+  ImageHandoff.mount({
+    current: 'compress',
+    getBlob: () => compressedBlob,
+    getName: () => makeOutputName(sourceFileName, 'compressed', (compressedBlob.type || 'image/jpeg').split('/')[1].replace('jpeg', 'jpg')),
+  });
+
+  // 若从上一步带图过来，直接载入
+  ImageHandoff.take().then((f) => {
+    if (!f) return;
+    handleFile(f)
+      .then(() => showToast('Loaded your previous result — continue from here.'))
+      .catch(() => {});
+  });
 })();
