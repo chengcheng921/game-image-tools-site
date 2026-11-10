@@ -65,6 +65,61 @@
         <input type="file" id="imgInput" accept="image/*" style="margin-top:8px;">
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Base64 Encoder/Decoder</h2>
+    <ol>
+      <li><strong>Paste your text</strong> — Type or paste any string into the left panel. Unicode is fully supported: Chinese, emoji, accents all encode correctly.</li>
+      <li><strong>Encode or decode</strong> — Click Encode → to turn text into Base64, or ← Decode to turn Base64 back into readable text.</li>
+      <li><strong>Convert an image</strong> — Use the file picker below the panels to turn any image into a Base64 data URL for embedding.</li>
+      <li><strong>Copy the result</strong> — One click puts the output on your clipboard.</li>
+    </ol>
+
+    <h2>What Is Base64 Encoding Actually For?</h2>
+    <p>Base64 turns binary data into plain ASCII text, so it can travel through systems designed only for text. You'll meet it everywhere: data URIs that embed images directly in CSS or HTML, JSON web tokens, email attachments, basic-auth headers, and API payloads carrying files. Developers decoding a JWT will recognize the Base64URL middle section instantly. It's also handy for game modding, where some config formats store small assets as Base64 blobs. This tool handles both directions locally — sensitive tokens never leave your browser.</p>
+
+    <h2>Base64 Is Encoding, Not Encryption</h2>
+    <p>Anyone can decode Base64 — it's a transport format, not a lock. Never treat a Base64 string as a secret. If you need to protect data, use real encryption; if you just need to move it through a text-only channel, Base64 is exactly right.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Why does Base64 make data bigger?</summary>
+      <p>Base64 stores 3 bytes in 4 characters, so output is about 33% larger than the input. That's the price of text-only safety — keep embedded images small.</p>
+    </details>
+    <details>
+      <summary>Why does decoding fail?</summary>
+      <p>The input probably isn't valid Base64 — it may be truncated, contain whitespace or URL-unsafe characters (- and _ instead of + and /), or be double-encoded. Check the source and try again.</p>
+    </details>
+    <details>
+      <summary>Does image-to-Base64 upload my file?</summary>
+      <p>No — the image is read by your browser's FileReader and converted locally. Nothing is uploaded, and the tool is free with no signup.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Base64 Encoder/Decoder",
+  "url": "https://gameimageeditor.netlify.app/base64.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Encode and decode Base64 online with full Unicode support. Convert images to Base64 data URLs. Local browser processing, no upload.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Text encode and decode", "UTF-8 safe (Chinese, emoji, accents)", "Image to Base64 data URL", "One-click copy", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why does Base64 make data bigger?", "acceptedAnswer": {"@type": "Answer", "text": "Base64 stores 3 bytes in 4 characters, so output is about 33% larger than the input."}},
+    {"@type": "Question", "name": "Why does decoding fail?", "acceptedAnswer": {"@type": "Answer", "text": "The input is probably not valid Base64 — it may be truncated, contain URL-unsafe characters, or be double-encoded."}},
+    {"@type": "Question", "name": "Does image-to-Base64 upload my file?", "acceptedAnswer": {"@type": "Answer", "text": "No — the image is read and converted locally in your browser. Nothing is uploaded."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

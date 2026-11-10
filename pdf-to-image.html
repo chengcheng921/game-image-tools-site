@@ -64,6 +64,61 @@
       </div>
       <div class="pdf-img-list" id="imgList"></div>
     </div>
+  <section class="tool-help">
+    <h2>How to Convert PDF Pages to Images</h2>
+    <ol>
+      <li><strong>Upload a PDF</strong> — Drop the file onto the drop zone or click to browse.</li>
+      <li><strong>Choose an output format</strong> — PNG for maximum sharpness and text clarity, JPG for smaller files.</li>
+      <li><strong>Convert</strong> — Each page renders at 2× scale for crisp output, with a thumbnail preview shown as it finishes.</li>
+      <li><strong>Download</strong> — Save pages individually, or click Download All to get everything in one ZIP archive.</li>
+    </ol>
+
+    <h2>Why Turn PDF Pages Into Images?</h2>
+    <p>Plenty of places accept images but not PDFs: Discord and forum posts, slide decks, social media carousels, marketplace listings, and thumbnail generators. Converting pages to PNG or JPG also makes them easy to annotate in any image editor, drop into a video timeline, or use as a background. Students convert lecture slides to images for note apps; gamers convert rulebook tables for quick reference on a phone. Everything renders locally with PDF.js, so confidential documents — invoices, contracts, medical forms — never touch a server.</p>
+
+    <h2>PNG or JPG for Your Pages?</h2>
+    <p>Pages full of text and line art look best as PNG — sharp edges, no compression smearing, at the cost of bigger files. Photo-heavy pages are fine as JPG, which is exported at 95% quality for a much smaller download. When in doubt, convert one page as both and compare.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>What resolution do the images have?</summary>
+      <p>Pages are rendered at 2× their original size, which keeps small text sharp on high-DPI screens and when zooming.</p>
+    </details>
+    <details>
+      <summary>Does it work with scanned PDFs?</summary>
+      <p>Yes — every page is rendered exactly as it appears, whether the PDF contains real text or scanned images.</p>
+    </details>
+    <details>
+      <summary>Why did I get a ZIP file?</summary>
+      <p>Browsers block one click from downloading many files, so Download All packages every page image into a single ZIP. It's all generated locally — no upload, no account.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools PDF to Image Converter",
+  "url": "https://gameimageeditor.netlify.app/pdf-to-image.html",
+  "applicationCategory": "OfficeApplication",
+  "operatingSystem": "Web",
+  "description": "Convert PDF pages to PNG or JPG images online at 2x resolution. Per-page or ZIP batch export. 100% local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Every page rendered at 2x scale", "PNG or 95% quality JPG output", "Per-page thumbnails and downloads", "ZIP batch export", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What resolution do the images have?", "acceptedAnswer": {"@type": "Answer", "text": "Pages are rendered at 2x their original size, keeping small text sharp on high-DPI screens."}},
+    {"@type": "Question", "name": "Does it work with scanned PDFs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — every page is rendered exactly as it appears, whether it contains real text or scanned images."}},
+    {"@type": "Question", "name": "Why did I get a ZIP file?", "acceptedAnswer": {"@type": "Answer", "text": "Browsers block one click from downloading many files, so Download All packages the pages into a single ZIP generated locally."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

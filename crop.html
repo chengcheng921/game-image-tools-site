@@ -146,6 +146,61 @@
         <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Image Cropper</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drag a screenshot onto the drop zone or click to browse. PNG, JPG, and WebP up to 20MB work.</li>
+      <li><strong>Draw the crop box</strong> — Drag anywhere on the image to create a selection. Drag the round handles to resize it, or drag inside the box to reposition.</li>
+      <li><strong>Pick an aspect ratio</strong> — Choose Free for any shape, or lock to 1:1, 4:3, 16:9, 3:2, or 9:16 and the box keeps that proportion as you resize.</li>
+      <li><strong>Crop, check, download</strong> — Click Crop to see the exact result with its dimensions and file size. Not happy? Click Back to Edit. Happy? Download as PNG, JPEG, or WebP.</li>
+    </ol>
+
+    <h2>Crop Screenshots to Kill HUDs, Taskbars, and Clutter</h2>
+    <p>Great screenshots are ruined by noisy edges: the Windows taskbar, a chat overlay, party frames, or a minimap pulling focus from the action. Cropping tight around your subject instantly makes captures look intentional. It's also the fastest way to reframe a widescreen shot for a platform with a different shape — cut a 16:9 gameplay moment down to a square avatar or a vertical 9:16 short without opening a heavyweight editor.</p>
+
+    <h2>Which Aspect Ratio Should I Choose?</h2>
+    <p>Match the ratio to the destination: 16:9 for YouTube thumbnails and Steam capsules, 1:1 for avatars and profile pictures, 9:16 for TikTok/Shorts, and 4:3 or 3:2 for classic photo prints and blog headers. When in doubt, crop in Free mode and check the pixel dimensions shown on the result screen.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Does cropping reduce image quality?</summary>
+      <p>The pixels you keep are preserved exactly. The result is re-encoded when you download — choose PNG for lossless output, or JPEG/WebP for a smaller file.</p>
+    </details>
+    <details>
+      <summary>Can I adjust the crop after clicking Crop?</summary>
+      <p>Yes — click Back to Edit to return to the full image and adjust your selection. Nothing is final until you download.</p>
+    </details>
+    <details>
+      <summary>Is there a file size limit?</summary>
+      <p>Images up to 20MB are supported, and everything is processed locally in your browser — nothing is uploaded, no account needed.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Image Cropper",
+  "url": "https://gameimageeditor.netlify.app/crop.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Crop game screenshots online with free-form or preset aspect ratios (1:1, 4:3, 16:9, 3:2, 9:16). Confirm the result before download. Local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Drag-to-select crop box with 8 handles", "Preset aspect ratios plus free mode", "Result confirmation with dimensions and size", "PNG, JPEG, and WebP output", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Does cropping reduce image quality?", "acceptedAnswer": {"@type": "Answer", "text": "The pixels you keep are preserved exactly. Choose PNG output for lossless results."}},
+    {"@type": "Question", "name": "Can I adjust the crop after clicking Crop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — click Back to Edit to return to the full image and adjust the selection. Nothing is final until download."}},
+    {"@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "Images up to 20MB are supported, processed entirely in your browser with no upload."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

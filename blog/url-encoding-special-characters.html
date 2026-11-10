@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoding Explained: What Those %20 Characters Mean</title>
+  <meta name="description" content="What is URL encoding (percent-encoding)? Learn why spaces become %20, how query strings break, and encode/decode URLs free in your browser.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>URL Encoding Explained: What Those %20 Characters Mean</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>Ever copied a link and seen <code>search?q=elden%20ring%20build</code> in the address bar? Those <code>%20</code> chunks aren't garbage — they're percent-encoding, the system that lets URLs carry characters they were never designed for. Understanding it takes ten minutes and saves hours of debugging broken links.</p>
+
+      <h2>Why URLs Need Encoding at All</h2>
+      <p>The URL specification reserves certain characters for structure: <code>?</code> starts the query string, <code>&amp;</code> separates parameters, <code>#</code> jumps to an anchor, <code>/</code> splits path segments. When your <em>data</em> contains those same characters, the server can't tell structure from content. A search for "salt &amp; pepper" becomes two parameters: "salt " and a mangled "pepper".</p>
+      <p>Percent-encoding solves this by replacing any unsafe byte with <code>%</code> followed by its hexadecimal value. A space (byte 32, hex 20) becomes <code>%20</code>. An ampersand becomes <code>%26</code>. Non-ASCII text like Chinese or emoji gets UTF-8 encoded first, then each byte percent-encoded — which is why encoded URLs with international text look so long.</p>
+
+      <h2>Which Characters Are Actually Safe?</h2>
+      <p>The "unreserved" set that never needs encoding is smaller than people think: <code>A-Z a-z 0-9</code> plus <code>- _ . ~</code>. Everything else — spaces, slashes inside values, plus signs, non-English text — should be encoded when it appears inside a parameter value. When in doubt, encode: servers decode it transparently.</p>
+
+      <h2>Encoding and Decoding in Practice</h2>
+      <p>The <a href="../url.html">URL encoder/decoder</a> on this site does the job locally in your browser:</p>
+      <ol>
+        <li>Paste the <strong>parameter value</strong> (not the whole URL — more on that below) into the input.</li>
+        <li>Click <strong>Encode →</strong>. "Elden Ring: Shadow of the Erdtree" becomes <code>Elden%20Ring%3A%20Shadow%20of%20the%20Erdtree</code>.</li>
+        <li>Drop that into your query string: <code>?q=Elden%20Ring%3A...</code></li>
+        <li>To read an encoded URL, paste it and click <strong>← Decode</strong> — full URLs decode fine.</li>
+      </ol>
+
+      <h2>The Whole-URL Mistake</h2>
+      <p>The tool uses JavaScript's <code>encodeURIComponent</code> — the strict, correct function for parameter values — which encodes even <code>:</code> and <code>/</code>. That means you should encode <em>just the value</em>, not a complete URL. If you encode <code>https://example.com/search?q=a b</code> in one pass, the <code>https://</code> structure gets escaped too, producing a broken blob. Encode the pieces, keep the structure readable.</p>
+
+      <h2>Double Encoding: The Silent Link Killer</h2>
+      <p>If you've ever seen <code>%2520</code> in a URL, you've met double encoding: a string that got encoded twice. The first pass turned the space into <code>%20</code>; the second encoded the <code>%</code> itself into <code>%25</code>. The server decodes once and receives a literal "%20" instead of a space. The fix is process discipline — encode exactly once, at the point where you build the URL. If you inherited a broken link, decode it repeatedly until it reads clean, then rebuild it with a single encoding pass.</p>
+
+      <h2>Is Encoding a Way to Hide Data?</h2>
+      <p>No — anyone can decode it instantly. Percent-encoding exists for transport safety, not secrecy. If you need to actually protect a value in a URL, that's encryption or a signed token's job, not encoding's.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

@@ -64,6 +64,60 @@
       </div>
       <textarea class="wc-textarea" id="textInput" placeholder="Paste or type text here, or upload a file..."></textarea>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Word Counter</h2>
+    <ol>
+      <li><strong>Paste or type text</strong> — Every stat updates live as you type: characters with and without spaces, words, Chinese characters, sentences, and reading time.</li>
+      <li><strong>Or upload a file</strong> — Drop a TXT, Markdown, DOCX, or PDF file (up to 50MB) onto the drop zone and its full text is counted automatically.</li>
+      <li><strong>Read the stats</strong> — Six cards show the numbers that matter, updated in real time.</li>
+    </ol>
+
+    <h2>Know Exactly Where Your Word Count Stands</h2>
+    <p>Word limits are everywhere: a 500-word essay, a 2,000-word game review brief, a tweet thread, a NaNoWriMo daily target. Guessing wastes editing time — pasting your draft here takes two seconds and tells you precisely where you stand. Writers drafting in plain text editors, students checking essay length, and community managers writing patch notes all get an instant answer. And because counting happens locally in your browser, unpublished drafts and confidential documents never leave your device. No account, no limits, completely free.</p>
+
+    <h2>Counting Chinese and English Together</h2>
+    <p>Mixed-language documents break most counters: English counts words, Chinese counts characters. This tool reports both — a dedicated Chinese-character counter alongside the word count — so translated patch notes, bilingual posts, and localization drafts get honest numbers either way.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>How is reading time estimated?</summary>
+      <p>From the average adult silent reading speed (roughly 200–250 words per minute), rounded to the nearest minute. Skimmable lists read faster; dense technical text reads slower.</p>
+    </details>
+    <details>
+      <summary>What files can I upload?</summary>
+      <p>TXT, Markdown, Word (.docx), and PDF up to 50MB. The text is extracted locally in your browser — the file is never uploaded anywhere.</p>
+    </details>
+    <details>
+      <summary>Does the tool store or send my text?</summary>
+      <p>No. All counting runs in your browser tab. Nothing is transmitted, saved, or logged — close the tab and your text is gone.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Word Counter",
+  "url": "https://gameimageeditor.netlify.app/wordcount.html",
+  "applicationCategory": "OfficeApplication",
+  "operatingSystem": "Web",
+  "description": "Count characters, words, Chinese characters, sentences, and reading time online. Paste text or upload TXT/MD/DOCX/PDF. Local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Real-time character, word, and sentence counts", "Dedicated Chinese character counter", "Reading time estimate", "TXT, Markdown, DOCX, and PDF file parsing up to 50MB", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How is reading time estimated?", "acceptedAnswer": {"@type": "Answer", "text": "From the average adult silent reading speed of roughly 200-250 words per minute, rounded to the nearest minute."}},
+    {"@type": "Question", "name": "What files can I upload?", "acceptedAnswer": {"@type": "Answer", "text": "TXT, Markdown, DOCX, and PDF up to 50MB. Text is extracted locally in your browser."}},
+    {"@type": "Question", "name": "Does the tool store or send my text?", "acceptedAnswer": {"@type": "Answer", "text": "No — all counting runs in your browser tab. Nothing is transmitted, saved, or logged."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

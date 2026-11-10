@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PNG vs JPG vs WebP: Which Image Format Should You Use?</title>
+  <meta name="description" content="PNG vs JPG vs WebP explained for screenshots and game captures. Learn when each format wins and convert between them free in your browser.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>PNG vs JPG vs WebP: Which Image Format Should You Use?</h1>
+      <p class="meta">Published on Nov 10, 2026 · 6 min read</p>
+
+      <p>Every screenshot you save is a trade-off between file size, quality, and compatibility. PNG, JPG, and WebP each win in different situations — and picking wrong means either bloated files or mushy text. Here's the practical breakdown, no computer-science degree required.</p>
+
+      <h2>PNG: The Lossless Workhorse</h2>
+      <p><strong>How it works:</strong> PNG compresses without throwing any data away. Every pixel survives exactly as captured.</p>
+      <p><strong>Strengths:</strong> Pixel-perfect text and UI elements, full transparency support, and it's the format game capture tools (ShareX, GeForce Experience, Steam's screenshot key) default to for a reason.</p>
+      <p><strong>Weaknesses:</strong> File size. A 1440p game screenshot can easily hit 4-8MB — over Discord's limit for non-Nitro users and painful on a slow connection.</p>
+      <p><strong>Use PNG when:</strong> the image has crisp text or interface elements, you need transparency, or you'll edit the image again later (every JPEG re-save loses a little more quality).</p>
+
+      <h2>JPG: The Photo Specialist</h2>
+      <p><strong>How it works:</strong> JPG (JPEG) throws away detail your eyes barely notice, especially in smooth gradients and photographic textures.</p>
+      <p><strong>Strengths:</strong> Dramatically smaller files — often 10x smaller than PNG. Universally supported since the dawn of the web.</p>
+      <p><strong>Weaknesses:</strong> No transparency, and "generation loss": each re-encode degrades the image further. Sharp text on solid backgrounds shows visible speckling artifacts at low quality settings.</p>
+      <p><strong>Use JPG when:</strong> the image is photographic (landscapes, character close-ups, real-life photos) and maximum compatibility matters.</p>
+
+      <h2>WebP: The Modern Middle Ground</h2>
+      <p><strong>How it works:</strong> Google's format with both lossy and lossless modes, built on more modern compression math than JPEG.</p>
+      <p><strong>Strengths:</strong> Roughly 25-35% smaller than JPEG at the same visual quality, and it supports transparency — something JPEG never learned. Discord, Steam, Chrome, Firefox, Safari, and Edge all handle it today.</p>
+      <p><strong>Weaknesses:</strong> A few older apps (legacy image viewers, some game engines' texture pipelines, older Office versions) still don't open WebP files.</p>
+      <p><strong>Use WebP when:</strong> you're sharing screenshots on modern platforms and want the smallest file that still looks clean.</p>
+
+      <h2>A Real-World Example</h2>
+      <p>Take a 2560×1440 game screenshot saved as PNG at 5.2MB:</p>
+      <ul>
+        <li>Converted to <strong>JPG quality 90</strong>: about 780KB — great for forum posts.</li>
+        <li>Converted to <strong>WebP quality 90</strong>: about 560KB — same look, smaller file, transparency intact.</li>
+      </ul>
+      <p>That's nearly a 10x reduction with no visible difference at normal viewing size.</p>
+
+      <h2>How to Convert Between Them</h2>
+      <p>Renaming the file doesn't convert anything — the data inside stays the same format. To actually convert:</p>
+      <ol>
+        <li>Open the <a href="../convert.html">free image format converter</a> (it runs locally in your browser — no upload).</li>
+        <li>Drop in your PNG, JPG, or WebP file.</li>
+        <li>Choose the target format. For JPEG and WebP, drag the quality slider — 80-90 is the sweet spot.</li>
+        <li>Watch the converted file size update in real time, then download.</li>
+      </ol>
+
+      <h2>Quick Decision Guide</h2>
+      <ul>
+        <li><strong>Archiving or editing later?</strong> PNG.</li>
+        <li><strong>Photos, maximum compatibility?</strong> JPG.</li>
+        <li><strong>Sharing on Discord/forums, smallest size?</strong> WebP.</li>
+        <li><strong>Need transparency and small size?</strong> WebP.</li>
+        <li><strong>Still over the size limit?</strong> Run it through the <a href="../compress.html">compressor</a> after converting.</li>
+      </ul>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="compress-screenshots-for-discord.html">How to Compress Screenshots for Discord (Step by Step)</a></li>
+        <li><a href="how-to-resize-image-without-losing-quality.html">How to Resize an Image Without Losing Quality</a></li>
+        <li><a href="pdf-to-jpg-convert-pages.html">How to Convert PDF Pages to JPG Images</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

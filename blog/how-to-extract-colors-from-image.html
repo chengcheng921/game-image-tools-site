@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Extract Colors From Any Image (Free, No Photoshop)</title>
+  <meta name="description" content="Extract dominant colors from any image and copy HEX/RGB values with one click. Perfect for stream overlays, Discord themes, and fan sites.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>How to Extract Colors From Any Image (Free, No Photoshop)</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>Ever stared at a Cyberpunk 2077 screenshot and thought "that neon palette would look incredible on my stream overlay"? Game artists spend months tuning color schemes, and you can borrow that work by extracting the exact colors from a screenshot. Here's how, without opening Photoshop.</p>
+
+      <h2>Why Extract Colors Instead of Guessing?</h2>
+      <p>Eyeballing a color is a trap. That "purple" health bar might be #8B5CF6 or #7C3AED — close on screen, visibly wrong side by side. Extracting from the pixels gives you the exact HEX value the game uses, so your Discord roles, OBS overlays, or fan-site CSS match perfectly.</p>
+
+      <h2>Step 1: Open the Palette Extractor</h2>
+      <p>Go to the <a href="../palette.html">color palette extractor</a>. It's fully browser-based — your image is processed locally and never uploaded, which also makes it instant.</p>
+
+      <h2>Step 2: Upload Your Image</h2>
+      <p>Drag in a screenshot, key art, or logo. PNG, JPG, and WebP up to 20MB all work. Transparent PNGs are fine too — transparent pixels are skipped automatically so they don't pollute the palette.</p>
+
+      <h2>Step 3: Read the Auto Palette</h2>
+      <p>The moment the image loads, the tool shows the <strong>12 most dominant colors</strong> as swatches, each with its HEX and RGB values. This answers the question "what colors define this image overall?" — ideal for building a theme.</p>
+
+      <h2>Step 4: Pick Exact Pixels Manually</h2>
+      <p>Sometimes you need one specific shade: the gold of a legendary item border, the exact green of a health bar. Hover over the image and a <strong>magnifier lens</strong> previews the color under your cursor. Click to lock it into your Picked Colors list. Pick as many as you like — duplicates are filtered out.</p>
+
+      <h2>Step 5: Copy the Values</h2>
+      <p>Click any swatch to copy its HEX code to the clipboard. Paste it straight into CSS, OBS, Discord role settings, or your design tool. Need RGB or HSL instead? Drop the HEX into the <a href="../color.html">color converter</a> and grab whichever format your project expects.</p>
+
+      <h2>Real Uses for Gamers and Creators</h2>
+      <ul>
+        <li><strong>Stream overlays:</strong> Match your OBS panels and alerts to the game you're playing this week.</li>
+        <li><strong>Discord servers:</strong> Set role colors to your clan banner's exact palette.</li>
+        <li><strong>Fan sites and wikis:</strong> Headers and accent colors pulled from official key art always look "right."</li>
+        <li><strong>Mood boards:</strong> Collect palettes from your favorite games as design reference for your own projects.</li>
+      </ul>
+
+      <h2>From Palette to Project: A Mini Workflow</h2>
+      <p>Here's a workflow that works well: extract the 12 dominant colors from a screenshot, then pick three — one primary (usually the most saturated), one neutral (the darkest or lightest), one accent. Apply the primary to headers and buttons, the neutral to backgrounds, and the accent to links and highlights. That simple discipline is behind most professional-looking fan sites and overlays, and it all starts with honest pixel values instead of guesses.</p>
+
+      <h2>Tips for Better Palettes</h2>
+      <p>Crop the image first if one region matters most — a palette from the whole frame averages in the sky, ground, and UI together. A tight crop around your subject (try the <a href="../crop.html">cropper</a>) gives a cleaner, more focused set of dominant colors. And remember that a palette is a starting point: pick 2-3 extracted colors as primaries and let neutrals fill the rest.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="hex-to-rgb-color-converter.html">HEX to RGB: Convert Colors Between Formats Instantly</a></li>
+        <li><a href="how-to-crop-screenshot-windows-mac.html">How to Crop a Screenshot on Windows and Mac</a></li>
+        <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

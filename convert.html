@@ -107,6 +107,61 @@
         <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Format Converter</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drag a PNG, JPG, or WebP file onto the drop zone (up to 20MB), or click to browse.</li>
+      <li><strong>Pick the target format</strong> — Choose JPEG, WebP, or PNG from the "Convert to" dropdown.</li>
+      <li><strong>Set quality</strong> — For JPEG and WebP, drag the quality slider (default 90) or type an exact value. PNG is lossless and ignores this setting.</li>
+      <li><strong>Download</strong> — Watch the converted file size update in real time, then save the result.</li>
+    </ol>
+
+    <h2>PNG vs JPG vs WebP — Which Format Should You Choose?</h2>
+    <p>Each format wins somewhere. PNG is lossless and supports transparency, so it's right for screenshots with crisp UI text, logos, and anything you'll edit again — but files are big. JPEG is the universal photo format: small files, no transparency, and visible artifacts if you push quality too low. WebP is the modern middle ground, typically 25–35% smaller than JPEG at the same visual quality, with transparency support — and every current browser, Discord, and most CMSs accept it. For sharing game screenshots, WebP at quality 80–90 is hard to beat; for archiving, keep the PNG.</p>
+
+    <h2>Why Convert Instead of Just Renaming the File?</h2>
+    <p>Changing a file extension doesn't change the data inside — a renamed PNG is still a PNG, and strict apps will reject it. Real conversion re-encodes the image, which is what actually shrinks the file or adds compatibility with software that refuses certain formats.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>What happens to transparency when I convert PNG to JPEG?</summary>
+      <p>JPEG doesn't support transparency, so transparent areas are flattened onto a solid background. Choose WebP or PNG output if you need to keep the alpha channel.</p>
+    </details>
+    <details>
+      <summary>Why is my converted file bigger than the original?</summary>
+      <p>Converting a compressed format (like JPEG) to a lossless one (PNG) stores every pixel exactly, which takes more space. To shrink files, convert toward JPEG or WebP instead.</p>
+    </details>
+    <details>
+      <summary>Are my images uploaded for conversion?</summary>
+      <p>No — conversion runs locally in your browser with the Canvas API. Free, no signup, and your files never leave your device.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Image Format Converter",
+  "url": "https://gameimageeditor.netlify.app/convert.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Convert images between PNG, JPG, and WebP online. Adjustable quality, real-time size comparison, 100% local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["PNG, JPEG, and WebP mutual conversion", "Adjustable quality for lossy formats", "Real-time file size comparison", "Side-by-side preview", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What happens to transparency when I convert PNG to JPEG?", "acceptedAnswer": {"@type": "Answer", "text": "JPEG does not support transparency; transparent areas are flattened. Use WebP or PNG output to keep the alpha channel."}},
+    {"@type": "Question", "name": "Why is my converted file bigger than the original?", "acceptedAnswer": {"@type": "Answer", "text": "Converting to a lossless format like PNG stores every pixel exactly. To shrink files, convert toward JPEG or WebP."}},
+    {"@type": "Question", "name": "Are my images uploaded for conversion?", "acceptedAnswer": {"@type": "Answer", "text": "No — conversion runs locally in your browser. Your files never leave your device."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

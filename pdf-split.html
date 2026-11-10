@@ -68,6 +68,61 @@
         <button class="btn btn-secondary" id="resetBtn">New File</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Split a PDF</h2>
+    <ol>
+      <li><strong>Upload a PDF</strong> — Drag the file onto the drop zone or click to browse. The tool shows the total page count immediately.</li>
+      <li><strong>Enter a page range</strong> — Type the start and end page for the part you want to extract (pages start at 1).</li>
+      <li><strong>Add more ranges if needed</strong> — Click "+ Add Range" to extract several sections in one go, e.g. pages 1–5 and 20–25.</li>
+      <li><strong>Split & download</strong> — One range downloads as a single PDF; multiple ranges are packaged into a ZIP file.</li>
+    </ol>
+
+    <h2>Extract Exactly the Pages You Need</h2>
+    <p>Big PDFs are rarely useful end to end. You want one raid-guide chapter from a 200-page manual, a single signed page from a contract, or just the character sheet appendix from a rulebook. Uploading those documents to a random server is a privacy gamble — especially contracts and IDs. This splitter copies pages locally in your browser using pdf-lib, so the content never leaves your device, there's no queue, and it's free with no watermarks or page limits.</p>
+
+    <h2>How Page Ranges Work</h2>
+    <p>Each range you add becomes its own output PDF, named with its page span (e.g. guide_3-7.pdf). Ranges can overlap and can be in any order. When you request more than one range, the results are zipped together — browsers block a single click from triggering many separate downloads.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Does splitting reduce PDF quality?</summary>
+      <p>No — pages are copied as-is into the new files. Text stays selectable, images keep their original resolution, and nothing is re-compressed.</p>
+    </details>
+    <details>
+      <summary>Why do I get a ZIP instead of separate PDFs?</summary>
+      <p>Browsers block one click from starting multiple downloads, so when you split into several ranges they're bundled into a single ZIP for convenience.</p>
+    </details>
+    <details>
+      <summary>My PDF fails to load — why?</summary>
+      <p>Password-protected or unusually structured PDFs can't be parsed in the browser. Open the file in your PDF reader, print/save it as a fresh unprotected PDF, then try again.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools PDF Splitter",
+  "url": "https://gameimageeditor.netlify.app/pdf-split.html",
+  "applicationCategory": "OfficeApplication",
+  "operatingSystem": "Web",
+  "description": "Split a PDF into multiple files by page range online. Extract several sections in one go with ZIP packaging. 100% local, no upload.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Extract pages by start/end range", "Multiple ranges in one pass", "Lossless page copying", "Automatic ZIP packaging for multiple outputs", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Does splitting reduce PDF quality?", "acceptedAnswer": {"@type": "Answer", "text": "No — pages are copied as-is. Text stays selectable and images keep their original resolution."}},
+    {"@type": "Question", "name": "Why do I get a ZIP instead of separate PDFs?", "acceptedAnswer": {"@type": "Answer", "text": "Browsers block one click from starting multiple downloads, so multiple ranges are bundled into a ZIP."}},
+    {"@type": "Question", "name": "My PDF fails to load — why?", "acceptedAnswer": {"@type": "Answer", "text": "Password-protected or unusually structured PDFs cannot be parsed in the browser. Save an unprotected copy and try again."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

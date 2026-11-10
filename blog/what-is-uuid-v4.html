@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a UUID v4 and Why Is It Everywhere?</title>
+  <meta name="description" content="UUID v4 explained: how random unique IDs work, collision odds, and when to use them. Generate up to 1,000 UUIDs free in your browser.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>What Is a UUID v4 and Why Is It Everywhere?</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>Look inside any modern app and you'll find strings like <code>3f8a2c4e-9b1d-4e7f-a3c2-8d5e6f1a2b3c</code> attached to users, orders, sessions, and files. That's a UUID — and the "v4" flavor is the one you see most. Here's what it actually is, and when you should (and shouldn't) use one.</p>
+
+      <h2>Anatomy of a UUID</h2>
+      <p>A UUID is a 128-bit number displayed as 36 characters: five groups of hexadecimal digits separated by dashes, in an 8-4-4-4-12 pattern. In a version 4 UUID, almost everything is randomness:</p>
+      <ul>
+        <li><strong>122 bits</strong> are purely random — that's the payload.</li>
+        <li><strong>4 bits</strong> mark the version (that's the "4" you always see at the start of the third group).</li>
+        <li><strong>2 bits</strong> mark the variant (the third group's first character is always 8, 9, a, or b).</li>
+      </ul>
+      <p>The point of all that randomness: anyone, anywhere, can generate an identifier without asking a central authority, and be effectively certain it's never been used before.</p>
+
+      <h2>How Safe Is "Effectively Certain"?</h2>
+      <p>The math is absurd. To reach a 50% chance of a single collision between two v4 UUIDs, you'd need to generate about 2.7 quintillion of them — roughly a billion per second for 85 years. For any real application, collisions are a rounding error you can ignore.</p>
+
+      <h2>UUID vs Auto-Increment IDs</h2>
+      <p>Database auto-increment (1, 2, 3...) is simple and sortable. So why did the industry fall in love with UUIDs?</p>
+      <ul>
+        <li><strong>Distributed systems:</strong> ten servers can insert rows simultaneously without coordinating a counter.</li>
+        <li><strong>Offline-first apps:</strong> a phone can create records offline with real IDs, then sync later without conflicts.</li>
+        <li><strong>Privacy:</strong> /users/4829 tells the world roughly how many users you have, and invites guessing /users/4830. /users/3f8a2c4e-... tells nobody anything.</li>
+        <li><strong>Merging data:</strong> two databases combine without ID renumbering.</li>
+      </ul>
+      <p>The downsides are real too: UUIDs are bigger (128 bits vs 32), don't sort by creation time, and make URLs ugly. Many teams use both — auto-increment internally, UUID exposed publicly.</p>
+
+      <h2>Where You'll Actually Use Them</h2>
+      <ul>
+        <li>Database primary keys and foreign keys</li>
+        <li>Session and request identifiers in logs</li>
+        <li>File names for user uploads (no more overwrite collisions)</li>
+        <li>Test fixtures and seed data</li>
+        <li>Idempotency keys for payment APIs</li>
+      </ul>
+
+      <h2>Other UUID Versions, Briefly</h2>
+      <p>Version 4 isn't the only kind. v1 embeds a timestamp and MAC address (sortable, but leaks the generating machine's identity). v7 is a newer timestamp-first design that sorts like auto-increment while staying unique — databases love it. But v4 remains the universal default: every language generates it natively, every database accepts it, and pure randomness leaks nothing.</p>
+
+      <h2>Generating UUIDs in Bulk</h2>
+      <p>The <a href="../uuid.html">UUID generator</a> creates up to <strong>1,000 v4 UUIDs in one click</strong>, entirely in your browser — nothing is logged or transmitted. Two format options cover the common variants:</p>
+      <ul>
+        <li><strong>Uppercase</strong> — some Microsoft ecosystems expect capital hex letters.</li>
+        <li><strong>No dashes</strong> — a compact 32-character form many databases store directly.</li>
+      </ul>
+      <p>Both forms encode the same 128-bit value; pick whichever your stack expects, then hit Copy All.</p>
+      <p>One honest caveat: this generator uses your browser's standard random source, which is perfect for identifiers, keys, and test data. For security tokens and secrets, use a CSPRNG-backed tool like our <a href="../password.html">password generator</a> instead.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="how-to-create-strong-password.html">How to Create a Strong Password (That Actually Protects You)</a></li>
+        <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
+        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

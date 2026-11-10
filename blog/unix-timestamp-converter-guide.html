@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unix Timestamp Converter: A Practical Guide</title>
+  <meta name="description" content="What is a Unix timestamp? Learn epoch time, seconds vs milliseconds, and convert timestamps to dates free in your browser.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>Unix Timestamp Converter: A Practical Guide</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>You're reading a server log and hit a line like <code>ban_issued_at: 1762819200</code>. When was that? Last week? 1997? Unix timestamps are how computers actually store time, and being able to read them fluently is a genuinely useful skill for developers, modders, and anyone who digs through log files.</p>
+
+      <h2>What Is a Unix Timestamp?</h2>
+      <p>A Unix timestamp counts the seconds since <strong>January 1, 1970, 00:00:00 UTC</strong> — a moment called "the epoch." Right now the counter is somewhere past 1.7 billion. It sounds arbitrary, but the design is brilliant: a single integer represents a moment in time with no timezones, no daylight saving chaos, no formatting ambiguity. Add 3600 and it's exactly one hour later, anywhere on Earth.</p>
+      <p>That's why APIs return <code>expires_at: 1762905600</code>, databases store <code>created_at</code> as an integer, and game servers log events in epoch time — computers think in these numbers.</p>
+
+      <h2>Seconds vs Milliseconds: The Classic Gotcha</h2>
+      <p>Traditional Unix time counts seconds. But JavaScript's <code>Date.now()</code>, Java, and many modern APIs count <strong>milliseconds</strong> — the same number with three extra zeros. Mix them up and your date lands in the year 57816 or the year 1970.</p>
+      <p>The quick rule: a current timestamp in <em>seconds</em> has 10 digits (like 1762819200); in <em>milliseconds</em> it has 13 (1762819200000). The <a href="../timestamp.html">timestamp converter</a> on this site auto-detects the unit — 10 digits or fewer is treated as seconds, anything longer as milliseconds — so you don't have to think about it.</p>
+
+      <h2>Converting Both Directions</h2>
+      <h3>Timestamp → Date</h3>
+      <ol>
+        <li>Open the <a href="../timestamp.html">converter</a> and paste the number.</li>
+        <li>The date appears as you type — both the <strong>UTC ISO time</strong> and your <strong>local timezone</strong>, so there's never ambiguity about which you're reading.</li>
+        <li>Click <strong>Now</strong> whenever you just need the current epoch value for a test.</li>
+      </ol>
+      <h3>Date → Timestamp</h3>
+      <p>Need the timestamp for "next Friday at 8pm"? The lower section takes any date and time from a picker and returns both the seconds and milliseconds forms. Handy for scheduling scripts, setting expiry times, or seeding test data.</p>
+      <p>Everything runs locally in your browser — which is nice when the timestamp came from a production log you shouldn't paste into random websites.</p>
+
+      <h2>Real Scenarios</h2>
+      <ul>
+        <li><strong>Debug auth issues:</strong> compare a token's <code>exp</code> against the current epoch time to see if it's really expired.</li>
+        <li><strong>Read game logs:</strong> convert event times to figure out what happened during a crash.</li>
+        <li><strong>API testing:</strong> generate "tomorrow at noon" as a timestamp for a request body.</li>
+        <li><strong>Database forensics:</strong> find out when that row was actually created.</li>
+      </ul>
+
+      <h2>Fun Bonus: The Year 2038 Problem</h2>
+      <p>Older systems store Unix time in a 32-bit signed integer, which maxes out at 2,147,483,647 — that's January 19, 2038, 03:14:07 UTC. One second later, those systems think it's 1901. Modern 64-bit systems are immune (they'll overflow in about 292 billion years), and this converter handles dates far beyond 2038 without breaking a sweat.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="what-is-uuid-v4.html">What Is a UUID v4 and Why Is It Everywhere?</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

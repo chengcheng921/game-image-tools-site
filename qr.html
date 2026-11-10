@@ -70,6 +70,61 @@
         <button class="btn btn-secondary" id="downloadBtn">Download PNG</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the QR Code Generator</h2>
+    <ol>
+      <li><strong>Enter your content</strong> — Paste a URL or type any text: a Discord invite, server IP, Wi-Fi login, or stream link.</li>
+      <li><strong>Customize</strong> — Pick a size (200–512px), set foreground and background colors, and choose an error-correction level.</li>
+      <li><strong>Preview instantly</strong> — The code regenerates automatically whenever you change a setting.</li>
+      <li><strong>Download PNG</strong> — Save the code and drop it into overlays, posters, slides, or social posts.</li>
+    </ol>
+
+    <h2>QR Codes for Discord Invites, Servers, and Stream Links</h2>
+    <p>Nobody wants to type a 40-character URL on a phone. A QR code on your stream overlay lets viewers join your Discord with one camera scan; a code on a LAN-party poster gets everyone onto the Wi-Fi in seconds; tournament organizers print codes linking to brackets and rulebooks. Because this generator runs entirely in your browser, you can safely encode private invite links — they're never sent to a server. It's free, needs no account, and the downloaded PNG is yours to use anywhere, forever.</p>
+
+    <h2>What Is Error Correction, and Which Level Should You Pick?</h2>
+    <p>QR codes embed redundant data so they still scan when partially damaged or obscured. Level L recovers 7% of the code, M handles 15%, Q 25%, and H 30%. Pick H if you plan to overlay a logo or print small; M (the default) is fine for screen use. Higher levels make denser codes, so keep the content short.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Do these QR codes expire?</summary>
+      <p>Never. The content is encoded directly into the pattern — there's no redirect service in the middle, so the code works as long as the link it points to is alive.</p>
+    </details>
+    <details>
+      <summary>Why won't my QR code scan?</summary>
+      <p>Contrast is everything: keep the foreground much darker than the background, avoid inverted colors, and don't shrink the code below about 2cm when printing.</p>
+    </details>
+    <details>
+      <summary>How much text can a QR code hold?</summary>
+      <p>Hundreds of characters, but capacity shrinks as error correction rises and dense codes get harder to scan. Short URLs always work best.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools QR Code Generator",
+  "url": "https://gameimageeditor.netlify.app/qr.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Generate QR codes online with custom colors, sizes (200-512px), and error-correction levels. Download as PNG. Local browser processing, codes never expire.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Custom foreground and background colors", "Four sizes up to 512px", "Error correction levels L/M/Q/H", "Live preview on change", "PNG download", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Do these QR codes expire?", "acceptedAnswer": {"@type": "Answer", "text": "Never — content is encoded directly into the pattern with no redirect service, so codes work as long as the link is alive."}},
+    {"@type": "Question", "name": "Why won't my QR code scan?", "acceptedAnswer": {"@type": "Answer", "text": "Keep the foreground much darker than the background, avoid inverted colors, and print at 2cm or larger."}},
+    {"@type": "Question", "name": "How much text can a QR code hold?", "acceptedAnswer": {"@type": "Answer", "text": "Hundreds of characters, but capacity shrinks at higher error-correction levels. Short URLs work best."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

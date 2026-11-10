@@ -61,6 +61,60 @@
         </div>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the URL Encoder/Decoder</h2>
+    <ol>
+      <li><strong>Paste your text</strong> — A query-string value, a filename, or any text containing spaces, &amp;, =, ?, or non-ASCII characters.</li>
+      <li><strong>Encode or decode</strong> — Encode → converts special characters to percent-encoding (space becomes %20); ← Decode reverses it.</li>
+      <li><strong>Copy the result</strong> — One click to clipboard, ready to paste into your URL or code.</li>
+    </ol>
+
+    <h2>Why URLs Need Encoding</h2>
+    <p>URLs were designed for a small set of safe characters. Spaces, ampersands, question marks, and any non-English text break that contract — an &amp; in a search query accidentally splits parameters, a space truncates a filename, and Chinese or emoji characters aren't legal URL bytes at all. Percent-encoding wraps these characters as %XX byte values so servers parse the address exactly as you intended. If you've built a share link for a game lobby or a search URL with a player's nickname, encoding the parameter values is what keeps it working for everyone.</p>
+
+    <h2>Component Encoding, Not Whole-URL Encoding</h2>
+    <p>This tool uses encodeURIComponent — the strict, correct choice for parameter values — which encodes even : and /. So paste just the value part of a parameter, not a complete URL: encoding a full address would escape its structure. Decoding a full URL works fine, though.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Which characters get encoded?</summary>
+      <p>Everything except A–Z, a–z, 0–9, and - _ . ! ~ * ' ( ). Spaces become %20, &amp; becomes %26, and non-ASCII text becomes UTF-8 byte sequences.</p>
+    </details>
+    <details>
+      <summary>What is double encoding?</summary>
+      <p>Encoding an already-encoded string — %20 becomes %2520. If a link shows %25 sequences, decode it once to see where the extra pass happened.</p>
+    </details>
+    <details>
+      <summary>Is URL encoding a way to hide data?</summary>
+      <p>No — anyone can decode it instantly. It's a transport format, not encryption. And since this tool runs locally in your browser, whatever you paste here never leaves your device.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools URL Encoder/Decoder",
+  "url": "https://gameimageeditor.netlify.app/url.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "URL encode and decode online with proper UTF-8 percent-encoding. Handles special and non-ASCII characters. Local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["encodeURIComponent-compatible encoding", "UTF-8 percent-encoding for any language", "One-click decode and copy", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Which characters get encoded?", "acceptedAnswer": {"@type": "Answer", "text": "Everything except A-Z, a-z, 0-9, and - _ . ! ~ * ' ( ). Spaces become %20 and non-ASCII text becomes UTF-8 byte sequences."}},
+    {"@type": "Question", "name": "What is double encoding?", "acceptedAnswer": {"@type": "Answer", "text": "Encoding an already-encoded string — %20 becomes %2520. Decode once to find where the extra pass happened."}},
+    {"@type": "Question", "name": "Is URL encoding a way to hide data?", "acceptedAnswer": {"@type": "Answer", "text": "No — anyone can decode it instantly. It is a transport format, not encryption."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

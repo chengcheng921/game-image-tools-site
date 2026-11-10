@@ -94,6 +94,60 @@
         <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the EPUB Converter</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drop a TXT, HTML, Markdown, or PDF file (up to 20MB) onto the drop zone.</li>
+      <li><strong>Check the metadata</strong> — The title is pre-filled from the filename; edit it and add an author name. The language is auto-detected from the content (English, Chinese, Japanese, Korean).</li>
+      <li><strong>Convert</strong> — Click Convert to EPUB. The file downloads immediately, ready for your e-reader app.</li>
+    </ol>
+
+    <h2>Turn TXT Notes and Markdown Drafts Into Real Ebooks</h2>
+    <p>Plain text files are awkward to read on a phone or e-reader: no chapters, no bookmarks, no resizable typography. Converting them to EPUB gives you a proper book — a table of contents, remember-your-place reading, and comfortable fonts in apps like Apple Books, Kobo, and Google Play Books. Writers use it to proofread Markdown drafts on a Kindle-style device; gamers use it to turn long text walkthroughs into something readable on the couch. Because conversion happens locally in your browser, unpublished manuscripts stay private.</p>
+
+    <h2>How Chapters Are Created</h2>
+    <p>If your document uses H1/H2 headings (Markdown # / ## or HTML headings), each becomes a chapter in the table of contents. Plain TXT files without headings are automatically split into chapters of roughly 50 paragraphs, so navigation still works.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Will this translate my book into another language?</summary>
+      <p>No — the detected language tag only tells the reader app which typography and text-to-speech rules to use. It never changes your content.</p>
+    </details>
+    <details>
+      <summary>Does the EPUB work on Kindle?</summary>
+      <p>The output is standard EPUB 2.0, which opens in Apple Books, Kobo, Google Play Books, and Calibre. For Kindle devices, send it with Amazon's Send to Kindle or convert it in Calibre first.</p>
+    </details>
+    <details>
+      <summary>What happens to images inside my PDF?</summary>
+      <p>PDF conversion extracts the text only — images and complex layout aren't carried over. TXT, Markdown, and HTML sources convert with their text structure intact. Files up to 20MB, processed 100% locally.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools EPUB Converter",
+  "url": "https://gameimageeditor.netlify.app/epub.html",
+  "applicationCategory": "OfficeApplication",
+  "operatingSystem": "Web",
+  "description": "Convert TXT, HTML, Markdown, and PDF files to EPUB ebooks online. Automatic chapter splitting and language detection. Local browser processing, no upload.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["TXT, HTML, Markdown, and PDF input", "Automatic chapter splitting from headings", "Auto language detection (EN/ZH/JA/KO)", "Standard EPUB 2.0 output with table of contents", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Will this translate my book into another language?", "acceptedAnswer": {"@type": "Answer", "text": "No — the language tag only affects reader typography and text-to-speech. Content is never changed."}},
+    {"@type": "Question", "name": "Does the EPUB work on Kindle?", "acceptedAnswer": {"@type": "Answer", "text": "It is standard EPUB 2.0 for Apple Books, Kobo, Google Play Books, and Calibre. For Kindle, use Send to Kindle or convert in Calibre."}},
+    {"@type": "Question", "name": "What happens to images inside my PDF?", "acceptedAnswer": {"@type": "Answer", "text": "PDF conversion extracts text only; images and complex layout are not carried over. Files up to 20MB, processed locally."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

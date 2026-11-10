@@ -76,6 +76,61 @@
       </div>
       <div class="error-msg" id="errorMsg"></div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the JSON Formatter</h2>
+    <ol>
+      <li><strong>Paste your JSON</strong> — Drop the raw text into the left panel. An API response, a config file, a game save export — anything goes.</li>
+      <li><strong>Format or Minify</strong> — Format indents with 2 spaces for readability; Minify strips all whitespace for production use.</li>
+      <li><strong>Fix errors fast</strong> — Invalid JSON shows the parser's exact error message, including the position where things broke.</li>
+      <li><strong>Copy the result</strong> — One click sends the output to your clipboard.</li>
+    </ol>
+
+    <h2>Debug API Responses in Seconds</h2>
+    <p>APIs love returning a single 10,000-character line of JSON. Reading that raw is misery — nested objects blur together and finding one field takes forever. Paste it here and Format: the hierarchy unfolds into clean indentation so you can spot the field you need, verify types, and catch a missing comma before it costs you an hour. Modders use it to inspect game config files; developers use it to sanity-check webhook payloads. And unlike most online formatters, this one never sends your data anywhere — tokens and internal URLs in your payloads stay on your machine.</p>
+
+    <h2>Format vs Minify: When to Use Each</h2>
+    <p>Format for humans: code review, debugging, documentation. Minify for machines: smaller request bodies, leaner config files, faster parsing. Both validate the JSON first, so a successful conversion also proves your data is well-formed.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Where is the error in my JSON?</summary>
+      <p>When parsing fails, the message under the editor shows the browser parser's error with the exact position (e.g. "at position 142"). Count from the start, or bisect by formatting halves of the document.</p>
+    </details>
+    <details>
+      <summary>How large a JSON can it handle?</summary>
+      <p>Everything runs in your browser's memory, so multi-megabyte files format fine. There's no upload limit because there's no upload at all.</p>
+    </details>
+    <details>
+      <summary>Is my data safe here?</summary>
+      <p>Yes — 100% of processing happens locally in your browser. Nothing is transmitted, logged, or stored. Close the tab and it's gone.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools JSON Formatter",
+  "url": "https://gameimageeditor.netlify.app/json.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Format, minify, and validate JSON online with precise error location. 100% local browser processing — data never leaves your device.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["2-space pretty printing", "One-click minification", "Validation with exact error position", "Clipboard copy", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Where is the error in my JSON?", "acceptedAnswer": {"@type": "Answer", "text": "Failed parses show the browser parser's message with the exact position of the error."}},
+    {"@type": "Question", "name": "How large a JSON can it handle?", "acceptedAnswer": {"@type": "Answer", "text": "Everything runs in browser memory, so multi-megabyte files format fine. No upload means no upload limit."}},
+    {"@type": "Question", "name": "Is my data safe here?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — all processing is local in your browser. Nothing is transmitted, logged, or stored."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

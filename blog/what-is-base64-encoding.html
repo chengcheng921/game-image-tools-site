@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is Base64 Encoding and When Do You Need It?</title>
+  <meta name="description" content="Base64 explained in plain English: what it is, why it makes data 33% bigger, and when to use it. Free local encoder/decoder included.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>What Is Base64 Encoding and When Do You Need It?</h1>
+      <p class="meta">Published on Nov 10, 2026 · 5 min read</p>
+
+      <p>SGVsbG8sIHdvcmxkIQ== looks like gibberish, but it's just "Hello, world!" wearing a disguise. That disguise is Base64 — one of the most common encodings on the internet, and one of the most misunderstood. Let's fix that in five minutes.</p>
+
+      <h2>The One-Sentence Explanation</h2>
+      <p>Base64 converts any data — text, images, binaries — into a string made only from 64 safe ASCII characters (A-Z, a-z, 0-9, +, /), so it can travel through systems designed to carry plain text.</p>
+
+      <h2>Why Does That Matter?</h2>
+      <p>Many internet protocols were built in an era when "data" meant "English text." Email, JSON, XML, URLs, HTTP headers — none of them safely carry raw binary bytes. Try pasting a photo into a JSON field and the bytes will corrupt the structure. Base64 wraps binary data in characters that every text system handles without choking.</p>
+      <p>You've met it in the wild even if you didn't notice:</p>
+      <ul>
+        <li><strong>Data URIs:</strong> images embedded directly in CSS or HTML as <code>data:image/png;base64,...</code></li>
+        <li><strong>JWT tokens:</strong> the header and payload sections of a JSON Web Token are Base64URL-encoded JSON</li>
+        <li><strong>Email attachments:</strong> every attachment you send is Base64'd under the hood (MIME)</li>
+        <li><strong>Basic auth:</strong> the <code>Authorization: Basic ...</code> header is Base64 of "username:password"</li>
+        <li><strong>API payloads:</strong> file uploads inside JSON requests</li>
+      </ul>
+
+      <h2>The Catch: It's 33% Bigger</h2>
+      <p>Base64 packs 3 bytes into 4 characters. That math means any Base64 string is about 33% larger than the original data. A 100KB image becomes a 133KB string. This is why embedding huge images as data URIs is an anti-pattern — keep inline images small (icons, tiny logos) and link the big ones.</p>
+
+      <h2>Base64 Is Not Encryption</h2>
+      <p>This is the dangerous misconception. Base64 is a public, reversible transform — anyone can decode it in one second, no key required. If a "security" system hides secrets in Base64, those secrets are plain text with extra steps. Use Base64 for <em>transport</em>, never for <em>protection</em>.</p>
+
+      <h2>How to Encode and Decode</h2>
+      <p>The <a href="../base64.html">Base64 encoder/decoder</a> on this site runs entirely in your browser — important when you're decoding a JWT that contains session data:</p>
+      <ol>
+        <li>Paste text and click <strong>Encode →</strong> to get Base64, or paste Base64 and click <strong>← Decode</strong> to read it.</li>
+        <li>Unicode works correctly — Chinese, emoji, and accented characters encode as UTF-8 first, so nothing gets mangled.</li>
+        <li>Need an image as a data URL? Use the file picker below the panels and it outputs the complete <code>data:image/...;base64,</code> string ready to paste into CSS or HTML.</li>
+      </ol>
+
+      <h2>Decoding Fails? Check These</h2>
+      <ul>
+        <li><strong>Truncation:</strong> Base64 strings end with zero to two <code>=</code> padding characters. A cut-off string won't decode cleanly.</li>
+        <li><strong>Base64URL variant:</strong> JWTs replace <code>+</code> and <code>/</code> with <code>-</code> and <code>_</code>. Swap them back before decoding.</li>
+        <li><strong>Stray whitespace:</strong> line breaks pasted from PEM files can confuse strict decoders — strip them first.</li>
+      </ul>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="url-encoding-special-characters.html">URL Encoding: What Those %20 Characters Mean</a></li>
+        <li><a href="what-is-uuid-v4.html">What Is a UUID v4 and Why Is It Everywhere?</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

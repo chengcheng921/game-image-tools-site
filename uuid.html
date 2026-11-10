@@ -52,6 +52,61 @@
       </div>
       <textarea class="uuid-output" id="output" readonly></textarea>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the UUID Generator</h2>
+    <ol>
+      <li><strong>Set the count</strong> — Generate anywhere from 1 to 1,000 UUIDs in a single batch.</li>
+      <li><strong>Choose a format</strong> — Toggle Uppercase for capital hex letters, or No dashes for the compact 32-character form.</li>
+      <li><strong>Generate</strong> — Fresh UUID v4 identifiers appear instantly, one per line.</li>
+      <li><strong>Copy All</strong> — Send the whole batch to your clipboard, ready for your code, database seeds, or test fixtures.</li>
+    </ol>
+
+    <h2>What Is a UUID v4?</h2>
+    <p>A UUID (Universally Unique Identifier) is a 128-bit value written as 36 characters: eight hex digits, three groups of four, then twelve, separated by dashes. Version 4 means the identifier is essentially random — 122 of its 128 bits are randomness, with the rest marking version and variant. That randomness is the point: two people on opposite sides of the planet can generate UUIDs without coordinating, and the chance of a collision is so small (about 1 in 2.7 quintillion per pair) that the industry treats it as zero.</p>
+
+    <h2>Where UUIDs Beat Auto-Increment IDs</h2>
+    <p>Use them wherever a central counter is awkward: distributed databases, offline-first apps, file names for user uploads, session identifiers, and test data. They also don't leak information — an auto-increment ID tells the world how many users you have; a UUID tells them nothing.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Will two generated UUIDs ever collide?</summary>
+      <p>Practically never. You'd need to generate about a billion UUIDs per second for 85 years to have a 50% chance of one collision.</p>
+    </details>
+    <details>
+      <summary>Are these UUIDs cryptographically secure?</summary>
+      <p>They're generated locally in your browser and are perfect for database keys, identifiers, and test data. For security tokens or secrets, use a generator backed by crypto.getRandomValues, like our password generator.</p>
+    </details>
+    <details>
+      <summary>Why remove the dashes?</summary>
+      <p>Some databases and systems store UUIDs as raw 32-hex-character strings. Both forms represent the same 128-bit value — use whichever your stack expects.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools UUID Generator",
+  "url": "https://gameimageeditor.netlify.app/uuid.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Batch generate UUID v4 identifiers online — up to 1,000 at once. Uppercase and no-dash formats. Local browser processing, no upload.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["UUID v4 batch generation up to 1,000", "Uppercase and no-dash format options", "One-click copy all", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Will two generated UUIDs ever collide?", "acceptedAnswer": {"@type": "Answer", "text": "Practically never — about a billion UUIDs per second for 85 years would be needed for a 50% collision chance."}},
+    {"@type": "Question", "name": "Are these UUIDs cryptographically secure?", "acceptedAnswer": {"@type": "Answer", "text": "They are generated locally and ideal for keys, identifiers, and test data. For security tokens, use a CSPRNG-backed generator."}},
+    {"@type": "Question", "name": "Why remove the dashes?", "acceptedAnswer": {"@type": "Answer", "text": "Some systems store UUIDs as raw 32-hex-character strings. Both forms represent the same 128-bit value."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

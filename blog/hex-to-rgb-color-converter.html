@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEX to RGB: Convert Colors Between Formats Instantly</title>
+  <meta name="description" content="Convert colors between HEX, RGB, and HSL instantly. Live preview, click to copy. Learn when each format wins for CSS, games, and design.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>HEX to RGB: Convert Colors Between Formats Instantly</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>Every design tool speaks a different dialect of the same language. Your CSS wants HEX, the game engine's shader wants RGB channels, and modern CSS color functions love HSL. Converting between them by hand means hexadecimal math nobody should do before coffee. Here's how to convert instantly, and — more usefully — when each format actually matters.</p>
+
+      <h2>The Three Formats, Translated</h2>
+      <p>All three describe the same thing: how much red, green, and blue light makes a color.</p>
+      <ul>
+        <li><strong>HEX</strong> — <code>#3A7BD5</code>. Six hexadecimal digits: two each for red, green, blue (00-FF = 0-255). Compact, clipboard-friendly, the default of the web.</li>
+        <li><strong>RGB</strong> — <code>rgb(58, 123, 213)</code>. The same three channels as plain decimal numbers. Required by most game engines, Unity/Unreal material editors, and CSS functions like rgba().</li>
+        <li><strong>HSL</strong> — <code>hsl(215, 64%, 53%)</code>. Hue (0-360° on the color wheel), saturation, and lightness. The same color described the way humans think about it.</li>
+      </ul>
+
+      <h2>Converting in Seconds</h2>
+      <p>Open the <a href="../color.html">color format converter</a> and type into any field — HEX, the R/G/B channels, or the H/S/L values. Everything else updates live, with a big preview swatch so you can confirm you're converting the right color. Click the RGB or HSL field to copy that value straight to your clipboard.</p>
+      <p>A real example: Discord's brand "blurple" is <code>#5865F2</code>. Type it in and you instantly get <code>rgb(88, 101, 242)</code> for your Unity UI and <code>hsl(235, 86%, 65%)</code> for a CSS gradient. One paste, every format.</p>
+
+      <h2>When HSL Beats HEX (Seriously)</h2>
+      <p>HEX is great for copying a color, terrible for adjusting one. Try making "#3A7BD5" 10% darker in your head. Now try it in HSL: hue 215, saturation 64%, lightness 53% → just lower the L to 43%. Done. This is why design systems and modern CSS increasingly define colors in HSL: hover states, dark-mode variants, and muted backgrounds become arithmetic instead of guesswork.</p>
+      <p>A practical workflow: extract a color from a screenshot with the <a href="../palette.html">palette extractor</a> (which copies HEX), convert it here to HSL, then build your lighter/darker variants by nudging the L value.</p>
+
+      <h2>Common Conversion Questions</h2>
+      <p><strong>What about transparency?</strong> Alpha lives outside these three formats. Once you have the RGB values, write CSS as <code>rgba(88, 101, 242, 0.5)</code> with your opacity as the fourth number. HEX8 (<code>#5865F280</code>) exists too, with the last two digits as alpha.</p>
+      <p><strong>Why do my converted colors look identical?</strong> Because they are — HEX #FF0000, rgb(255, 0, 0), and hsl(0, 100%, 50%) are the exact same red. You're switching notation, not color.</p>
+      <p><strong>Is anything uploaded?</strong> No. Conversion is pure math, done locally in your browser.</p>
+
+      <h2>Reading HEX by Eye</h2>
+      <p>Once you know HEX is just three channels, you can roughly read it: #FF0000 is pure red (red channel maxed), #000000 is black, #FFFFFF is white, and values with three similar pairs (like #7A7A7A) are grays. High first pair with low others? Warm color. Balanced high values? Something light. It's a small superpower for scanning stylesheets.</p>
+
+      <h2>Quick Reference Cheat Sheet</h2>
+      <ul>
+        <li>White: #FFFFFF · rgb(255,255,255) · hsl(0,0%,100%)</li>
+        <li>Black: #000000 · rgb(0,0,0) · hsl(0,0%,0%)</li>
+        <li>Discord blurple: #5865F2 · rgb(88,101,242) · hsl(235,86%,65%)</li>
+        <li>Steam dark: #1B2838 · rgb(27,40,56) · hsl(210,35%,16%)</li>
+      </ul>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="how-to-extract-colors-from-image.html">How to Extract Colors From Any Image</a></li>
+        <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
+        <li><a href="png-vs-jpg-vs-webp-which-format.html">PNG vs JPG vs WebP: Which Format Should You Use?</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

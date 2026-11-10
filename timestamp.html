@@ -58,6 +58,61 @@
       </div>
       <div class="ts-result" id="dateResult">Select a date/time to convert to timestamp</div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Timestamp Converter</h2>
+    <ol>
+      <li><strong>Paste a Unix timestamp</strong> — Seconds or milliseconds, the tool auto-detects which. The date appears as you type.</li>
+      <li><strong>Or click Now</strong> — Grab the current Unix time instantly.</li>
+      <li><strong>Read the result</strong> — You get the UTC ISO date, your local time, and both seconds and milliseconds forms.</li>
+      <li><strong>Go the other way</strong> — Pick a date and time below to convert it back into a timestamp.</li>
+    </ol>
+
+    <h2>What Is a Unix Timestamp, Really?</h2>
+    <p>A Unix timestamp counts the seconds since January 1, 1970 UTC — the "epoch." It sounds like trivia until you're debugging at midnight: game server logs record event times as integers like 1762819200, APIs return expires_at fields in epoch seconds, and databases store created_at as a number. Converting that number to an actual date is the difference between guessing and knowing when a ban was issued or a token expires. This converter runs fully in your browser — paste a log line's timestamp, get the answer, close the tab. No data leaves your machine.</p>
+
+    <h2>Seconds or Milliseconds?</h2>
+    <p>Unix time is traditionally seconds, but JavaScript's Date.now() and many modern APIs use milliseconds. The tool detects the unit automatically — numbers of 10 digits or fewer are treated as seconds, longer ones as milliseconds — so both 1762819200 and 1762819200000 give you the same date.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Which timezone does the result show?</summary>
+      <p>Both. You get the UTC time (ISO format) and your browser's local timezone side by side, so there's no ambiguity.</p>
+    </details>
+    <details>
+      <summary>What is the Year 2038 problem?</summary>
+      <p>Systems storing Unix time as a 32-bit signed integer overflow on January 19, 2038. Modern 64-bit systems are unaffected — this tool handles dates far beyond that.</p>
+    </details>
+    <details>
+      <summary>Can I convert a date back to a timestamp?</summary>
+      <p>Yes — the lower section takes any date and time and returns both the seconds and milliseconds timestamps.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Timestamp Converter",
+  "url": "https://gameimageeditor.netlify.app/timestamp.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Convert Unix timestamps to dates and back online. Auto-detects seconds vs milliseconds, shows UTC and local time. Local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Auto-detection of seconds and milliseconds", "UTC and local time output", "Date-to-timestamp reverse conversion", "One-click current time", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Which timezone does the result show?", "acceptedAnswer": {"@type": "Answer", "text": "Both UTC (ISO format) and your browser's local timezone, side by side."}},
+    {"@type": "Question", "name": "What is the Year 2038 problem?", "acceptedAnswer": {"@type": "Answer", "text": "32-bit signed Unix time overflows on January 19, 2038. Modern 64-bit systems and this tool are unaffected."}},
+    {"@type": "Question", "name": "Can I convert a date back to a timestamp?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — pick any date and time to get both seconds and milliseconds timestamps."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>

@@ -88,6 +88,61 @@
       <h3 style="margin-top: 32px; margin-bottom: 8px; font-size: 17px;" data-i18n="palette.colors">Extracted Colors</h3>
       <div class="palette-grid" id="paletteGrid"></div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Color Palette Extractor</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drop a screenshot or artwork onto the drop zone. PNG, JPG, and WebP up to 20MB are supported.</li>
+      <li><strong>See the auto palette</strong> — The tool instantly extracts the 12 most dominant colors and shows each as a swatch with HEX and RGB values.</li>
+      <li><strong>Pick exact pixels</strong> — Hover over the image and a magnifier lens previews the color under your cursor. Click to lock it into your Picked Colors list.</li>
+      <li><strong>Copy values</strong> — Click any swatch to copy its HEX code to the clipboard. Remove picked colors with the × button.</li>
+    </ol>
+
+    <h2>Build a Color Scheme From Your Favorite Game</h2>
+    <p>Game art direction is a shortcut to a cohesive design. Pull the neon palette from a Cyberpunk screenshot for your stream overlay, match your Discord server's role colors to your clan's banner, or sample the exact sky blue from a Zelda landscape for a fan site header. Because the extractor reads the actual pixels, the colors you copy are the exact values on screen — no eyeballing, no "close enough." Pair the results with our <strong>color converter</strong> to get HSL values ready for CSS.</p>
+
+    <h2>Auto Palette vs Manual Pixel Picking</h2>
+    <p>The automatic palette answers "what colors define this image overall?" by counting quantized pixels — perfect for themes and mood boards. Manual picking answers "what is this exact shade?" — perfect when you need the precise green of a health bar or the gold of a legendary item border.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>What format do the copied colors use?</summary>
+      <p>Clicking a swatch copies the HEX code (like #3A7BD5). The RGB values are displayed underneath every swatch if you need those instead.</p>
+    </details>
+    <details>
+      <summary>How many colors can I extract?</summary>
+      <p>The auto palette shows the top 12 dominant colors. On top of that you can manually pick as many individual pixels as you like — duplicates are filtered automatically.</p>
+    </details>
+    <details>
+      <summary>Does it work with transparent PNGs?</summary>
+      <p>Yes — fully and mostly transparent pixels are skipped so they don't pollute your palette. And as always, everything runs locally: your image is never uploaded.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Color Palette Extractor",
+  "url": "https://gameimageeditor.netlify.app/palette.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Extract dominant colors from game screenshots online. Auto palette plus click-to-pick pixel sampling with magnifier lens. Copy HEX with one click. Local processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Automatic extraction of 12 dominant colors", "Click-to-pick pixel sampling with lens preview", "One-click HEX copy", "Removable picked-colors list", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What format do the copied colors use?", "acceptedAnswer": {"@type": "Answer", "text": "Clicking a swatch copies the HEX code. RGB values are shown beneath every swatch."}},
+    {"@type": "Question", "name": "How many colors can I extract?", "acceptedAnswer": {"@type": "Answer", "text": "The auto palette shows the top 12 dominant colors, and you can manually pick unlimited individual pixels."}},
+    {"@type": "Question", "name": "Does it work with transparent PNGs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — transparent pixels are skipped so they do not affect the palette. All processing is local."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

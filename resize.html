@@ -124,6 +124,61 @@
         <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Image Resizer</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drag a screenshot onto the drop zone or click to browse. PNG, JPG, and WebP files up to 20MB are supported.</li>
+      <li><strong>Set exact pixels</strong> — Type a width or height. With "Keep aspect ratio" checked (the default), the other dimension updates automatically so nothing gets stretched.</li>
+      <li><strong>Or scale by percentage</strong> — Drag the slider (5–200%) or type a precise percentage. The new dimensions and scale factor update live above the preview.</li>
+      <li><strong>Download</strong> — Pick PNG, JPEG, or WebP output and hit Download. The before/after preview shows exactly what you'll get.</li>
+    </ol>
+
+    <h2>Resize Screenshots for Discord, Steam, and Avatars</h2>
+    <p>Every platform wants different dimensions. Discord avatars look sharpest at 128×128, Steam library artwork expects 460×215, and forum signatures often cap height at 150px. Instead of trial and error, type the target width here and let the resizer preserve your proportions. Shrinking a 4K capture to 1920px wide also makes uploads dramatically faster — most platforms re-compress big images anyway, so resizing first costs you nothing and keeps you in control of the final look.</p>
+
+    <h2>Does Resizing Hurt Image Quality?</h2>
+    <p>Scaling down almost always looks great: pixels are blended together, so text and edges stay crisp. Enlarging beyond 100% is different — the browser has to invent pixels, which softens detail. If you must upscale, stay under roughly 150% and export as PNG to avoid adding compression artifacts on top.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Can I stretch an image to exact dimensions?</summary>
+      <p>Yes — uncheck "Keep aspect ratio" and set width and height independently. Just know that mismatched ratios will visibly stretch or squash the picture.</p>
+    </details>
+    <details>
+      <summary>Why does my upscaled image look blurry?</summary>
+      <p>Upscaling can't recreate detail that was never captured. For sharp results, scale down, or keep enlargements modest (under about 150%).</p>
+    </details>
+    <details>
+      <summary>Is my screenshot uploaded to a server?</summary>
+      <p>No — resizing runs entirely in your browser using the Canvas API. The tool is free, needs no account, and your image never leaves your device.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Image Resizer",
+  "url": "https://gameimageeditor.netlify.app/resize.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Resize game screenshots online by exact pixels or percentage. Aspect-ratio lock, live before/after preview, PNG/JPG/WebP output. 100% local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Resize by exact pixels or percentage", "Aspect-ratio lock", "Live before/after preview", "PNG, JPEG, and WebP output", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Can I stretch an image to exact dimensions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — uncheck Keep aspect ratio and set width and height independently. Mismatched ratios will visibly stretch the image."}},
+    {"@type": "Question", "name": "Why does my upscaled image look blurry?", "acceptedAnswer": {"@type": "Answer", "text": "Upscaling cannot recreate detail that was never captured. Scale down, or keep enlargements under about 150%."}},
+    {"@type": "Question", "name": "Is my screenshot uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No — resizing runs entirely in your browser. Your image never leaves your device."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

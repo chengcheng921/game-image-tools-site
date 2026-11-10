@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter: Validate and Pretty-Print JSON Online</title>
+  <meta name="description" content="Format, validate, and minify JSON online with exact error positions. Debug API responses fast. 100% local — data never leaves your browser.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../resize.html">Tools</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>JSON Formatter: Validate and Pretty-Print JSON Online</h1>
+      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+
+      <p>Every developer knows the moment: an API returns a single line of JSON, ten thousand characters long, and somewhere inside it is the one field you need. Or worse — your config file fails to parse and the only clue is "Unexpected token." A good formatter turns both problems into ten-second fixes.</p>
+
+      <h2>Why Not Just Use Your Editor?</h2>
+      <p>You can — VS Code and friends format JSON fine. But online formatters earn their place when you're on someone else's machine, inside a browser-based tool, on a Chromebook, or juggling data between Slack, a browser devtools panel, and a terminal. Paste, format, copy, done.</p>
+      <p>There's one catch: most online formatters send your JSON to their server. API responses routinely contain tokens, internal URLs, and user data. This site's <a href="../json.html">JSON formatter</a> processes everything locally in your browser tab — paste an auth header's payload without leaking it.</p>
+
+      <h2>Step 1: Paste Your JSON</h2>
+      <p>Drop the raw text into the left panel. API responses, game config files, exported save data, package.json — anything goes. Multi-megabyte files are fine since there's no upload limit (there's no upload at all).</p>
+
+      <h2>Step 2: Format or Minify</h2>
+      <ul>
+        <li><strong>Format</strong> — pretty-prints with 2-space indentation. Nested objects unfold into a readable tree. This is the debugging view.</li>
+        <li><strong>Minify</strong> — strips every unnecessary whitespace character. Use this for production configs, request bodies, and anywhere bytes count.</li>
+      </ul>
+      <p>Both operations validate first: if the conversion succeeds, your JSON is guaranteed well-formed. Two birds, one click.</p>
+
+      <h2>Step 3: When Validation Fails</h2>
+      <p>Invalid JSON shows the browser parser's exact error message, including the position — something like <code>Unexpected token } ... at position 142</code>. Count from the start of the document (your editor's status bar shows the cursor position), or bisect: format the first half, then the second, to corner the syntax error fast.</p>
+      <p>The usual suspects: trailing commas after the last array item (illegal in strict JSON), single quotes instead of double, and unquoted keys — all fine in JavaScript, all invalid JSON.</p>
+
+      <h2>Step 4: Copy and Move On</h2>
+      <p>One click puts the result on your clipboard. The Clear button resets both panels when you're switching between payloads.</p>
+
+      <h2>Real Scenarios Where This Pays Off</h2>
+      <ul>
+        <li><strong>Webhook debugging:</strong> paste the payload from your test endpoint and finally see its structure.</li>
+        <li><strong>Game modding:</strong> many games store config and save data as JSON — format it before editing, minify it after.</li>
+        <li><strong>Code review:</strong> spot that a "number" field is actually a string because it's wrapped in quotes.</li>
+        <li><strong>Documentation:</strong> format an example response before pasting it into your README.</li>
+      </ul>
+
+      <h2>A Note on Strict JSON</h2>
+      <p>JSON looks like JavaScript objects but is stricter: keys must be double-quoted strings, single quotes are forbidden, trailing commas are illegal, and comments don't exist. That's why a config file that "works fine" in your JS project can fail as JSON. When a formatter rejects something your code accepts, strictness is usually the reason — the error position points you right at the offending token.</p>
+
+      <h2>Handy Companions</h2>
+      <p>Working with API payloads often means also decoding JWT segments or query strings — the <a href="../base64.html">Base64 decoder</a> handles token middles, and the <a href="../url.html">URL decoder</a> untangles percent-encoded parameters. Both are equally local and free.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="url-encoding-special-characters.html">URL Encoding: What Those %20 Characters Mean</a></li>
+        <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a></p></footer>
+</body>
+</html>

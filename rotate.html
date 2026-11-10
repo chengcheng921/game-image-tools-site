@@ -115,6 +115,61 @@
         <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Rotate or Flip an Image</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drop a PNG, JPG, or WebP image (up to 20MB) onto the drop zone or click to browse.</li>
+      <li><strong>Rotate or flip</strong> — Use the five buttons: Rotate Left 90°, Rotate Right 90°, Rotate 180°, Flip Horizontal, or Flip Vertical. The preview updates instantly.</li>
+      <li><strong>Combine freely</strong> — Actions stack, so two left rotations equal a 180° turn, and a flip plus rotation gives you mirrored orientations.</li>
+      <li><strong>Download</strong> — Choose PNG, JPEG, or WebP and save the result.</li>
+    </ol>
+
+    <h2>Fix Sideways Screenshots and Upside-Down Captures</h2>
+    <p>It happens to everyone: a phone capture lands sideways, a screen recording export comes out upside down, or a console screenshot saved with the wrong orientation. Instead of opening a full editor, drop the image here and tap a button. Because rotation is a geometric transform — not a filter — a 90° or 180° turn keeps every pixel perfectly crisp, so your fixed image looks identical to the original, just the right way up.</p>
+
+    <h2>Mirror Flips for Thumbnails and Stream Overlays</h2>
+    <p>Flipping horizontally is a quiet design trick: mirror a character render so it faces toward your thumbnail text, balance a stream overlay layout, or create a symmetrical background from a single artwork. A vertical flip turns a landscape into a ready-made reflection effect.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Is rotating lossless?</summary>
+      <p>The rotation itself loses nothing. The image is re-encoded when you download — pick PNG output for a completely lossless file, or JPEG/WebP for a smaller one.</p>
+    </details>
+    <details>
+      <summary>Can I combine rotations and flips?</summary>
+      <p>Yes — every click applies on top of the current state. For example, Flip Horizontal followed by Rotate 180° is the same as Flip Vertical.</p>
+    </details>
+    <details>
+      <summary>What formats and sizes are supported?</summary>
+      <p>PNG, JPG, and WebP images up to 20MB. Everything runs locally in your browser — no upload, no account, completely free.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Rotate & Flip Image",
+  "url": "https://gameimageeditor.netlify.app/rotate.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Rotate images 90° or 180° and flip horizontally or vertically online. Instant preview, PNG/JPG/WebP output, local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["90° left/right and 180° rotation", "Horizontal and vertical flip", "Stackable transforms with instant preview", "PNG, JPEG, and WebP output", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is rotating lossless?", "acceptedAnswer": {"@type": "Answer", "text": "The rotation loses nothing. Choose PNG output for a fully lossless file."}},
+    {"@type": "Question", "name": "Can I combine rotations and flips?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — every click applies on top of the current state, so transforms stack freely."}},
+    {"@type": "Question", "name": "What formats and sizes are supported?", "acceptedAnswer": {"@type": "Answer", "text": "PNG, JPG, and WebP images up to 20MB, processed locally in your browser."}}
+  ]
+}
+</script>
+
   </main>
 
   <footer class="footer">

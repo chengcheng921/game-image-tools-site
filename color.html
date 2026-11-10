@@ -65,6 +65,60 @@
         <div class="color-field"><label>L (0-100)</label><input type="number" id="l" value="45" min="0" max="100"></div>
       </div>
     </div>
+  <section class="tool-help">
+    <h2>How to Use the Color Converter</h2>
+    <ol>
+      <li><strong>Enter a color in any format</strong> — Type a HEX code, adjust the R/G/B channel values, or set H/S/L numbers. Every field stays in sync.</li>
+      <li><strong>Watch the preview</strong> — The large swatch at the top updates live as you type.</li>
+      <li><strong>Copy what you need</strong> — Click the RGB or HSL field to copy that value to your clipboard, ready for CSS, design tools, or config files.</li>
+    </ol>
+
+    <h2>HEX to RGB: Why Designers Speak Both Languages</h2>
+    <p>Different tools demand different formats. CSS frameworks accept HEX, game engines and Unity-style shaders want RGB channels, and CSS color functions love HSL. Copying a color between them by hand means mental math nobody enjoys. Here you type the value once — say the #5865F2 blurple from a Discord brand kit — and instantly read off rgb(88, 101, 242) and hsl(235, 86%, 65%). Extracted a color from a screenshot with our palette tool? Paste its HEX here to get the format your project needs.</p>
+
+    <h2>When HSL Beats HEX</h2>
+    <p>HSL describes color the way humans think: hue, saturation, lightness. Need a darker variant of a button color? Keep H and S, drop L by 10%. Need a muted version? Reduce saturation. Doing the same in HEX is guesswork, which is why design systems increasingly define colors in HSL.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Which formats are supported?</summary>
+      <p>HEX (#RRGGBB), RGB (0–255 per channel), and HSL (0–360° hue, 0–100% saturation and lightness). Editing any field updates all the others instantly.</p>
+    </details>
+    <details>
+      <summary>Does it support transparency (RGBA/HEX8)?</summary>
+      <p>This converter handles opaque colors. To add alpha in CSS, take the RGB result and write it as rgba(88, 101, 242, 0.5) with your desired opacity.</p>
+    </details>
+    <details>
+      <summary>Is anything sent to a server?</summary>
+      <p>No — conversion is pure math done locally in your browser. Free, instant, and private.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Color Format Converter",
+  "url": "https://gameimageeditor.netlify.app/color.html",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web",
+  "description": "Convert colors between HEX, RGB, and HSL online with live preview. Click any value to copy. Local browser processing.",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["HEX, RGB, and HSL conversion", "Live color preview", "Click-to-copy values", "Bidirectional field sync", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Which formats are supported?", "acceptedAnswer": {"@type": "Answer", "text": "HEX, RGB, and HSL. Editing any field updates all the others instantly."}},
+    {"@type": "Question", "name": "Does it support transparency (RGBA/HEX8)?", "acceptedAnswer": {"@type": "Answer", "text": "The converter handles opaque colors. Add alpha in CSS by writing the RGB result as rgba() with your opacity."}},
+    {"@type": "Question", "name": "Is anything sent to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No — conversion is pure math done locally in your browser."}}
+  ]
+}
+</script>
+
   </main>
   <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
   <script src="js/i18n.js"></script>
