@@ -1,0 +1,38 @@
+/*
+  Security headers
+  ----------------
+  Netlify serves these headers for all pages.
+  X-Content-Type-Options and Referrer-Policy help SEO and prevent
+  MIME-sniffing attacks. CSP kept permissive because we have
+  inline <script type="application/ld+json"> and SVG data URIs.
+*/
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# 1-year cache for static assets (content-hashed vendor files)
+/js/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*.js
+  Cache-Control: public, max-age=86400
+
+/css/*
+  Cache-Control: public, max-age=86400
+
+# Images
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+  Cache-Control: public, max-age=2592000
+
+# Never cache HTML — we push new versions via Netlify
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Sitemap & robots — moderate cache
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+/robots.txt
+  Cache-Control: public, max-age=3600
