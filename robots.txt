@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Google AdSense crawler (needed to serve relevant ads after approval)
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: https://gameimageeditor.netlify.app/sitemap.xml
