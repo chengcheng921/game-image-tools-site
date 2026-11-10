@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="card.wordcount.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Counter</title>
+  <meta name="description" content="Count characters, words, sentences, and reading time. Paste text or upload TXT/MD/DOCX/PDF. Local browser.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+  <style>
+    .wc-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .wc-stat { background: var(--color-bg); border-radius: var(--radius-md); padding: 16px; text-align: center; }
+    .wc-stat .num { font-size: 28px; font-weight: 700; color: var(--color-blue); font-variant-numeric: tabular-nums; }
+    .wc-stat .label { font-size: 12px; color: var(--color-text-secondary); margin-top: 4px; }
+    .wc-textarea { width: 100%; min-height: 300px; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: 14px; font-family: inherit; line-height: 1.6; resize: vertical; }
+    .parsing-tip { display: none; }
+    .drop-zone.parsing { opacity: .6; pointer-events: none; cursor: progress; }
+    .drop-zone.parsing .parsing-tip { display: block; color: var(--color-blue); font-weight: 600; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/wordcount.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/wordcount.html">
+  <meta property="og:title" content="Word Counter">
+  <meta property="og:description" content="Count characters, words, sentences, and estimated reading time. Paste text or upload TXT/MD/DOCX/PDF files. Local browser.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Word Counter">
+  <meta name="twitter:description" content="Count characters, words, sentences, and estimated reading time. Paste text or upload TXT/MD/DOCX/PDF files. Local browser.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links">
+        <li><a href="qr.html">QR</a></li>
+        <li><a href="heic.html">HEIC</a></li>
+        <li><a href="wordcount.html">Word Count</a></li>
+        <li><a href="password.html">Password</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <h1>Word Counter</h1>
+    <p class="lead">Count characters, words, sentences, and estimated reading time in real time.</p>
+    <div class="drop-zone" id="dropZone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong data-i18n="dropzone.wcTitle">Drop a file here, or click to browse</strong></p>
+      <p class="hint" data-i18n="dropzone.wcFormats">Supports TXT · Markdown · Word (docx) · PDF</p>
+      <p class="parsing-tip" data-i18n="wc.parsing">Parsing…</p>
+      <input type="file" accept=".txt,.md,.markdown,.docx,.pdf" style="display:none">
+    </div>
+    <div class="editor-panel">
+      <div class="wc-stats">
+        <div class="wc-stat"><div class="num" id="chars">0</div><div class="label">Characters (with spaces)</div></div>
+        <div class="wc-stat"><div class="num" id="charsNoSpace">0</div><div class="label">Characters (no spaces)</div></div>
+        <div class="wc-stat"><div class="num" id="words">0</div><div class="label">Words</div></div>
+        <div class="wc-stat"><div class="num" id="cnChars">0</div><div class="label">Chinese chars</div></div>
+        <div class="wc-stat"><div class="num" id="sentences">0</div><div class="label">Sentences</div></div>
+        <div class="wc-stat"><div class="num" id="readTime">0</div><div class="label">Reading time (min)</div></div>
+      </div>
+      <textarea class="wc-textarea" id="textInput" placeholder="Paste or type text here, or upload a file..."></textarea>
+    </div>
+  </main>
+  <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/vendor/mammoth.browser.min.js"></script>
+  <script src="js/vendor/pdf.min.js"></script>
+  <script>if (window['pdfjsLib']) pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/vendor/pdf.worker.min.js';</script>
+  <script src="js/wordcount.js"></script>
+</body>
+</html>

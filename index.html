@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="home.metaTitle" data-i18n-title="home.metaTitle">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Image Tools — Free Online Screenshot Editor for Gamers</title>
+  <meta name="description" content="Free online screenshot editor for gamers. Compress, resize, crop, and convert images — everything runs locally in your browser.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    /* 每个分类单独控制列数，确保每行排满 */
+    #image-tools .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    #doc-tools .tools-grid { grid-template-columns: repeat(4, 1fr); }
+    #code-tools .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    #gen-tools .tools-grid { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 900px) {
+      #image-tools .tools-grid, #code-tools .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      #doc-tools .tools-grid, #gen-tools .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .tools-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/index.html">
+  <meta property="og:title" content="Game Image Tools — Free Online Screenshot Editor for Gamers">
+  <meta property="og:description" content="Free online screenshot editor for gamers — compress, resize, crop, convert, and more. 20+ browser-based tools, no upload required.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Game Image Tools — Free Online Screenshot Editor for Gamers">
+  <meta name="twitter:description" content="Free online screenshot editor for gamers — compress, resize, crop, convert, and more. 20+ browser-based tools, no upload required.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1"/>
+          <circle cx="18" cy="13" r="1"/>
+        </svg>
+        <span data-i18n="site.name">GameImage.tools</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#image-tools" data-i18n="home.section.image">Image Tools</a></li>
+        <li><a href="#doc-tools" data-i18n="home.section.doc">Document Tools</a></li>
+        <li><a href="#code-tools" data-i18n="home.section.code">Code Tools</a></li>
+        <li><a href="#gen-tools" data-i18n="home.section.gen">General Tools</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1 data-i18n="home.title">几秒钟搞定你的 <span class="gradient">游戏截图</span></h1>
+    <p data-i18n="home.subtitle">A lightweight toolkit for gamers. Compress, resize, crop and convert images — right in your browser.</p>
+    <div class="hero-badges">
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="home.badge.private">100% Private</span></span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span data-i18n="home.badge.nosignup">No Sign Up</span></span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><span data-i18n="home.badge.fast">Lightning Fast</span></span>
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="home.badge.free">Free Forever</span></span>
+    </div>
+  </header>
+
+  <!-- 图片工具：6个，3列x2行 -->
+  <section class="tools-section" id="image-tools">
+    <h2 data-i18n="home.section.image">Image Tools</h2>
+    <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
+    <div class="tools-grid">
+      <a href="compress.html" class="tool-card">
+        <div class="tool-icon" style="background:#e8f5e9">🗜️</div>
+        <h3 data-i18n="card.compress.title">Compress Image</h3>
+        <p data-i18n="card.compress.desc">Reduce game screenshot file size while keeping quality. Perfect for sharing on Discord or forums.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="resize.html" class="tool-card">
+        <div class="tool-icon" style="background:#e3f2fd">📐</div>
+        <h3 data-i18n="card.resize.title">Resize Image</h3>
+        <p data-i18n="card.resize.desc">Change image dimensions by pixels or percentage. Great for thumbnails, avatars and wallpapers.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="crop.html" class="tool-card">
+        <div class="tool-icon" style="background:#fff3e0">✂️</div>
+        <h3 data-i18n="card.crop.title">Crop Image</h3>
+        <p data-i18n="card.crop.desc">Trim screenshots to any size with preset aspect ratios. Remove UI clutter and focus on the action.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="convert.html" class="tool-card">
+        <div class="tool-icon" style="background:#f3e5f5">🔄</div>
+        <h3 data-i18n="card.convert.title">Convert Format</h3>
+        <p data-i18n="card.convert.desc">Convert between PNG, JPG and WebP. Smaller files for web, lossless PNG for archives.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="rotate.html" class="tool-card">
+        <div class="tool-icon" style="background:#e0f7fa">🔃</div>
+        <h3 data-i18n="card.rotate.title">Rotate / Flip</h3>
+        <p data-i18n="card.rotate.desc">Rotate 90°/180°, flip horizontally or vertically. Fix screenshot orientation.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="palette.html" class="tool-card">
+        <div class="tool-icon" style="background:#fce4ec">🎨</div>
+        <h3 data-i18n="card.palette.title">Color Palette</h3>
+        <p data-i18n="card.palette.desc">Extract dominant colors and palette from game screenshots for design reference.</p>
+        <span class="arrow">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 文档工具：4个，4列x1行 -->
+  <section class="tools-section" id="doc-tools">
+    <h2 data-i18n="home.section.doc">Document Tools</h2>
+    <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
+    <div class="tools-grid">
+      <a href="epub.html" class="tool-card">
+        <div class="tool-icon" style="background:#e8eaf6">📚</div>
+        <h3 data-i18n="card.epub.title">EPUB Converter</h3>
+        <p data-i18n="card.epub.desc">Convert TXT / HTML / Markdown / PDF to EPUB ebook format.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="pdf-merge.html" class="tool-card">
+        <div class="tool-icon" style="background:#e3f2fd">📄</div>
+        <h3 data-i18n="card.pdfmerge.title">PDF Merge</h3>
+        <p data-i18n="card.pdfmerge.desc">Merge multiple PDF files into one, reorderable.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="pdf-split.html" class="tool-card">
+        <div class="tool-icon" style="background:#fff3e0">✂️</div>
+        <h3 data-i18n="card.pdfsplit.title">PDF Split</h3>
+        <p data-i18n="card.pdfsplit.desc">Split PDF by page ranges.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="pdf-to-image.html" class="tool-card">
+        <div class="tool-icon" style="background:#f3e5f5">🖼️</div>
+        <h3 data-i18n="card.pdf2img.title">PDF to Image</h3>
+        <p data-i18n="card.pdf2img.desc">Export each PDF page as PNG/JPG.</p>
+        <span class="arrow">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 代码工具：6个，3列x2行 -->
+  <section class="tools-section" id="code-tools">
+    <h2 data-i18n="home.section.code">Code Tools</h2>
+    <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
+    <div class="tools-grid">
+      <a href="json.html" class="tool-card">
+        <div class="tool-icon" style="background:#fff8e1">{ }</div>
+        <h3 data-i18n="card.json.title">JSON Formatter</h3>
+        <p data-i18n="card.json.desc">Format, minify and validate JSON data with error highlighting.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="base64.html" class="tool-card">
+        <div class="tool-icon" style="background:#e0f2f1">⇄</div>
+        <h3 data-i18n="card.base64.title">Base64 Encode/Decode</h3>
+        <p data-i18n="card.base64.desc">Encode/decode text to Base64, supports image to Base64.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="url.html" class="tool-card">
+        <div class="tool-icon" style="background:#f1f8e9">🔗</div>
+        <h3 data-i18n="card.url.title">URL Encode/Decode</h3>
+        <p data-i18n="card.url.desc">URL encode and decode, handle special characters.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="timestamp.html" class="tool-card">
+        <div class="tool-icon" style="background:#fbe9e7">⏱</div>
+        <h3 data-i18n="card.timestamp.title">Timestamp Converter</h3>
+        <p data-i18n="card.timestamp.desc">Convert Unix timestamps to dates and vice versa, multi-timezone support.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="color.html" class="tool-card">
+        <div class="tool-icon" style="background:#f3e5f5">🎨</div>
+        <h3 data-i18n="card.colorconv.title">Color Converter</h3>
+        <p data-i18n="card.colorconv.desc">Convert between HEX, RGB and HSL color formats.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="uuid.html" class="tool-card">
+        <div class="tool-icon" style="background:#e8f5e9">#</div>
+        <h3 data-i18n="card.uuid.title">UUID Generator</h3>
+        <p data-i18n="card.uuid.desc">Generate UUID v4 unique identifiers in bulk.</p>
+        <span class="arrow">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 通用工具：4个，4列x1行 -->
+  <section class="tools-section" id="gen-tools">
+    <h2 data-i18n="home.section.gen">General Tools</h2>
+    <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
+    <div class="tools-grid">
+      <a href="qr.html" class="tool-card">
+        <div class="tool-icon" style="background:#e8f5e9">⬛</div>
+        <h3 data-i18n="card.qr.title">QR Generator</h3>
+        <p data-i18n="card.qr.desc">Generate QR codes with custom color and size.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="heic.html" class="tool-card">
+        <div class="tool-icon" style="background:#e3f2fd">📱</div>
+        <h3 data-i18n="card.heic.title">HEIC to JPG</h3>
+        <p data-i18n="card.heic.desc">Convert iPhone HEIC photos to JPG/PNG.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="wordcount.html" class="tool-card">
+        <div class="tool-icon" style="background:#fff3e0">📝</div>
+        <h3 data-i18n="card.wordcount.title">Word Counter</h3>
+        <p data-i18n="card.wordcount.desc">Count characters, words and reading time.</p>
+        <span class="arrow">Open →</span>
+      </a>
+      <a href="password.html" class="tool-card">
+        <div class="tool-icon" style="background:#fce4ec">🔐</div>
+        <h3 data-i18n="card.password.title">Password Generator</h3>
+        <p data-i18n="card.password.desc">Generate secure random passwords.</p>
+        <span class="arrow">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="features-inner">
+      <div class="feature">
+        <div class="feature-icon" style="background:#e8f5e9">🔒</div>
+        <h3 data-i18n="home.feature1.title">Images never leave your device</h3>
+        <p data-i18n="home.feature1.desc">All processing happens in your browser using Canvas. We don't upload or store your screenshots.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon" style="background:#e3f2fd">⚡</div>
+        <h3 data-i18n="home.feature2.title">Instant results</h3>
+        <p data-i18n="home.feature2.desc">No server round-trips. Edit and download in milliseconds, even for large 4K screenshots.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon" style="background:#fff3e0">🎮</div>
+        <h3 data-i18n="home.feature3.title">Built for gamers</h3>
+        <p data-i18n="home.feature3.desc">Designed for game screenshots: aspect ratios, compression presets, and fast workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p><span data-i18n="footer.copy"><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>
+    <p><a href="privacy.html" style="color:var(--color-text-tertiary);" data-i18n="footer.privacyPolicy">Privacy Policy</a> · <a href="about.html" style="color:var(--color-text-tertiary);" data-i18n="footer.about">About</a></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

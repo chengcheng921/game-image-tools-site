@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="compress.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compress Image</title>
+  <meta name="description" content="Compress game screenshots online — make PNG/JPG/WebP files smaller without losing quality. No upload, 100% private.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/compress.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/compress.html">
+  <meta property="og:title" content="Compress Image">
+  <meta property="og:description" content="Compress PNG, JPG, WebP game screenshots online. Adjust quality with slider or exact input. 100% local, private, fast.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compress Image">
+  <meta name="twitter:description" content="Compress PNG, JPG, WebP game screenshots online. Adjust quality with slider or exact input. 100% local, private, fast.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1"/>
+          <circle cx="18" cy="13" r="1"/>
+        </svg>
+        <span data-i18n="site.name">GameImage.tools</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="compress.html" data-i18n="nav.compress">Compress</a></li>
+        <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
+        <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
+        <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <h1 data-i18n="compress.title">Compress Image</h1>
+    <p class="lead" data-i18n="compress.lead">Shrink your game screenshot file size while preserving quality. Great for sharing on Discord, forums or social media.</p>
+
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p data-i18n="dropzone.title"><strong>拖拽图片到此处</strong> 或点击选择</p>
+      <p class="hint" data-i18n="dropzone.hint">Supports PNG, JPG, WebP · Max 20MB</p>
+    </div>
+
+    <div class="editor-panel" id="editorPanel" style="display:none;">
+      <div class="info-bar">
+        <div class="info-item"><span data-i18n="info.dimensions">Dimensions</span>: <strong id="origDims">—</strong></div>
+        <div class="info-item"><span data-i18n="info.original">Original</span>: <strong id="origSize">—</strong></div>
+        <div class="info-item"><span data-i18n="info.compressed">Compressed</span>: <strong id="compSize">—</strong></div>
+        <div class="info-item"><span data-i18n="info.savings">Savings</span>: <strong id="savings">—</strong></div>
+      </div>
+
+      <div class="preview-area">
+        <div class="preview-box">
+          <span class="preview-label" data-i18n="compress.orig">Original</span>
+          <img id="origPreview" alt="Original">
+        </div>
+        <div class="preview-box">
+          <span class="preview-label" data-i18n="compress.comp">Compressed</span>
+          <img id="compPreview" alt="Compressed">
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <label><span data-i18n="label.quality">Quality</span></label>
+          <div class="range-row">
+            <input type="range" id="quality" min="10" max="100" step="10" value="80">
+            <div class="range-num">
+              <input type="number" id="qualityInput" min="1" max="100" step="1" value="80">
+              <span class="unit">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label data-i18n="label.format">Output format</label>
+          <select id="format">
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/webp">WebP</option>
+            <option value="image/png">PNG</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="downloadBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="btn.download">Download</span>
+        </button>
+        <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
+      </div>
+    </div>
+
+  <section class="tool-help">
+    <h2>How to Use the Image Compressor</h2>
+    <ol>
+      <li><strong>Upload</strong> — Drag a game screenshot onto the drop zone or click to browse. PNG, JPG, and WebP files are supported up to 20MB.</li>
+      <li><strong>Adjust quality</strong> — Drag the quality slider (10–100, default 80) or type a precise value directly into the input field on the right.</li>
+      <li><strong>Choose output format</strong> — JPEG is best for photos and fast-loading web images. WebP gives the smallest size with near-lossless quality. PNG is ideal for screenshots with text or transparent backgrounds.</li>
+      <li><strong>Download</strong> — The compressed preview and file size update in real time. Hit Download when you're happy with the result.</li>
+    </ol>
+
+    <h2>What Quality Setting Should I Use?</h2>
+    <p>Higher quality = larger file size. For most game screenshots shared on Discord, Steam, or social media, a quality of 70–80 with JPEG output gives an excellent balance. Use 90+ if you need maximum fidelity, or as low as 50 if file size matters more.</p>
+
+    <h2>PNG Output Note</h2>
+    <p>PNG is a lossless format — it does not throw away pixels. Our PNG compression works by reducing the color palette, which typically saves 50–80% on game screenshots. If you set quality very low and the result looks worse than expected, try JPEG or WebP instead.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Do you upload my images?</summary>
+      <p>No — all compression happens locally in your browser using the Canvas API. Your image never leaves your device.</p>
+    </details>
+    <details>
+      <summary>Why does WebP look different than the original?</summary>
+      <p>WebP is a lossy format like JPEG. At quality 80 or above the difference is invisible to the human eye. If you need pixel-perfect output, use PNG.</p>
+    </details>
+    <details>
+      <summary>Can I compress multiple images at once?</summary>
+      <p>This tool currently processes one image at a time. You can open multiple browser tabs to compress several simultaneously.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools Image Compressor",
+  "url": "https://gameimageeditor.netlify.app/compress.html",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web",
+  "description": "Compress PNG, JPG, and WebP game screenshots online. Adjustable quality slider, precise input, 100% local browser processing.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": ["Lossless PNG compression via palette quantization", "JPEG and WebP adjustable quality", "Real-time preview", "Local browser processing, no upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Do you upload my images?", "acceptedAnswer": {"@type": "Answer", "text": "No — all compression happens locally in your browser. Your image never leaves your device."}},
+    {"@type": "Question", "name": "What quality should I use?", "acceptedAnswer": {"@type": "Answer", "text": "For most game screenshots shared online, 70–80 quality with JPEG gives an excellent balance of size and quality."}},
+    {"@type": "Question", "name": "Can I compress multiple images at once?", "acceptedAnswer": {"@type": "Answer", "text": "The tool processes one image at a time. Open multiple tabs to compress several simultaneously."}}
+  ]
+}
+</script>
+
+  </main>
+
+  <footer class="footer">
+    <p><span data-i18n="footer.copy">© 2026 GameImage.tools — Free online image tools for gamers</span><br>
+    <span data-i18n="footer.privacy">All processing is done locally in your browser. No images are uploaded to any server.</span></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/vendor/pako.min.js"></script>
+  <script src="js/png8-quant.js"></script>
+  <script src="js/compress.js"></script>
+</body>
+</html>

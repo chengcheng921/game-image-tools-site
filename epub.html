@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="epub.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EPUB Converter</title>
+  <meta name="description" content="Convert TXT, HTML, Markdown, PDF to EPUB online. Local browser processing, no upload required.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <script src="js/vendor/jszip.min.js"></script>
+  <script src="js/vendor/pdf.min.js"></script>
+  <script>
+    if (window['pdfjsLib']) pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/vendor/pdf.worker.min.js';
+  </script>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/epub.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/epub.html">
+  <meta property="og:title" content="EPUB Converter">
+  <meta property="og:description" content="Convert TXT, HTML, Markdown, or PDF files to EPUB ebooks online. Local browser processing, no upload.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EPUB Converter">
+  <meta name="twitter:description" content="Convert TXT, HTML, Markdown, or PDF files to EPUB ebooks online. Local browser processing, no upload.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1"/>
+          <circle cx="18" cy="13" r="1"/>
+        </svg>
+        <span data-i18n="site.name">GameImage.tools</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="compress.html" data-i18n="nav.compress">Compress</a></li>
+        <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
+        <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
+        <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <h1 data-i18n="epub.title">EPUB Converter</h1>
+    <p class="lead" data-i18n="epub.lead">Convert TXT, HTML, Markdown and PDF files to EPUB ebooks.</p>
+
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput" accept=".txt,.html,.htm,.md,.pdf">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p data-i18n="epub.dropzone"><strong>拖拽文件到此处</strong> 或点击选择</p>
+      <p class="hint" data-i18n="epub.dropzoneHint">Supports TXT, HTML, MD, PDF · Max 20MB</p>
+    </div>
+
+    <div class="editor-panel" id="editorPanel" style="display:none;">
+      <div class="info-bar">
+        <div class="info-item"><span data-i18n="info.original">Original</span>: <strong id="fileName">—</strong></div>
+        <div class="info-item"><span data-i18n="info.original">Original</span>: <strong id="fileSize">—</strong></div>
+      </div>
+
+      <div class="controls" style="margin-top: 16px;">
+        <div class="control-group">
+          <label data-i18n="epub.bookTitle">Book Title</label>
+          <input type="text" id="bookTitle" placeholder="My Book" style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;">
+        </div>
+        <div class="control-group">
+          <label data-i18n="epub.author">Author</label>
+          <input type="text" id="bookAuthor" placeholder="Author Name" style="width:100%;padding:10px 14px;border:1px solid var(--color-border);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;">
+        </div>
+        <div class="control-group">
+          <label data-i18n="epub.language">Language (auto-detected)</label>
+          <input type="text" id="langValue" value="—" readonly
+            style="width:100%;padding:10px 14px;border:1px solid var(--color-border-light);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;background:var(--color-bg);color:var(--color-text-secondary);cursor:default;">
+          <p class="hint" style="margin-top:6px;" data-i18n="epub.langHint">The language tag only affects reader typography and text-to-speech. It does not translate content.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="convertBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-i18n="epub.convertBtn">Convert to EPUB</span>
+        </button>
+        <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><span data-i18n="footer.copy">© 2026 GameImage.tools — Free online image tools for gamers</span><br>
+    <span data-i18n="footer.privacy">All processing is done locally in your browser. No images are uploaded to any server.</span></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/epub.js"></script>
+</body>
+</html>

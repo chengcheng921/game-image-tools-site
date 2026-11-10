@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="card.timestamp.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timestamp Converter</title>
+  <meta name="description" content="Convert Unix timestamps to dates and back. Multi-timezone support. Local browser processing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏱</text></svg>">
+  <style>
+    .ts-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; margin-bottom: 16px; }
+    .ts-row input, .ts-row select { padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 14px; font-family: 'SF Mono', monospace; background: var(--color-surface); color: var(--color-text); }
+    .ts-row input:focus { outline: none; border-color: var(--color-blue); }
+    .ts-result { padding: 16px; background: var(--color-bg); border-radius: var(--radius-md); font-family: 'SF Mono', monospace; font-size: 14px; line-height: 1.8; color: var(--color-text-secondary); }
+    .ts-result strong { color: var(--color-text); }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/timestamp.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/timestamp.html">
+  <meta property="og:title" content="Timestamp Converter">
+  <meta property="og:description" content="Convert Unix timestamps to human-readable dates and back. Multi-timezone support. Local browser processing.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Timestamp Converter">
+  <meta name="twitter:description" content="Convert Unix timestamps to human-readable dates and back. Multi-timezone support. Local browser processing.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links">
+        <li><a href="json.html">JSON</a></li>
+        <li><a href="base64.html">Base64</a></li>
+        <li><a href="url.html">URL</a></li>
+        <li><a href="timestamp.html">Timestamp</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <h1>Timestamp Converter</h1>
+    <p class="lead">Convert between Unix timestamps and dates. Multi-timezone support.</p>
+    <div class="editor-panel">
+      <div class="ts-row">
+        <input type="text" id="tsInput" placeholder="Enter Unix timestamp (seconds or milliseconds)">
+        <button class="btn btn-primary" id="nowBtn">Now</button>
+      </div>
+      <div class="ts-result" id="tsResult">Enter a timestamp or click "Now"</div>
+
+      <hr style="border:none;border-top:1px solid var(--color-border-light);margin:24px 0;">
+
+      <div class="ts-row">
+        <input type="datetime-local" id="dateInput" step="1">
+        <button class="btn btn-secondary" id="toTsBtn">→ Timestamp</button>
+      </div>
+      <div class="ts-result" id="dateResult">Select a date/time to convert to timestamp</div>
+    </div>
+  </main>
+  <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/timestamp.js"></script>
+</body>
+</html>

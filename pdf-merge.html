@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="card.pdfmerge.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Merge</title>
+  <meta name="description" content="Merge multiple PDF files into one online. Drag to reorder pages. 100% local, no upload.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+  <script src="js/vendor/pdf-lib.min.js"></script>
+  <style>
+    .pdf-list { margin-top: 16px; }
+    .pdf-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--color-bg); border-radius: var(--radius-md); margin-bottom: 8px; }
+    .pdf-item .name { flex: 1; font-size: 14px; word-break: break-all; }
+    .pdf-item .pages { font-size: 12px; color: var(--color-text-tertiary); }
+    .pdf-item button { padding: 6px 12px; font-size: 12px; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/pdf-merge.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/pdf-merge.html">
+  <meta property="og:title" content="PDF Merge">
+  <meta property="og:description" content="Merge multiple PDF files into one online. Drag files to reorder pages before merging. 100% local.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Merge">
+  <meta name="twitter:description" content="Merge multiple PDF files into one online. Drag files to reorder pages before merging. 100% local.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links">
+        <li><a href="pdf-merge.html">PDF Merge</a></li>
+        <li><a href="pdf-split.html">PDF Split</a></li>
+        <li><a href="pdf-to-image.html">PDF → Image</a></li>
+        <li><a href="epub.html">EPUB</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <h1>Merge PDF Files</h1>
+    <p class="lead">Merge multiple PDFs into one. Drag to reorder, local browser processing.</p>
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput" accept="application/pdf" multiple>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>Drop PDF files here</strong> or click to select (multiple files)</p>
+      <p class="hint">Supports .pdf · drag to reorder</p>
+    </div>
+    <div class="editor-panel" id="editorPanel" style="display:none;">
+      <div class="pdf-list" id="pdfList"></div>
+      <div class="actions">
+        <button class="btn btn-secondary" id="addMoreBtn">＋ <span data-i18n="pdfMerge.addMore">Add More PDFs</span></button>
+        <button class="btn btn-primary" id="mergeBtn" data-i18n="pdfMerge.mergeBtn">Merge & Download</button>
+        <button class="btn btn-secondary" id="resetBtn" data-i18n="common.clear">Clear</button>
+      </div>
+    </div>
+
+  <section class="tool-help">
+    <h2>How to Merge PDF Files</h2>
+    <ol>
+      <li><strong>Upload PDFs</strong> — Drag two or more PDF files onto the drop zone, or click to browse. You can add files multiple times to arrange them in the right order.</li>
+      <li><strong>Reorder pages</strong> — Drag file cards up or down to set the merge order. Use the ✕ button to remove a file.</li>
+      <li><strong>Merge & download</strong> — Click Merge. A new PDF combining all pages in your chosen order will be ready in seconds.</li>
+    </ol>
+
+    <h2>Why Use a Browser-Based PDF Merger?</h2>
+    <p>Online PDF tools that ask you to upload files pose a privacy risk — your documents could be stored or analyzed on someone else's server. GameImage.tools merges PDFs entirely in your browser using pdf-lib. Your files never leave your device.</p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Can I merge PDFs with different page sizes?</summary>
+      <p>Yes — each page keeps its original size in the merged document.</p>
+    </details>
+    <details>
+      <summary>Why does some PDF show an error when uploading?</summary>
+      <p>Some PDFs use newer internal structures or have permission protection that browser tools cannot parse. Open the PDF in your reader, save a fresh copy, then upload again.</p>
+    </details>
+    <details>
+      <summary>Is there a file size limit?</summary>
+      <p>Each PDF can be up to 50MB, and you can merge up to 10 files at a time. All processing happens locally so there's no network bottleneck.</p>
+    </details>
+  </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GameImage.tools PDF Merger",
+  "url": "https://gameimageeditor.netlify.app/pdf-merge.html",
+  "applicationCategory": "OfficeApplication",
+  "operatingSystem": "Web",
+  "description": "Merge multiple PDF files into one online. Drag to reorder, local browser processing, no upload.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+  "featureList": ["Drag-and-drop file ordering", "Up to 10 PDFs at once", "Local browser processing", "No file upload"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Can I merge PDFs with different page sizes?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — each page keeps its original size in the merged document."}},
+    {"@type": "Question", "name": "Why does my PDF show an error?", "acceptedAnswer": {"@type": "Answer", "text": "Some PDFs use newer structures or have permission protection. Open in your PDF reader, save a fresh copy, then try again."}},
+    {"@type": "Question", "name": "Is there a file size limit?", "acceptedAnswer": {"@type": "Answer", "text": "Each PDF can be up to 50MB, and you can merge up to 10 files at once."}}
+  ]
+}
+</script>
+
+  </main>
+  <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/pdf-merge.js"></script>
+</body>
+</html>

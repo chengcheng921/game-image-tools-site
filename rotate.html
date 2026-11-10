@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="rotate.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotate / Flip Image</title>
+  <meta name="description" content="Rotate or flip game screenshots online — 90°/180° rotation, horizontal/vertical flip. Local browser tool.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    .rotate-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+    .rotate-btn { padding: 14px; border: 1px solid var(--color-border); background: var(--color-surface); border-radius: var(--radius-md); font-size: 14px; font-family: inherit; cursor: pointer; transition: all var(--transition); display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .rotate-btn:hover { background: var(--color-bg); border-color: var(--color-blue); }
+    .rotate-btn svg { width: 18px; height: 18px; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/rotate.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/rotate.html">
+  <meta property="og:title" content="Rotate / Flip Image">
+  <meta property="og:description" content="Rotate and flip game screenshots online — 90/180 degree rotation, horizontal or vertical flip.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rotate / Flip Image">
+  <meta name="twitter:description" content="Rotate and flip game screenshots online — 90/180 degree rotation, horizontal or vertical flip.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1"/>
+          <circle cx="18" cy="13" r="1"/>
+        </svg>
+        <span data-i18n="site.name">GameImage.tools</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="compress.html" data-i18n="nav.compress">Compress</a></li>
+        <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
+        <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
+        <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <h1 data-i18n="rotate.title">Rotate / Flip Image</h1>
+    <p class="lead" data-i18n="rotate.lead">Rotate or flip your game screenshots. Fix orientation or create mirror effects.</p>
+
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p data-i18n="dropzone.title"><strong>拖拽图片到此处</strong> 或点击选择</p>
+      <p class="hint" data-i18n="dropzone.hint">Supports PNG, JPG, WebP · Max 20MB</p>
+    </div>
+
+    <div class="editor-panel" id="editorPanel" style="display:none;">
+      <div class="preview-area" style="grid-template-columns: 1fr;">
+        <div class="preview-box" style="min-height: 320px;">
+          <img id="preview" alt="Preview">
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <div class="rotate-buttons">
+            <button class="rotate-btn" data-action="rotLeft">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>
+              <span data-i18n="rotate.rotLeft">Rotate Left 90°</span>
+            </button>
+            <button class="rotate-btn" data-action="rotRight">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 4v5h-5"/></svg>
+              <span data-i18n="rotate.rotRight">Rotate Right 90°</span>
+            </button>
+            <button class="rotate-btn" data-action="rot180">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+              <span data-i18n="rotate.rot180">Rotate 180°</span>
+            </button>
+            <button class="rotate-btn" data-action="flipH">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M8 7l-4 5 4 5"/><path d="M16 7l4 5-4 5"/></svg>
+              <span data-i18n="rotate.flipH">Flip Horizontal</span>
+            </button>
+            <button class="rotate-btn" data-action="flipV">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M7 8l-5 4 5 4"/><path d="M17 8l5 4-5 4"/></svg>
+              <span data-i18n="rotate.flipV">Flip Vertical</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label data-i18n="label.format">Output format</label>
+          <select id="format">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPEG</option>
+            <option value="image/webp">WebP</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="downloadBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="btn.download">Download</span>
+        </button>
+        <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><span data-i18n="footer.copy">© 2026 GameImage.tools — Free online image tools for gamers</span><br>
+    <span data-i18n="footer.privacy">All processing is done locally in your browser. No images are uploaded to any server.</span></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/rotate.js"></script>
+</body>
+</html>

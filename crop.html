@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="crop.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crop Image</title>
+  <meta name="description" content="Crop game screenshots online — free-form or preset aspect ratios. Confirm before download. Local browser processing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <style>
+    /* 舞台自适应图片：宽高包住图片本身，竖图不再有黑边（④）；
+       显示上限随视口（70vh），竖图在屏幕上更大、选框定位更准（⑤） */
+    .crop-stage { position: relative; background: #1a1a1a; border-radius: var(--radius-lg); overflow: hidden; margin: 0 auto 24px; user-select: none; width: fit-content; max-width: 100%; }
+    .crop-stage img { max-width: 100%; max-height: 70vh; display: block; pointer-events: none; }
+    .crop-overlay { position: absolute; inset: 0; cursor: crosshair; }
+    .crop-box { position: absolute; border: 2px solid #fff; box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); box-sizing: border-box; cursor: move; }
+    .crop-handle { position: absolute; width: 14px; height: 14px; background: #fff; border: 2px solid var(--color-blue); border-radius: 50%; z-index: 2; }
+    .crop-handle.nw { top: -7px; left: -7px; cursor: nwse-resize; }
+    .crop-handle.ne { top: -7px; right: -7px; cursor: nesw-resize; }
+    .crop-handle.sw { bottom: -7px; left: -7px; cursor: nesw-resize; }
+    .crop-handle.se { bottom: -7px; right: -7px; cursor: nwse-resize; }
+    .crop-handle.n  { top: -7px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    .crop-handle.s  { bottom: -7px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
+    .crop-handle.w  { left: -7px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
+    .crop-handle.e  { right: -7px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
+    /* 裁剪结果预览（①确认步）：裁剪 → 看结果 → 再下载 */
+    .crop-result-stage { position: relative; background: #1a1a1a; border-radius: var(--radius-lg); overflow: hidden; margin: 0 auto 16px; width: fit-content; max-width: 100%; }
+    .crop-result-stage img { max-width: 100%; max-height: 70vh; display: block; }
+    .crop-result-info { text-align: center; color: var(--color-text-secondary); font-size: 14px; margin: 0 0 20px; }
+    .crop-result-info strong { color: var(--color-text-primary); }
+    .ratio-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+    .ratio-btn { padding: 8px 16px; border: 1px solid var(--color-border); background: var(--color-surface); border-radius: 100px; font-size: 13px; cursor: pointer; font-family: inherit; transition: all var(--transition); }
+    .ratio-btn.active { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/crop.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/crop.html">
+  <meta property="og:title" content="Crop Image">
+  <meta property="og:description" content="Crop game screenshots online. Free-form or preset aspect ratios (16:9, 1:1, 4:3, 9:16). Confirm before download.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crop Image">
+  <meta name="twitter:description" content="Crop game screenshots online. Free-form or preset aspect ratios (16:9, 1:1, 4:3, 9:16). Confirm before download.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1"/>
+          <circle cx="18" cy="13" r="1"/>
+        </svg>
+        <span data-i18n="site.name">GameImage.tools</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="compress.html" data-i18n="nav.compress">Compress</a></li>
+        <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
+        <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
+        <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <h1 data-i18n="crop.title">Crop Image</h1>
+    <p class="lead" data-i18n="crop.lead">Trim your screenshot to focus on the action. Drag the box to reposition, drag the handles to resize.</p>
+
+    <div class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="17 8 12 3 7 8"/>
+        <line x1="12" y1="3" x2="12" y2="15"/>
+      </svg>
+      <p data-i18n="dropzone.title"><strong>拖拽图片到此处</strong> 或点击选择</p>
+      <p class="hint" data-i18n="dropzone.hint">Supports PNG, JPG, WebP · Max 20MB</p>
+    </div>
+
+    <div class="editor-panel" id="editorPanel" style="display:none;">
+      <!-- 编辑态：舞台 + 比例/格式控件 -->
+      <div id="cropEdit">
+        <div class="crop-stage" id="cropStage">
+          <img id="sourceImg" alt="Source">
+          <div class="crop-overlay" id="cropOverlay"></div>
+          <div class="crop-box" id="cropBox" style="display:none;">
+            <div class="crop-handle n" data-handle="n"></div>
+            <div class="crop-handle s" data-handle="s"></div>
+            <div class="crop-handle w" data-handle="w"></div>
+            <div class="crop-handle e" data-handle="e"></div>
+            <div class="crop-handle nw" data-handle="nw"></div>
+            <div class="crop-handle ne" data-handle="ne"></div>
+            <div class="crop-handle sw" data-handle="sw"></div>
+            <div class="crop-handle se" data-handle="se"></div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <label data-i18n="label.aspectRatio">Aspect ratio</label>
+            <div class="ratio-buttons">
+              <button class="ratio-btn active" data-ratio="free" data-i18n="crop.free">Free</button>
+              <button class="ratio-btn" data-ratio="1:1">1:1</button>
+              <button class="ratio-btn" data-ratio="4:3">4:3</button>
+              <button class="ratio-btn" data-ratio="16:9">16:9</button>
+              <button class="ratio-btn" data-ratio="3:2">3:2</button>
+              <button class="ratio-btn" data-ratio="9:16">9:16</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label data-i18n="label.format">Output format</label>
+            <select id="format">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 结果态：裁剪结果预览 + 尺寸/体积，确认后再下载 -->
+      <div id="cropResult" style="display:none;">
+        <div class="crop-result-stage">
+          <img id="cropPreview" alt="Cropped result">
+        </div>
+        <p class="crop-result-info" id="cropResultInfo">—</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="cropBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>
+          <span data-i18n="crop.cropBtn">Crop</span>
+        </button>
+        <button class="btn btn-primary" id="downloadBtn" style="display:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="btn.download">Download</span>
+        </button>
+        <button class="btn btn-secondary" id="backBtn" style="display:none;" data-i18n="crop.back">Back to Edit</button>
+        <button class="btn btn-secondary" id="resetBtn" data-i18n="btn.new">New Image</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><span data-i18n="footer.copy">© 2026 GameImage.tools — Free online image tools for gamers</span><br>
+    <span data-i18n="footer.privacy">All processing is done locally in your browser. No images are uploaded to any server.</span></p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/crop.js"></script>
+</body>
+</html>

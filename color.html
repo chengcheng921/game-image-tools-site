@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="card.colorconv.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Converter</title>
+  <meta name="description" content="Convert HEX, RGB, HSL color formats online. Click any value to copy. Local browser tool.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+  <style>
+    .color-preview { width: 100%; height: 120px; border-radius: var(--radius-md); margin-bottom: 16px; border: 1px solid var(--color-border-light); }
+    .color-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .color-row input { padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 14px; font-family: 'SF Mono', monospace; background: var(--color-surface); color: var(--color-text); }
+    .color-row input:focus { outline: none; border-color: var(--color-blue); }
+    .color-row label { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; display: block; }
+    .color-field { display: flex; flex-direction: column; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/color.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/color.html">
+  <meta property="og:title" content="Color Converter">
+  <meta property="og:description" content="Convert between HEX, RGB, and HSL color formats online. Click any value to copy. Local browser processing.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Color Converter">
+  <meta name="twitter:description" content="Convert between HEX, RGB, and HSL color formats online. Click any value to copy. Local browser processing.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links">
+        <li><a href="json.html">JSON</a></li>
+        <li><a href="base64.html">Base64</a></li>
+        <li><a href="url.html">URL</a></li>
+        <li><a href="timestamp.html">Timestamp</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <h1>Color Format Converter</h1>
+    <p class="lead">Convert between HEX, RGB, and HSL color formats. Click any value to copy.</p>
+    <div class="editor-panel">
+      <div class="color-preview" id="preview" style="background:#0071e3"></div>
+      <div class="color-field">
+        <label>HEX</label>
+        <input type="text" id="hex" value="#0071E3">
+      </div>
+      <div class="color-row" style="margin-top:12px;">
+        <div class="color-field"><label>RGB</label><input type="text" id="rgb" value="rgb(0, 113, 227)" readonly onclick="copy(this)"></div>
+        <div class="color-field"><label>HSL</label><input type="text" id="hsl" value="hsl(210, 100%, 45%)" readonly onclick="copy(this)"></div>
+      </div>
+      <div class="color-row">
+        <div class="color-field"><label>R</label><input type="number" id="r" value="0" min="0" max="255"></div>
+        <div class="color-field"><label>G</label><input type="number" id="g" value="113" min="0" max="255"></div>
+        <div class="color-field"><label>B</label><input type="number" id="b" value="227" min="0" max="255"></div>
+      </div>
+      <div class="color-row">
+        <div class="color-field"><label>H (0-360)</label><input type="number" id="h" value="210" min="0" max="360"></div>
+        <div class="color-field"><label>S (0-100)</label><input type="number" id="s" value="100" min="0" max="100"></div>
+        <div class="color-field"><label>L (0-100)</label><input type="number" id="l" value="45" min="0" max="100"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/color.js"></script>
+</body>
+</html>

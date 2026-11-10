@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-i18n-title="card.base64.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encode/Decode</title>
+  <meta name="description" content="Encode/decode text and images to Base64 online. Drag-and-drop images. Local browser processing.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⇄</text></svg>">
+  <style>
+    .code-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 768px) { .code-layout { grid-template-columns: 1fr; } }
+    .code-box textarea { width: 100%; min-height: 300px; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md); font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace; font-size: 13px; resize: vertical; background: var(--color-surface); color: var(--color-text); }
+    .code-box textarea:focus { outline: none; border-color: var(--color-blue); }
+    .code-actions { display: flex; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.netlify.app/base64.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.netlify.app/base64.html">
+  <meta property="og:title" content="Base64 Encode/Decode">
+  <meta property="og:description" content="Encode text and images to Base64, or decode Base64 back. Drag-and-drop images. Local browser tool.">
+  <meta property="og:image" content="https://gameimageeditor.netlify.app/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Base64 Encode/Decode">
+  <meta name="twitter:description" content="Encode text and images to Base64, or decode Base64 back. Drag-and-drop images. Local browser tool.">
+  <meta name="twitter:image" content="https://gameimageeditor.netlify.app/og-image.png">
+    </head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links">
+        <li><a href="json.html">JSON</a></li>
+        <li><a href="base64.html">Base64</a></li>
+        <li><a href="url.html">URL</a></li>
+        <li><a href="timestamp.html">Timestamp</a></li>
+        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <h1>Base64 Encode/Decode</h1>
+    <p class="lead">Convert text and images to Base64, or decode Base64 back. Local browser processing.</p>
+    <div class="editor-panel">
+      <div class="code-actions">
+        <button class="btn btn-primary" id="encodeBtn">Encode →</button>
+        <button class="btn btn-secondary" id="decodeBtn">← Decode</button>
+        <button class="btn btn-secondary" id="copyBtn">Copy Result</button>
+        <button class="btn btn-secondary" id="clearBtn">Clear</button>
+      </div>
+      <div class="code-layout">
+        <div class="code-box">
+          <label style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--color-text-secondary);">Input</label>
+          <textarea id="input" placeholder="Enter text..."></textarea>
+        </div>
+        <div class="code-box">
+          <label style="font-size:13px;font-weight:500;margin-bottom:6px;color:var(--color-text-secondary);">Output</label>
+          <textarea id="output" readonly placeholder="Result..."></textarea>
+        </div>
+      </div>
+      <div style="margin-top:16px;">
+        <label style="font-size:13px;color:var(--color-text-secondary);">Or upload an image to convert to Base64:</label>
+        <input type="file" id="imgInput" accept="image/*" style="margin-top:8px;">
+      </div>
+    </div>
+  </main>
+  <footer class="footer"><p><p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p></footer>
+  <script src="js/i18n.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/base64.js"></script>
+</body>
+</html>
