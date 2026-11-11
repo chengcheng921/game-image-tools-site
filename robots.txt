@@ -5,4 +5,4 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-Sitemap: https://gameimageeditor.netlify.app/sitemap.xml
+Sitemap: https://gameimageeditor.com/sitemap.xml
