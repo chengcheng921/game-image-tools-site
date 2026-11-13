@@ -27,12 +27,36 @@
 
   /**
    * 用 libheif-js（官方 wasm 构建）把 HEIC/HEIF 解码并转成 JPEG/PNG Blob。
-   * libheif 全局由 js/vendor/libheif-bundle.js 提供（wasm 内嵌，纯本地）。
-   * libheif 是工厂函数：调用后返回含 HeifDecoder 的模块对象，只初始化一次。
+   * vendor 脚本（约 2MB）改为首次使用时才加载，避免拖慢首屏。
    */
+  let vendorPromise = null;
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+  function ensureVendors() {
+    if (!vendorPromise) {
+      vendorPromise = Promise.all([
+        loadScript('js/vendor/libheif-bundle.js'),
+        loadScript('js/vendor/jszip.min.js'),
+      ]);
+      vendorPromise.catch(() => { vendorPromise = null; });
+    }
+    return vendorPromise;
+  }
+
   let heifModulePromise = null;
   function getHeifModule() {
-    if (!heifModulePromise) heifModulePromise = Promise.resolve(libheif());
+    if (!heifModulePromise) {
+      heifModulePromise = ensureVendors().then(() => libheif());
+      heifModulePromise.catch(() => { heifModulePromise = null; });
+    }
     return heifModulePromise;
   }
 
@@ -125,6 +149,7 @@
     const original = downloadAllBtn.textContent;
     downloadAllBtn.textContent = tt('common.zipping');
     try {
+      await ensureVendors();
       const zip = new JSZip();
       results.forEach((r) => zip.file(r.name, r.blob));
       const zipBlob = await zip.generateAsync({ type: 'blob' });
