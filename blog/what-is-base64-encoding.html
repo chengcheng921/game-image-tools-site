@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is Base64 used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Base64 turns arbitrary binary data into printable ASCII characters, so it can safely travel through email headers, JSON fields, HTML attributes, and other places that expect only text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Base64 reduce file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — it increases size by about 33%. Base64 is for transport compatibility, not compression. Compress first, encode second if you need to transmit as text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Base64 be used to hide data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Base64 is encoding, not encryption. Anyone who sees the base64 string can decode it instantly. You need a cipher for secrecy."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -128,6 +160,14 @@
         <li><a href="what-is-uuid-v4.html">What Is a UUID v4 and Why Is It Everywhere?</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Why is Base64 used?</h3>
+      <p>Base64 turns arbitrary binary data into printable ASCII characters, so it can safely travel through email headers, JSON fields, HTML attributes, and other places that expect only text.</p>
+      <h3>Does Base64 reduce file size?</h3>
+      <p>No — it increases size by about 33%. Base64 is for transport compatibility, not compression. Compress first, encode second if you need to transmit as text.</p>
+      <h3>Can Base64 be used to hide data?</h3>
+      <p>No. Base64 is encoding, not encryption. Anyone who sees the base64 string can decode it instantly. You need a cipher for secrecy.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

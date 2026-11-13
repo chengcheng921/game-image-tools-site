@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is my JSON being sent to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Parsing and formatting happen entirely in your browser. The formatter never sends your data over the network, so sensitive payloads stay on your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does &quot;invalid JSON&quot; mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means the text violates the JSON specification — a missing comma, an unclosed brace, a trailing comma, single quotes where double quotes are required, or a comment. The validator pinpoints the character where parsing failed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for production data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For formatting and validation, yes. Treat any sensitive values as still visible in your browser window, so share screenshots or exports only after masking secrets."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -128,6 +160,14 @@
         <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is my JSON being sent to a server?</h3>
+      <p>No. Parsing and formatting happen entirely in your browser. The formatter never sends your data over the network, so sensitive payloads stay on your device.</p>
+      <h3>What does "invalid JSON" mean?</h3>
+      <p>It means the text violates the JSON specification — a missing comma, an unclosed brace, a trailing comma, single quotes where double quotes are required, or a comment. The validator pinpoints the character where parsing failed.</p>
+      <h3>Can I use this for production data?</h3>
+      <p>For formatting and validation, yes. Treat any sensitive values as still visible in your browser window, so share screenshots or exports only after masking secrets.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

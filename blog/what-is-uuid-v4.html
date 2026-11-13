@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How unique is a UUID v4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "UUID v4 has 122 random bits. The probability of two generated colliding is approximately zero for practical purposes — the number of possible values dwarfs the number of things humans will ever number."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use UUID v4 or v7?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "v7 is sortable by generation time, which is useful for database indexes and ordering. v4 is purely random and perfectly adequate when you do not need chronological ordering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert a UUID to a shorter form?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — base62 or base91 encoding reduces a UUID from 36 characters to around 22 or 20, useful for vanity URLs and short references, while retaining uniqueness."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -136,6 +168,14 @@
         <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>How unique is a UUID v4?</h3>
+      <p>UUID v4 has 122 random bits. The probability of two generated colliding is approximately zero for practical purposes — the number of possible values dwarfs the number of things humans will ever number.</p>
+      <h3>Should I use UUID v4 or v7?</h3>
+      <p>v7 is sortable by generation time, which is useful for database indexes and ordering. v4 is purely random and perfectly adequate when you do not need chronological ordering.</p>
+      <h3>Can I convert a UUID to a shorter form?</h3>
+      <p>Yes — base62 or base91 encoding reduces a UUID from 36 characters to around 22 or 20, useful for vanity URLs and short references, while retaining uniqueness.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

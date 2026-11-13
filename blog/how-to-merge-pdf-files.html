@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there a file size limit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Since processing happens in your browser, the limit is your device memory. Individual PDFs of 100 MB each are fine for most laptops. Very large collections can be merged in batches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the merged PDF lose quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Merging only concatenates the page stream — it does not re-rasterize or re-compress content. Text stays selectable, images keep their original resolution."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I reorder pages while merging?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some tools let you drag pages into order. If not, merge in the order you want and use a PDF splitter afterwards to trim any extras."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -122,6 +154,14 @@
           <li><a href="convert-txt-to-epub-free.html">Convert TXT to EPUB Free — Turn Notes Into Real Ebooks</a></li>
         </ul>
       </section>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is there a file size limit?</h3>
+      <p>Since processing happens in your browser, the limit is your device memory. Individual PDFs of 100 MB each are fine for most laptops. Very large collections can be merged in batches.</p>
+      <h3>Will the merged PDF lose quality?</h3>
+      <p>No. Merging only concatenates the page stream — it does not re-rasterize or re-compress content. Text stays selectable, images keep their original resolution.</p>
+      <h3>Can I reorder pages while merging?</h3>
+      <p>Some tools let you drag pages into order. If not, merge in the order you want and use a PDF splitter afterwards to trim any extras.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

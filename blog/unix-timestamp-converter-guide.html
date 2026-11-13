@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is the timestamp 10 digits on some systems and 13 on others?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "10-digit timestamps are in seconds (standard Unix time). 13-digit timestamps are in milliseconds, commonly used by JavaScript. Divide or multiply by 1000 to convert between them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the timestamp overflow in 2038?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "32-bit signed integers overflow on January 19, 2038 at 03:14:07 UTC. Most modern systems and languages have moved to 64-bit integers which push the limit to the year 292 billion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What timezone does the timestamp use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unix timestamps are always in UTC. You apply timezone offset only when formatting the timestamp for human display."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -123,6 +155,14 @@
         <li><a href="what-is-uuid-v4.html">What Is a UUID v4 and Why Is It Everywhere?</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Why is the timestamp 10 digits on some systems and 13 on others?</h3>
+      <p>10-digit timestamps are in seconds (standard Unix time). 13-digit timestamps are in milliseconds, commonly used by JavaScript. Divide or multiply by 1000 to convert between them.</p>
+      <h3>Will the timestamp overflow in 2038?</h3>
+      <p>32-bit signed integers overflow on January 19, 2038 at 03:14:07 UTC. Most modern systems and languages have moved to 64-bit integers which push the limit to the year 292 billion.</p>
+      <h3>What timezone does the timestamp use?</h3>
+      <p>Unix timestamps are always in UTC. You apply timezone offset only when formatting the timestamp for human display.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

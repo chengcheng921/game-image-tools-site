@@ -71,6 +71,46 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do these image tools work in the browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every tool listed runs entirely in your browser through WebAssembly and canvas APIs. Your files never leave your device — no upload, no server-side processing, no waiting in a queue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the tool reduce the quality of my game art?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Quality depends on the tool and settings. A dedicated resizer with high-quality interpolation keeps detail, while a heavy compression pass adds artifacts. Always export to a separate file and compare at 100% before overwriting your source."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use these tools commercially?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Personal and commercial use is fine for the output. Just make sure you own the rights to the art, or that the asset license allows modification and redistribution of the derivative."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just use Photoshop or GIMP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Photoshop is powerful but expensive and overkill for platform-specific sizing. GIMP is free but has a steep learning curve. The tools here are single-purpose: one upload, one action, one download — fast enough to test multiple sizes in a minute."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -142,6 +182,16 @@
           <li><a href="png-vs-jpg-vs-webp-which-format.html">PNG vs JPG vs WebP: Which Image Format Should You Use?</a></li>
         </ul>
       </section>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Do these image tools work in the browser?</h3>
+      <p>Yes. Every tool listed runs entirely in your browser through WebAssembly and canvas APIs. Your files never leave your device — no upload, no server-side processing, no waiting in a queue.</p>
+      <h3>Will the tool reduce the quality of my game art?</h3>
+      <p>Quality depends on the tool and settings. A dedicated resizer with high-quality interpolation keeps detail, while a heavy compression pass adds artifacts. Always export to a separate file and compare at 100% before overwriting your source.</p>
+      <h3>Can I use these tools commercially?</h3>
+      <p>Personal and commercial use is fine for the output. Just make sure you own the rights to the art, or that the asset license allows modification and redistribution of the derivative.</p>
+      <h3>Why not just use Photoshop or GIMP?</h3>
+      <p>Photoshop is powerful but expensive and overkill for platform-specific sizing. GIMP is free but has a steep learning curve. The tools here are single-purpose: one upload, one action, one download — fast enough to test multiple sizes in a minute.</p>
   </main>
 
   <footer class="footer">

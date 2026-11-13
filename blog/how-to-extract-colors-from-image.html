@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the color extraction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very. The tool reads pixel values directly from the decoded image, no approximation. The accuracy is limited only by the image quality and how the browser decoded it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I extract a full palette from a photo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The palette generator analyses the image and returns the dominant colors. For branding or UI work, ask for the top 5 or 8 colors and inspect each for suitability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work on mobile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, on any modern phone browser. Tap upload, pick a photo, and tap the pixel you want. The color values appear instantly."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -125,6 +157,14 @@
         <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>How accurate is the color extraction?</h3>
+      <p>Very. The tool reads pixel values directly from the decoded image, no approximation. The accuracy is limited only by the image quality and how the browser decoded it.</p>
+      <h3>Can I extract a full palette from a photo?</h3>
+      <p>Yes. The palette generator analyses the image and returns the dominant colors. For branding or UI work, ask for the top 5 or 8 colors and inspect each for suitability.</p>
+      <h3>Does this work on mobile?</h3>
+      <p>Yes, on any modern phone browser. Tap upload, pick a photo, and tap the pixel you want. The color values appear instantly.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

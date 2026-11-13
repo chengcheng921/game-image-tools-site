@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are HEX and RGB the same color?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both represent the same three-channel color (red, green, blue). HEX is the hexadecimal shorthand (#FF5733), RGB is the decimal form (255, 87, 51). They are interchangeable — convert between them freely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between HEX and HSL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HEX and RGB describe color in additive channels. HSL (hue, saturation, lightness) describes color in three perceptual properties and is easier to reason about when adjusting brightness or saturation without changing the base color."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I use HEX vs RGB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CSS supports HEX, RGB and HSL natively. Design tools like Figma export in multiple formats. Check your target platform — some APIs ask for one format specifically."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -125,6 +157,14 @@
         <li><a href="png-vs-jpg-vs-webp-which-format.html">PNG vs JPG vs WebP: Which Format Should You Use?</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Are HEX and RGB the same color?</h3>
+      <p>Both represent the same three-channel color (red, green, blue). HEX is the hexadecimal shorthand (#FF5733), RGB is the decimal form (255, 87, 51). They are interchangeable — convert between them freely.</p>
+      <h3>What is the difference between HEX and HSL?</h3>
+      <p>HEX and RGB describe color in additive channels. HSL (hue, saturation, lightness) describes color in three perceptual properties and is easier to reason about when adjusting brightness or saturation without changing the base color.</p>
+      <h3>Where do I use HEX vs RGB?</h3>
+      <p>CSS supports HEX, RGB and HSL natively. Design tools like Figma export in multiple formats. Check your target platform — some APIs ask for one format specifically.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

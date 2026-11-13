@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does resizing make images blurry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Downscaling averages neighboring pixels. Upscaling guesses new pixels. Both lose detail. The key is choosing a high-quality interpolation algorithm and matching the target resolution to how the image will be displayed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best format for resized images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use PNG for pixel art, logos and anything with text. Use JPEG for photos at 80–85 quality. Use WebP for the smallest file size with comparable quality to JPEG."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I enlarge an image without losing quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, not truly — you cannot add detail that was never in the source. You can use AI upscalers (waifu2x, Real-ESRGAN) for reasonable results on illustrations and portraits, but they cannot invent missing information."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -135,6 +167,14 @@
         <li><a href="png-vs-jpg-vs-webp-which-format.html">PNG vs JPG vs WebP: Which Format Should You Use?</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Why does resizing make images blurry?</h3>
+      <p>Downscaling averages neighboring pixels. Upscaling guesses new pixels. Both lose detail. The key is choosing a high-quality interpolation algorithm and matching the target resolution to how the image will be displayed.</p>
+      <h3>What is the best format for resized images?</h3>
+      <p>Use PNG for pixel art, logos and anything with text. Use JPEG for photos at 80–85 quality. Use WebP for the smallest file size with comparable quality to JPEG.</p>
+      <h3>Can I enlarge an image without losing quality?</h3>
+      <p>No, not truly — you cannot add detail that was never in the source. You can use AI upscalers (waifu2x, Real-ESRGAN) for reasonable results on illustrations and portraits, but they cannot invent missing information.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

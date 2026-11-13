@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What file size should I target for Discord screenshots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Discord uploads are limited to 25 MB per file on the free plan and 100 MB on Nitro. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Discord compress images automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Discord re-uploads images when you paste them into a channel. Nitro users get the original resolution, free-plan users get a compressed version. Either way, uploading a well-sized file on your end gives better quality and faster previews."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my screenshot look blurry after uploading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Discord applies its own compression to anything over its internal thresholds. Compressing locally to around 80% JPEG quality and under 1 MB avoids the second pass."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -126,6 +158,14 @@
           <li><a href="how-to-crop-screenshot-windows-mac.html">How to Crop a Screenshot on Windows and Mac</a></li>
         </ul>
       </section>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>What file size should I target for Discord screenshots?</h3>
+      <p>Discord uploads are limited to 25 MB per file on the free plan and 100 MB on Nitro. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data.</p>
+      <h3>Does Discord compress images automatically?</h3>
+      <p>Discord re-uploads images when you paste them into a channel. Nitro users get the original resolution, free-plan users get a compressed version. Either way, uploading a well-sized file on your end gives better quality and faster previews.</p>
+      <h3>Why does my screenshot look blurry after uploading?</h3>
+      <p>Discord applies its own compression to anything over its internal thresholds. Compressing locally to around 80% JPEG quality and under 1 MB avoids the second pass.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

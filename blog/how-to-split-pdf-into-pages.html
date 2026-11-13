@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is splitting a PDF lossless?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Splitting extracts pages byte-for-byte from the original file. No re-rendering or compression is applied, so text, images and formatting are preserved exactly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I split into specific page ranges?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Most tools accept ranges like 1,3–5,10. You can also split after every page, every N pages, or at specific bookmarks if the PDF has them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tool work on password-protected PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the PDF has only an owner password (printing/editing restricted), splitting usually works. If it has a user password (the file cannot be opened without it), you need the password first."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -120,6 +152,14 @@
         <li><a href="convert-txt-to-epub-free.html">Convert TXT to EPUB Free — Turn Notes Into Real Ebooks</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is splitting a PDF lossless?</h3>
+      <p>Yes. Splitting extracts pages byte-for-byte from the original file. No re-rendering or compression is applied, so text, images and formatting are preserved exactly.</p>
+      <h3>Can I split into specific page ranges?</h3>
+      <p>Yes. Most tools accept ranges like 1,3–5,10. You can also split after every page, every N pages, or at specific bookmarks if the PDF has them.</p>
+      <h3>Does the tool work on password-protected PDFs?</h3>
+      <p>If the PDF has only an owner password (printing/editing restricted), splitting usually works. If it has a user password (the file cannot be opened without it), you need the password first.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

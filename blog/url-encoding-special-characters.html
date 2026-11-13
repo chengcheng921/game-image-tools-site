@@ -70,6 +70,38 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does %20 mean a space?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "URL encoding (officially percent-encoding) represents non-ASCII or reserved characters with a percent sign followed by two hex digits. Space is 0x20 in ASCII, so it becomes %20."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I need to encode a URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Encode any non-alphanumeric character that is part of a value — spaces, ampersands, equals signs, question marks, slashes that are not path separators. Most programming languages and frameworks do this for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is + the same as %20?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inside query string values, + is a legacy shorthand for space. It is better to use %20 everywhere for consistency."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <nav class="nav">
@@ -118,6 +150,14 @@
         <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
       </ul>
     </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>Why does %20 mean a space?</h3>
+      <p>URL encoding (officially percent-encoding) represents non-ASCII or reserved characters with a percent sign followed by two hex digits. Space is 0x20 in ASCII, so it becomes %20.</p>
+      <h3>When do I need to encode a URL?</h3>
+      <p>Encode any non-alphanumeric character that is part of a value — spaces, ampersands, equals signs, question marks, slashes that are not path separators. Most programming languages and frameworks do this for you.</p>
+      <h3>Is + the same as %20?</h3>
+      <p>Inside query string values, + is a legacy shorthand for space. It is better to use %20 everywhere for consistency.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>
