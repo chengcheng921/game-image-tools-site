@@ -777,3 +777,31 @@ img {
   color: var(--color-text-secondary);
 }
 
+
+/* Related guides block at the end of blog posts */
+.related-guides {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-light);
+}
+.related-guides h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  color: var(--color-text-primary);
+}
+.related-guides ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.related-guides a {
+  color: var(--color-blue);
+  text-decoration: none;
+  font-size: 15px;
+}
+.related-guides a:hover {
+  color: var(--color-blue-hover);
+  text-decoration: underline;
+}
