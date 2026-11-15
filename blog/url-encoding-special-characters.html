@@ -11,8 +11,8 @@
     gtag("config", "G-7VTV63NF2Z");
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URL Encoding Explained: What Those %20 Characters Mean</title>
-  <meta name="description" content="What is URL encoding (percent-encoding)? Learn why spaces become %20, how query strings break, and encode/decode URLs free in your browser.">
+  <title>Percent Encoding Explained: What %20 Means in a URL (2026)</title>
+  <meta name="description" content="Percent encoding, also called URL encoding, explained: why a space becomes %20, which characters are safe, and how to fix double-encoded links.">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .article { max-width: 760px; margin: 0 auto; }
@@ -28,14 +28,14 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="GameImage.tools">
   <meta property="og:url" content="https://gameimageeditor.com/blog/url-encoding-special-characters.html">
-  <meta property="og:title" content="URL Encoding Explained: What Those %20 Characters Mean">
-  <meta property="og:description" content="What is URL encoding (percent-encoding)? Learn why spaces become %20, how query strings break, and encode/decode URLs free in your browser.">
+  <meta property="og:title" content="Percent Encoding Explained: What %20 Means in a URL (2026)">
+  <meta property="og:description" content="Percent encoding, also called URL encoding, explained: why a space becomes %20, which characters are safe, and how to fix double-encoded links.">
   <meta property="og:image" content="https://gameimageeditor.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="URL Encoding Explained: What Those %20 Characters Mean">
-  <meta name="twitter:description" content="What is URL encoding (percent-encoding)? Learn why spaces become %20, how query strings break, and encode/decode URLs free in your browser.">
+  <meta name="twitter:title" content="Percent Encoding Explained: What %20 Means in a URL (2026)">
+  <meta name="twitter:description" content="Percent encoding, also called URL encoding, explained: why a space becomes %20, which characters are safe, and how to fix double-encoded links.">
   <meta name="twitter:image" content="https://gameimageeditor.com/og-image.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
@@ -44,13 +44,13 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "URL Encoding Explained: What Those %20 Characters Mean",
-  "description": "What is URL encoding (percent-encoding)? Learn why spaces become %20, how query strings break, and encode/decode URLs free in your browser.",
+  "headline": "Percent Encoding Explained: What Those %20 Characters Mean",
+  "description": "Percent encoding, also called URL encoding, explained: why a space becomes %20, which characters are safe, and how to fix double-encoded links.",
   "image": [
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-15",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -75,6 +75,14 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is percent encoding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Percent encoding, also called URL encoding, is the rule that replaces any character a URL cannot safely carry with a percent sign followed by two hexadecimal digits. A space is byte 32, which is 0x20 in hex, so it becomes %20. Servers decode these sequences automatically, which is why encoded query strings still work when pasted into a browser."
+      }
+    },
     {
       "@type": "Question",
       "name": "Why does %20 mean a space?",
@@ -113,8 +121,11 @@
   <main class="tool-page">
     <div class="article">
       <a href="../index.html" class="back-link">← Back to home</a>
-      <h1>URL Encoding Explained: What Those %20 Characters Mean</h1>
-      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+      <h1>Percent Encoding Explained: What Those %20 Characters Mean</h1>
+      <p class="meta">Published on Nov 10, 2026 · Updated Nov 15, 2026 · 4 min read</p>
+
+      <p><strong>Percent encoding — also called URL encoding — is the rule that replaces any character a URL cannot safely carry with a percent sign followed by two hexadecimal digits.</strong> A space is byte 32, which is 0x20 in hex, so it becomes <code>%20</code>. Servers decode these sequences automatically, which is why an encoded query string still works when you paste it into a browser.</p>
+      <p>Want to try it right now? The <a href="../url.html">free URL encoder and decoder</a> runs entirely in your browser — paste a value, hit encode, and copy the result.</p>
 
       <p>Ever copied a link and seen <code>search?q=elden%20ring%20build</code> in the address bar? Those <code>%20</code> chunks aren't garbage — they're percent-encoding, the system that lets URLs carry characters they were never designed for. Understanding it takes ten minutes and saves hours of debugging broken links.</p>
 
@@ -143,6 +154,16 @@
       <h2>Is Encoding a Way to Hide Data?</h2>
       <p>No — anyone can decode it instantly. Percent-encoding exists for transport safety, not secrecy. If you need to actually protect a value in a URL, that's encryption or a signed token's job, not encoding's.</p>
 
+      <h2>Frequently Asked Questions</h2>
+      <h3>What is percent encoding?</h3>
+      <p>Percent encoding, also called URL encoding, is the rule that replaces any character a URL cannot safely carry with a percent sign followed by two hexadecimal digits. A space is byte 32, which is 0x20 in hex, so it becomes %20. Servers decode these sequences automatically, which is why encoded query strings still work when pasted into a browser.</p>
+      <h3>Why does %20 mean a space?</h3>
+      <p>URL encoding (officially percent-encoding) represents non-ASCII or reserved characters with a percent sign followed by two hex digits. Space is 0x20 in ASCII, so it becomes %20.</p>
+      <h3>When do I need to encode a URL?</h3>
+      <p>Encode any non-alphanumeric character that is part of a value — spaces, ampersands, equals signs, question marks, slashes that are not path separators. Most programming languages and frameworks do this for you.</p>
+      <h3>Is + the same as %20?</h3>
+      <p>Inside query string values, + is a legacy shorthand for space. It is better to use %20 everywhere for consistency.</p>
+
       <h2>Related Guides</h2>
       <ul>
         <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
@@ -150,14 +171,6 @@
         <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
       </ul>
     </div>
-
-      <h2>Frequently Asked Questions</h2>
-      <h3>Why does %20 mean a space?</h3>
-      <p>URL encoding (officially percent-encoding) represents non-ASCII or reserved characters with a percent sign followed by two hex digits. Space is 0x20 in ASCII, so it becomes %20.</p>
-      <h3>When do I need to encode a URL?</h3>
-      <p>Encode any non-alphanumeric character that is part of a value — spaces, ampersands, equals signs, question marks, slashes that are not path separators. Most programming languages and frameworks do this for you.</p>
-      <h3>Is + the same as %20?</h3>
-      <p>Inside query string values, + is a legacy shorthand for space. It is better to use %20 everywhere for consistency.</p>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>
