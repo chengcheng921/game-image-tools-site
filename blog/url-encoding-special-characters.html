@@ -22,6 +22,10 @@
     .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
     .article a { color: var(--color-blue); }
     .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .table-wrap { overflow-x: auto; }
   </style>
 
   <link rel="canonical" href="https://gameimageeditor.com/blog/url-encoding-special-characters.html">
@@ -135,6 +139,26 @@
 
       <h2>Which Characters Are Actually Safe?</h2>
       <p>The "unreserved" set that never needs encoding is smaller than people think: <code>A-Z a-z 0-9</code> plus <code>- _ . ~</code>. Everything else — spaces, slashes inside values, plus signs, non-English text — should be encoded when it appears inside a parameter value. When in doubt, encode: servers decode it transparently.</p>
+
+      <h2>Percent Encoding Reference Table</h2>
+      <p>Inside a parameter value, these are the ASCII characters that have to be replaced. Each encoded form is just the character's ASCII code written in hexadecimal, prefixed with a percent sign.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Character</th><th>Encoded</th><th>Character</th><th>Encoded</th><th>Character</th><th>Encoded</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>space</td><td>%20</td><td>+</td><td>%2B</td><td>?</td><td>%3F</td></tr>
+            <tr><td>!</td><td>%21</td><td>,</td><td>%2C</td><td>@</td><td>%40</td></tr>
+            <tr><td>&quot;</td><td>%22</td><td>/</td><td>%2F</td><td>[</td><td>%5B</td></tr>
+            <tr><td>#</td><td>%23</td><td>:</td><td>%3A</td><td>]</td><td>%5D</td></tr>
+            <tr><td>$</td><td>%24</td><td>;</td><td>%3B</td><td>{</td><td>%7B</td></tr>
+            <tr><td>%</td><td>%25</td><td>=</td><td>%3D</td><td>}</td><td>%7D</td></tr>
+            <tr><td>&amp;</td><td>%26</td><td>'</td><td>%27</td><td>\</td><td>%5C</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>One result surprises people: searching for <code>C++ tutorial</code> becomes <code>C%2B%2B%20tutorial</code>, not <code>C++%20tutorial</code>. A raw <code>+</code> in a query string is read as a space, so the plus signs have to be encoded as <code>%2B</code>. The same logic explains why a search for "salt &amp; pepper" works only when the ampersand is written <code>%26</code>.</p>
 
       <h2>Encoding and Decoding in Practice</h2>
       <p>The <a href="../url.html">URL encoder/decoder</a> on this site does the job locally in your browser:</p>
