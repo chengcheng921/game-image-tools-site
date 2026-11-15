@@ -11,7 +11,7 @@
 
   setupDropZone(dropZone, (f) => addFiles([f]), 'application/pdf');
 
-  // “继续添加 PDF”按钮：编辑面板出现后仍可继续补文件
+  // "Add more PDFs" button: keep adding files even after the edit panel appears
   const addMoreBtn = document.getElementById('addMoreBtn');
   if (addMoreBtn) {
     addMoreBtn.addEventListener('click', () => {
@@ -21,7 +21,7 @@
   }
 
   function addFiles(newFiles) {
-    // 按 name+size+lastModified 去重，防止重复添加同一文件
+    // dedupe by name+size+lastModified to prevent adding the same file twice
     const key = (f) => f.name + '::' + f.size + '::' + f.lastModified;
     const existing = new Set(files.map((x) => key(x.file)));
     let rejected = false;
@@ -35,7 +35,7 @@
       }
     });
     if (rejected) showToast(tt('pdfCommon.notPdf'));
-    if (!files.length) return; // 一个有效 PDF 都没有时保持上传态
+    if (!files.length) return; // stay in upload state when no valid PDF is present
     dropZone.style.display = 'none';
     editorPanel.style.display = 'block';
     renderList();
@@ -81,9 +81,9 @@
         let src;
         try {
           src = await PDFDocument.load(bytes);
-          src.getPageCount(); // 提前触发页面树解析问题
+          src.getPageCount(); // trigger page-tree parsing issues early
         } catch (loadErr) {
-          // 按诊断结果给出针对性提示（加密 / 新版引用流 / 结构异常）
+          // give targeted hints based on the diagnosis (encrypted / newer xref stream / structural corruption)
           throw new Error(tt(pdfProblemKey(bytes)));
         }
         const pages = await merged.copyPages(src, src.getPageIndices());

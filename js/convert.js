@@ -23,7 +23,7 @@
   let resultBlob = null;
   let debounceTimer = null;
 
-  // 检测浏览器能否编码 WebP（Safari 不支持，toBlob 会静默回退成 PNG）
+  // Detect whether the browser can encode WebP (Safari cannot; toBlob silently falls back to PNG)
   const WEBP_OK = (function () {
     try {
       const c = document.createElement('canvas');
@@ -32,7 +32,7 @@
     } catch (e) { return false; }
   })();
 
-  // H2 修复：旧预览 URL 延迟到新图 load 完成后再释放（立即 revoke 会截断 WebKit 解码造成重影）
+  // H2 fix: defer revoking the old preview URL until the new image loads (immediate revoke truncates WebKit decode, causing banding)
   let pendingRevokeUrl = null;
   newPreview.addEventListener('load', function () {
     if (pendingRevokeUrl) {
@@ -73,7 +73,7 @@
     convert();
   });
 
-  // 滑块吸附 10 整节点粗调；输入框可填 1-100 任意整数精调（真值以输入框为准）
+  // slider snaps to multiples of 10 for coarse; input accepts any integer 1-100 for fine (input value is the source of truth)
   bindSteppedControl(qualitySlider, qualityInput, scheduleConvert);
 
   function scheduleConvert() {
@@ -99,7 +99,7 @@
     let type = targetFormat.value;
     const quality = parseInt(qualityInput.value, 10) / 100;
 
-    // Safari 等浏览器不支持 WebP 编码：toBlob 会静默回退成 PNG，这里显式提示
+    // Safari and others can't encode WebP: toBlob silently falls back to PNG; surface an explicit hint here
     if (type === 'image/webp' && !WEBP_OK) {
       showToast(tt('common.webpFallback'));
       type = 'image/png';
@@ -123,7 +123,7 @@
       const sign = change > 0 ? '+' : '';
       sizeChangeEl.textContent = sign + change + '%';
       sizeChangeEl.style.color = parseFloat(change) < 0 ? 'var(--color-success)' : 'var(--color-warning)';
-      // PNG 无损：重新编码可能比原图更大，如实提示
+      // PNG is lossless: re-encoding may produce a larger file; report it honestly
       if (type === 'image/png' && blob.size > originalBytes) {
         showToast('PNG is lossless — re-encoding can exceed the original size.');
       }
@@ -132,7 +132,7 @@
 
   downloadBtn.addEventListener('click', () => {
     if (!resultBlob) return;
-    // 按真实输出格式命名（Safari 下 WebP 会回退成 PNG，扩展名必须如实）
+    // name by the real output format (WebP falls back to PNG under Safari; extension must reflect that)
     const realType = resultBlob.type || targetFormat.value;
     const ext = realType.split('/')[1].replace('jpeg', 'jpg');
     downloadBlob(resultBlob, makeOutputName(sourceFileName, 'converted', ext));
@@ -153,7 +153,7 @@
     qualityGroup.style.display = 'block';
   });
 
-  // 图片接力：把转换结果带进下一个工具
+  // Image handoff: carry the converted result into the next tool
   ImageHandoff.mount({
     current: 'convert',
     getBlob: () => resultBlob,

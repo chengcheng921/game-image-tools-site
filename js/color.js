@@ -86,7 +86,7 @@
 
   [r, g, b].forEach((el) => el.addEventListener('input', () => {
     const rr = +r.value, gg = +g.value, bb = +b.value;
-    // 清空/越界时跳过更新，避免 NaN 传播
+    // skip update on empty/out-of-range to avoid NaN propagation
     if (![rr, gg, bb].every((n) => Number.isInteger(n) && n >= 0 && n <= 255)) return;
     setFromRgb(rr, gg, bb);
   }));

@@ -18,8 +18,8 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
   <link rel="apple-touch-icon" href="/favicon.png">
   <style>
-    /* 舞台自适应图片：宽高包住图片本身，竖图不再有黑边（④）；
-       显示上限随视口（70vh），竖图在屏幕上更大、选框定位更准（⑤） */
+    /* Stage auto-fits image: wraps the image's own width/height, no black bars on portrait (4);
+       display cap follows viewport (70vh), portrait images show larger and crop-box positioning is more accurate (5) */
     .crop-stage { position: relative; background: #1a1a1a; border-radius: var(--radius-lg); overflow: hidden; margin: 0 auto 24px; user-select: none; width: fit-content; max-width: 100%; }
     .crop-stage img { max-width: 100%; max-height: 70vh; display: block; pointer-events: none; }
     .crop-overlay { position: absolute; inset: 0; cursor: crosshair; }
@@ -33,7 +33,7 @@
     .crop-handle.s  { bottom: -7px; left: 50%; transform: translateX(-50%); cursor: ns-resize; }
     .crop-handle.w  { left: -7px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
     .crop-handle.e  { right: -7px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
-    /* 裁剪结果预览（①确认步）：裁剪 → 看结果 → 再下载 */
+    /* Crop result preview (step 1 confirm): crop → review → download */
     .crop-result-stage { position: relative; background: #1a1a1a; border-radius: var(--radius-lg); overflow: hidden; margin: 0 auto 16px; width: fit-content; max-width: 100%; }
     .crop-result-stage img { max-width: 100%; max-height: 70vh; display: block; }
     .crop-result-info { text-align: center; color: var(--color-text-secondary); font-size: 14px; margin: 0 0 20px; }
@@ -73,7 +73,6 @@
         <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
         <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
         <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
-        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
       </ul>
     </div>
   </nav>
@@ -89,12 +88,12 @@
         <polyline points="17 8 12 3 7 8"/>
         <line x1="12" y1="3" x2="12" y2="15"/>
       </svg>
-      <p data-i18n="dropzone.title"><strong>拖拽图片到此处</strong> 或点击选择</p>
+      <p data-i18n="dropzone.title"><strong>Drop your image here</strong> or click to browse</p>
       <p class="hint" data-i18n="dropzone.hint">Supports PNG, JPG, WebP · Max 20MB</p>
     </div>
 
     <div class="editor-panel" id="editorPanel" style="display:none;">
-      <!-- 编辑态：舞台 + 比例/格式控件 -->
+      <!-- Edit mode: stage + aspect/format controls -->
       <div id="cropEdit">
         <div class="crop-stage" id="cropStage">
           <img id="sourceImg" alt="Source">
@@ -135,7 +134,7 @@
         </div>
       </div>
 
-      <!-- 结果态：裁剪结果预览 + 尺寸/体积，确认后再下载 -->
+      <!-- Result mode: crop result preview + size/volume, confirm then download -->
       <div id="cropResult" style="display:none;">
         <div class="crop-result-stage">
           <img id="cropPreview" alt="Cropped result">

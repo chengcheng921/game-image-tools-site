@@ -20,7 +20,7 @@
   let compressedBlob = null;
   let debounceTimer = null;
 
-  // 检测浏览器能否编码 WebP（Safari 不支持，toBlob 会静默回退成 PNG）
+  // Detect whether the browser can encode WebP (Safari cannot; toBlob silently falls back to PNG)
   const WEBP_OK = (function () {
     try {
       const c = document.createElement('canvas');
@@ -29,8 +29,8 @@
     } catch (e) { return false; }
   })();
 
-  // H2 修复：旧预览 URL 延迟到新图 load 完成后再释放。
-  // 立即 revoke 会在 WebKit 解码大 PNG-8 中途截断数据流，造成竖条重影。
+  // H2 fix: defer revoking the old preview URL until the new image finishes loading.
+  // Revoking immediately truncates the data stream mid-decode of large PNG-8 in WebKit, causing vertical banding.
   let pendingRevokeUrl = null;
   compPreview.addEventListener('load', function () {
     if (pendingRevokeUrl) {
@@ -39,16 +39,16 @@
     }
   });
 
-  /* PNG-8 编码走 Worker：大图量化需 2-3 秒，主线程跑会冻结页面
-   * （拖滑块/切格式时数字迟迟不刷新、页面卡死的根源） */
+  /* PNG-8 encoding runs in a Worker: large-image quantization takes 2-3s, running it on the main thread freezes the page
+   * (the root cause of stale size numbers and frozen UI while dragging the slider or switching formats) */
   let pngWorker = null;
   let pngWorkerBroken = false;
-  let requestId = 0; // 每次 compress 递增；旧请求的回调一律丢弃，防止数字跳变/残留
+  let requestId = 0; // incremented on each compress; callbacks of stale requests are discarded to prevent number jumps/leftovers
 
   function encodePNG(imageData, maxColors, msgId) {
-    // 已知 Worker 环境不可用（file:// 协议、CSP 限制等）：直接主线程兜底
+    // Worker environment known to be unavailable (file:// protocol, CSP, etc.): fall back to the main thread
     if (pngWorkerBroken) return PNG8.encodeBlob(imageData, maxColors);
-    // 上一轮编码还没跑完？terminate 立即作废（比等它算完快几秒），Worker 毫秒级重建
+    // Previous encoding still running? terminate cancels it immediately (faster than waiting by seconds); Worker rebuilds in ms
     if (pngWorker) {
       pngWorker.terminate();
       pngWorker = null;
@@ -58,25 +58,25 @@
       worker = pngWorker = new Worker('js/png8-worker.js');
     } catch (err) {
       pngWorkerBroken = true;
-      return PNG8.encodeBlob(imageData, maxColors); // Worker 不可用时主线程兜底
+      return PNG8.encodeBlob(imageData, maxColors); // main-thread fallback when Worker is unavailable
     }
     return new Promise(function (resolve) {
       worker.onmessage = function (e) {
         if (e.data.id === msgId) {
-          worker.terminate(); // 任务已完成即关闭（下次 PNG 编码重建，本地加载毫秒级）
+          worker.terminate(); // close once done (rebuild on next PNG encode; local load is ms)
           pngWorker = null;
           resolve(new Blob([e.data.bytes], { type: 'image/png' }));
         }
-        // id 不匹配 = 过期任务（双保险），忽略
+        // id mismatch = stale task (double safety), ignore
       };
       worker.onerror = function () {
-        pngWorkerBroken = true; // 下次走主线程兜底
-        resolve(null); // 本次失败：onBlob 提示 Compression failed，UI 不会卡在"…"
+        pngWorkerBroken = true; // fall back to the main thread next time
+        resolve(null); // this attempt failed: onBlob shows "Compression failed", UI won't stay on "…"
       };
       var buf = imageData.data.buffer;
       worker.postMessage(
         { id: msgId, buffer: buf, width: imageData.width, height: imageData.height, maxColors: maxColors },
-        [buf] // transfer：零拷贝传大像素缓冲
+        [buf] // transfer: zero-copy pass of the large pixel buffer
       );
     });
   }
@@ -105,7 +105,7 @@
     compress();
   }
 
-  // 滑块吸附 10 整节点粗调；输入框可填 1-100 任意整数精调（真值以输入框为准）
+  // slider snaps to multiples of 10 for coarse; input accepts any integer 1-100 for fine (input value is the source of truth)
   bindSteppedControl(qualitySlider, qualityInput, scheduleCompress);
 
   formatSelect.addEventListener('change', () => {
@@ -123,10 +123,10 @@
   function compress() {
     if (!sourceImage) return;
 
-    // 用户已改滑块/格式：旧的在途编码结果一律丢弃（防止数字先跳旧值再跳新值）
+    // user changed slider/format: discard all in-flight encoding results (prevents numbers jumping old then new)
     const myRequest = ++requestId;
 
-    // 立即进入"计算中"状态：绝不显示上一格式/上一次的残留数字
+    // immediately enter "computing" state: never show leftover numbers from the previous format/run
     compSizeEl.textContent = '…';
     savingsEl.textContent = '…';
     savingsEl.style.color = '';
@@ -141,21 +141,21 @@
     let type = formatSelect.value;
     const quality = parseInt(qualityInput.value, 10) / 100;
 
-    // Safari 等浏览器不支持 WebP 编码：toBlob 会静默回退成 PNG，这里显式提示
+    // Safari and others can't encode WebP: toBlob silently falls back to PNG; surface an explicit hint here
     if (type === 'image/webp' && !WEBP_OK) {
       showToast(tt('common.webpFallback'));
       type = 'image/png';
     }
 
     const onBlob = (blob) => {
-      if (myRequest !== requestId) return; // 过期结果：期间用户又改了滑块/格式，直接丢弃
+      if (myRequest !== requestId) return; // stale result: user changed slider/format meanwhile, discard
       if (!blob) {
         showToast('Compression failed');
         return;
       }
       compressedBlob = blob;
 
-      // H2 修复：替换 src 前不再立即 revoke 旧 URL，改为 load 后延迟释放
+      // H2 fix: don't revoke the old URL immediately before replacing src; defer release until after load
       const oldUrl = compPreview.src;
       compPreview.src = URL.createObjectURL(blob);
       if (oldUrl) pendingRevokeUrl = oldUrl;
@@ -173,8 +173,8 @@
       }
     };
 
-    // PNG 分支：PNG-8 调色板量化压缩（pngquant/TinyPNG 同原理）
-    // quality 0~1 映射到调色板颜色数 2~256，越低体积越小
+    // PNG branch: PNG-8 palette quantization (same principle as pngquant/TinyPNG)
+    // quality 0~1 maps to palette color count 2~256; lower = smaller file
     if (type === 'image/png') {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const maxColors = Math.max(2, Math.round(quality * 256));
@@ -187,14 +187,14 @@
 
   downloadBtn.addEventListener('click', () => {
     if (!compressedBlob) return;
-    // 按真实输出格式命名（Safari 下 WebP 会回退成 PNG，扩展名必须如实）
+    // name by the real output format (WebP falls back to PNG under Safari; extension must reflect that)
     const realType = compressedBlob.type || formatSelect.value;
     const ext = realType.split('/')[1].replace('jpeg', 'jpg');
     downloadBlob(compressedBlob, makeOutputName(sourceFileName, 'compressed', ext));
   });
 
   resetBtn.addEventListener('click', () => {
-    // 若还有 PNG 编码在后台跑，立即终止
+    // if any PNG encoding is still running in the background, terminate it immediately
     if (pngWorker) { pngWorker.terminate(); pngWorker = null; }
     sourceImage = null;
     compressedBlob = null;
@@ -206,20 +206,20 @@
     qualityInput.value = 80;
     formatSelect.value = 'image/jpeg';
     downloadBtn.disabled = false;
-    // 释放当前与待释放的预览 URL
+    // release the current and pending preview URLs
     if (pendingRevokeUrl) { URL.revokeObjectURL(pendingRevokeUrl); pendingRevokeUrl = null; }
     if (compPreview.src) { URL.revokeObjectURL(compPreview.src); compPreview.src = ''; }
     origPreview.src = '';
   });
 
-  // 图片接力：把压缩结果带进裁剪/改尺寸等工具，不用重新上传
+  // Image handoff: carry the compressed result into crop/resize/etc. without re-uploading
   ImageHandoff.mount({
     current: 'compress',
     getBlob: () => compressedBlob,
     getName: () => makeOutputName(sourceFileName, 'compressed', (compressedBlob.type || 'image/jpeg').split('/')[1].replace('jpeg', 'jpg')),
   });
 
-  // 若从上一步带图过来，直接载入
+  // if an image was handed off from the previous step, load it directly
   ImageHandoff.take().then((f) => {
     if (!f) return;
     handleFile(f)

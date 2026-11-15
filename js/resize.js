@@ -25,7 +25,7 @@
   let debounceTimer = null;
   let isUpdating = false;
 
-  // H2 修复：旧预览 URL 延迟到新图 load 完成后再释放（立即 revoke 会截断 WebKit 解码造成重影）
+  // H2 fix: defer revoking the old preview URL until the new image loads (immediate revoke truncates WebKit decode, causing banding)
   let pendingRevokeUrl = null;
   newPreview.addEventListener('load', function () {
     if (pendingRevokeUrl) {
@@ -98,13 +98,13 @@
     const w = parseInt(widthInput.value, 10) || origWidth;
     const pct = Math.round((w / origWidth) * 100);
     isUpdating = true;
-    const shown = Math.max(1, Math.min(200, pct)); // 控件范围 1-200；实际百分比由预览区如实显示
+    const shown = Math.max(1, Math.min(200, pct)); // control range 1-200; the actual percentage is shown honestly in the preview area
     scaleSlider.value = shown;
     scaleInput.value = shown;
     isUpdating = false;
   }
 
-  // 滑块吸附 5% 整节点粗调；输入框可填 1-200 任意整数精调（真值以输入框为准）
+  // slider snaps to 5% multiples for coarse; input accepts any integer 1-200 for fine (input value is the source of truth)
   bindSteppedControl(scaleSlider, scaleInput, (pct) => {
     if (isUpdating) return;
     const w = Math.max(1, Math.round(origWidth * pct / 100));
@@ -116,7 +116,7 @@
     scheduleRender();
   });
 
-  // 平台尺寸预设：填入精确宽高并解锁比例（平台要求精确像素，不允许等比）
+  // platform size presets: fill exact width/height and unlock aspect ratio (platforms require exact pixels, no proportional scaling)
   presetSelect.addEventListener('change', () => {
     const parts = (presetSelect.value || '').split('x').map(Number);
     const w = parts[0];
@@ -155,7 +155,7 @@
     canvas.toBlob((blob) => {
       if (!blob) return;
       resultBlob = blob;
-      // H2 修复：替换 src 前不再立即 revoke 旧 URL，改为 load 后延迟释放
+      // H2 fix: don't revoke the old URL immediately before replacing src; defer release until after load
       const oldUrl = newPreview.src;
       newPreview.src = URL.createObjectURL(blob);
       if (oldUrl) pendingRevokeUrl = oldUrl;
@@ -183,7 +183,7 @@
     newPreview.src = '';
   });
 
-  // 图片接力：把改尺寸结果带进下一个工具
+  // Image handoff: carry the resized result into the next tool
   ImageHandoff.mount({
     current: 'resize',
     getBlob: () => resultBlob,

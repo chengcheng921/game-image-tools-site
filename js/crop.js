@@ -25,7 +25,7 @@
   let aspectRatio = null; // null = free
   let dragging = null;    // { type: 'move'|handle, startX, startY, startCrop }
 
-  // 检测浏览器能否编码 WebP（Safari 不支持，toBlob 会静默回退成 PNG）
+  // Detect whether the browser can encode WebP (Safari cannot; toBlob silently falls back to PNG)
   const WEBP_OK = (function () {
     try {
       const c = document.createElement('canvas');
@@ -34,7 +34,7 @@
     } catch (e) { return false; }
   })();
 
-  // 旧预览 URL 延迟到新图 load 完成后再释放（同 compress.js 的 WebKit 竞态修复）
+  // defer revoking the old preview URL until the new image loads (same WebKit race fix as compress.js)
   let pendingRevokeUrl = null;
   cropPreview.addEventListener('load', function () {
     if (pendingRevokeUrl) {
@@ -70,7 +70,7 @@
   }
 
   window.addEventListener('resize', () => {
-    // 仅编辑态需要重算选框；结果态舞台是隐藏的，rect 全 0 会导致选框错乱
+    // only edit mode needs recalculating the crop box; result stage is hidden, all-zero rect would break the box
     if (sourceImage && cropEdit.style.display !== 'none') {
       computeImgRect();
       initCrop();
@@ -132,9 +132,9 @@
     cropBox.style.height = crop.h + 'px';
   }
 
-  /* ---------- 编辑态 / 结果态切换（① 确认步） ---------- */
+  /* ---------- Edit mode / result mode switch (step 1 confirm) ---------- */
   function showEditState() {
-    // 纯视觉切换；布局重算由调用方（handleFile/backBtn）负责
+    // purely visual switch; layout recalculation is the caller's responsibility (handleFile/backBtn)
     cropResult.style.display = 'none';
     cropEdit.style.display = 'block';
     cropBtn.style.display = '';
@@ -249,15 +249,15 @@
     document.removeEventListener('touchend', stopDrag);
   }
 
-  // ---- 裁剪（生成结果预览，用户确认后才下载） ----
+  // ---- Crop (generate result preview; download only after user confirms) ----
   cropBtn.addEventListener('click', () => {
     if (!sourceImage) return;
     const scaleX = sourceImage.naturalWidth / imgRect.w;
     const scaleY = sourceImage.naturalHeight / imgRect.h;
 
-    // ② 像素取整：左上/右下边各自四舍五入吸附到原图像素网格，宽=差值。
-    //    小数坐标会让 drawImage 对整张裁剪图重采样插值 → 整体发软；
-    //    取整后 PNG 输出为像素级原样拷贝，无损。
+    // 2 Pixel snapping: left/top and right/bottom each round to the source pixel grid; width = difference.
+    //    fractional coordinates make drawImage resample the whole crop → overall softness;
+    //    after snapping, PNG output is a pixel-perfect copy, lossless.
     const sx = Math.max(0, Math.round(crop.x * scaleX));
     const sy = Math.max(0, Math.round(crop.y * scaleY));
     const sw = Math.max(1, Math.min(sourceImage.naturalWidth - sx, Math.round((crop.x + crop.w) * scaleX) - sx));
@@ -272,7 +272,7 @@
     ctx.drawImage(sourceImage, sx, sy, sw, sh, 0, 0, sw, sh);
 
     let type = formatSelect.value;
-    // Safari 不支持 WebP 编码：显式提示并回退 PNG
+    // Safari can't encode WebP: show explicit hint and fall back to PNG
     if (type === 'image/webp' && !WEBP_OK) {
       showToast('This browser cannot encode WebP (Safari). Output falls back to PNG — try Chrome for WebP.');
       type = 'image/png';
@@ -287,12 +287,12 @@
       }
       croppedBlob = blob;
       showResultState(blob, sw, sh);
-    }, type, type === 'image/png' ? undefined : 0.95); // ③ JPEG/WebP 质量 0.92 → 0.95，截图文字更锐
+    }, type, type === 'image/png' ? undefined : 0.95); // 3 JPEG/WebP quality 0.92 -> 0.95, sharper text in screenshots
   });
 
   backBtn.addEventListener('click', () => {
     if (croppedBlob) { croppedBlob = null; }
-    // 保留上次选区：记录相对比例，等编辑态显示后映射回当前显示尺寸
+    // keep the previous selection: store relative ratio, map back to current display size after edit mode shows
     const rel = imgRect.w > 0
       ? { fx: crop.x / imgRect.w, fy: crop.y / imgRect.h, fw: crop.w / imgRect.w, fh: crop.h / imgRect.h }
       : null;
@@ -306,7 +306,7 @@
           w: rel.fw * imgRect.w,
           h: rel.fh * imgRect.h
         };
-        applyRatioToCrop(); // 内含 clamp，防越界
+        applyRatioToCrop(); // includes clamp to prevent out-of-bounds
         renderCropBox();
       } else {
         initCrop();
@@ -316,7 +316,7 @@
 
   downloadBtn.addEventListener('click', () => {
     if (!croppedBlob) return;
-    // 按真实输出格式命名（Safari 下 WebP 会回退成 PNG，扩展名必须如实）
+    // name by the real output format (WebP falls back to PNG under Safari; extension must reflect that)
     const realType = croppedBlob.type || formatSelect.value;
     const ext = realType.split('/')[1].replace('jpeg', 'jpg');
     downloadBlob(croppedBlob, makeOutputName(sourceFileName, 'cropped', ext));
@@ -333,14 +333,14 @@
     editorPanel.style.display = 'none';
     dropZone.style.display = 'block';
     sourceImg.src = '';
-    // 释放结果预览的 URL（当前 + 待释放）
+    // release the result preview URL (current + pending)
     if (pendingRevokeUrl) { URL.revokeObjectURL(pendingRevokeUrl); pendingRevokeUrl = null; }
     if (cropPreview.src) { URL.revokeObjectURL(cropPreview.src); cropPreview.src = ''; }
-    // 恢复编辑态布局，下次上传直接可裁
+    // restore edit-mode layout so the next upload is immediately croppable
     showEditState();
   });
 
-  // 图片接力：按钮条挂在结果面板内，随裁剪结果一起出现
+  // Image handoff: the button bar lives inside the result panel, appearing with the crop result
   const cropResultPanel = document.getElementById('cropResult');
   ImageHandoff.mount({
     current: 'crop',

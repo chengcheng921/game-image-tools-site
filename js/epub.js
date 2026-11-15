@@ -13,9 +13,9 @@
   let sourceFile = null;
   let sourceText = '';
   let sourceFormat = '';
-  let detectedLang = 'en'; // 自动检测，用户不可选（EPUB 语言字段只影响阅读器排版/TTS，不翻译内容）
+  let detectedLang = 'en'; // auto-detected, not user-selectable (EPUB language field only affects reader typography/TTS, not content translation)
 
-  // i18n.t: 词条齐全时返回译文；缺词条返回 key 本身，兜底英文
+  // i18n.t: returns the translation when the key exists; returns the key itself if missing, fallback to English
   function t(key, fallback) {
     const val = window.i18n && i18n.t && i18n.t(key);
     return (val && val !== key) ? val : (fallback || key);
@@ -57,21 +57,21 @@
     langValueEl.textContent = LANG_LABELS[detectedLang] || detectedLang;
   }
 
-  /* 语言自动检测：按各类字符占比判断（EPUB dc:language 只影响
-     阅读器排版/TTS/词典，不会翻译内容，因此无需用户手动选择） */
-  var LANG_LABELS = { 'zh-CN': '中文', 'en': 'English', 'ja': '日本語', 'ko': '한국어' };
+  /* Auto language detection: judged by the proportion of each character type (EPUB dc:language only affects
+     reader typography/TTS/dictionary, it does not translate content, so no manual selection is needed) */
+  var LANG_LABELS = { 'zh-CN': 'Chinese', 'en': 'English', 'ja': 'Japanese', 'ko': 'Korean' };
 
   function detectLanguage(text) {
-    const sample = text.slice(0, 20000); // 取样足够
+    const sample = text.slice(0, 20000); // enough for detection
     let cjk = 0, kana = 0, hangul = 0, latin = 0;
     for (let i = 0; i < sample.length; i++) {
       const c = sample.charCodeAt(i);
-      if (c >= 0x4e00 && c <= 0x9fff) cjk++;        // CJK 统一表意
-      else if (c >= 0x3040 && c <= 0x30ff) kana++;  // 平假名/片假名
-      else if (c >= 0xac00 && c <= 0xd7af) hangul++; // 韩文音节
+      if (c >= 0x4e00 && c <= 0x9fff) cjk++;        // CJK unified ideographs
+      else if (c >= 0x3040 && c <= 0x30ff) kana++;  // hiragana/katakana
+      else if (c >= 0xac00 && c <= 0xd7af) hangul++; // Hangul syllables
       else if ((c >= 0x41 && c <= 0x5a) || (c >= 0x61 && c <= 0x7a)) latin++;
     }
-    if (kana > 0 && kana * 3 > cjk) return 'ja';    // 有假名且不少于汉字的 1/3 → 日文
+    if (kana > 0 && kana * 3 > cjk) return 'ja';    // has kana and no less than 1/3 of kanji -> Japanese
     if (hangul > 0 && hangul > cjk) return 'ko';
     if (cjk > 0 && cjk >= latin) return 'zh-CN';
     return 'en';
@@ -165,7 +165,7 @@
     return div.innerHTML;
   }
 
-  // 章节标题模板："第 {n} 章" / "Chapter {n}"
+  // chapter title template: "Chapter {n}"
   function chapterTitle(n) {
     return t('epub.chapterN', 'Chapter {n}').replace('{n}', n);
   }
@@ -204,7 +204,7 @@
   async function buildEpub() {
     const title = bookTitleInput.value || 'Untitled';
     const author = bookAuthorInput.value || 'Unknown';
-    const lang = detectedLang; // 自动检测结果，不再有手动下拉框
+    const lang = detectedLang; // auto-detected result; no manual dropdown anymore
     const uid = 'uid-' + Date.now();
 
     const htmlBody = toHtmlBody(sourceText, sourceFormat);

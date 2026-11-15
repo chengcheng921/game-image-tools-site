@@ -18,7 +18,7 @@
   <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
   <link rel="apple-touch-icon" href="/favicon.png">
   <style>
-    /* 每个分类单独控制列数，确保每行排满 */
+    /* Control column count per category so each row is fully filled */
     #image-tools .tools-grid { grid-template-columns: repeat(3, 1fr); }
     #doc-tools .tools-grid { grid-template-columns: repeat(4, 1fr); }
     #code-tools .tools-grid { grid-template-columns: repeat(3, 1fr); }
@@ -226,13 +226,12 @@
         <li><a href="#code-tools" data-i18n="home.section.code">Code Tools</a></li>
         <li><a href="#gen-tools" data-i18n="home.section.gen">General Tools</a></li>
         <li><a href="blog/index.html">Blog</a></li>
-        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
       </ul>
     </div>
   </nav>
 
   <header class="hero">
-    <h1 data-i18n="home.title">几秒钟搞定你的 <span class="gradient">游戏截图</span></h1>
+    <h1 data-i18n="home.title">Edit your <span class="gradient">game screenshots</span> in seconds.</h1>
     <p data-i18n="home.subtitle">A lightweight toolkit for gamers. Compress, resize, crop and convert images — right in your browser.</p>
     <div class="hero-badges">
       <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span data-i18n="home.badge.private">100% Private</span></span>
@@ -242,7 +241,7 @@
     </div>
   </header>
 
-  <!-- 图片工具：6个，3列x2行 -->
+  <!-- Image tools: 6 items, 3 cols x 2 rows -->
   <section class="tools-section" id="image-tools">
     <h2 data-i18n="home.section.image">Image Tools</h2>
     <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
@@ -286,7 +285,7 @@
     </div>
   </section>
 
-  <!-- 文档工具：4个，4列x1行 -->
+  <!-- Document tools: 4 items, 4 cols x 1 row -->
   <section class="tools-section" id="doc-tools">
     <h2 data-i18n="home.section.doc">Document Tools</h2>
     <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
@@ -318,7 +317,7 @@
     </div>
   </section>
 
-  <!-- 代码工具：6个，3列x2行 -->
+  <!-- Code tools: 6 items, 3 cols x 2 rows -->
   <section class="tools-section" id="code-tools">
     <h2 data-i18n="home.section.code">Code Tools</h2>
     <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>
@@ -362,7 +361,7 @@
     </div>
   </section>
 
-  <!-- 通用工具：4个，4列x1行 -->
+  <!-- General tools: 4 items, 4 cols x 1 row -->
   <section class="tools-section" id="gen-tools">
     <h2 data-i18n="home.section.gen">General Tools</h2>
     <p class="subtitle" data-i18n="home.toolsSubtitle">Pick a tool to get started. Everything runs locally in your browser.</p>

@@ -23,10 +23,10 @@
     sourceBytes = await file.arrayBuffer();
     try {
       const src = await PDFDocument.load(sourceBytes);
-      totalPages = src.getPageCount(); // 同时触发页面树解析
+      totalPages = src.getPageCount(); // also triggers page-tree parsing
     } catch (e) {
       sourceBytes = null;
-      // 按诊断结果给出针对性提示（加密 / 新版引用流 / 结构异常）
+      // give targeted hints based on the diagnosis (encrypted / newer xref stream / structural corruption)
       showToast(tt(pdfProblemKey(sourceBytes)));
       return;
     }
@@ -69,7 +69,7 @@
     splitBtn.textContent = tt('pdfSplit.splitting');
     try {
       const baseName = sourceName.replace(/\.pdf$/i, '');
-      const parts = []; // {name, bytes}；多段时打包 zip，避免浏览器拦截连续下载
+      const parts = []; // {name, bytes}; zip when multiple, to avoid the browser blocking consecutive downloads
       for (let i = 0; i < ranges.length; i++) {
         const [s, e] = ranges[i];
         const src = await PDFDocument.load(sourceBytes);

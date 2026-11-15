@@ -1,4 +1,4 @@
-/* PNG8 量化压缩器 — 开发版（验证通过后才会复制进项目） */
+/* PNG8 Quantization Compressor — dev version (copied into the project only after verification passes) */
 var PNG8 = (function () {
   'use strict';
 
@@ -115,8 +115,8 @@ var PNG8 = (function () {
     return c;
   }
 
-  // 规范滤波器编号: 0=None 1=Sub 2=Up 3=Average 4=Paeth
-  // 内部 f 只是数组下标，写入扫描行时必须映射为规范值（f===3 走 Paeth 公式 → 字节应为 4）
+  // standard filter type codes: 0=None 1=Sub 2=Up 3=Average 4=Paeth
+  // internal f is just an array index; when writing scanlines it must be mapped to the standard value (f===3 uses the Paeth formula -> byte should be 4)
   var FILTER_CODES = [0, 1, 2, 4];
 
   function filteredScanlines(idx, w, h) {

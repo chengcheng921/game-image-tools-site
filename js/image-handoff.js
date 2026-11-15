@@ -1,17 +1,17 @@
-/* 图片接力（Image Handoff）
- * 目的：压缩完的图可以直接带进裁剪/改尺寸/转格式等工具，不用重新上传。
- * 存储：IndexedDB（localStorage 只有 5MB，放不下大图）。
- * 用法：
- *   1) 结果区挂按钮条：ImageHandoff.mount({ getBlob: () => blob, getName: () => name })
- *   2) 页面加载时接收：ImageHandoff.take().then(f => f && handleFile(f))
- * 传给下一个页面的是 File 对象（带文件名），各工具原有 handleFile 无需改动。
+/* Image Handoff
+ * Purpose: a compressed image can be carried directly into crop/resize/convert etc. without re-upload.
+ * Storage: IndexedDB (localStorage only has 5MB, not enough for large images).
+ * Usage:
+ *   1) Mount the button bar in the result area: ImageHandoff.mount({ getBlob: () => blob, getName: () => name })
+ *   2) Receive on page load: ImageHandoff.take().then(f => f && handleFile(f))
+ * What is passed to the next page is a File object (with filename); each tool's existing handleFile needs no changes.
  */
 (function () {
   const DB_NAME = 'gameimage-handoff';
   const STORE = 'files';
   const KEY = 'current';
 
-  // 可接力的图片工具（heic 只作为来源：输出图不需要再转 heic）
+  // image tools that support handoff (heic is source-only: output images don't need re-converting to heic)
   const TOOLS = [
     { id: 'compress', href: 'compress.html', label: 'Compress' },
     { id: 'resize', href: 'resize.html', label: 'Resize' },
@@ -79,11 +79,11 @@
         let rec = null;
         getReq.onsuccess = function () {
           rec = getReq.result;
-          if (rec) store.delete(KEY); // 取走即清空，避免下次进入时又载入旧图
+          if (rec) store.delete(KEY); // clear on take, to avoid loading the old image again next time
         };
         t.oncomplete = function () {
           if (!rec || !rec.blob) { resolve(null); return; }
-          // 转成 File，让各工具原有的 handleFile（file.name / file.size）无需改动
+          // convert to File so each tool's existing handleFile (file.name / file.size) needs no changes
           try {
             resolve(new File([rec.blob], rec.name || 'image', { type: rec.blob.type || 'image/png' }));
           } catch (e) {
@@ -105,7 +105,7 @@
     const getBlob = o.getBlob || function () { return null; };
     const getName = o.getName || function () { return 'image'; };
     const current = o.current || (location.pathname.split('/').pop() || '').replace('.html', '');
-    if (o.after === false) return; // 明确不要按钮条（例如批量输出的页面）
+    if (o.after === false) return; // explicitly no button bar (e.g. batch-output pages)
 
     const anchor = o.after || document.getElementById('downloadBtn');
     if (!anchor) return;
@@ -126,7 +126,7 @@
       a.textContent = t.label;
       a.addEventListener('click', function (ev) {
         ev.preventDefault();
-        // getBlob 可以是同步返回 Blob，也可以返回 Promise（如旋转页需要现场编码）
+        // getBlob may return a Blob synchronously or a Promise (e.g. rotate page needs on-the-fly encoding)
         Promise.resolve(getBlob()).then(function (blob) {
           if (!blob) {
             if (window.showToast) showToast('Processing not finished yet — please wait a moment.');
@@ -147,7 +147,7 @@
       bar.appendChild(a);
     });
 
-    // 挂载位置：appendTo 指定的容器内（随容器一起显示/隐藏），否则插到按钮行下方
+    // mount location: inside the container specified by appendTo (shows/hides with it), otherwise below the button row
     if (o.appendTo) {
       o.appendTo.appendChild(bar);
       return;

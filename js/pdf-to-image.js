@@ -58,7 +58,7 @@
     }
   });
 
-  // 单文件直接下载；多文件打包 zip（浏览器会拦截一次点击触发的多个下载）
+  // single file downloads directly; multiple files are zipped (browsers block multiple downloads from one click)
   downloadAllBtn.addEventListener('click', async () => {
     if (!results.length) return;
     if (results.length === 1) {

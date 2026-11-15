@@ -26,7 +26,7 @@
     .swatch-info strong { display: block; color: var(--color-text); font-size: 13px; margin-bottom: 2px; }
     .swatch .swatch-remove { position: absolute; top: 6px; right: 6px; width: 20px; height: 20px; border-radius: 50%; border: none; background: rgba(0,0,0,0.55); color: #fff; font-size: 13px; line-height: 20px; padding: 0; cursor: pointer; opacity: 0; transition: opacity var(--transition); }
     .swatch:hover .swatch-remove { opacity: 1; }
-    /* 点击取色：光圈跟随鼠标，点击锁定该点颜色 */
+    /* Click to pick: ring follows mouse, click locks the color at that point */
     .picker-wrap { position: relative; display: inline-block; max-width: 100%; cursor: crosshair; }
     .picker-wrap img { max-width: 100%; max-height: 70vh; display: block; }
     .picker-lens { position: absolute; width: 26px; height: 26px; border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(0,0,0,0.4); pointer-events: none; transform: translate(-50%, -50%); display: none; }
@@ -63,7 +63,6 @@
         <li><a href="resize.html" data-i18n="nav.resize">Resize</a></li>
         <li><a href="crop.html" data-i18n="nav.crop">Crop</a></li>
         <li><a href="convert.html" data-i18n="nav.convert">Convert</a></li>
-        <li><button class="lang-toggle" onclick="i18n.setLang(i18n.getLang()==='zh'?'en':'zh')">中 / EN</button></li>
       </ul>
     </div>
   </nav>
@@ -79,7 +78,7 @@
         <polyline points="17 8 12 3 7 8"/>
         <line x1="12" y1="3" x2="12" y2="15"/>
       </svg>
-      <p data-i18n="dropzone.title"><strong>拖拽图片到此处</strong> 或点击选择</p>
+      <p data-i18n="dropzone.title"><strong>Drop your image here</strong> or click to browse</p>
       <p class="hint" data-i18n="dropzone.hint">Supports PNG, JPG, WebP · Max 20MB</p>
     </div>
 

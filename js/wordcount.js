@@ -1,4 +1,4 @@
-/* Word Counter Tool — 支持粘贴输入与文件上传（txt/md/docx/pdf） */
+/* Word Counter Tool — supports pasted input and file upload (txt/md/docx/pdf) */
 (function () {
   const input = document.getElementById('textInput');
   const charsEl = document.getElementById('chars');
@@ -71,11 +71,11 @@
     }
   }
 
-  // 用 pdf.js 逐页提取文本（纯本地，复用站内已有 vendor）
+  // extract text page by page with pdf.js (fully local, reuses the site's existing vendor)
   async function extractPdfText(arrayBuffer) {
     const doc = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     const parts = [];
-    const MAX = 200; // 超长 PDF 只取前 200 页，避免卡死
+    const MAX = 200; // for very long PDFs, only take the first 200 pages to avoid freezing
     for (let i = 1; i <= Math.min(doc.numPages, MAX); i++) {
       const page = await doc.getPage(i);
       const content = await page.getTextContent();

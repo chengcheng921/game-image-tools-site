@@ -11,10 +11,10 @@
   const pickedEmpty = document.getElementById('pickedEmpty');
 
   let sourceImage = null;
-  let sampledCanvas = null; // 低分辨率采样画布：光圈预览 + 取色都从这读
-  let pickedColors = [];    // 手动取色列表 [{ hex, r, g, b }]
+  let sampledCanvas = null; // low-res sampling canvas: both the ring preview and color picking read from here
+  let pickedColors = [];    // manually picked color list [{ hex, r, g, b }]
 
-  // i18n.t: 词条齐全时返回译文；万一缺词条返回 key 本身，因此补一个兜底
+  // i18n.t: returns the translation when the key exists; returns the key itself if missing, so add a fallback
   function t(key, fallback) {
     const val = window.i18n && i18n.t && i18n.t(key);
     return (val && val !== key) ? val : (fallback || key);
@@ -40,7 +40,7 @@
     buildSampleCanvas(sourceImage);
   }
 
-  /* ---------- 自动主色（原有功能，修了 256 越界） ---------- */
+  /* ---------- Auto dominant colors (existing feature, fixed the 256 out-of-bounds) ---------- */
   function extractPalette(img) {
     // Downscale image for performance
     const maxDim = 150;
@@ -63,7 +63,7 @@
       const r = imageData[i];
       const g = imageData[i + 1];
       const b = imageData[i + 2];
-      // Quantize to 16 levels per channel；Math.min 防 round 后越界出 256
+      // Quantize to 16 levels per channel; Math.min prevents rounding from going out of bounds to 256
       const qr = Math.min(255, Math.round(r / 16) * 16);
       const qg = Math.min(255, Math.round(g / 16) * 16);
       const qb = Math.min(255, Math.round(b / 16) * 16);
@@ -81,7 +81,7 @@
     }));
   }
 
-  /* ---------- 通用色板渲染（自动/手动共用） ---------- */
+  /* ---------- Generic palette rendering (shared by auto/manual) ---------- */
   function hexOf(r, g, b) {
     return '#' + [r, g, b].map(function (c) { return c.toString(16).padStart(2, '0'); }).join('').toUpperCase();
   }
@@ -126,9 +126,9 @@
     pickedEmpty.style.display = pickedColors.length ? 'none' : '';
   }
 
-  /* ---------- 点击取色（手动模式） ---------- */
+  /* ---------- Click to pick (manual mode) ---------- */
   function buildSampleCanvas(img) {
-    // 上限 800px 的采样画布：够精确，getImageData 开销可忽略
+    // sampling canvas capped at 800px: precise enough, getImageData overhead is negligible
     const maxDim = 800;
     const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
     const w = Math.max(1, Math.round(img.naturalWidth * scale));
@@ -148,7 +148,7 @@
     const y = Math.floor((clientY - rect.top) / rect.height * sampledCanvas.h);
     if (x < 0 || y < 0 || x >= sampledCanvas.w || y >= sampledCanvas.h) return null;
     const d = sampledCanvas.ctx.getImageData(x, y, 1, 1).data;
-    if (d[3] < 125) return null; // 透明像素
+    if (d[3] < 125) return null; // transparent pixel
     return { r: d[0], g: d[1], b: d[2] };
   }
 
@@ -169,7 +169,7 @@
     pickerHex.style.display = 'none';
   });
 
-  // 触屏：点按即取色（没有 hover 光圈）
+  // touch: tap to pick (no hover ring)
   function pickAt(clientX, clientY) {
     const c = colorAt(clientX, clientY);
     if (!c) return;
@@ -187,9 +187,9 @@
     pickAt(e.clientX, e.clientY);
   });
 
-  // 触屏 tap 兜底（click 在多数移动浏览器会触发，这里不做 touchstart 以免点不准）
+  // touch tap fallback (click fires on most mobile browsers; skip touchstart to avoid mis-taps)
 
-  // 图片接力：接收上一步传来的图片，直接取色（取色结果不产生新图，所以不挂接力按钮）
+  // Image handoff: receive the image from the previous step and pick colors directly (picking produces no new image, so no handoff button)
   ImageHandoff.take().then((f) => {
     if (!f) return;
     handleFile(f)

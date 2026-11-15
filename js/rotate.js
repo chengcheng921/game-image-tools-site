@@ -13,7 +13,7 @@
   let flipH = false;
   let flipV = false;
 
-  // 检测浏览器能否编码 WebP（Safari 不支持，toBlob 会静默回退成 PNG）
+  // Detect whether the browser can encode WebP (Safari cannot; toBlob silently falls back to PNG)
   const WEBP_OK = (function () {
     try {
       const c = document.createElement('canvas');
@@ -61,7 +61,7 @@
     const h = sourceImage.naturalHeight;
     const swap = rotation === 90 || rotation === 270;
     const canvas = document.createElement('canvas');
-    // 预览传 maxDim 限制尺寸（点击即时响应）；下载时不限制用原始分辨率
+    // preview passes maxDim to limit size (instant response on click); download is unlimited, uses original resolution
     let outW = swap ? h : w;
     let outH = swap ? w : h;
     if (maxDim && Math.max(outW, outH) > maxDim) {
@@ -83,7 +83,7 @@
 
   function render() {
     if (!sourceImage) return;
-    // 预览用 ≤700px 小画布，大图旋转点击不卡顿
+    // preview uses a <=700px small canvas; rotating large images stays responsive on click
     const canvas = getTransformedCanvas(700);
     preview.src = canvas.toDataURL();
   }
@@ -92,10 +92,10 @@
 
   downloadBtn.addEventListener('click', () => {
     if (!sourceImage) return;
-    // 下载用原始分辨率
+    // download uses the original resolution
     const canvas = getTransformedCanvas();
     let type = formatSelect.value;
-    // Safari 等浏览器不支持 WebP 编码：toBlob 会静默回退成 PNG，这里显式提示
+    // Safari and others can't encode WebP: toBlob silently falls back to PNG; surface an explicit hint here
     if (type === 'image/webp' && !WEBP_OK) {
       showToast(tt('common.webpFallback'));
       type = 'image/png';
@@ -117,7 +117,7 @@
     preview.src = '';
   });
 
-  // 图片接力：旋转结果需要现场按原始分辨率编码，所以 getBlob 返回 Promise
+  // Image handoff: the rotate result needs on-the-fly encoding at original resolution, so getBlob returns a Promise
   ImageHandoff.mount({
     current: 'rotate',
     getBlob: () => new Promise((resolve) => {

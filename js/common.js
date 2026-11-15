@@ -36,7 +36,7 @@ function pdfProblemKey(bytes) {
   try {
     const u8 = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
     const dec = new TextDecoder('latin1');
-    // 加密标记常在尾部 trailer，新版引用流标记在头部——头尾都查
+    // encryption marker is usually in the trailer, newer xref-stream marker is in the header — check both ends
     sample = dec.decode(u8.slice(0, 3000)) + dec.decode(u8.slice(Math.max(0, u8.length - 3000)));
   } catch (e) {}
   if (/\/Encrypt\s+\d+\s+\d+\s+R/.test(sample)) return 'pdfCommon.encrypted';
@@ -49,7 +49,7 @@ window.pdfProblemKey = pdfProblemKey;
  * Format bytes to human readable string
  */
 function formatBytes(bytes) {
-  // 整洁显示：KB 取整、MB 一位小数，避免满屏小数点
+  // tidy display: KB rounded, MB one decimal, avoid a screen full of decimals
   if (!bytes || bytes <= 0) return '0 B';
   const k = 1024;
   if (bytes < k) return bytes + ' B';
@@ -58,23 +58,23 @@ function formatBytes(bytes) {
   return (bytes / (k * k * k)).toFixed(2) + ' GB';
 }
 
-/* 滑块吸附 + 输入框精调 双向联动
- * 滑块本身带 step（拖动只落在整节点），输入框可填范围内任意整数；
- * 压缩取值以输入框为准（真值），滑块只负责快速粗调。 */
+/* Slider snap + input fine-tune two-way binding
+ * the slider has a step (dragging only lands on whole steps), the input accepts any integer in range;
+ * the compression value is taken from the input (source of truth), the slider is only for quick coarse adjustment. */
 function bindSteppedControl(slider, input, onChange) {
-  // 钳制范围以输入框为准（输入框允许比滑块更细的范围，如质量 1-100 vs 滑块 10-100）
+  // clamp range based on the input (the input allows a finer range than the slider, e.g. quality 1-100 vs slider 10-100)
   const min = parseInt(input.min, 10) || parseInt(slider.min, 10) || 0;
   const max = parseInt(input.max, 10) || parseInt(slider.max, 10) || 100;
   const commit = (v) => {
     v = Math.max(min, Math.min(max, Math.round(v)));
     input.value = v;
-    slider.value = v; // 浏览器会把滑块位置吸附到最近的步进点
+    slider.value = v; // the browser snaps the slider position to the nearest step
     onChange(v);
   };
   slider.addEventListener('input', () => commit(parseInt(slider.value, 10)));
   input.addEventListener('change', () => {
     const v = parseInt(input.value, 10);
-    if (isNaN(v)) { input.value = slider.value; return; } // 清空/非法输入：回退为滑块当前值
+    if (isNaN(v)) { input.value = slider.value; return; } // empty/invalid input: fall back to the current slider value
     commit(v);
   });
 }
@@ -135,9 +135,9 @@ function setupDropZone(dropZone, onFile, accept = 'image/*') {
   if (input) {
     input.accept = accept;
     input.addEventListener('change', (e) => {
-      // multiple 输入框把每个文件都回调一遍；单文件页行为不变
+      // multiple inputs call back once per file; single-file pages behave the same
       Array.from(e.target.files).forEach((f) => onFile(f));
-      input.value = ''; // 允许再次选择同一文件
+      input.value = ''; // allow selecting the same file again
     });
   }
 
@@ -187,14 +187,6 @@ const usageGuides = {
         <p>4. Click <strong>Download</strong> to save the compressed image.</p>
         <p>💡 Tip: If the result looks blurry, increase the quality. If the file is still too large, switch to WebP format.</p>`
     },
-    zh: {
-      title: '如何压缩图片',
-      body: `<p>1. 将图片拖拽到上传区域，或点击选择。</p>
-        <p>2. 拖动<strong>质量</strong>滑块平衡文件大小和画质。分享到 Discord 或论坛时，70-80% 通常是最佳选择。</p>
-        <p>3. 选择输出格式：<strong>JPEG</strong> 适合照片，<strong>WebP</strong> 体积最小，<strong>PNG</strong> 无损画质。</p>
-        <p>4. 点击<strong>下载</strong>保存压缩后的图片。</p>
-        <p>💡 提示：如果压缩后模糊，调高质量；如果文件还是太大，切换到 WebP 格式。</p>`
-    }
   },
   'resize.html': {
     en: {
@@ -205,14 +197,6 @@ const usageGuides = {
         <p>4. Choose output format and click <strong>Download</strong>.</p>
         <p>💡 Tip: Common sizes — avatar 512×512, wallpaper 1920×1080, thumbnail 1280×720.</p>`
     },
-    zh: {
-      title: '如何调整图片尺寸',
-      body: `<p>1. 拖拽或点击上传图片。</p>
-        <p>2. 输入新的<strong>宽度</strong>和<strong>高度</strong>（像素）。勾选"保持宽高比"防止拉伸变形。</p>
-        <p>3. 或使用<strong>百分比滑块</strong>按比例缩放（50%、200% 等）。</p>
-        <p>4. 选择输出格式，点击<strong>下载</strong>。</p>
-        <p>💡 常用尺寸：头像 512×512，壁纸 1920×1080，缩略图 1280×720。</p>`
-    }
   },
   'crop.html': {
     en: {
@@ -223,14 +207,6 @@ const usageGuides = {
         <p>4. Click <strong>Download Crop</strong> to save the cropped image.</p>
         <p>💡 Tip: Use 16:9 for wallpapers, 1:1 for avatars, 9:16 for phone wallpapers.</p>`
     },
-    zh: {
-      title: '如何裁剪图片',
-      body: `<p>1. 上传截图。</p>
-        <p>2. 拖动裁剪框移动位置，拖动角点/边点调整大小。</p>
-        <p>3. 可选择<strong>宽高比</strong>（1:1、16:9、4:3 等）精确裁剪。</p>
-        <p>4. 点击<strong>下载裁剪图</strong>保存。</p>
-        <p>💡 提示：壁纸用 16:9，头像用 1:1，手机壁纸用 9:16。</p>`
-    }
   },
   'convert.html': {
     en: {
@@ -241,14 +217,6 @@ const usageGuides = {
         <p>4. Click <strong>Download</strong>.</p>
         <p>💡 Tip: PNG → JPEG reduces size significantly. WebP is 25-35% smaller than JPEG at the same quality.</p>`
     },
-    zh: {
-      title: '如何转换图片格式',
-      body: `<p>1. 上传图片（PNG、JPG 或 WebP）。</p>
-        <p>2. 从下拉菜单选择<strong>目标格式</strong>。</p>
-        <p>3. 对于 JPEG/WebP，调整<strong>质量</strong>滑块（推荐 90%）。</p>
-        <p>4. 点击<strong>下载</strong>。</p>
-        <p>💡 提示：PNG 转 JPEG 可大幅减小体积；相同质量下 WebP 比 JPEG 小 25-35%。</p>`
-    }
   },
   'rotate.html': {
     en: {
@@ -258,13 +226,6 @@ const usageGuides = {
         <p>3. Actions accumulate — rotate twice = 180°, flip twice = back to original.</p>
         <p>4. Choose output format and click <strong>Download</strong>.</p>`
     },
-    zh: {
-      title: '如何旋转或翻转图片',
-      body: `<p>1. 上传图片。</p>
-        <p>2. 点击按钮旋转（左转90°、右转90°、180°）或翻转（水平、垂直）。</p>
-        <p>3. 操作可累积——旋转两次=180°，翻转两次=恢复原状。</p>
-        <p>4. 选择输出格式，点击<strong>下载</strong>。</p>`
-    }
   },
   'palette.html': {
     en: {
@@ -274,13 +235,6 @@ const usageGuides = {
         <p>3. Click any color swatch to copy its HEX value to your clipboard.</p>
         <p>💡 Tip: Use these colors for stream overlays, thumbnails, or custom wallpapers that match the game's aesthetic.</p>`
     },
-    zh: {
-      title: '如何提取配色板',
-      body: `<p>1. 上传任意图片或截图。</p>
-        <p>2. 工具自动提取 12 个主要颜色。</p>
-        <p>3. 点击任意色块复制 HEX 颜色值到剪贴板。</p>
-        <p>💡 提示：用这些颜色做直播界面、缩略图或壁纸，和游戏风格保持一致。</p>`
-    }
   },
   'epub.html': {
     en: {
@@ -291,14 +245,6 @@ const usageGuides = {
         <p>4. Click <strong>Convert to EPUB</strong> and download the .epub file.</p>
         <p>💡 Tip: The tool auto-splits chapters by headings (H1/H2). For TXT files, it splits every 50 paragraphs.</p>`
     },
-    zh: {
-      title: '如何转换为 EPUB',
-      body: `<p>1. 上传 TXT、HTML、Markdown 或 PDF 文件。</p>
-        <p>2. 输入<strong>书名</strong>和<strong>作者</strong>。</p>
-        <p>3. 选择<strong>语言</strong>。</p>
-        <p>4. 点击<strong>转换为 EPUB</strong>并下载 .epub 文件。</p>
-        <p>💡 提示：工具会按标题（H1/H2）自动分章；TXT 文件每 50 段分一章。</p>`
-    }
   },
   'qr.html': {
     en: {
@@ -309,14 +255,6 @@ const usageGuides = {
         <p>4. Click <strong>Download PNG</strong> to save.</p>
         <p>💡 Tip: Use error correction level H (30%) for codes printed on merch, so they still scan if partially covered.</p>`
     },
-    zh: {
-      title: '如何生成二维码',
-      body: `<p>1. 在输入框输入网址或文本。</p>
-        <p>2. 自定义<strong>尺寸</strong>、<strong>前景色</strong>、<strong>背景色</strong>和<strong>容错级别</strong>。</p>
-        <p>3. 点击<strong>生成</strong>（或输入时自动生成）。</p>
-        <p>4. 点击<strong>下载 PNG</strong>保存。</p>
-        <p>💡 提示：印在周边产品上的二维码用 H 级容错（30%），即使部分被遮挡也能扫描。</p>`
-    }
   },
   'heic.html': {
     en: {
@@ -327,14 +265,6 @@ const usageGuides = {
         <p>4. Click <strong>Download</strong> on each image, or <strong>Download All</strong>.</p>
         <p>💡 Tip: HEIC is Apple's default photo format. Most websites and apps (Discord, forums) don't support it — converting to JPG fixes compatibility.</p>`
     },
-    zh: {
-      title: '如何将 HEIC 转为 JPG',
-      body: `<p>1. 拖拽一个或多个 .heic/.heif 文件（来自 iPhone）。</p>
-        <p>2. 选择输出格式：<strong>JPEG</strong> 或 <strong>PNG</strong>。</p>
-        <p>3. 转换在浏览器中自动完成。</p>
-        <p>4. 点击每个图片的<strong>下载</strong>，或点击<strong>下载全部</strong>。</p>
-        <p>💡 提示：HEIC 是苹果默认照片格式，大多数网站和应用（Discord、论坛）不支持，转 JPG 可解决兼容问题。</p>`
-    }
   }
 };
 
@@ -348,14 +278,6 @@ const defaultGuide = {
       <p>4. Your processed file will download automatically.</p>
       <p>💡 All processing happens locally in your browser — your files never leave your device.</p>`
   },
-  zh: {
-    title: '如何使用此工具',
-    body: `<p>1. 将文件拖拽到上传区域，或点击选择。</p>
-      <p>2. 根据需要调整选项。</p>
-      <p>3. 点击操作按钮（转换/生成/下载）处理。</p>
-      <p>4. 处理后的文件会自动下载。</p>
-      <p>💡 所有处理都在浏览器本地完成——你的文件不会上传到任何服务器。</p>`
-  }
 };
 
 function injectUsageGuide() {
@@ -381,24 +303,15 @@ function injectUsageGuide() {
   const footer = document.querySelector('.footer');
   if (!footer) return;
   const existing = document.querySelector('.usage-guide');
-  if (existing) {
-    // Language switched: re-render in the new language (keep open/closed state)
-    const lang = (window.i18n && i18n.getLang()) || 'zh';
-    const guide = usageGuides[page] || defaultGuide;
-    const g = guide[lang] || guide.en;
-    existing.innerHTML = `<summary>${g.title}</summary><div class="usage-guide-content">${g.body}</div>`;
-    return;
-  }
-  const lang = (window.i18n && i18n.getLang()) || 'zh';
+  if (existing) return; // guide already injected
   const guide = usageGuides[page] || defaultGuide;
-  const g = guide[lang] || guide.en;
+  const g = guide.en;
   const details = document.createElement('details');
   details.className = 'usage-guide';
   details.innerHTML = `<summary>${g.title}</summary><div class="usage-guide-content">${g.body}</div>`;
   footer.parentNode.insertBefore(details, footer);
 }
 
-document.addEventListener('langchange', injectUsageGuide);
 
 /* Inject Privacy / About links into every tool page footer */
 function injectFooterLinks() {

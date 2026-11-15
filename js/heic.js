@@ -9,7 +9,7 @@
 
   const results = []; // {blob, name, url}
 
-  // setupDropZone 会对 multiple 输入框逐个回调；先入队，50ms 后统一批量转换
+  // setupDropZone calls back once per file for multiple inputs; queue first, then batch-convert after 50ms
   let pendingFiles = [];
   let convertTimer = null;
 
@@ -26,8 +26,8 @@
   setupDropZone(dropZone, handleFile, '.heic,.heif,image/heic,image/heif');
 
   /**
-   * 用 libheif-js（官方 wasm 构建）把 HEIC/HEIF 解码并转成 JPEG/PNG Blob。
-   * vendor 脚本（约 2MB）改为首次使用时才加载，避免拖慢首屏。
+   * Decodes HEIC/HEIF with libheif-js (official wasm build) and converts to a JPEG/PNG Blob.
+   * The vendor script (~2MB) is now loaded on first use to avoid slowing the first paint.
    */
   let vendorPromise = null;
   function loadScript(src) {
@@ -69,7 +69,7 @@
     if (!frames || !frames.length) {
       throw new Error('not a valid HEIC/HEIF image');
     }
-    // live photo 等多帧文件取主帧
+    // for multi-frame files like Live Photo, take the primary frame
     const image = frames[0];
     const width = image.get_width();
     const height = image.get_height();
@@ -119,7 +119,7 @@
         const url = URL.createObjectURL(blob);
         const outName = file.name.replace(/\.[^.]+$/, '') + '.' + (outFormat.value.includes('png') ? 'png' : 'jpg');
         results.push({ blob, name: outName, url });
-        // 按本批内的索引精确对应，避免同名前缀文件（a.heic / a2.heic）点错下载
+        // map precisely by in-batch index to avoid downloading the wrong file for same-prefix names (a.heic / a2.heic)
         const rIndex = results.length - 1;
         item.innerHTML = `
           <img src="${url}" alt="${file.name}">
@@ -131,14 +131,14 @@
           if (r) downloadBlob(r.blob, r.name);
         });
       } catch (e) {
-        // 显示真实错误原因，便于诊断（非 HEIC 文件 / 不支持的编码等）
+        // show the real error reason for easier diagnosis (non-HEIC file / unsupported codec, etc.)
         const reason = (e && e.message) ? e.message.slice(0, 120) : '';
         item.innerHTML = `<div class="name">${file.name}</div><div style="font-size:12px;color:var(--color-danger);">${tt('common.failed')}${reason ? ' · ' + reason : ''}</div>`;
       }
     }
   }
 
-  // 单文件直接下载；多文件打包 zip（浏览器会拦截一次点击触发的多个下载）
+  // single file downloads directly; multiple files are zipped (browsers block multiple downloads from one click)
   downloadAllBtn.addEventListener('click', async () => {
     if (!results.length) return;
     if (results.length === 1) {
@@ -168,7 +168,7 @@
     dropZone.style.display = 'block';
   });
 
-  // 图片接力：HEIC 转出的第一张图可直接带进压缩/改尺寸等工具
+  // Image handoff: the first converted HEIC image can be carried into compress/resize/etc.
   ImageHandoff.mount({
     current: 'heic',
     after: document.getElementById('downloadAllBtn'),
