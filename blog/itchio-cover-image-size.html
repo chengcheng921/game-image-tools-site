@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VTV63NF2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7VTV63NF2Z");
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>itch.io Cover Image Size: 630×500 (and Why Not 1280×720)</title>
+  <meta name="description" content="itch.io cover image size is 630×500, minimum 315×250, ratio 315:250. Why a 16:9 screenshot gets cropped, plus screenshot limits and a resize workflow.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.com/blog/itchio-cover-image-size.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.com/blog/itchio-cover-image-size.html">
+  <meta property="og:title" content="itch.io Cover Image Size: 630×500 (and Why Not 1280×720)">
+  <meta property="og:description" content="itch.io cover image size is 630×500, minimum 315×250, ratio 315:250. Why a 16:9 screenshot gets cropped, plus screenshot limits and a resize workflow.">
+  <meta property="og:image" content="https://gameimageeditor.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="itch.io Cover Image Size: 630×500 (and Why Not 1280×720)">
+  <meta name="twitter:description" content="itch.io cover image size is 630×500, minimum 315×250, ratio 315:250. Why a 16:9 screenshot gets cropped, plus screenshot limits and a resize workflow.">
+  <meta name="twitter:image" content="https://gameimageeditor.com/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "itch.io Cover Image Size: 630×500 (and Why Not 1280×720)",
+  "description": "itch.io cover image size is 630×500, minimum 315×250, ratio 315:250. Why a 16:9 screenshot gets cropped, plus screenshot limits and a resize workflow.",
+  "image": [
+    "https://gameimageeditor.com/og-image.png"
+  ],
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.com/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.com/blog/itchio-cover-image-size.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the itch.io cover image size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upload a 630 by 500 pixel cover image. The minimum accepted size is 315 by 250, and the required aspect ratio is 315:250, which is slightly wider than 5:4. Any image with a different ratio gets cropped or letterboxed in the browse grid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a 1280×720 screenshot as my itch.io cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can upload it, but 16:9 does not match the 315:250 cover ratio, so itch.io crops it or shows empty bands. A typical 1280 by 720 image loses roughly a fifth of its height when fitted to the cover frame, which is why dedicated cover art beats a raw gameplay frame."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What size should itch.io screenshots be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Screenshots display at roughly 347 pixels wide and are scaled down from whatever you upload. The maximum supported resolution is 3840 by 2160. Upload 1280 by 720 or 1920 by 1080 for a clean result, and avoid portrait images taller than 3:4 because they render thin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PNG or JPG better for an itch.io cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG for covers with a logo, title text or flat illustration; JPG for photographic key art. A 630 by 500 PNG is normally well under a megabyte, so there is no reason to accept JPG artifacts around lettering."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I resize an image to 630×500 without stretching it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Crop to the 315:250 ratio first, then resize to 630 by 500. Setting both width and height on a differently shaped image stretches faces and logos. Crop the long edge, then scale with the aspect ratio locked."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my itch.io cover look blurry or cut off?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two causes: uploading below 315 by 250 and letting itch.io upscale, or placing the logo and important detail near the edges where the browse grid trims. Keep critical elements inside the central 80 percent of the canvas and export at 630 by 500."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>itch.io Cover Image Size: 630×500 (and Why Not 1280×720)</h1>
+      <p class="meta">Published on Nov 15, 2026 · 5 min read</p>
+
+      <p><strong>The itch.io cover image is 630 × 500 pixels.</strong> The minimum accepted size is 315 × 250, and the aspect ratio is locked to 315:250 — roughly 1.26:1, slightly wider than 5:4. That ratio is the part people get wrong: a 16:9 screenshot pasted in as a cover is not resized to fit, it is cropped, and the crop usually takes the HUD or the logo with it. Below are the exact numbers, the screenshot limits, and a three-step way to turn existing key art into a cover that survives thumbnail size.</p>
+
+      <h2>itch.io Image Sizes at a Glance</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Asset</th><th>Size</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cover image (recommended)</td><td>630 × 500</td><td>Ratio 315:250, appears in browse grid and search</td></tr>
+            <tr><td>Cover image (minimum)</td><td>315 × 250</td><td>Exact display size; anything smaller gets upscaled</td></tr>
+            <tr><td>Screenshot display width</td><td>≈347 px</td><td>Larger uploads are scaled down</td></tr>
+            <tr><td>Screenshot maximum</td><td>3840 × 2160</td><td>QFHD ceiling</td></tr>
+            <tr><td>Suggested screenshot export</td><td>1280 × 720 or 1920 × 1080</td><td>Standard 16:9 landscape</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Note what the cover ratio is <em>not</em>: it is not 16:9, and it is not 1:1. It sits between 5:4 and 4:3, which means every asset you already made for YouTube, Steam or Discord will need its own crop. Plan for that instead of discovering it after upload.</p>
+
+      <h2>Why a 1280×720 Screenshot Fails as a Cover</h2>
+      <p>A 1280 × 720 frame has a 1.78:1 ratio. The cover frame is 1.26:1. To fill the cover without distorting, the platform has to remove content, and it removes it from the long edge — for a 1280-wide image fitted to a 1.26 ratio, roughly 270 pixels come off the height. That is usually the top or bottom band where your health bar, subtitle or studio logo lives.</p>
+      <p>Fitting instead of cropping is worse: the image shrinks to the full 630 width and leaves empty space above and below, so the cover looks unfinished in the grid. The practical answer is to stop treating gameplay frames as covers. Take a clean composition — a character, a vehicle, a landscape, a hand-drawn logo — and crop it to 315:250 before resizing.</p>
+
+      <h2>Design for the Thumbnail, Not the Full Size</h2>
+      <p>Most people will see your cover at 315 × 250 or smaller, in a grid next to dozens of others. At that size a detailed illustration collapses into mush and a five-word title becomes unreadable. Three rules keep it working:</p>
+      <ul>
+        <li><strong>One focal subject.</strong> A single character or object, filling 40–60% of the frame.</li>
+        <li><strong>Three colors plus an outline.</strong> Busy gradients and photo-real detail disappear at thumbnail scale.</li>
+        <li><strong>Keep the title inside the central 80%.</strong> Browse grids trim edges, and itch.io overlays tags and price on some surfaces.</li>
+      </ul>
+      <p>Test it honestly: export the 630 × 500 cover, then shrink the preview to 315 pixels wide and look at it from arm's length. If you cannot tell what the game is, the art is too detailed for the slot.</p>
+
+      <h2>How to Make a 630×500 Cover From Existing Art</h2>
+      <ul>
+        <li><strong>Step 1.</strong> Open the <a href="../crop.html">image cropper</a> and set a custom 315:250 crop — width 315, height 250. This locks the ratio so the next step cannot stretch anything.</li>
+        <li><strong>Step 2.</strong> Frame the subject with about 10% empty margin on each side, keeping text away from the edges.</li>
+        <li><strong>Step 3.</strong> Resize to 630 × 500 with the <a href="../resize.html">image resizer</a>, keeping the aspect ratio locked. Never type 630 and 500 into a differently shaped image.</li>
+        <li><strong>Step 4.</strong> Export as PNG if the cover contains a logo or title text, JPG at high quality if it is photographic. Either way the file will be small at this resolution.</li>
+        <li><strong>Step 5.</strong> Upload and check the live grid. The store page preview is more flattering than the browse grid, so judge the thumbnail, not the header.</li>
+      </ul>
+      <p>If you only have a 4K screenshot to work with, crop first and downscale second. Downscaling a 3840-wide frame straight to 630 throws away detail unevenly and can leave a soft result; cropping to the ratio first keeps the subject sharp. If the resulting PNG is unexpectedly large, the <a href="../compress.html">image compressor</a> will bring it down without touching the dimensions.</p>
+
+      <h2>Screenshots: What Actually Matters</h2>
+      <p>Screenshots are far more forgiving than the cover. itch.io displays them at roughly 347 pixels wide and scales anything larger down, with a ceiling of 3840 × 2160. Upload 1920 × 1080 for the best balance of sharpness and upload size, and keep them landscape 16:9 — portrait images taller than 3:4 render thin and get lost in the layout.</p>
+      <p>Use the screenshots to show gameplay, not marketing copy. Three to five frames that demonstrate the core loop outperform a dozen similar shots of the same menu. If a screenshot needs text to explain what is happening, it is the wrong screenshot.</p>
+
+      <h2>Common Cover Mistakes</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Mistake</th><th>What happens</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Uploading a 16:9 screenshot as cover</td><td>Top or bottom content is cropped away</td></tr>
+            <tr><td>Forcing 630 × 500 on a square image</td><td>Stretched faces and distorted logos</td></tr>
+            <tr><td>Uploading below 315 × 250</td><td>itch.io upscales it, and the grid looks soft</td></tr>
+            <tr><td>Text baked into the outer edges</td><td>Trimmed by the browse grid or covered by overlays</td></tr>
+            <tr><td>Flat-color JPG cover</td><td>Visible ringing around letters and logo edges</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>What is the itch.io cover image size?</h3>
+      <p>Upload a 630 by 500 pixel cover image. The minimum accepted size is 315 by 250, and the required aspect ratio is 315:250, which is slightly wider than 5:4. Any image with a different ratio gets cropped or letterboxed in the browse grid.</p>
+
+      <h3>Can I use a 1280×720 screenshot as my itch.io cover?</h3>
+      <p>You can upload it, but 16:9 does not match the 315:250 cover ratio, so itch.io crops it or shows empty bands. A typical 1280 by 720 image loses roughly a fifth of its height when fitted to the cover frame, which is why dedicated cover art beats a raw gameplay frame.</p>
+
+      <h3>What size should itch.io screenshots be?</h3>
+      <p>Screenshots display at roughly 347 pixels wide and are scaled down from whatever you upload. The maximum supported resolution is 3840 by 2160. Upload 1280 by 720 or 1920 by 1080 for a clean result, and avoid portrait images taller than 3:4 because they render thin.</p>
+
+      <h3>Is PNG or JPG better for an itch.io cover?</h3>
+      <p>PNG for covers with a logo, title text or flat illustration; JPG for photographic key art. A 630 by 500 PNG is normally well under a megabyte, so there is no reason to accept JPG artifacts around lettering.</p>
+
+      <h3>How do I resize an image to 630×500 without stretching it?</h3>
+      <p>Crop to the 315:250 ratio first, then resize to 630 by 500. Setting both width and height on a differently shaped image stretches faces and logos. Crop the long edge, then scale with the aspect ratio locked.</p>
+
+      <h3>Why does my itch.io cover look blurry or cut off?</h3>
+      <p>Two causes: uploading below 315 by 250 and letting itch.io upscale, or placing the logo and important detail near the edges where the browse grid trims. Keep critical elements inside the central 80 percent of the canvas and export at 630 by 500.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
+        <li><a href="roblox-decal-size.html">Roblox Decal Size: 256×256, 512 or 1024?</a></li>
+        <li><a href="compress-image-under-500kb.html">How to Compress an Image to Under 500 KB</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+</body>
+</html>
