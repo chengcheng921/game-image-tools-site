@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VTV63NF2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7VTV63NF2Z");
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox Decal Size: 256×256, 512 or 1024? (2026 Guide)</title>
+  <meta name="description" content="Roblox decal sizing: when 256×256 is enough, when to go 512 or 1024, the official format and file limits, and how to export a clean transparent PNG.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.com/blog/roblox-decal-size.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.com/blog/roblox-decal-size.html">
+  <meta property="og:title" content="Roblox Decal Size: 256×256, 512 or 1024? (2026 Guide)">
+  <meta property="og:description" content="Roblox decal sizing: when 256×256 is enough, when to go 512 or 1024, the official format and file limits, and how to export a clean transparent PNG.">
+  <meta property="og:image" content="https://gameimageeditor.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roblox Decal Size: 256×256, 512 or 1024? (2026 Guide)">
+  <meta name="twitter:description" content="Roblox decal sizing: when 256×256 is enough, when to go 512 or 1024, the official format and file limits, and how to export a clean transparent PNG.">
+  <meta name="twitter:image" content="https://gameimageeditor.com/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Roblox Decal Size: 256×256, 512 or 1024?",
+  "description": "Roblox decal sizing: when 256×256 is enough, when to go 512 or 1024, the official format and file limits, and how to export a clean transparent PNG.",
+  "image": [
+    "https://gameimageeditor.com/og-image.png"
+  ],
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.com/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.com/blog/roblox-decal-size.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What size should a Roblox decal be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "256 by 256 pixels covers most decals, because decals are usually viewed small on props, badges and GUI icons. Use 512 or 1024 when the decal fills a large surface or contains readable text. Roblox accepts textures up to 4096 by 4096, but a full-size upload is wasted memory if the object appears small in game."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file formats does Roblox accept for decals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PNG, JPG, TGA and BMP. Use PNG when the artwork needs transparency or contains flat color, logos and text, because JPG adds visible artifacts around hard edges. Use JPG only for photographic textures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a file size limit for Roblox decals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uploads through the asset API are capped at 20 MB per file, and decal images must be smaller than 8000 by 8000 pixels. Supported texture resolution is up to 4096 by 4096. Those limits are generous; a 256 by 256 PNG is normally only a few kilobytes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a Roblox decal need a transparent background?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if the art should blend into the surface. A decal with an opaque rectangle will show that rectangle in game. Save as PNG with an alpha channel when the decal is a logo, icon or sticker shape, and keep the background opaque when the image is meant to cover the whole surface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why was my Roblox decal rejected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most rejections are moderation decisions, not technical ones: copyrighted characters and logos, real people, personal information in the image, or content that breaks Roblox community rules. Check that the file is a supported format and under the size limit first, then replace any third-party artwork with something you own."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use 256 or 1024 for a decal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Match the size to how large the decal appears on screen. Icons, badges and small props: 256. Medium surfaces and readable labels: 512. Large billboards, signs and surface GUIs with fine text: 1024. Going higher than the on-screen size only costs memory and upload time."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>Roblox Decal Size: 256×256, 512 or 1024?</h1>
+      <p class="meta">Published on Nov 15, 2026 · 5 min read</p>
+
+      <p><strong>Use 256 × 256 pixels for a Roblox decal unless you have a reason not to.</strong> Decals are almost always viewed at small on-screen sizes — a badge, a shop sign, an icon on a GUI — and 256 is the smallest power-of-two size that still looks clean at those scales. Move to 512 when the decal covers a medium surface or contains a short line of text, and to 1024 when it fills a billboard or a SurfaceGui with fine lettering. Roblox accepts far larger textures, but uploading 2048 for an object that renders 100 pixels wide only costs memory.</p>
+
+      <h2>Roblox Decal Sizes by Use Case</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Decal use</th><th>Recommended size</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GUI icons, badges, small stickers</td><td>256 × 256</td><td>Rendered small; 256 stays sharp and cheap</td></tr>
+            <tr><td>Props, crates, posters, small signs</td><td>256 × 256</td><td>Surface is rarely close to the camera</td></tr>
+            <tr><td>Shop signs and short labels</td><td>512 × 512</td><td>Enough pixels for 3–4 readable words</td></tr>
+            <tr><td>Billboards, banners, large walls</td><td>1024 × 1024</td><td>Viewed from a distance but covering a lot of area</td></tr>
+            <tr><td>SurfaceGui with fine text or UI</td><td>1024 × 1024</td><td>Text needs pixel density to stay legible</td></tr>
+            <tr><td>Maximum supported texture</td><td>4096 × 4096</td><td>Roblox engine ceiling for textures</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Every size in the table is a power of two, and that is not a coincidence. Power-of-two textures map cleanly onto the engine's mipmap chain, so Roblox can generate progressively smaller versions without odd rounding, and distant objects sample them without shimmering. A 300 × 300 decal works, but 256 or 512 will usually look more stable at distance.</p>
+
+      <h2>Official Technical Limits</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Requirement</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Accepted formats</td><td>PNG, JPG, TGA, BMP</td></tr>
+            <tr><td>Supported texture resolution</td><td>Up to 4096 × 4096</td></tr>
+            <tr><td>Decal asset dimensions</td><td>Smaller than 8000 × 8000</td></tr>
+            <tr><td>File size per upload</td><td>20 MB maximum</td></tr>
+            <tr><td>Transparency</td><td>PNG alpha channel</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>These are ceilings, not targets. A 256 × 256 PNG is typically a few kilobytes, so file size is only worth thinking about when you upload a 4K texture for a large surface. If a PNG does creep past a few megabytes, run it through an <a href="../compress.html">image compressor</a> instead of dropping the resolution — a compressed 1024 texture still beats an uncompressed 256.</p>
+
+      <h2>PNG or JPG for Roblox Decals?</h2>
+      <p>Use PNG in almost every case. Decals are usually logos, icons, labels and flat-color art, and PNG stores those hard edges exactly. JPG introduces ringing around letterforms and colored fringing on flat areas, which becomes obvious once the decal sits on a bright game surface. The exception is a photographic texture — grass, rock, fabric — where JPG at high quality is both smaller and visually indistinguishable.</p>
+      <p>Transparency is a separate decision from format. If the decal is a sticker shape, save it as PNG with the background removed, so the game surface shows through. If the decal is meant to cover the entire face of a part, keep an opaque background; a transparent edge there produces a visible seam. Use the <a href="../convert.html">image format converter</a> if your source art is a different format, and check the alpha channel against both a light and a dark background before uploading.</p>
+
+      <h2>How to Make a 256 × 256 Decal</h2>
+      <ul>
+        <li><strong>Step 1.</strong> Open the <a href="../crop.html">image cropper</a> and set a 1:1 crop. Center the subject with about 5–10% padding so edges do not touch the part boundary.</li>
+        <li><strong>Step 2.</strong> Resize to 256 × 256 with the <a href="../resize.html">image resizer</a>. Type the exact numbers and keep the aspect ratio locked; do not drag a corner by eye.</li>
+        <li><strong>Step 3.</strong> Export PNG. If you need 512 or 1024 later, scale up from your original master, not from the 256 file.</li>
+        <li><strong>Step 4.</strong> Preview the decal at the size it will actually appear in game. On most props that is closer to 100 pixels than 256, so check the shape reads clearly when shrunk.</li>
+        <li><strong>Step 5.</strong> Upload in Studio. Keep the original master file — Roblox compresses uploads, and re-exporting from a small file loses quality permanently.</li>
+      </ul>
+
+      <h2>Why Decals Get Rejected</h2>
+      <p>Most Roblox decal failures are moderation decisions rather than technical errors. Copyrighted game characters, anime characters, brand logos and sports crests are removed for infringement. Images containing real people, personal information such as phone numbers or addresses, or content that breaks Roblox community rules are rejected outright. Text-only images can also be flagged when the wording is ambiguous.</p>
+      <p>The technical failures are easier to avoid: an unsupported format such as WebP or HEIC, dimensions beyond the supported texture size, or a file over the 20 MB upload limit. Convert to PNG first and the format problem disappears. If your source is an iPhone photo, the <a href="../heic.html">HEIC to JPG/PNG converter</a> handles the conversion locally in your browser.</p>
+
+      <h2>Decal, ImageLabel or SurfaceGui?</h2>
+      <p>The asset is the same image; what changes is how it is displayed. A Decal wraps a texture onto a part face and is the right choice for world objects. An ImageLabel sits inside a ScreenGui or SurfaceGui and gives you pixel-level control over size, which is what you want for UI work. A SurfaceGui renders an entire interface onto a part, so if the design includes buttons or multiple elements, build it there rather than as a single decal.</p>
+      <p>For UI-driven work, design at 1024 and let the engine scale down. For world props, 256 is the efficient default, and you can always bump a specific asset to 512 if players will stand close to it.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>What size should a Roblox decal be?</h3>
+      <p>256 by 256 pixels covers most decals, because decals are usually viewed small on props, badges and GUI icons. Use 512 or 1024 when the decal fills a large surface or contains readable text. Roblox accepts textures up to 4096 by 4096, but a full-size upload is wasted memory if the object appears small in game.</p>
+
+      <h3>What file formats does Roblox accept for decals?</h3>
+      <p>PNG, JPG, TGA and BMP. Use PNG when the artwork needs transparency or contains flat color, logos and text, because JPG adds visible artifacts around hard edges. Use JPG only for photographic textures.</p>
+
+      <h3>Is there a file size limit for Roblox decals?</h3>
+      <p>Uploads through the asset API are capped at 20 MB per file, and decal images must be smaller than 8000 by 8000 pixels. Supported texture resolution is up to 4096 by 4096. Those limits are generous; a 256 by 256 PNG is normally only a few kilobytes.</p>
+
+      <h3>Does a Roblox decal need a transparent background?</h3>
+      <p>Only if the art should blend into the surface. A decal with an opaque rectangle will show that rectangle in game. Save as PNG with an alpha channel when the decal is a logo, icon or sticker shape, and keep the background opaque when the image is meant to cover the whole surface.</p>
+
+      <h3>Why was my Roblox decal rejected?</h3>
+      <p>Most rejections are moderation decisions, not technical ones: copyrighted characters and logos, real people, personal information in the image, or content that breaks Roblox community rules. Check that the file is a supported format and under the size limit first, then replace any third-party artwork with something you own.</p>
+
+      <h3>Should I use 256 or 1024 for a decal?</h3>
+      <p>Match the size to how large the decal appears on screen. Icons, badges and small props: 256. Medium surfaces and readable labels: 512. Large billboards, signs and surface GUIs with fine text: 1024. Going higher than the on-screen size only costs memory and upload time.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
+        <li><a href="discord-emoji-size.html">Discord Emoji Size: 128×128 Rules and Upload Limits</a></li>
+        <li><a href="twitch-emote-size.html">Twitch Emote Size: 112×112, 56×56 and 28×28</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+</body>
+</html>
