@@ -20,3 +20,6 @@ npm-debug.log*
 
 # OS
 Thumbs.db
+
+# Trae share packages (generated locally, not site content)
+.trae-html-share-packages/
