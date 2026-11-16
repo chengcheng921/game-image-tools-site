@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VTV63NF2Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-7VTV63NF2Z");
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF to PNG: Convert Every Page to a Sharp Image (No Upload)</title>
+  <meta name="description" content="Convert PDF pages to PNG in your browser. Get the output resolution, when PNG beats JPG for text-heavy pages, and how to batch export long documents.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.com/blog/pdf-to-png.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.com/blog/pdf-to-png.html">
+  <meta property="og:title" content="PDF to PNG: Convert Every Page to a Sharp Image (No Upload)">
+  <meta property="og:description" content="Convert PDF pages to PNG in your browser. Get the output resolution, when PNG beats JPG for text-heavy pages, and how to batch export long documents.">
+  <meta property="og:image" content="https://gameimageeditor.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF to PNG: Convert Every Page to a Sharp Image (No Upload)">
+  <meta name="twitter:description" content="Convert PDF pages to PNG in your browser. Get the output resolution, when PNG beats JPG for text-heavy pages, and how to batch export long documents.">
+  <meta name="twitter:image" content="https://gameimageeditor.com/og-image.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "PDF to PNG: Convert Every Page to a Sharp Image (No Upload)",
+  "description": "Convert PDF pages to PNG in your browser. Get the output resolution, when PNG beats JPG for text-heavy pages, and how to batch export long documents.",
+  "image": [
+    "https://gameimageeditor.com/og-image.png"
+  ],
+  "datePublished": "2026-11-16",
+  "dateModified": "2026-11-16",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.com/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.com/blog/pdf-to-png.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert a PDF to PNG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the PDF to image converter, drop the PDF in, set the output format to PNG, and each page is rendered as a separate image. Download pages individually or save the whole set in one go. The file stays in your browser and is never uploaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What resolution does a PDF page become?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each page is rendered at twice its point size. A US Letter page of 612 by 792 points becomes 1224 by 1584 pixels, which is roughly 144 DPI. That is sharp on screen and acceptable for most print-at-home uses, but it is not a 300 DPI print master."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does PNG look better than JPG for PDF text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPG compression works in blocks and smears colour around edges, which shows up as fuzzy halos around small text and thin lines. PNG is lossless, so glyph edges and one-pixel table borders stay exactly where the renderer put them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert only one page of a PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the PDF splitter first to cut the document down to the pages you need, then convert that smaller file. Converting a 200-page report to get page 7 wastes both time and disk space."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the PNG background transparent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A PDF page has no inherent transparency, so the rendered PNG is filled with the page background, which is white in almost every document. If you need a transparent cut-out, place the PNG in an editor and remove the background there."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <a href="../index.html" class="back-link">← Back to home</a>
+      <h1>PDF to PNG: Convert Every Page to a Sharp Image</h1>
+      <p class="meta">Published on Nov 16, 2026 · 5 min read</p>
+
+      <p>Open the <a href="../pdf-to-image.html">PDF to image converter</a>, drop in the document, set the output to PNG, and every page is rendered as a separate image you can download individually or as a set. The conversion happens in the browser, so confidential documents never travel to a server. The decision that actually matters is PNG versus JPG, and that depends on what the page contains — text and diagrams behave very differently from scanned photographs.</p>
+
+      <h2>PNG or JPG for a PDF Page?</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Page content</th><th>Best format</th><th>Reason</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Text, tables, contracts, invoices</td><td>PNG</td><td>Lossless edges, readable small type</td></tr>
+            <tr><td>Diagrams, charts, UI mockups</td><td>PNG</td><td>Flat colour and hard lines survive</td></tr>
+            <tr><td>Scanned photos, magazine spreads</td><td>JPG</td><td>Continuous tone, far smaller file</td></tr>
+            <tr><td>Mixed report with photos and text</td><td>PNG if under ~10 MB, else JPG</td><td>Balance of sharpness and size</td></tr>
+            <tr><td>Slides exported from a deck</td><td>PNG</td><td>Large flat areas and crisp captions</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The rule of thumb: if the page is mostly white space with dark pixels on top, PNG will look cleaner. If it is a photograph or a scan with continuous gradients, PNG will be several times larger for no visible gain, and JPG is the pragmatic choice.</p>
+
+      <h2>What Resolution You Actually Get</h2>
+      <p>A PDF does not contain pixels — it contains drawing instructions measured in points, where one point is 1/72 inch. Rendering turns those instructions into a pixel grid, and the size of that grid determines sharpness. This converter renders each page at twice its point size, so a US Letter page of 612 × 792 points becomes 1224 × 1584 pixels. That works out to roughly 144 DPI.</p>
+      <p>For screen use — pasting a page into a document, sharing a form, attaching an image to a support ticket — 144 DPI is comfortably sharp. For professional printing, commercial print shops usually ask for 300 DPI, which would need a 2550 × 3300 pixel render and a different tool. Being honest about this limit saves you a rejected print job.</p>
+
+      <h2>Why Text-Only Pages Need PNG</h2>
+      <p>JPG divides the image into 8 × 8 blocks and approximates each one. On photographic content the approximation is invisible. On a page of 10-point text, every block boundary sits next to a glyph, and the approximation shows up as grey fringing and blocky stair-steps around letters. Thin table rules can even disappear at moderate quality settings.</p>
+      <p>PNG stores exact pixel values, so a 1-pixel border stays a clean 1-pixel border and small text stays legible when someone zooms in. That is why screenshots, diagrams and documents are almost always stored as PNG, while camera images are stored as JPG.</p>
+
+      <h2>Converting a Document Step by Step</h2>
+      <ol>
+        <li><strong>Trim the document if you only need part of it.</strong> The <a href="../pdf-split.html">PDF splitter</a> extracts a page range into a smaller file, which makes the conversion faster and keeps the output folder manageable.</li>
+        <li><strong>Drop the PDF into the converter.</strong> The <a href="../pdf-to-image.html">PDF to image tool</a> reads the file, parses the page tree and shows how many pages it found.</li>
+        <li><strong>Pick PNG as the output format.</strong> Switching to JPG later is one click, so there is no harm in converting one page each way and comparing when you are unsure.</li>
+        <li><strong>Download individually or all at once.</strong> Each page gets its own file, named by page number, so the order stays clear even if the export lands in a folder full of other images.</li>
+      </ol>
+
+      <h2>When a PNG Page Becomes Too Large</h2>
+      <p>A 1224 × 1584 PNG of a dense page can land anywhere from 200 KB to 4 MB depending on how much detail and photography it contains. Exporting a fifty-page report as PNG can therefore produce a few hundred megabytes. Two practical fixes:</p>
+      <ul>
+        <li><strong>Convert only the pages you need</strong> by splitting first, rather than exporting the whole document.</li>
+        <li><strong>Compress the PNG afterwards</strong> with the <a href="../compress.html">image compressor</a>, which reduces the colour palette. This works well on text pages, which typically use very few distinct colours, and barely helps on scans.</li>
+      </ul>
+
+      <h2>Common Uses for Page Images</h2>
+      <p>A few situations come up repeatedly. Designers export a slide as PNG to drop into a mockup without linking the original deck. Support teams convert a page of an invoice to PNG so it can be pasted into a chat. Bloggers convert a single page of a whitepaper into an image because the hosting platform will not accept a PDF. Students export a page of lecture notes to annotate on a tablet. In all four cases the source is text-heavy, which is exactly where PNG wins.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>How do I convert a PDF to PNG?</h3>
+      <p>Open the PDF to image converter, drop the PDF in, set the output format to PNG, and each page is rendered as a separate image. Download pages individually or save the whole set in one go. The file stays in your browser and is never uploaded.</p>
+
+      <h3>What resolution does a PDF page become?</h3>
+      <p>Each page is rendered at twice its point size. A US Letter page of 612 by 792 points becomes 1224 by 1584 pixels, which is roughly 144 DPI. That is sharp on screen and acceptable for most print-at-home uses, but it is not a 300 DPI print master.</p>
+
+      <h3>Why does PNG look better than JPG for PDF text?</h3>
+      <p>JPG compression works in blocks and smears colour around edges, which shows up as fuzzy halos around small text and thin lines. PNG is lossless, so glyph edges and one-pixel table borders stay exactly where the renderer put them.</p>
+
+      <h3>Can I convert only one page of a PDF?</h3>
+      <p>Use the PDF splitter first to cut the document down to the pages you need, then convert that smaller file. Converting a 200-page report to get page 7 wastes both time and disk space.</p>
+
+      <h3>Is the PNG background transparent?</h3>
+      <p>No. A PDF page has no inherent transparency, so the rendered PNG is filled with the page background, which is white in almost every document. If you need a transparent cut-out, place the PNG in an editor and remove the background there.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="pdf-to-jpg-convert-pages.html">PDF to JPG: Converting Pages for Sharing and Email</a></li>
+        <li><a href="how-to-split-pdf-into-pages.html">How to Split a PDF Into Separate Pages</a></li>
+        <li><a href="png-vs-jpg-vs-webp-which-format.html">PNG vs JPG vs WebP: Which Format Should You Use?</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+</body>
+</html>
