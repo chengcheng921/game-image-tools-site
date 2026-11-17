@@ -1,9 +1,14 @@
+# Security headers for Cloudflare Pages.
+# Cloudflare already adds X-Content-Type-Options and Referrer-Policy,
+# but we re-declare them to be explicit, and add Permissions-Policy to
+# lock down camera/microphone/geolocation access.
 /*
-  Security headers for Cloudflare Pages.
-  Cloudflare already adds its own X-Content-Type-Options and Referrer-Policy,
-  but we re-declare them to be explicit, and add Permissions-Policy to
-  lock down camera/microphone/geolocation access.
-*/
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=600
+
+# Generated social cards never change after publication, so they can be
+# cached aggressively. Pages purges the edge cache on every deploy.
+/img/*
+  Cache-Control: public, max-age=604800

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GameImage.tools — Guides</title>
+    <link>https://gameimageeditor.com/blog/</link>
+    <description>Practical guides for game screenshots, platform image sizes and file formats.</description>
+    <language>en</language>
+    <lastBuildDate>Tue, 17 Nov 2026 05:55:15 +0000</lastBuildDate>
+    <atom:link href="https://gameimageeditor.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>HEIC to PNG: Convert iPhone Photos Without Uploading Them</title>
+      <link>https://gameimageeditor.com/blog/heic-to-png</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/heic-to-png</guid>
+      <description>Convert HEIC to PNG in your browser. Learn when PNG beats JPG for iPhone photos, why the file grows to 20–40 MB, and how to batch convert safely.</description>
+      <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PDF to PNG: Convert Every Page to a Sharp Image (No Upload)</title>
+      <link>https://gameimageeditor.com/blog/pdf-to-png</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/pdf-to-png</guid>
+      <description>Convert PDF pages to PNG in your browser. Get the output resolution, when PNG beats JPG for text-heavy pages, and how to batch export long documents.</description>
+      <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>YouTube Thumbnail Size: 1280×720 and the 2 MB Limit (2026)</title>
+      <link>https://gameimageeditor.com/blog/youtube-thumbnail-size-1280x720</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/youtube-thumbnail-size-1280x720</guid>
+      <description>YouTube thumbnails must be 1280×720 px at 16:9 and under 2 MB. Get the exact specs, mobile safe zones, and how to crop a screenshot to size.</description>
+      <pubDate>Mon, 16 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>itch.io Cover Image Size: 630×500 (and Why Not 1280×720)</title>
+      <link>https://gameimageeditor.com/blog/itchio-cover-image-size</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/itchio-cover-image-size</guid>
+      <description>itch.io cover image size is 630×500, minimum 315×250, ratio 315:250. Why a 16:9 screenshot gets cropped, plus screenshot limits and a resize workflow.</description>
+      <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Roblox Decal Size: 256×256, 512 or 1024?</title>
+      <link>https://gameimageeditor.com/blog/roblox-decal-size</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/roblox-decal-size</guid>
+      <description>Roblox decal sizing: when 256×256 is enough, when to go 512 or 1024, the official format and file limits, and how to export a clean transparent PNG.</description>
+      <pubDate>Sun, 15 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Twitch Emote Size: 112×112, 56×56 and 28×28 (2026 Guide)</title>
+      <link>https://gameimageeditor.com/blog/twitch-emote-size</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/twitch-emote-size</guid>
+      <description>Twitch emote size rules: upload at 112×112, display at 56 and 28 px, 1:1 transparent PNG under 1 MB. Plus the two upload routes and review rules.</description>
+      <pubDate>Sat, 14 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Compress an Image to Under 500 KB (Free, No Upload)</title>
+      <link>https://gameimageeditor.com/blog/compress-image-under-500kb</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/compress-image-under-500kb</guid>
+      <description>Compress any image under 500 KB in your browser. The three settings that control file size, recommended values for screenshots, photos and transparent PNGs, plus a fix for stubborn files.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Convert TXT to EPUB Free — Turn Notes Into Real Ebooks</title>
+      <link>https://gameimageeditor.com/blog/convert-txt-to-epub-free</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/convert-txt-to-epub-free</guid>
+      <description>Convert TXT, Markdown, HTML, and PDF files to EPUB ebooks free in your browser. Automatic chapters, no upload, works offline.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Discord Emoji Size: 128×128 Rules and Upload Limits</title>
+      <link>https://gameimageeditor.com/blog/discord-emoji-size</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/discord-emoji-size</guid>
+      <description>Discord emoji size explained: 128×128 px recommended, 256 KB hard limit, PNG JPG GIF rules, animated emoji, server slot limits and a transparent PNG workflow.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>HEX to RGB: Convert Colors Between Formats Instantly</title>
+      <link>https://gameimageeditor.com/blog/hex-to-rgb-color-converter</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/hex-to-rgb-color-converter</guid>
+      <description>Convert colors between HEX, RGB, and HSL instantly. Live preview, click to copy. Learn when each format wins for CSS, games, and design.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Create a Strong Password (That Actually Protects You)</title>
+      <link>https://gameimageeditor.com/blog/how-to-create-strong-password</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-create-strong-password</guid>
+      <description>Learn what makes passwords strong in 2026: length, randomness, uniqueness. Generate secure passwords locally in your browser, free.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Crop a Screenshot on Windows and Mac</title>
+      <link>https://gameimageeditor.com/blog/how-to-crop-screenshot-windows-mac</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-crop-screenshot-windows-mac</guid>
+      <description>Crop screenshots on Windows and Mac to remove taskbars, HUDs, and clutter. Free online cropper with aspect-ratio presets, no install needed.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Extract Colors From Any Image (Free, No Photoshop)</title>
+      <link>https://gameimageeditor.com/blog/how-to-extract-colors-from-image</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-extract-colors-from-image</guid>
+      <description>Extract dominant colors from any image and copy HEX/RGB values with one click. Perfect for stream overlays, Discord themes, and fan sites.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Resize an Image Without Losing Quality</title>
+      <link>https://gameimageeditor.com/blog/how-to-resize-image-without-losing-quality</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-resize-image-without-losing-quality</guid>
+      <description>Learn how to resize images without losing quality. Scale down screenshots for Discord, Steam, and avatars. Free browser tool, no signup.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Split a PDF Into Separate Pages (Free, No Upload)</title>
+      <link>https://gameimageeditor.com/blog/how-to-split-pdf-into-pages</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-split-pdf-into-pages</guid>
+      <description>Split a PDF into separate pages or extract page ranges free in your browser. Lossless, private, no account or upload needed.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>JSON Formatter: Validate and Pretty-Print JSON Online</title>
+      <link>https://gameimageeditor.com/blog/json-formatter-validate-online</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/json-formatter-validate-online</guid>
+      <description>Format, validate, and minify JSON online with exact error positions. Debug API responses fast. 100% local — data never leaves your browser.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Convert PDF Pages to JPG or PNG Images</title>
+      <link>https://gameimageeditor.com/blog/pdf-to-jpg-convert-pages</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/pdf-to-jpg-convert-pages</guid>
+      <description>Convert PDF pages to JPG or PNG images free in your browser. 2x resolution, batch ZIP export, works with scanned PDFs. No upload.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>PNG vs JPG vs WebP: Which Image Format Should You Use?</title>
+      <link>https://gameimageeditor.com/blog/png-vs-jpg-vs-webp-which-format</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/png-vs-jpg-vs-webp-which-format</guid>
+      <description>PNG vs JPG vs WebP explained for screenshots and game captures. Learn when each format wins and convert between them free in your browser.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Steam Capsule Image Size: Every Dimension You Need (2026)</title>
+      <link>https://gameimageeditor.com/blog/steam-capsule-image-size</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/steam-capsule-image-size</guid>
+      <description>Every Steam capsule image size in one table: small, main, vertical, header and library capsules, community icon, library hero and page background, plus format rules.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Unix Timestamp Converter: A Practical Guide</title>
+      <link>https://gameimageeditor.com/blog/unix-timestamp-converter-guide</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/unix-timestamp-converter-guide</guid>
+      <description>What is a Unix timestamp? Learn epoch time, seconds vs milliseconds, and convert timestamps to dates free in your browser.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Percent Encoding Explained: What Those %20 Characters Mean</title>
+      <link>https://gameimageeditor.com/blog/url-encoding-special-characters</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/url-encoding-special-characters</guid>
+      <description>Percent encoding, also called URL encoding, explained: why a space becomes %20, which characters are safe, and how to fix double-encoded links.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>What Is Base64 Encoding and When Do You Need It?</title>
+      <link>https://gameimageeditor.com/blog/what-is-base64-encoding</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/what-is-base64-encoding</guid>
+      <description>Base64 explained in plain English: what it is, why it makes data 33% bigger, and when to use it. Free local encoder/decoder included.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>What Is a UUID v4 and Why Is It Everywhere?</title>
+      <link>https://gameimageeditor.com/blog/what-is-uuid-v4</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/what-is-uuid-v4</guid>
+      <description>UUID v4 explained: how random unique IDs work, collision odds, and when to use them. Generate up to 1,000 UUIDs free in your browser.</description>
+      <pubDate>Tue, 10 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>10 Best Free Online Image Tools for Gamers in 2026</title>
+      <link>https://gameimageeditor.com/blog/10-best-free-image-tools-for-gamers</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/10-best-free-image-tools-for-gamers</guid>
+      <description>Discover the 10 best free online image tools for gamers in 2026. Compress, resize, crop, convert screenshots — all in your browser, no signup needed.</description>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Compress Screenshots for Discord (Step by Step)</title>
+      <link>https://gameimageeditor.com/blog/compress-screenshots-for-discord</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/compress-screenshots-for-discord</guid>
+      <description>Learn how to compress game screenshots for Discord. Reduce file size below 8MB without losing quality. Free browser tool, no signup.</description>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Free QR Code Generator: Create Custom QR Codes Online</title>
+      <link>https://gameimageeditor.com/blog/free-qr-code-generator</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/free-qr-code-generator</guid>
+      <description>Create custom QR codes for free. Custom colors, sizes, and error correction. Perfect for game servers, Discord invites, and stream links.</description>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>HEIC to JPG: Why iPhone Photos Won't Upload and How to Fix</title>
+      <link>https://gameimageeditor.com/blog/heic-to-jpg-iphone-photos</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/heic-to-jpg-iphone-photos</guid>
+      <description>iPhone photos in HEIC format won't upload to Discord, forums, or websites? Here's why and how to convert HEIC to JPG for free in your browser.</description>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How to Merge PDF Files for Free (3 Methods)</title>
+      <link>https://gameimageeditor.com/blog/how-to-merge-pdf-files</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/how-to-merge-pdf-files</guid>
+      <description>Learn how to merge multiple PDF files into one for free. Browser-based tool with drag-and-drop reordering. No Adobe Acrobat needed.</description>
+      <pubDate>Thu, 05 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
