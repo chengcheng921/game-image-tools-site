@@ -155,8 +155,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -164,7 +164,7 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">YouTube Thumbnail Size 1280x720</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>YouTube Thumbnail Size: 1280×720 and the 2 MB Limit</h1>
       <p class="meta">Published on Nov 16, 2026 · 5 min read</p>
 
@@ -219,10 +219,10 @@
       <h2>Turning a Game Screenshot into a Thumbnail</h2>
       <p>Most game captures are 16:9 already — 1920 × 1080 or 2560 × 1440 — which makes this straightforward. Do the operations in this order:</p>
       <ol>
-        <li><strong>Crop to a clean 16:9 frame.</strong> Use the <a href="../crop.html">crop tool</a> with a 16:9 preset to cut out HUD clutter or a blank sky before anything else. Cropping a 21:9 ultrawide capture to 16:9 here is far cheaper than doing it after resizing.</li>
-        <li><strong>Resize to exactly 1280 × 720.</strong> The <a href="../resize.html">resize tool</a> takes precise pixel values; enter 1280 and 720 rather than dragging a percentage slider, since only exact dimensions match the recommended spec.</li>
+        <li><strong>Crop to a clean 16:9 frame.</strong> Use the <a href="../crop">crop tool</a> with a 16:9 preset to cut out HUD clutter or a blank sky before anything else. Cropping a 21:9 ultrawide capture to 16:9 here is far cheaper than doing it after resizing.</li>
+        <li><strong>Resize to exactly 1280 × 720.</strong> The <a href="../resize">resize tool</a> takes precise pixel values; enter 1280 and 720 rather than dragging a percentage slider, since only exact dimensions match the recommended spec.</li>
         <li><strong>Export as JPG at 80–85% quality</strong>, or PNG if the frame is flat art or carries text you want to stay crisp. A 1280 × 720 JPG at that quality typically lands around 150–300 KB, well inside the limit.</li>
-        <li><strong>Check the file size before uploading.</strong> If a PNG exceeds 2 MB, the <a href="../compress.html">compress tool</a> will bring it down without changing the dimensions.</li>
+        <li><strong>Check the file size before uploading.</strong> If a PNG exceeds 2 MB, the <a href="../compress">compress tool</a> will bring it down without changing the dimensions.</li>
       </ol>
       <p>One warning about order: resizing first and cropping second produces a slightly soft result, because the crop then throws away pixels that were already interpolated. Crop tight at native resolution, then resample once.</p>
 
@@ -256,12 +256,12 @@
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="itchio-cover-image-size.html">itch.io Cover Image Size: 630×500 and Why 16:9 Fails</a></li>
-        <li><a href="how-to-resize-image-without-losing-quality.html">How to Resize an Image Without Losing Quality</a></li>
-        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need</a></li>
+        <li><a href="itchio-cover-image-size">itch.io Cover Image Size: 630×500 and Why 16:9 Fails</a></li>
+        <li><a href="how-to-resize-image-without-losing-quality">How to Resize an Image Without Losing Quality</a></li>
+        <li><a href="steam-capsule-image-size">Steam Capsule Image Size: Every Dimension You Need</a></li>
       </ul>
     </div>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>

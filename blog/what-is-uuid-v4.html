@@ -142,8 +142,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -151,7 +151,7 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">What Is UUID v4</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>What Is a UUID v4 and Why Is It Everywhere?</h1>
       <p class="meta">Published on Nov 10, 2026 · 6 min read</p>
 
@@ -192,13 +192,13 @@
       <p>Version 4 isn't the only kind. v1 embeds a timestamp and MAC address (sortable, but leaks the generating machine's identity). v7 is a newer timestamp-first design that sorts like auto-increment while staying unique — databases love it. But v4 remains the universal default: every language generates it natively, every database accepts it, and pure randomness leaks nothing.</p>
 
       <h2>Generating UUIDs in Bulk</h2>
-      <p>The <a href="../uuid.html">UUID generator</a> creates up to <strong>1,000 v4 UUIDs in one click</strong>, entirely in your browser — nothing is logged or transmitted. Two format options cover the common variants:</p>
+      <p>The <a href="../uuid">UUID generator</a> creates up to <strong>1,000 v4 UUIDs in one click</strong>, entirely in your browser — nothing is logged or transmitted. Two format options cover the common variants:</p>
       <ul>
         <li><strong>Uppercase</strong> — some Microsoft ecosystems expect capital hex letters.</li>
         <li><strong>No dashes</strong> — a compact 32-character form many databases store directly.</li>
       </ul>
       <p>Both forms encode the same 128-bit value; pick whichever your stack expects, then hit Copy All.</p>
-      <p>One honest caveat: this generator uses your browser's standard random source, which is perfect for identifiers, keys, and test data. For security tokens and secrets, use a CSPRNG-backed tool like our <a href="../password.html">password generator</a> instead.</p>
+      <p>One honest caveat: this generator uses your browser's standard random source, which is perfect for identifiers, keys, and test data. For security tokens and secrets, use a CSPRNG-backed tool like our <a href="../password">password generator</a> instead.</p>
 
       <h2>UUID Versions Compared</h2>
       <div class="table-wrap">
@@ -239,9 +239,9 @@
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="how-to-create-strong-password.html">How to Create a Strong Password (That Actually Protects You)</a></li>
-        <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
-        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="how-to-create-strong-password">How to Create a Strong Password (That Actually Protects You)</a></li>
+        <li><a href="unix-timestamp-converter-guide">Unix Timestamp Converter: A Practical Guide</a></li>
+        <li><a href="json-formatter-validate-online">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
       </ul>
 
       <h2>Frequently Asked Questions</h2>
@@ -255,6 +255,6 @@
       <p>Check the third group: a v4 always starts with 4, and the fourth group always begins with 8, 9, a or b. If a string is well formed but fails both checks, it is a different version rather than a damaged value.</p>
     </div>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>

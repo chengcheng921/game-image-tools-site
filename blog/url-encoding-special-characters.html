@@ -154,8 +154,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -163,12 +163,12 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">URL Percent Encoding</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>Percent Encoding Explained: What Those %20 Characters Mean</h1>
       <p class="meta">Published on Nov 10, 2026 · Updated Nov 15, 2026 · 4 min read</p>
 
       <p><strong>Percent encoding — also called URL encoding — is the rule that replaces any character a URL cannot safely carry with a percent sign followed by two hexadecimal digits.</strong> A space is byte 32, which is 0x20 in hex, so it becomes <code>%20</code>. Servers decode these sequences automatically, which is why an encoded query string still works when you paste it into a browser.</p>
-      <p>Want to try it right now? The <a href="../url.html">free URL encoder and decoder</a> runs entirely in your browser — paste a value, hit encode, and copy the result.</p>
+      <p>Want to try it right now? The <a href="../url">free URL encoder and decoder</a> runs entirely in your browser — paste a value, hit encode, and copy the result.</p>
 
       <p>Ever copied a link and seen <code>search?q=elden%20ring%20build</code> in the address bar? Those <code>%20</code> chunks aren't garbage — they're percent-encoding, the system that lets URLs carry characters they were never designed for. Understanding it takes ten minutes and saves hours of debugging broken links.</p>
 
@@ -200,7 +200,7 @@
       <p>One result surprises people: searching for <code>C++ tutorial</code> becomes <code>C%2B%2B%20tutorial</code>, not <code>C++%20tutorial</code>. A raw <code>+</code> in a query string is read as a space, so the plus signs have to be encoded as <code>%2B</code>. The same logic explains why a search for "salt &amp; pepper" works only when the ampersand is written <code>%26</code>.</p>
 
       <h2>Encoding and Decoding in Practice</h2>
-      <p>The <a href="../url.html">URL encoder/decoder</a> on this site does the job locally in your browser:</p>
+      <p>The <a href="../url">URL encoder/decoder</a> on this site does the job locally in your browser:</p>
       <ol>
         <li>Paste the <strong>parameter value</strong> (not the whole URL — more on that below) into the input.</li>
         <li>Click <strong>Encode →</strong>. "Elden Ring: Shadow of the Erdtree" becomes <code>Elden%20Ring%3A%20Shadow%20of%20the%20Erdtree</code>.</li>
@@ -231,12 +231,12 @@
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
-        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
-        <li><a href="free-qr-code-generator.html">How to Create a QR Code for Free</a></li>
+        <li><a href="what-is-base64-encoding">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="json-formatter-validate-online">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="free-qr-code-generator">How to Create a QR Code for Free</a></li>
       </ul>
     </div>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>

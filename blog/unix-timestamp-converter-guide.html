@@ -134,8 +134,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -143,7 +143,7 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Unix Timestamp Converter</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>Unix Timestamp Converter: A Practical Guide</h1>
       <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
 
@@ -155,12 +155,12 @@
 
       <h2>Seconds vs Milliseconds: The Classic Gotcha</h2>
       <p>Traditional Unix time counts seconds. But JavaScript's <code>Date.now()</code>, Java, and many modern APIs count <strong>milliseconds</strong> — the same number with three extra zeros. Mix them up and your date lands in the year 57816 or the year 1970.</p>
-      <p>The quick rule: a current timestamp in <em>seconds</em> has 10 digits (like 1762819200); in <em>milliseconds</em> it has 13 (1762819200000). The <a href="../timestamp.html">timestamp converter</a> on this site auto-detects the unit — 10 digits or fewer is treated as seconds, anything longer as milliseconds — so you don't have to think about it.</p>
+      <p>The quick rule: a current timestamp in <em>seconds</em> has 10 digits (like 1762819200); in <em>milliseconds</em> it has 13 (1762819200000). The <a href="../timestamp">timestamp converter</a> on this site auto-detects the unit — 10 digits or fewer is treated as seconds, anything longer as milliseconds — so you don't have to think about it.</p>
 
       <h2>Converting Both Directions</h2>
       <h3>Timestamp → Date</h3>
       <ol>
-        <li>Open the <a href="../timestamp.html">converter</a> and paste the number.</li>
+        <li>Open the <a href="../timestamp">converter</a> and paste the number.</li>
         <li>The date appears as you type — both the <strong>UTC ISO time</strong> and your <strong>local timezone</strong>, so there's never ambiguity about which you're reading.</li>
         <li>Click <strong>Now</strong> whenever you just need the current epoch value for a test.</li>
       </ol>
@@ -197,9 +197,9 @@
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
-        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
-        <li><a href="what-is-uuid-v4.html">What Is a UUID v4 and Why Is It Everywhere?</a></li>
+        <li><a href="json-formatter-validate-online">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
+        <li><a href="what-is-base64-encoding">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="what-is-uuid-v4">What Is a UUID v4 and Why Is It Everywhere?</a></li>
       </ul>
     </div>
 
@@ -211,6 +211,6 @@
       <h3>What timezone does the timestamp use?</h3>
       <p>Unix timestamps are always in UTC. You apply timezone offset only when formatting the timestamp for human display.</p>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>

@@ -3,14 +3,14 @@
 # but we re-declare them to be explicit, and add Permissions-Policy to
 # lock down camera/microphone/geolocation access.
 #
-# Note: Pages appends headers from every matching rule, so Cache-Control
-# is only declared on the specific path groups below. Putting it on /*
-# would concatenate with these and produce an invalid duplicate value.
+# Deliberately no Cache-Control here: Cloudflare Pages documents that
+# custom caching usually causes stale assets after a deploy. Pages already
+# serves assets from Tiered Cache, purges on deploy, and sends ETag plus
+# max-age=0, must-revalidate so browsers revalidate cheaply.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 
-# Generated social cards never change after publication.
-/img/*
-  Cache-Control: public, max-age=604800
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8

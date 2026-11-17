@@ -163,8 +163,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -172,7 +172,7 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Roblox Decal Size</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>Roblox Decal Size: 256×256, 512 or 1024?</h1>
       <p class="meta">Published on Nov 15, 2026 · 5 min read</p>
 
@@ -211,16 +211,16 @@
           </tbody>
         </table>
       </div>
-      <p>These are ceilings, not targets. A 256 × 256 PNG is typically a few kilobytes, so file size is only worth thinking about when you upload a 4K texture for a large surface. If a PNG does creep past a few megabytes, run it through an <a href="../compress.html">image compressor</a> instead of dropping the resolution — a compressed 1024 texture still beats an uncompressed 256.</p>
+      <p>These are ceilings, not targets. A 256 × 256 PNG is typically a few kilobytes, so file size is only worth thinking about when you upload a 4K texture for a large surface. If a PNG does creep past a few megabytes, run it through an <a href="../compress">image compressor</a> instead of dropping the resolution — a compressed 1024 texture still beats an uncompressed 256.</p>
 
       <h2>PNG or JPG for Roblox Decals?</h2>
       <p>Use PNG in almost every case. Decals are usually logos, icons, labels and flat-color art, and PNG stores those hard edges exactly. JPG introduces ringing around letterforms and colored fringing on flat areas, which becomes obvious once the decal sits on a bright game surface. The exception is a photographic texture — grass, rock, fabric — where JPG at high quality is both smaller and visually indistinguishable.</p>
-      <p>Transparency is a separate decision from format. If the decal is a sticker shape, save it as PNG with the background removed, so the game surface shows through. If the decal is meant to cover the entire face of a part, keep an opaque background; a transparent edge there produces a visible seam. Use the <a href="../convert.html">image format converter</a> if your source art is a different format, and check the alpha channel against both a light and a dark background before uploading.</p>
+      <p>Transparency is a separate decision from format. If the decal is a sticker shape, save it as PNG with the background removed, so the game surface shows through. If the decal is meant to cover the entire face of a part, keep an opaque background; a transparent edge there produces a visible seam. Use the <a href="../convert">image format converter</a> if your source art is a different format, and check the alpha channel against both a light and a dark background before uploading.</p>
 
       <h2>How to Make a 256 × 256 Decal</h2>
       <ul>
-        <li><strong>Step 1.</strong> Open the <a href="../crop.html">image cropper</a> and set a 1:1 crop. Center the subject with about 5–10% padding so edges do not touch the part boundary.</li>
-        <li><strong>Step 2.</strong> Resize to 256 × 256 with the <a href="../resize.html">image resizer</a>. Type the exact numbers and keep the aspect ratio locked; do not drag a corner by eye.</li>
+        <li><strong>Step 1.</strong> Open the <a href="../crop">image cropper</a> and set a 1:1 crop. Center the subject with about 5–10% padding so edges do not touch the part boundary.</li>
+        <li><strong>Step 2.</strong> Resize to 256 × 256 with the <a href="../resize">image resizer</a>. Type the exact numbers and keep the aspect ratio locked; do not drag a corner by eye.</li>
         <li><strong>Step 3.</strong> Export PNG. If you need 512 or 1024 later, scale up from your original master, not from the 256 file.</li>
         <li><strong>Step 4.</strong> Preview the decal at the size it will actually appear in game. On most props that is closer to 100 pixels than 256, so check the shape reads clearly when shrunk.</li>
         <li><strong>Step 5.</strong> Upload in Studio. Keep the original master file — Roblox compresses uploads, and re-exporting from a small file loses quality permanently.</li>
@@ -228,7 +228,7 @@
 
       <h2>Why Decals Get Rejected</h2>
       <p>Most Roblox decal failures are moderation decisions rather than technical errors. Copyrighted game characters, anime characters, brand logos and sports crests are removed for infringement. Images containing real people, personal information such as phone numbers or addresses, or content that breaks Roblox community rules are rejected outright. Text-only images can also be flagged when the wording is ambiguous.</p>
-      <p>The technical failures are easier to avoid: an unsupported format such as WebP or HEIC, dimensions beyond the supported texture size, or a file over the 20 MB upload limit. Convert to PNG first and the format problem disappears. If your source is an iPhone photo, the <a href="../heic.html">HEIC to JPG/PNG converter</a> handles the conversion locally in your browser.</p>
+      <p>The technical failures are easier to avoid: an unsupported format such as WebP or HEIC, dimensions beyond the supported texture size, or a file over the 20 MB upload limit. Convert to PNG first and the format problem disappears. If your source is an iPhone photo, the <a href="../heic">HEIC to JPG/PNG converter</a> handles the conversion locally in your browser.</p>
 
       <h2>Decal, ImageLabel or SurfaceGui?</h2>
       <p>The asset is the same image; what changes is how it is displayed. A Decal wraps a texture onto a part face and is the right choice for world objects. An ImageLabel sits inside a ScreenGui or SurfaceGui and gives you pixel-level control over size, which is what you want for UI work. A SurfaceGui renders an entire interface onto a part, so if the design includes buttons or multiple elements, build it there rather than as a single decal.</p>
@@ -255,12 +255,12 @@
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="steam-capsule-image-size.html">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
-        <li><a href="discord-emoji-size.html">Discord Emoji Size: 128×128 Rules and Upload Limits</a></li>
-        <li><a href="twitch-emote-size.html">Twitch Emote Size: 112×112, 56×56 and 28×28</a></li>
+        <li><a href="steam-capsule-image-size">Steam Capsule Image Size: Every Dimension You Need (2026)</a></li>
+        <li><a href="discord-emoji-size">Discord Emoji Size: 128×128 Rules and Upload Limits</a></li>
+        <li><a href="twitch-emote-size">Twitch Emote Size: 112×112, 56×56 and 28×28</a></li>
       </ul>
     </div>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>

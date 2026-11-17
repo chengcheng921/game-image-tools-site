@@ -134,8 +134,8 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
-      <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#image-tools">Tools</a></li><li><a href="index.html">Blog</a></li></ul>
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
     </div>
   </nav>
   <main class="tool-page">
@@ -143,7 +143,7 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">JSON Formatter and Validator</span>
       </nav>
-      <a href="../index.html" class="back-link">← Back to home</a>
+      <a href="../" class="back-link">← Back to home</a>
       <h1>JSON Formatter: Validate and Pretty-Print JSON Online</h1>
       <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
 
@@ -151,7 +151,7 @@
 
       <h2>Why Not Just Use Your Editor?</h2>
       <p>You can — VS Code and friends format JSON fine. But online formatters earn their place when you're on someone else's machine, inside a browser-based tool, on a Chromebook, or juggling data between Slack, a browser devtools panel, and a terminal. Paste, format, copy, done.</p>
-      <p>There's one catch: most online formatters send your JSON to their server. API responses routinely contain tokens, internal URLs, and user data. This site's <a href="../json.html">JSON formatter</a> processes everything locally in your browser tab — paste an auth header's payload without leaking it.</p>
+      <p>There's one catch: most online formatters send your JSON to their server. API responses routinely contain tokens, internal URLs, and user data. This site's <a href="../json">JSON formatter</a> processes everything locally in your browser tab — paste an auth header's payload without leaking it.</p>
 
       <h2>Step 1: Paste Your JSON</h2>
       <p>Drop the raw text into the left panel. API responses, game config files, exported save data, package.json — anything goes. Multi-megabyte files are fine since there's no upload limit (there's no upload at all).</p>
@@ -198,13 +198,13 @@
       <p>JSON looks like JavaScript objects but is stricter: keys must be double-quoted strings, single quotes are forbidden, trailing commas are illegal, and comments don't exist. That's why a config file that "works fine" in your JS project can fail as JSON. When a formatter rejects something your code accepts, strictness is usually the reason — the error position points you right at the offending token.</p>
 
       <h2>Handy Companions</h2>
-      <p>Working with API payloads often means also decoding JWT segments or query strings — the <a href="../base64.html">Base64 decoder</a> handles token middles, and the <a href="../url.html">URL decoder</a> untangles percent-encoded parameters. Both are equally local and free.</p>
+      <p>Working with API payloads often means also decoding JWT segments or query strings — the <a href="../base64">Base64 decoder</a> handles token middles, and the <a href="../url">URL decoder</a> untangles percent-encoded parameters. Both are equally local and free.</p>
 
       <h2>Related Guides</h2>
       <ul>
-        <li><a href="what-is-base64-encoding.html">What Is Base64 Encoding and When Do You Need It?</a></li>
-        <li><a href="url-encoding-special-characters.html">URL Encoding: What Those %20 Characters Mean</a></li>
-        <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
+        <li><a href="what-is-base64-encoding">What Is Base64 Encoding and When Do You Need It?</a></li>
+        <li><a href="url-encoding-special-characters">URL Encoding: What Those %20 Characters Mean</a></li>
+        <li><a href="unix-timestamp-converter-guide">Unix Timestamp Converter: A Practical Guide</a></li>
       </ul>
     </div>
 
@@ -216,6 +216,6 @@
       <h3>Can I use this for production data?</h3>
       <p>For formatting and validation, yes. Treat any sensitive values as still visible in your browser window, so share screenshots or exports only after masking secrets.</p>
   </main>
-  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a></p></footer>
 </body>
 </html>
