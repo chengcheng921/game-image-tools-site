@@ -753,6 +753,10 @@ img {
   font-weight: 600;
   background: var(--color-surface);
 }
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 .tool-help td,
 .article td {
   color: var(--color-text-secondary);

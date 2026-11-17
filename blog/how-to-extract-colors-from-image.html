@@ -51,7 +51,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -165,6 +165,21 @@
 
       <h2>Step 5: Copy the Values</h2>
       <p>Click any swatch to copy its HEX code to the clipboard. Paste it straight into CSS, OBS, Discord role settings, or your design tool. Need RGB or HSL instead? Drop the HEX into the <a href="../color.html">color converter</a> and grab whichever format your project expects.</p>
+
+      <h2>HEX, RGB and HSL: Which Value Do You Need?</h2>
+      <p>Every pixel has one colour but three common spellings. Copying the wrong format is the most frequent reason a value "does not work" after pasting.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Format</th><th>Example</th><th>Paste it into</th></tr></thead>
+          <tbody>
+            <tr><td>HEX</td><td><code>#3F8A2C</code></td><td>CSS, Figma, Photoshop, most web builders</td></tr>
+            <tr><td>RGB</td><td><code>rgb(63, 138, 44)</code></td><td>CSS, Unity, canvas APIs, spreadsheets</td></tr>
+            <tr><td>HSL</td><td><code>hsl(106, 52%, 36%)</code></td><td>CSS, colour-picking by hue for palettes</td></tr>
+            <tr><td>RGBA</td><td><code>rgba(63, 138, 44, 0.8)</code></td><td>CSS when the colour needs transparency</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>HEX and RGB describe the same thing in different notation, so converting between them never changes the colour. HSL is the useful one when you are building a palette rather than copying a single swatch: keeping hue fixed and moving lightness is how you generate a lighter and a darker shade that still look related. Watch out for screenshots saved with a colour profile — a pixel that reads <code>#3F8A2C</code> in your browser can display slightly differently in a print workflow, which is exactly why you should sample the original art rather than a re-compressed screenshot.</p>
 
       <h2>Real Uses for Gamers and Creators</h2>
       <ul>

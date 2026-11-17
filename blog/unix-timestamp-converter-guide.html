@@ -51,7 +51,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -166,6 +166,22 @@
       <h3>Date → Timestamp</h3>
       <p>Need the timestamp for "next Friday at 8pm"? The lower section takes any date and time from a picker and returns both the seconds and milliseconds forms. Handy for scheduling scripts, setting expiry times, or seeding test data.</p>
       <p>Everything runs locally in your browser — which is nice when the timestamp came from a production log you shouldn't paste into random websites.</p>
+
+      <h2>Converting Timestamps in Code</h2>
+      <p>The converter above is the quick route; when the value ends up in production you need the one-liners for your language. Every mainstream runtime has both directions built in:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Environment</th><th>Seconds → readable date</th><th>Now → seconds</th></tr></thead>
+          <tbody>
+            <tr><td>JavaScript</td><td><code>new Date(ts * 1000).toISOString()</code></td><td><code>Math.floor(Date.now() / 1000)</code></td></tr>
+            <tr><td>Python</td><td><code>datetime.fromtimestamp(ts, timezone.utc)</code></td><td><code>int(time.time())</code></td></tr>
+            <tr><td>PHP</td><td><code>date('c', $ts)</code></td><td><code>time()</code></td></tr>
+            <tr><td>PostgreSQL</td><td><code>to_timestamp(ts)</code></td><td><code>extract(epoch from now())</code></td></tr>
+            <tr><td>Go</td><td><code>time.Unix(ts, 0).UTC()</code></td><td><code>time.Now().Unix()</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two details cause most of the bugs here. First, JavaScript works in milliseconds, so a timestamp that was silently multiplied by 1000 produces a date in the year 56000 rather than an error — if a converted date looks absurd, divide by 1000 and retry. Second, <code>fromtimestamp</code> without an explicit timezone returns local time in Python, so the same value renders differently on a developer laptop and a server in another region. Pass UTC explicitly and format at the edge.</p>
 
       <h2>Real Scenarios</h2>
       <ul>

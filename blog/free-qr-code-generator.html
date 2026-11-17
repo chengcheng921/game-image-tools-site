@@ -51,7 +51,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-05",
-  "dateModified": "2026-11-05",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -180,6 +180,16 @@
         <li>Avoid light-on-light or red-on-green combinations.</li>
         <li>Match your brand or game theme colors.</li>
       </ul>
+
+      <h2>Making a QR Code for a URL</h2>
+      <p>A URL is the single most common thing people put in a QR code, and it is also where most of the failures happen. The rules are short:</p>
+      <ul>
+        <li><strong>Include the protocol.</strong> Start with <code>https://</code>. Many phone cameras treat a bare <code>example.com</code> as a search phrase and open a browser search page instead of the site.</li>
+        <li><strong>Shorter is sharper.</strong> A long URL with tracking parameters packs more data into the same square, so every module gets smaller and scanning from a poster or a screen takes longer. Strip campaign parameters before generating.</li>
+        <li><strong>Point at a public page.</strong> Codes that lead to a login wall, an app-only link or a redirect chain look broken to anyone who scans them.</li>
+        <li><strong>Static codes cannot be repointed.</strong> The destination is baked into the pattern. If the URL may change, generate a new code rather than assuming the old one will follow.</li>
+      </ul>
+      <p>Print size matters more than people expect: below roughly 2 cm (0.8 in) the code becomes unreliable on older phones, and the quiet zone — the empty margin around the pattern — must stay clear. Test a printed draft with two different phones before committing to a print run.</p>
 
       <h2>Why Use This Generator?</h2>
       <p>The <a href="../qr.html">GameImage.tools QR generator</a> is 100% free, no signup, no watermarks, and works entirely in your browser. No data is sent to a server — your links stay private. Perfect for gamers who want quick, custom QR codes without the hassle.</p>

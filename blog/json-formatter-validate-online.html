@@ -51,7 +51,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -176,6 +176,22 @@
         <li><strong>Code review:</strong> spot that a "number" field is actually a string because it's wrapped in quotes.</li>
         <li><strong>Documentation:</strong> format an example response before pasting it into your README.</li>
       </ul>
+
+      <h2>The Five JSON Errors You Will Actually Hit</h2>
+      <p>Almost every validation failure falls into one of five buckets. Learning to recognise them turns a ten-minute hunt into a five-second fix.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Message</th><th>What is really wrong</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Unexpected token }</td><td>A trailing comma before a closing brace or bracket</td><td>Delete the last comma — JSON forbids trailing commas</td></tr>
+            <tr><td>Unexpected token '</td><td>Single quotes where double quotes are required</td><td>Replace every <code>'</code> with <code>"</code></td></tr>
+            <tr><td>Unexpected end of input</td><td>A missing closing brace, bracket or quote</td><td>Count the pairs; bracket matching in an editor finds it fast</td></tr>
+            <tr><td>Unexpected token u</td><td>The JavaScript literal <code>undefined</code></td><td>JSON has no undefined — use <code>null</code> or remove the key</td></tr>
+            <tr><td>Expected property name</td><td>An unquoted key, or a comment inside the object</td><td>Quote every key; JSON has no comments</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>All five share one root cause: the text looks like JavaScript, and JSON is stricter than JavaScript. Two habits prevent nearly all of them — always use double quotes, and never leave a trace of JavaScript syntax such as comments, single quotes or <code>undefined</code> in the payload.</p>
 
       <h2>A Note on Strict JSON</h2>
       <p>JSON looks like JavaScript objects but is stricter: keys must be double-quoted strings, single quotes are forbidden, trailing commas are illegal, and comments don't exist. That's why a config file that "works fine" in your JS project can fail as JSON. When a formatter rejects something your code accepts, strictness is usually the reason — the error position points you right at the offending token.</p>

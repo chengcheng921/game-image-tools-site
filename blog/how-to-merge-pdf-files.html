@@ -177,6 +177,20 @@
       <h2>Join PDF Files or Merge PDF Files — Same Job</h2>
       <p>Search results use both words, but "join PDF files", "combine PDFs" and "merge PDF files" all describe one operation: appending the pages of several documents into a single file, in the order you choose. Every method below works the same whichever term you use — only the label on the button changes. The checks afterwards are also identical: confirm page order, confirm that bookmarks and form fields survived, and confirm the result still opens in a reader other than the one that produced it.</p>
 
+      <h2>Merging PDFs Without Adobe</h2>
+      <p>Acrobat is the paid route, and it is not required. There are three Adobe-free paths, and which one you pick depends on whether the files can leave your machine:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Route</th><th>Cost</th><th>Files leave your device?</th><th>Best for</th></tr></thead>
+          <tbody>
+            <tr><td>Browser-based merger</td><td>Free</td><td>No — runs locally</td><td>Sensitive documents, one-off jobs, any OS</td></tr>
+            <tr><td>macOS Preview</td><td>Free</td><td>No</td><td>Quick merges on a Mac, drag-to-reorder</td></tr>
+            <tr><td>Command line (pdfunite, qpdf)</td><td>Free</td><td>No</td><td>Dozens of files, repeatable scripts</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>On macOS or Linux, <code>pdfunite report-1.pdf report-2.pdf combined.pdf</code> joins files in the order you list them, and <code>qpdf --empty --pages a.pdf b.pdf -- out.pdf</code> does the same with more control over page ranges. Both are offline, scriptable and free. What you give up compared with Acrobat is bookmark editing and form-field handling, which rarely matters for simple joins.</p>
+
       <h2>Why Merge PDFs?</h2>
       <ul>
         <li><strong>TTRPG groups</strong>: Combine character sheets, rule references, and maps into one session document.</li>
