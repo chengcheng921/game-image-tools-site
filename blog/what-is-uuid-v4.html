@@ -51,7 +51,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -99,6 +99,14 @@
         "@type": "Answer",
         "text": "Yes — base62 or base91 encoding reduces a UUID from 36 characters to around 22 or 20, useful for vanity URLs and short references, while retaining uniqueness."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I tell whether a UUID is version 4?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check the third group: a v4 always starts with 4, and the fourth group always begins with 8, 9, a or b. If a string is well formed but fails both checks, it is a different version rather than a damaged value."
+      }
     }
   ]
 }
@@ -144,7 +152,7 @@
       </nav>
       <a href="../index.html" class="back-link">← Back to home</a>
       <h1>What Is a UUID v4 and Why Is It Everywhere?</h1>
-      <p class="meta">Published on Nov 10, 2026 · 4 min read</p>
+      <p class="meta">Published on Nov 10, 2026 · 6 min read</p>
 
       <p>Look inside any modern app and you'll find strings like <code>3f8a2c4e-9b1d-4e7f-a3c2-8d5e6f1a2b3c</code> attached to users, orders, sessions, and files. That's a UUID — and the "v4" flavor is the one you see most. Here's what it actually is, and when you should (and shouldn't) use one.</p>
 
@@ -191,13 +199,49 @@
       <p>Both forms encode the same 128-bit value; pick whichever your stack expects, then hit Copy All.</p>
       <p>One honest caveat: this generator uses your browser's standard random source, which is perfect for identifiers, keys, and test data. For security tokens and secrets, use a CSPRNG-backed tool like our <a href="../password.html">password generator</a> instead.</p>
 
+      <h2>UUID Versions Compared</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Version</th><th>Built from</th><th>Sorts by time</th><th>Typical use</th></tr></thead>
+          <tbody>
+            <tr><td>v1</td><td>60-bit timestamp + MAC address</td><td>Yes</td><td>Legacy systems; leaks the generating machine</td></tr>
+            <tr><td>v3</td><td>MD5 hash of a namespace and a name</td><td>No</td><td>Deterministic IDs from a known input</td></tr>
+            <tr><td>v4</td><td>122 random bits</td><td>No</td><td>Default: database keys, sessions, file names</td></tr>
+            <tr><td>v5</td><td>SHA-1 hash of a namespace and a name</td><td>No</td><td>Same idea as v3 but stronger; preferred today</td></tr>
+            <tr><td>v6</td><td>Reordered timestamp and random bits</td><td>Yes</td><td>Revision of v1 that sorts correctly</td></tr>
+            <tr><td>v7</td><td>48-bit Unix timestamp + random bits</td><td>Yes</td><td>New database keys that sort like auto-increment</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two of these behave very differently from v4 in daily use. v3 and v5 always return the same value for the same input, which is exactly what you want when the identifier must be reproducible from a URL or a name. v7 gives up none of v4's uniqueness but adds order, and order turns out to matter a great deal to databases.</p>
+
+      <h2>The Index Problem: Why Teams Move to v7</h2>
+      <p>Random keys are excellent for identity and poor for storage layout. A B-tree index keeps rows in key order, so inserting purely random 128-bit values scatters writes across the entire index instead of appending to the end. On a table with a few million rows that turns a cheap append into extra page splits, and the index bloats because each new row lands in an unrelated leaf. UUID v7 keeps the uniqueness guarantee but leads with a millisecond timestamp, so consecutive inserts land next to each other and the index behaves much like an auto-increment column. If you are picking a primary key today and your database supports it, v7 is usually the better default; v4 remains a perfectly good choice for identifiers that are never used for ordering.</p>
+
+      <h2>Generate and Validate a UUID</h2>
+      <p>Every mainstream runtime ships a cryptographically seeded generator, so there is no reason to hand-roll one:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Environment</th><th>Call</th></tr></thead>
+          <tbody>
+            <tr><td>Browser / Node.js 19+</td><td><code>crypto.randomUUID()</code></td></tr>
+            <tr><td>Python</td><td><code>uuid.uuid4()</code></td></tr>
+            <tr><td>macOS / Linux shell</td><td><code>uuidgen</code></td></tr>
+            <tr><td>PostgreSQL 13+</td><td><code>gen_random_uuid()</code></td></tr>
+            <tr><td>MySQL 8+</td><td><code>UUID()</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>To validate one, look at the version and variant nibbles. A v4 always has a <code>4</code> as the first character of the third group, and the fourth group always starts with 8, 9, a or b:</p>
+      <p><code>^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$</code></p>
+      <p>That pattern also clears up a common confusion. A well-formed UUID that fails this check is not corrupt — it is simply a different version. Remove the <code>4</code> and the <code>[89ab]</code> and the same expression accepts any UUID version.</p>
+
       <h2>Related Guides</h2>
       <ul>
         <li><a href="how-to-create-strong-password.html">How to Create a Strong Password (That Actually Protects You)</a></li>
         <li><a href="unix-timestamp-converter-guide.html">Unix Timestamp Converter: A Practical Guide</a></li>
         <li><a href="json-formatter-validate-online.html">JSON Formatter: Validate and Pretty-Print JSON Online</a></li>
       </ul>
-    </div>
 
       <h2>Frequently Asked Questions</h2>
       <h3>How unique is a UUID v4?</h3>
@@ -206,6 +250,9 @@
       <p>v7 is sortable by generation time, which is useful for database indexes and ordering. v4 is purely random and perfectly adequate when you do not need chronological ordering.</p>
       <h3>Can I convert a UUID to a shorter form?</h3>
       <p>Yes — base62 or base91 encoding reduces a UUID from 36 characters to around 22 or 20, useful for vanity URLs and short references, while retaining uniqueness.</p>
+      <h3>How can I tell whether a UUID is version 4?</h3>
+      <p>Check the third group: a v4 always starts with 4, and the fourth group always begins with 8, 9, a or b. If a string is well formed but fails both checks, it is a different version rather than a damaged value.</p>
+    </div>
   </main>
   <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy.html">Privacy Policy</a> · <a href="../about.html">About</a> · <a href="../contact.html">Contact</a></p></footer>
 </body>

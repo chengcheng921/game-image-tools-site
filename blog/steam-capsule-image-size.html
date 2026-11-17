@@ -56,7 +56,7 @@
     "https://gameimageeditor.com/og-image.png"
   ],
   "datePublished": "2026-11-10",
-  "dateModified": "2026-11-10",
+  "dateModified": "2026-11-17",
   "author": {
     "@type": "Organization",
     "name": "GameImage.tools",
@@ -161,36 +161,39 @@
 
       <p>Steam does not take one capsule image and scale it for you. It asks for a set of separate assets, each rendered at a fixed pixel size in a different part of the store or the client, and the Steamworks uploader rejects files whose dimensions are off by even a pixel. Guessing burns an afternoon and usually produces stretched art. The table below gives you every number in one place, followed by the format rules, the crops Steam applies, and a repeatable way to resize existing art to each size without softening your logo.</p>
 
-      <h2>Official Steam Capsule and Store Asset Sizes</h2>
+      <h2>Official Steam Capsule Image Dimensions</h2>
+      <p>This is the full set of Steam capsule image dimensions, taken from the Steamworks graphical assets documentation. Dimensions must match exactly — Steamworks rejects uploads that are even a few pixels off.</p>
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Asset</th><th>Pixels</th><th>Where it appears</th></tr>
+            <tr><th>Asset</th><th>Upload size</th><th>Legacy 1×</th><th>Where it appears</th></tr>
           </thead>
           <tbody>
-            <tr><td>Small capsule</td><td>231 × 87</td><td>Search results, tag lists, recommendation rows</td></tr>
-            <tr><td>Main capsule</td><td>460 × 215</td><td>Store shelves, sale pages, recommendation blocks</td></tr>
-            <tr><td>Vertical capsule</td><td>374 × 448</td><td>Front-page carousel and seasonal sale pages</td></tr>
-            <tr><td>Header capsule</td><td>920 × 430</td><td>Top of the game's store page</td></tr>
-            <tr><td>Library capsule</td><td>600 × 900</td><td>Game grid inside the Steam library</td></tr>
-            <tr><td>Community icon</td><td>184 × 184</td><td>Community hub avatar, guides and discussions</td></tr>
-            <tr><td>Library hero</td><td>3840 × 1240</td><td>Large banner at the top of the library detail page</td></tr>
-            <tr><td>Page background</td><td>1438 × 810</td><td>Background behind the store page content</td></tr>
+            <tr><td>Header capsule</td><td>920 × 430</td><td>460 × 215</td><td>Top of the store page, "recommended for you", Big Picture, daily deals</td></tr>
+            <tr><td>Small capsule</td><td>462 × 174</td><td>231 × 87</td><td>Search results, tag lists, new releases (auto-generates 120 × 45 and 184 × 69)</td></tr>
+            <tr><td>Main capsule</td><td>1232 × 706</td><td>616 × 353</td><td>Main carousel on the Steam store front page</td></tr>
+            <tr><td>Vertical capsule</td><td>748 × 896</td><td>374 × 448</td><td>Seasonal sale pages and front-page carousels</td></tr>
+            <tr><td>Screenshots (min. 5)</td><td>1920 × 1080 or larger, 16:9</td><td>—</td><td>Store page, hover previews on the front page</td></tr>
+            <tr><td>Page background (optional)</td><td>1438 × 810</td><td>—</td><td>Behind the store page content column</td></tr>
+            <tr><td>Library capsule</td><td>600 × 900</td><td>—</td><td>Game grid inside the Steam library</td></tr>
+            <tr><td>Library hero</td><td>3840 × 1240</td><td>—</td><td>Banner at the top of the library detail page</td></tr>
+            <tr><td>Community icon</td><td>184 × 184</td><td>—</td><td>Community hub avatar, guides and discussions</td></tr>
+            <tr><td>Bundle header</td><td>707 × 232</td><td>—</td><td>Top of a bundle's detail page</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Two facts save a lot of time. First, all of these files live in the same Steamworks section, so a missing asset can hold up a store page just like a broken one. Second, the aspect ratios are not interchangeable: the header and main capsules share a wide 2.14:1 frame, the vertical capsule is portrait, and the library capsule is a taller 2:3. You cannot crop one master image to fit all of them without redesigning where the logo sits.</p>
+      <p>Steam moved these three capsules to double-resolution uploads, so the numbers most older tutorials still quote are the 1× versions on the left of the legacy column. Upload the larger file and let SteamWorks generate the smaller copies itself: it downscales cleanly, whereas uploading a 1× file and letting Steam scale up produces a soft result on high-DPI displays. Two facts save a lot of time. First, all of these files live in the same Steamworks section, so a missing asset can hold up a store page just like a broken one. Second, the aspect ratios are not interchangeable: the header and main capsules share a wide 2.14:1 frame, the vertical capsule is portrait, and the library capsule is a taller 2:3. You cannot crop one master image to fit all of them without redesigning where the logo sits.</p>
 
       <h2>Where Each Size Actually Shows Up</h2>
       <p>The small capsule is the one players see before they know your game exists. It appears in search results, tag and genre lists, and recommendation rows, often at less than half its native width. Treat it as a logo tile, not a poster. The main capsule is the workhorse of the store: shelves, sale pages and recommendation blocks all pull from it, and it is the asset most often compared side by side with competitors.</p>
       <p>The vertical capsule is the carousel format. It gets more vertical room than any other store asset, which makes it the best place for a character pose or a strong silhouette. The header capsule is the banner at the top of your store page, and the page background sits behind the content column, heavily darkened and blurred, so fine detail there is wasted. In the client, the library capsule fills the grid, the library hero fills the top of the detail view, and the community icon follows players into the hub. Wishlist and search surfaces reuse the small and main capsules rather than asking for a dedicated file.</p>
 
       <h2>PNG or JPG for Steam Capsules?</h2>
-      <p>Steam accepts both formats. PNG is the safer default for anything containing a logo, title treatment, UI frame or flat color: it stores those edges exactly, with no ringing or mosquito noise around letterforms. JPG is fine for photographic backgrounds with no text, and it produces a far smaller file. Every asset is capped at 1 MB, which is generous for a 460 × 215 capsule and tight for a 3840 × 1240 hero full of noise and gradients. If a PNG hero exceeds the limit, export a high-quality JPG at around 90 instead of degrading the PNG.</p>
+      <p>Steam accepts both formats. PNG is the safer default for anything containing a logo, title treatment, UI frame or flat color: it stores those edges exactly, with no ringing or mosquito noise around letterforms. JPG is fine for photographic backgrounds with no text, and it produces a far smaller file. Every asset is capped at 1 MB, which is generous for a 462 × 174 capsule and tight for a 3840 × 1240 hero full of noise and gradients. If a PNG hero exceeds the limit, export a high-quality JPG at around 90 instead of degrading the PNG.</p>
       <p>Do not simply rename a JPG to .png. Steam re-encodes uploads, and a renamed file gives you JPG artifacts inside a lossless container with none of the size benefit. If your art needs transparency, keep a true PNG with an alpha channel and check that the edges are clean against both the light and dark Steam themes.</p>
 
       <h2>Safe Areas and Text Legibility</h2>
-      <p>The most common capsule mistake is typography that only works at full size. At 231 × 87, a 14-pixel subtitle becomes roughly 3 pixels tall in a search result. The rule is blunt: the small capsule should carry a mark or a very short title, nothing else. Test it by shrinking your export to 25% and viewing it at arm's length; if you cannot identify the game, the art is too busy.</p>
+      <p>The most common capsule mistake is typography that only works at full size. A 462 × 174 small capsule is rendered as small as 120 × 45 in some lists, so a 14-pixel subtitle ends up a few pixels tall and unreadable. The rule is blunt: the small capsule should carry a mark or a very short title, nothing else. Test it by shrinking your export to 25% and viewing it at arm's length; if you cannot identify the game, the art is too busy.</p>
       <p>Steam also overlays elements you do not control. Discount badges, platform icons and wishlist prompts sit near the edges, and seasonal sale treatments can crop or tint the frame. Keep the logo and any critical subject inside a central safe zone of roughly 80% of the canvas, and never bake prices, dates, review scores or legal text into the image. If you plan localized store pages, keep the title as a separate layer so the logo can be swapped per language without rebuilding the composition.</p>
 
       <h2>How to Resize an Existing Image to Capsule Size</h2>
@@ -201,7 +204,7 @@
         <li><strong>Step 3.</strong> Pick the preset or type the exact dimensions. Leave "Keep aspect ratio" enabled. If your master does not match the target ratio, crop it first with the <a href="../crop.html">screenshot and image cropper</a> rather than forcing both width and height, which stretches faces and logos.</li>
         <li><strong>Step 4.</strong> Export as PNG for any asset with text or transparency. Check the preview at 100% before downloading.</li>
         <li><strong>Step 5.</strong> If the PNG is over 1 MB, run it through the <a href="../compress.html">image compressor</a> or export a quality-90 JPG for photographic art.</li>
-        <li><strong>Step 6.</strong> Repeat from the same master for each size. Never enlarge a 460 × 215 capsule to 920 × 430; the upscale is visibly soft on the store page.</li>
+        <li><strong>Step 6.</strong> Repeat from the same master for each size. Never enlarge a 462 × 174 capsule to 1232 × 706; the upscale is visibly soft on the store page.</li>
       </ul>
 
       <h2>Pre-Upload Checklist</h2>
@@ -209,7 +212,7 @@
 
       <h2>Frequently Asked Questions</h2>
       <h3>What size is the Steam main capsule?</h3>
-      <p>The main capsule is 460 by 215 pixels. It is used across store shelves, recommendation blocks and sale pages, and Steamworks rejects uploads whose dimensions do not match exactly.</p>
+      <p>The main capsule is 1232 by 706 pixels. It fills the carousel at the top of the Steam store front page. Do not confuse it with the header capsule, which is 920 by 430 and appears at the top of your own store page. Steamworks rejects uploads whose dimensions do not match exactly.</p>
 
       <h3>Can I use a screenshot as a capsule?</h3>
       <p>You can resize a screenshot to the correct dimensions, but a raw gameplay frame with HUD elements, UI text or third-party logos is likely to be rejected during store review. Use key art or a clean, logo-focused composition instead.</p>
@@ -218,7 +221,7 @@
       <p>Yes. Steam accepts both PNG and JPG capsule files, provided the dimensions are exact and the file is under 1 MB. PNG is the better choice when the art contains text, a logo or flat color areas.</p>
 
       <h3>Why is my capsule blurry in the Steam library?</h3>
-      <p>Most likely you uploaded an upscaled asset. The library capsule needs a native 600 by 900 file and the library hero needs 3840 by 1240. Scaling a 460 by 215 capsule up to those sizes always looks soft.</p>
+      <p>Most likely you uploaded an upscaled asset. The library capsule needs a native 600 by 900 file and the library hero needs 3840 by 1240. Scaling a 462 by 174 capsule or a 1232 by 706 main capsule up to those sizes always looks soft.</p>
 
       <h2>Related Guides</h2>
       <ul>
