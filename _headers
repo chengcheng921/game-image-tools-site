@@ -2,13 +2,15 @@
 # Cloudflare already adds X-Content-Type-Options and Referrer-Policy,
 # but we re-declare them to be explicit, and add Permissions-Policy to
 # lock down camera/microphone/geolocation access.
+#
+# Note: Pages appends headers from every matching rule, so Cache-Control
+# is only declared on the specific path groups below. Putting it on /*
+# would concatenate with these and produce an invalid duplicate value.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Cache-Control: public, max-age=0, s-maxage=3600, stale-while-revalidate=600
 
-# Generated social cards never change after publication, so they can be
-# cached aggressively. Pages purges the edge cache on every deploy.
+# Generated social cards never change after publication.
 /img/*
   Cache-Control: public, max-age=604800
