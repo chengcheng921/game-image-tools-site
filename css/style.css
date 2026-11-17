@@ -786,3 +786,17 @@ img {
   color: var(--color-blue-hover);
   text-decoration: underline;
 }
+
+/* Breadcrumbs (blog posts) */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+.breadcrumb a { color: var(--color-blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span[aria-current] { color: var(--color-text-secondary); }
