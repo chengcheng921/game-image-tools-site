@@ -676,8 +676,38 @@ img {
    Responsive
    ============================================ */
 @media (max-width: 768px) {
+  /* Mobile: links stay visible as a scrollable second row instead of being hidden */
+  .nav-inner {
+    height: auto;
+    padding: 6px 16px;
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
   .nav-links {
+    display: flex;
+    width: 100%;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
     display: none;
+  }
+
+  .nav-links li {
+    flex: 0 0 auto;
+  }
+
+  .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 10px;
+    font-size: 14px;
+    white-space: nowrap;
   }
 
   .hero {

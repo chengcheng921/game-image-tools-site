@@ -268,21 +268,13 @@ const usageGuides = {
   }
 };
 
-// Fallback guides for pages without specific content
-const defaultGuide = {
-  en: {
-    title: 'How to Use This Tool',
-    body: `<p>1. Upload your file by dragging it into the drop zone or clicking to browse.</p>
-      <p>2. Adjust the available options as needed.</p>
-      <p>3. Click the action button (Convert / Generate / Download) to process.</p>
-      <p>4. Your processed file will download automatically.</p>
-      <p>💡 All processing happens locally in your browser — your files never leave your device.</p>`
-  },
-};
+// Fallback guides were removed: showing generic "upload a file" steps on tools
+// that do not take files (UUID, password, timestamp) was misleading.
 
 function injectUsageGuide() {
   const page = location.pathname.split('/').pop();
   if (!page || page === 'index.html') return;
+  const guideKey = page.endsWith('.html') ? page : `${page}.html`;
 
   // Inject CSS once
   if (!document.getElementById('usage-guide-css')) {
@@ -304,7 +296,8 @@ function injectUsageGuide() {
   if (!footer) return;
   const existing = document.querySelector('.usage-guide');
   if (existing) return; // guide already injected
-  const guide = usageGuides[page] || defaultGuide;
+  const guide = usageGuides[guideKey];
+  if (!guide) return;
   const g = guide.en;
   const details = document.createElement('details');
   details.className = 'usage-guide';
@@ -313,19 +306,6 @@ function injectUsageGuide() {
 }
 
 
-/* Inject Privacy / About links into every tool page footer */
-function injectFooterLinks() {
-  const footer = document.querySelector('.footer');
-  if (!footer || footer.querySelector('.footer-links')) return;
-  const p = document.createElement('p');
-  p.className = 'footer-links';
-  p.style.marginTop = '8px';
-  const path = location.pathname.includes('/blog/') ? '' : '';
-  p.innerHTML = `<a href="${path}privacy.html" style="color:var(--color-text-tertiary);">Privacy Policy</a> · <a href="${path}about.html" style="color:var(--color-text-tertiary);">About</a>`;
-  footer.appendChild(p);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   injectUsageGuide();
-  injectFooterLinks();
 });

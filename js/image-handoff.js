@@ -13,12 +13,12 @@
 
   // image tools that support handoff (heic is source-only: output images don't need re-converting to heic)
   const TOOLS = [
-    { id: 'compress', href: 'compress.html', label: 'Compress' },
-    { id: 'resize', href: 'resize.html', label: 'Resize' },
-    { id: 'crop', href: 'crop.html', label: 'Crop' },
-    { id: 'convert', href: 'convert.html', label: 'Convert' },
-    { id: 'rotate', href: 'rotate.html', label: 'Rotate' },
-    { id: 'palette', href: 'palette.html', label: 'Colors' },
+    { id: 'compress', href: '/compress', label: 'Compress' },
+    { id: 'resize', href: '/resize', label: 'Resize' },
+    { id: 'crop', href: '/crop', label: 'Crop' },
+    { id: 'convert', href: '/convert', label: 'Convert' },
+    { id: 'rotate', href: '/rotate', label: 'Rotate' },
+    { id: 'palette', href: '/palette', label: 'Colors' },
   ];
 
   let dbPromise = null;
