@@ -45,9 +45,43 @@
   let pngWorkerBroken = false;
   let requestId = 0; // incremented on each compress; callbacks of stale requests are discarded to prevent number jumps/leftovers
 
+  /* pako + PNG8 are only needed when the Worker cannot run (file:// or CSP).
+   * They are loaded on demand so the default JPEG path ships ~18 KB less JS. */
+  let pngDepsPromise = null;
+  function loadPNGDeps() {
+    if (window.PNG8 && window.pako) return Promise.resolve();
+    if (!pngDepsPromise) {
+      function load(src) {
+        return new Promise(function (resolve, reject) {
+          var s = document.createElement('script');
+          s.src = src;
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      pngDepsPromise = load('js/vendor/pako.min.js')
+        .then(function () { return load('js/png8-quant.js'); })
+        .catch(function (err) {
+          pngDepsPromise = null;
+          throw err;
+        });
+    }
+    return pngDepsPromise;
+  }
+
+  function encodePNGFallback(imageData, maxColors) {
+    return loadPNGDeps().then(function () {
+      return PNG8.encodeBlob(imageData, maxColors);
+    }).catch(function (err) {
+      console.error('PNG fallback failed', err);
+      return null;
+    });
+  }
+
   function encodePNG(imageData, maxColors, msgId) {
     // Worker environment known to be unavailable (file:// protocol, CSP, etc.): fall back to the main thread
-    if (pngWorkerBroken) return PNG8.encodeBlob(imageData, maxColors);
+    if (pngWorkerBroken) return encodePNGFallback(imageData, maxColors);
     // Previous encoding still running? terminate cancels it immediately (faster than waiting by seconds); Worker rebuilds in ms
     if (pngWorker) {
       pngWorker.terminate();
@@ -58,7 +92,7 @@
       worker = pngWorker = new Worker('js/png8-worker.js');
     } catch (err) {
       pngWorkerBroken = true;
-      return PNG8.encodeBlob(imageData, maxColors); // main-thread fallback when Worker is unavailable
+      return encodePNGFallback(imageData, maxColors); // main-thread fallback when Worker is unavailable
     }
     return new Promise(function (resolve) {
       worker.onmessage = function (e) {

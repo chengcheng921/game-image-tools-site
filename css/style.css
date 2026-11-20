@@ -710,6 +710,40 @@ img {
     white-space: nowrap;
   }
 
+  /* Touch targets: footer links and controls need a larger hit area than the
+     visual text. The slider keeps its 4px track but gets a 40px tall box. */
+  .footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 6px;
+  }
+
+  .btn,
+  .control-group select,
+  .control-group input[type="number"] {
+    min-height: 48px;
+  }
+
+  .control-group input[type="range"] {
+    height: 40px;
+    background: linear-gradient(var(--color-border), var(--color-border)) center / 100% 4px no-repeat;
+  }
+
+  .control-group input[type="range"]::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .btn:focus-visible,
+  .control-group select:focus-visible,
+  .control-group input:focus-visible,
+  .nav-links a:focus-visible,
+  .footer a:focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+
   .hero {
     padding: 56px 20px 40px;
   }
