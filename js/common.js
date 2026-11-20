@@ -183,7 +183,7 @@ const usageGuides = {
       title: 'How to Compress an Image',
       body: `<p>1. Drag and drop your image into the upload zone, or click to browse.</p>
         <p>2. Use the <strong>Quality</strong> slider to balance file size against visual quality. For screenshots shared on Discord or forums, 70-80% is usually ideal.</p>
-        <p>3. Choose an output format: <strong>JPEG</strong> for photos, <strong>WebP</strong> for the smallest file size, <strong>PNG</strong> for lossless quality.</p>
+        <p>3. Choose an output format: <strong>JPEG</strong> for photos, <strong>WebP</strong> for the smallest file size, <strong>PNG</strong> for text and transparency — PNG output reduces the color palette, so check the result at 100%.</p>
         <p>4. Click <strong>Download</strong> to save the compressed image.</p>
         <p>💡 Tip: If the result looks blurry, increase the quality. If the file is still too large, switch to WebP format.</p>`
     },

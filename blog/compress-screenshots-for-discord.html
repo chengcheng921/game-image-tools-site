@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="max-image-preview:large">
   <title>How to Compress Screenshots for Discord (Step by Step)</title>
-  <meta name="description" content="Learn how to compress game screenshots for Discord. Reduce file size below 8MB without losing quality. Free browser tool, no signup.">
+  <meta name="description" content="Learn how to compress game screenshots for Discord. Reduce file size below Discord's free-tier upload cap without losing detail. Free browser tool, no signup.">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .article { max-width: 760px; margin: 0 auto; }
@@ -30,13 +30,13 @@
   <meta property="og:site_name" content="GameImage.tools">
   <meta property="og:url" content="https://gameimageeditor.com/blog/compress-screenshots-for-discord">
   <meta property="og:title" content="How to Compress Screenshots for Discord (Step by Step)">
-  <meta property="og:description" content="Learn how to compress game screenshots for Discord. Reduce file size below 8MB without losing quality. Free browser tool, no signup.">
+  <meta property="og:description" content="Learn how to compress game screenshots for Discord. Reduce file size below Discord's free-tier upload cap without losing detail. Free browser tool, no signup.">
   <meta property="og:image" content="https://gameimageeditor.com/img/og/compress-screenshots-for-discord.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Compress Screenshots for Discord (Step by Step)">
-  <meta name="twitter:description" content="Learn how to compress game screenshots for Discord. Reduce file size below 8MB without losing quality. Free browser tool, no signup.">
+  <meta name="twitter:description" content="Learn how to compress game screenshots for Discord. Reduce file size below Discord's free-tier upload cap without losing detail. Free browser tool, no signup.">
   <meta name="twitter:image" content="https://gameimageeditor.com/img/og/compress-screenshots-for-discord.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
@@ -46,7 +46,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "How to Compress Screenshots for Discord (Step by Step)",
-  "description": "Learn how to compress game screenshots for Discord. Reduce file size below 8MB without losing quality. Free browser tool, no signup.",
+  "description": "Learn how to compress game screenshots for Discord. Reduce file size below Discord's free-tier upload cap without losing detail. Free browser tool, no signup.",
   "image": [
     "https://gameimageeditor.com/img/og/compress-screenshots-for-discord.png"
   ],
@@ -81,7 +81,7 @@
       "name": "What file size should I target for Discord screenshots?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Discord uploads are limited to 25 MB per file on the free plan and 100 MB on Nitro. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data."
+        "text": "Discord's free upload cap has moved several times and its own documentation currently lists different figures. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data."
       }
     },
     {
@@ -147,7 +147,7 @@
       <h1>How to Compress Screenshots for Discord (Step by Step)</h1>
       <p class="meta">Published on Nov 5, 2026 · 4 min read</p>
 
-      <p>Every gamer has been there: you just pulled off an insane clutch play, hit F12 to screenshot, and then Discord tells you "file too large." Discord's free upload limit is 8 MB, and modern 4K screenshots can easily exceed that. Here's how to fix it in seconds.</p>
+      <p>Every gamer has been there: you just pulled off an insane clutch play, hit F12 to screenshot, and then Discord tells you "file too large." Discord's free upload cap has shifted repeatedly — its Account Caps page lists 10 MB, the File Attachments FAQ lists 20 MB, and Discord says it is experimenting with limits — while a modern 4K screenshot can easily land at 8–15 MB. Here's how to fix it in seconds.</p>
 
       <h2>Why Are My Screenshots So Big?</h2>
       <p>A 4K (3840×2160) PNG screenshot can be 5-15 MB. PNG is lossless, so every pixel is stored exactly — great for editing, terrible for sharing. Even 1080p PNGs often hit 2-4 MB.</p>
@@ -165,7 +165,7 @@
       <ul>
         <li><strong>JPEG</strong>: Best for game screenshots with lots of color. Smallest size for photos.</li>
         <li><strong>WebP</strong>: Even smaller than JPEG at the same quality. Discord supports WebP now.</li>
-        <li><strong>PNG</strong>: Only use if you need transparency or lossless quality.</li>
+        <li><strong>PNG</strong>: Only use if you need transparency. Our PNG compression reduces the color palette, so compare the download at 100% before sharing.</li>
       </ul>
 
       <h2>Step 5: Download and Share</h2>
@@ -177,12 +177,13 @@
         <table>
           <thead><tr><th>Account</th><th>Max file size</th><th>What that means for a screenshot</th></tr></thead>
           <tbody>
-            <tr><td>Free</td><td>10 MB</td><td>A 4K PNG screenshot often lands at 8–15 MB and fails intermittently</td></tr>
+            <tr><td>Free</td><td>10–25 MB (varies)</td><td>Discord's own pages disagree and it is testing limits; a 4K PNG at 8–15 MB can still fail depending on your account</td></tr>
             <tr><td>Nitro Basic</td><td>50 MB</td><td>Most full-resolution PNGs fit without touching quality</td></tr>
-            <tr><td>Nitro</td><td>500 MB</td><td>Effectively no limit for still images</td></tr>
+            <tr><td>Nitro</td><td>500 MB–1 GB</td><td>Effectively no limit for still images</td></tr>
           </tbody>
         </table>
       </div>
+      <p>Check the upload dialog if a file is rejected: the cap depends on your account and on the experiment group Discord has placed you in. The numbers above come from Discord's Account Caps and File Attachments FAQ pages, which listed different values when we last checked in November 2026.</p>
       <p>Discord also compresses and resizes images it displays inline, and when you paste a screenshot rather than uploading it as a file, the client converts it to a compressed format before sending. If you need the receiver to see pixel-exact detail, send the image as a file attachment rather than as an inline image. For a free account, aim for 2–5 MB: well under the cap, still sharp when someone opens it full screen, and small enough to load instantly on mobile.</p>
 
       <h2>Pro Tips</h2>
@@ -206,7 +207,7 @@
 
       <h2>Frequently Asked Questions</h2>
       <h3>What file size should I target for Discord screenshots?</h3>
-      <p>Discord uploads are limited to 25 MB per file on the free plan and 100 MB on Nitro. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data.</p>
+      <p>Discord's free upload cap has moved several times and its own documentation currently lists different figures. For in-channel screenshots, aim for 200–800 KB so the preview loads instantly for everyone, including users on mobile data.</p>
       <h3>Does Discord compress images automatically?</h3>
       <p>Discord re-uploads images when you paste them into a channel. Nitro users get the original resolution, free-plan users get a compressed version. Either way, uploading a well-sized file on your end gives better quality and faster previews.</p>
       <h3>Why does my screenshot look blurry after uploading?</h3>
