@@ -56,7 +56,7 @@
           var s = document.createElement('script');
           s.src = src;
           s.onload = resolve;
-          s.onerror = reject;
+          s.onerror = function () { reject(new Error('Failed to load ' + src)); };
           document.head.appendChild(s);
         });
       }
