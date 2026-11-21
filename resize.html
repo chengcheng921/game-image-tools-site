@@ -217,6 +217,49 @@
     <h2>Does Resizing Hurt Image Quality?</h2>
     <p>Scaling down almost always looks great: pixels are blended together, so text and edges stay crisp. Enlarging beyond 100% is different — the browser has to invent pixels, which softens detail. If you must upscale, stay under roughly 150% and export as PNG to avoid adding compression artifacts on top.</p>
 
+    <h2>Resizing Is the Cheapest Way to Shrink a Screenshot</h2>
+    <p>File size scales with the number of pixels, not with the length of one side. Doubling width and height multiplies the pixel count by four; halving both cuts it to a quarter. A 3840 × 2160 capture therefore carries four times the data of the same frame at 1920 × 1080, even when both are saved with identical settings. If the destination displays your image at 1280px wide, the extra pixels are uploaded, stored and then thrown away by the platform. Resize first and the compressor has far less work to do.</p>
+    <p>The same arithmetic explains why percentage scaling surprises people. 50% sounds modest, but it leaves 25% of the original pixels. 200% sounds like double the size and is actually four times the pixels.</p>
+
+    <h2>How the Resampler Handles Each Direction</h2>
+    <p>This tool draws the image onto a canvas with high-quality smoothing enabled. When you scale down, the browser averages groups of neighbouring pixels, which is why a 4K screenshot reduced to 1080p often looks cleaner than the original — the averaging hides sensor and compression noise. When you scale up, there is no hidden detail to average; the browser has to interpolate between existing pixels. Edges soften, text loses its crispness, and sharpening afterwards only adds halos.</p>
+    <p>Downscaling is safe, moderate enlargement is tolerable, and aggressive enlargement is a different job. If you need a large print or a 4K wallpaper from a smaller source, enlarge in small steps and inspect the result at 100% between them, or start again from a higher-resolution capture. No resizer can invent texture that was never recorded.</p>
+
+    <h2>Choose Dimensions by Destination</h2>
+    <p>Platforms reject anything that is not the exact size, so the preset menu carries the numbers below and fills both fields for you. Choosing a preset also unlocks the aspect ratio on purpose, because a proportional scale would land on the wrong dimensions.</p>
+    <table>
+      <thead>
+        <tr><th>Destination</th><th>Asset</th><th>Pixels</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Steam</td><td>Header capsule</td><td>920 × 430</td></tr>
+        <tr><td>Steam</td><td>Main capsule</td><td>1232 × 706</td></tr>
+        <tr><td>Steam</td><td>Library capsule</td><td>600 × 900</td></tr>
+        <tr><td>Steam</td><td>Library hero</td><td>3840 × 1240</td></tr>
+        <tr><td>Discord</td><td>Emoji / avatar</td><td>128 × 128</td></tr>
+        <tr><td>Discord</td><td>Server banner</td><td>600 × 240</td></tr>
+        <tr><td>Twitch</td><td>Emote / badge / panel</td><td>112 × 112 / 72 × 72 / 320 × 100</td></tr>
+        <tr><td>Roblox</td><td>Decal / game icon</td><td>256 × 256 / 512 × 512</td></tr>
+        <tr><td>itch.io</td><td>Cover / thumbnail</td><td>630 × 500 / 315 × 250</td></tr>
+        <tr><td>YouTube</td><td>Thumbnail / channel banner</td><td>1280 × 720 / 2560 × 1440</td></tr>
+        <tr><td>Instagram</td><td>Post / portrait / story</td><td>1080 × 1080 / 1080 × 1350 / 1080 × 1920</td></tr>
+        <tr><td>X / Twitter</td><td>Post image</td><td>1200 × 675</td></tr>
+        <tr><td>Desktop</td><td>Wallpaper</td><td>1920 × 1080, 2560 × 1440 or 3840 × 2160</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Resize Before or After Cropping?</h2>
+    <p>Crop first. Cropping changes the aspect ratio, and every platform preset assumes one. If you resize to 1280 × 720 while the capture is still 21:9, the picture is either stretched or padded; cropping to 16:9 first gives the resizer clean geometry to work with. For a batch of assets from one capture, crop once at the largest target ratio, then export each size from that master instead of cropping five times.</p>
+
+    <h2>Common Resize Mistakes</h2>
+    <ul>
+      <li><strong>Unchecking "Keep aspect ratio" without a reason.</strong> The result is a stretched HUD, not a crop. Use the crop tool when the ratio must change.</li>
+      <li><strong>Upscaling past the capture resolution.</strong> Soft edges cannot be recovered by a bigger canvas; start from a sharper source.</li>
+      <li><strong>Resizing a JPEG twice.</strong> Each export re-encodes it. Export once from the original and keep the intermediate as PNG if you need to continue.</li>
+      <li><strong>Using percentages when a platform wants exact pixels.</strong> 50% of 2560 is 1280, but 50% of 1920 is 960. Type the target size instead of guessing.</li>
+      <li><strong>Ignoring the output format.</strong> PNG keeps UI text and transparency; JPEG and WebP keep photos small. The <a href="convert">format converter</a> explains the trade-offs.</li>
+    </ul>
+
     <h2>Frequently Asked Questions</h2>
     <details>
       <summary>Can I stretch an image to exact dimensions?</summary>
@@ -235,6 +278,18 @@
       <p>No. Presets unlock the aspect ratio on purpose, because platforms reject anything that is not the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize — otherwise it will be stretched.</p>
     </details>
 
+    <details>
+      <summary>Does resizing reduce file size?</summary>
+      <p>Yes — fewer pixels means less data to encode. Halving width and height leaves a quarter of the pixels, which usually produces a much smaller file even at the same quality setting. For a hard upload cap, resize first and compress afterwards.</p>
+    </details>
+    <details>
+      <summary>Should I resize before or after compressing?</summary>
+      <p>Resize first. Compression works on whatever pixel count you give it, so shrinking the canvas before encoding saves far more bytes than lowering quality on a full-resolution file.</p>
+    </details>
+    <details>
+      <summary>Can I resize larger than 200%?</summary>
+      <p>The percentage control stops at 200%, but the width and height fields accept any value the browser can allocate. Enlarging beyond the capture resolution will not add real detail, so results look soft.</p>
+    </details>
     <div class="related-tools">
       <h2>Related Tools</h2>
       <ul>
@@ -273,10 +328,62 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Can I stretch an image to exact dimensions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — uncheck Keep aspect ratio and set width and height independently. Mismatched ratios will visibly stretch the image."}},
-    {"@type": "Question", "name": "Why does my upscaled image look blurry?", "acceptedAnswer": {"@type": "Answer", "text": "Upscaling cannot recreate detail that was never captured. Scale down, or keep enlargements under about 150%."}},
-    {"@type": "Question", "name": "Is my screenshot uploaded to a server?", "acceptedAnswer": {"@type": "Answer", "text": "No — resizing runs entirely in your browser. Your image never leaves your device."}},
-    {"@type": "Question", "name": "Do the size presets prevent stretching?", "acceptedAnswer": {"@type": "Answer", "text": "No. Presets unlock the aspect ratio on purpose, because platforms require the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize."}}
+    {
+      "@type": "Question",
+      "name": "Can I stretch an image to exact dimensions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — uncheck Keep aspect ratio and set width and height independently. Mismatched ratios will visibly stretch or squash the image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my upscaled image look blurry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upscaling cannot recreate detail that was never captured. Scale down, or keep enlargements under about 150%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my screenshot uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — resizing runs entirely in your browser using the Canvas API. Your image never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do the size presets prevent stretching?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Presets unlock the aspect ratio on purpose, because platforms require the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does resizing reduce file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — fewer pixels means less data to encode. Halving width and height leaves a quarter of the pixels, which usually produces a much smaller file even at the same quality setting. For a hard upload cap, resize first and compress afterwards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I resize before or after compressing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Resize first. Compression works on whatever pixel count you give it, so shrinking the canvas before encoding saves far more bytes than lowering quality on a full-resolution file."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I resize larger than 200%?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The percentage control stops at 200%, but the width and height fields accept any value the browser can allocate. Enlarging beyond the capture resolution will not add real detail, so results look soft."
+      }
+    }
   ]
 }
 </script>

@@ -612,6 +612,9 @@ img {
 .tool-help p { color: var(--color-text-secondary); font-size: 14px; margin: 0 0 8px; }
 .tool-help ol { padding-left: 24px; color: var(--color-text-secondary); font-size: 14px; }
 .tool-help ol li { margin-bottom: 8px; }
+.tool-help ul { padding-left: 24px; color: var(--color-text-secondary); font-size: 14px; }
+.tool-help ul li { margin-bottom: 8px; }
+.tool-help code { font-size: 13px; background: var(--color-bg); padding: 1px 4px; border-radius: 3px; }
 .tool-help strong { color: var(--color-text); }
 .tool-help details {
   background: var(--color-surface);

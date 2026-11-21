@@ -129,6 +129,43 @@
     <h2>Why Convert Instead of Just Renaming the File?</h2>
     <p>Changing a file extension doesn't change the data inside — a renamed PNG is still a PNG, and strict apps will reject it. Real conversion re-encodes the image, which is what actually shrinks the file or adds compatibility with software that refuses certain formats.</p>
 
+    <h2>Format Comparison at a Glance</h2>
+    <table>
+      <thead>
+        <tr><th>Format</th><th>Compression</th><th>Transparency</th><th>Best for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>PNG</td><td>Lossless</td><td>Yes</td><td>UI text, logos, pixel art and files you will keep editing</td></tr>
+        <tr><td>JPEG</td><td>Lossy</td><td>No</td><td>Photoreal gameplay, email attachments and uploads that reject newer formats</td></tr>
+        <tr><td>WebP</td><td>Lossy in this tool</td><td>Yes</td><td>Web pages, Discord and anywhere a small file matters more than legacy app support</td></tr>
+      </tbody>
+    </table>
+    <p>This converter re-encodes through the browser canvas, so every output is a static image. Animated GIF or animated WebP input keeps only its first frame, and animated output is not produced here.</p>
+
+    <h2>When PNG Is the Right Target</h2>
+    <p>PNG stores every pixel exactly, which makes it the safe choice for screenshots where text must stay readable, for anything with partial transparency, and for artwork you plan to edit again. It is also the right archive format: keeping one lossless master means later conversions start from clean data instead of a second-generation JPEG.</p>
+    <p>The catch is size. A PNG of a photoreal frame is often several times larger than a JPEG of the same frame, because gradients need a wide palette and a lossless encoder cannot approximate them. Convert a JPEG to PNG and the file will grow without looking any better — the detail was already lost before the conversion.</p>
+
+    <h2>When JPEG Is the Right Target</h2>
+    <p>JPEG is still the most universally accepted image format. Email clients, older forum software, game launchers and print shops open it without questions. For photoreal screenshots it produces small files at quality 80–90, and the artifacts sit in areas the eye overlooks: fine texture, foliage, motion blur.</p>
+    <p>JPEG has no alpha channel. When the source has transparent areas, this tool fills them with white before encoding so the result is predictable rather than black or grey. If you need a different background colour, composite the image onto that colour first, then convert. Thin anti-aliased edges can also pick up a light fringe when transparency is flattened, so leave a small margin around cut-out art.</p>
+
+    <h2>When WebP Is the Right Target</h2>
+    <p>WebP gives you transparency and a smaller file than JPEG at comparable visual quality, and every current major browser, Discord and most content management systems accept it. For screenshots published on a website it is usually the best default, because the page loads faster without an obvious quality penalty.</p>
+    <p>Compatibility is the only reason to hesitate. Some older desktop editors, game engines and automated upload pipelines still expect PNG or JPEG. If a tool rejects your file after conversion, that is a format limitation, not a corrupted image — switch the target back to JPEG and try again.</p>
+
+    <h2>What Conversion Cannot Do</h2>
+    <ul>
+      <li><strong>Rename a file.</strong> Changing <code>.png</code> to <code>.jpg</code> leaves the bytes untouched; only re-encoding produces the other format.</li>
+      <li><strong>Recover lost detail.</strong> JPEG artifacts stay in the picture when you convert to PNG. A lossless format preserves them faithfully.</li>
+      <li><strong>Fix a wrong colour profile.</strong> The browser decodes into sRGB, so a CMYK or wide-gamut source can shift slightly. Check brand colours afterwards if that matters.</li>
+      <li><strong>Keep animation.</strong> Canvas capture is single-frame, so animated input becomes a static output.</li>
+    </ul>
+
+    <h2>Quality, Dimensions and File Size</h2>
+    <p>The quality slider only applies to JPEG and WebP; PNG ignores it because the format is lossless. At the default 90 the difference from the original is hard to see, and 80 is usually indistinguishable for screenshots shared online. Below roughly 70, flat areas start to block and text picks up coloured fringes.</p>
+    <p>If the converted file is still too large, dimensions matter more than the quality slider. A 3840px capture at quality 90 can easily outweigh a 1920px version at quality 85. Resize first, then convert, then compress if the destination is strict about bytes.</p>
+
     <h2>Frequently Asked Questions</h2>
     <details>
       <summary>What happens to transparency when I convert PNG to JPEG?</summary>
@@ -143,6 +180,22 @@
       <p>No — conversion runs locally in your browser with the Canvas API. Free, no signup, and your files never leave your device.</p>
     </details>
 
+    <details>
+      <summary>Does WebP keep transparency?</summary>
+      <p>Yes. WebP supports an alpha channel, so logos, overlays and cut-out art keep their transparent background. JPEG does not, which is why transparent areas are flattened onto white when you choose it.</p>
+    </details>
+    <details>
+      <summary>Can I convert an animated GIF or WebP?</summary>
+      <p>The converter draws a single frame to the canvas, so animated input becomes a static image. If you need the animation, keep the original file; this tool does not encode animated output.</p>
+    </details>
+    <details>
+      <summary>Can I convert HEIC photos here?</summary>
+      <p>Most browsers cannot decode HEIC in a canvas. Use the <a href="heic">HEIC to JPG</a> tool first, then convert the resulting JPG to WebP or PNG here if needed.</p>
+    </details>
+    <details>
+      <summary>Does converting change the image dimensions?</summary>
+      <p>No. Conversion keeps the original width and height and only re-encodes the pixels. Use the <a href="resize">resize tool</a> if the destination requires exact dimensions.</p>
+    </details>
     <div class="related-tools">
       <h2>Related Tools</h2>
       <ul>
@@ -181,9 +234,62 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "What happens to transparency when I convert PNG to JPEG?", "acceptedAnswer": {"@type": "Answer", "text": "JPEG does not support transparency; transparent areas are flattened. Use WebP or PNG output to keep the alpha channel."}},
-    {"@type": "Question", "name": "Why is my converted file bigger than the original?", "acceptedAnswer": {"@type": "Answer", "text": "Converting to a lossless format like PNG stores every pixel exactly. To shrink files, convert toward JPEG or WebP."}},
-    {"@type": "Question", "name": "Are my images uploaded for conversion?", "acceptedAnswer": {"@type": "Answer", "text": "No — conversion runs locally in your browser. Your files never leave your device."}}
+    {
+      "@type": "Question",
+      "name": "What happens to transparency when I convert PNG to JPEG?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "JPEG does not support transparency; transparent areas are flattened onto white. Use WebP or PNG output to keep the alpha channel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my converted file bigger than the original?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Converting to a lossless format like PNG stores every pixel exactly. To shrink files, convert toward JPEG or WebP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my images uploaded for conversion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — conversion runs locally in your browser. Your files never leave your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does WebP keep transparency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. WebP supports an alpha channel, so logos, overlays and cut-out art keep their transparent background. JPEG does not, which is why transparent areas are flattened onto white when you choose it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert an animated GIF or WebP?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The converter draws a single frame to the canvas, so animated input becomes a static image. If you need the animation, keep the original file; this tool does not encode animated output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert HEIC photos here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most browsers cannot decode HEIC in a canvas. Use the HEIC to JPG tool first, then convert the resulting JPG to WebP or PNG here if needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does converting change the image dimensions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Conversion keeps the original width and height and only re-encodes the pixels. Use the resize tool if the destination requires exact dimensions."
+      }
+    }
   ]
 }
 </script>

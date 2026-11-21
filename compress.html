@@ -130,6 +130,57 @@
     <h2>PNG Output Note</h2>
     <p>PNG is a lossless format — it does not throw away pixels. Our PNG compression works by reducing the color palette, which typically saves 50–80% on game screenshots. If you set quality very low and the result looks worse than expected, try JPEG or WebP instead.</p>
 
+    <h2>PNG, JPG or WebP for a Compressed Screenshot?</h2>
+    <p>All three outputs are built from the same pixels, so the choice is about what the destination accepts and how much detail you can afford to lose.</p>
+    <table>
+      <thead>
+        <tr><th>Output</th><th>Compression</th><th>Transparency</th><th>Best for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>WebP</td><td>Lossy at the chosen quality</td><td>Yes</td><td>Discord, forums and your own site, where a small file matters more than universal compatibility</td></tr>
+        <tr><td>JPEG</td><td>Lossy at the chosen quality</td><td>No</td><td>Photoreal gameplay, email attachments and upload forms that reject WebP</td></tr>
+        <tr><td>PNG</td><td>Lossless, palette reduced to 2–256 colours</td><td>Yes</td><td>UI text, pixel art, logos and overlays that must stay sharp</td></tr>
+      </tbody>
+    </table>
+    <p>Inside this tool the PNG quality value does not control JPEG-style compression. It sets the size of the colour palette: quality 80 keeps about 205 colours, while quality 20 keeps about 51. Flat UI art survives that well; a photograph does not, because every gradient needs hundreds of tones.</p>
+
+    <h2>Why the File Size Barely Changed</h2>
+    <p>If the numbers look disappointing, one of these is usually responsible:</p>
+    <ul>
+      <li><strong>The source is already compressed.</strong> A JPEG downloaded from Discord or Steam has been through a lossy encoder once. Re-encoding it at a similar quality cannot recover much space, and pushing lower only adds artifacts.</li>
+      <li><strong>The screenshot has few colours.</strong> A clean menu screen may already sit near the smallest palette PNG can use, so palette reduction has almost nothing left to remove.</li>
+      <li><strong>Pixel count dominates the file size.</strong> A 4K frame carries four times the data of a 1080p frame. No quality setting fixes that as cheaply as resizing does.</li>
+      <li><strong>PNG was chosen for a photo.</strong> Photo content needs a wide palette, so a lossless PNG of a forest or an explosion can end up larger than the original JPEG.</li>
+    </ul>
+
+    <h2>How to Reach a Target File Size</h2>
+    <p>Work through these steps in order. Each one costs less quality than the next, and the first two usually decide the outcome.</p>
+    <ol>
+      <li><strong>Resize first.</strong> If the upload only displays at 1280px wide, halving a 2560px capture removes three quarters of the pixels before compression starts. Use the <a href="resize">resize tool</a>, then come back.</li>
+      <li><strong>Switch the output format.</strong> WebP is normally smaller than JPEG at the same visual quality; PNG is only competitive for flat art with transparency.</li>
+      <li><strong>Lower the quality in steps of 10.</strong> Judge at 100% zoom, not on the thumbnail. Stop at the first setting where text and edges still read cleanly.</li>
+      <li><strong>Crop dead space.</strong> Letterbox bars, repeated HUD elements and empty sky are pixels you are paying for twice.</li>
+    </ol>
+    <p>Common caps worth designing for: 500 KB for application and support forms, 256 KB for Discord emoji, 1 MB for Steam capsule and library artwork, 2 MB for a YouTube thumbnail. If a file still misses after all four steps, the source was probably too detailed for the format, and a tighter crop is the honest answer.</p>
+
+    <h2>Recommended Settings by Screenshot Type</h2>
+    <table>
+      <thead>
+        <tr><th>Screenshot</th><th>Output</th><th>Quality</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>UI, menus, dialogue boxes</td><td>PNG</td><td>70–85</td><td>Flat colours and crisp text survive palette reduction; JPEG rings around lettering</td></tr>
+        <tr><td>Photoreal gameplay</td><td>WebP or JPEG</td><td>75–85</td><td>Gradients and texture hide lossy compression well</td></tr>
+        <tr><td>Pixel art and retro sprites</td><td>PNG</td><td>90–100</td><td>A small palette is already the format's strength; heavy reduction destroys dithering</td></tr>
+        <tr><td>Transparent overlays and logos</td><td>PNG or WebP</td><td>80–90</td><td>JPEG has no alpha channel and will fill the background</td></tr>
+        <tr><td>Dark scenes with fine grain</td><td>WebP</td><td>80–90</td><td>JPEG blocks and bands in shadows first; WebP holds them together longer</td></tr>
+      </tbody>
+    </table>
+
+    <h2>What Compression Cannot Do</h2>
+    <p>Compression rewrites an existing picture; it cannot add detail. Upscaling a 720p capture afterwards will still look soft, and repeatedly saving the same JPEG at 60% will keep degrading it because every pass discards more data. Renaming a file from <code>.png</code> to <code>.jpg</code> does not change its contents either — the encoder has to run, which is what this page does.</p>
+    <p>One side effect worth knowing: the browser re-encodes the image through a canvas, so EXIF camera data, GPS coordinates and PNG text chunks are not carried into the output. That is useful when you share a phone screenshot publicly, but it also means the original file remains the only copy of that metadata.</p>
+
     <h2>Frequently Asked Questions</h2>
     <details>
       <summary>Do you upload my images?</summary>
@@ -144,6 +195,18 @@
       <p>This tool currently processes one image at a time. You can open multiple browser tabs to compress several simultaneously.</p>
     </details>
 
+    <details>
+      <summary>Why is my PNG larger after compression?</summary>
+      <p>Palette reduction works best on flat art. A photoreal frame needs a wide palette, so a lossless PNG re-encode can exceed a small original JPEG. Switch the output to WebP or JPEG for that kind of image.</p>
+    </details>
+    <details>
+      <summary>Can I hit an exact target size such as 500 KB?</summary>
+      <p>Not in one step — the tool shows the real encoded size, so adjust quality or dimensions and watch the number until it fits. Resizing usually moves the result further than the quality slider does.</p>
+    </details>
+    <details>
+      <summary>Does compression remove metadata?</summary>
+      <p>Yes. The image is redrawn on a canvas and encoded fresh, so EXIF camera data, GPS coordinates and PNG text chunks are not copied into the result. Keep the original file if you need that information.</p>
+    </details>
     <div class="related-tools">
       <h2>Related Tools</h2>
       <ul>
@@ -186,9 +249,54 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Do you upload my images?", "acceptedAnswer": {"@type": "Answer", "text": "No — all compression happens locally in your browser. Your image never leaves your device."}},
-    {"@type": "Question", "name": "What quality should I use?", "acceptedAnswer": {"@type": "Answer", "text": "For most game screenshots shared online, 70–80 quality with JPEG gives an excellent balance of size and quality."}},
-    {"@type": "Question", "name": "Can I compress multiple images at once?", "acceptedAnswer": {"@type": "Answer", "text": "The tool processes one image at a time. Open multiple tabs to compress several simultaneously."}}
+    {
+      "@type": "Question",
+      "name": "Do you upload my images?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — all compression happens locally in your browser using the Canvas API. Your image never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does WebP look different than the original?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebP is a lossy format like JPEG. At quality 80 or above the difference is invisible to the human eye. If you need pixel-perfect output, use PNG."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I compress multiple images at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool processes one image at a time. Open multiple browser tabs to compress several simultaneously."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my PNG larger after compression?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Palette reduction works best on flat art. A photoreal frame needs a wide palette, so a lossless PNG re-encode can exceed a small original JPEG. Switch the output to WebP or JPEG for that kind of image."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I hit an exact target size such as 500 KB?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in one step — the tool shows the real encoded size, so adjust quality or dimensions and watch the number until it fits. Resizing usually moves the result further than the quality slider does."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does compression remove metadata?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The image is redrawn on a canvas and encoded fresh, so EXIF camera data, GPS coordinates and PNG text chunks are not copied into the result. Keep the original file if you need that information."
+      }
+    }
   ]
 }
 </script>
