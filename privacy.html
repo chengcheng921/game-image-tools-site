@@ -2,14 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VTV63NF2Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-7VTV63NF2Z");
-  </script>
+  <!-- Google Analytics 4 with consent gating (see js/analytics.js) -->
+  <script src="/js/analytics.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="max-image-preview:large">
   <title>Privacy Policy — GameImage.tools</title>
@@ -34,11 +28,11 @@
   <meta property="og:site_name" content="GameImage.tools">
   <meta property="og:url" content="https://gameimageeditor.com/privacy">
   <meta property="og:title" content="Privacy Policy — GameImage.tools">
-  <meta property="og:description" content="Privacy Policy — GameImage.tools. All processing runs locally in your browser. No uploads, no tracking.">
+  <meta property="og:description" content="Privacy Policy for GameImage.tools. All processing runs locally in your browser. Analytics only runs after you accept.">
   <meta property="og:image" content="https://gameimageeditor.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy — GameImage.tools">
-  <meta name="twitter:description" content="Privacy Policy — GameImage.tools. All processing runs locally in your browser. No uploads, no tracking.">
+  <meta name="twitter:description" content="Privacy Policy for GameImage.tools. All processing runs locally in your browser. Analytics only runs after you accept.">
   <meta name="twitter:image" content="https://gameimageeditor.com/og-image.png">
     <script type="application/ld+json">
 {
@@ -79,7 +73,7 @@
       <ul>
         <li>Your images, PDFs, and other files are <strong>never uploaded to our servers</strong>.</li>
         <li>We <strong>cannot see, access, or store</strong> any file you process with our tools.</li>
-        <li>When you close the page, all data is discarded automatically.</li>
+        <li>When you close the page, all data is discarded automatically — with one exception: if you use the optional hand-off buttons that pass a result into another tool, the last image is stored in your browser's IndexedDB for up to 10 minutes so the next tool can open it without a re-upload. It is deleted as soon as that tool opens it, or automatically once it expires.</li>
       </ul>
 
       <h2>2. Information We Collect</h2>
@@ -98,6 +92,7 @@
         <li><strong>Advertising:</strong> third-party advertising partners may use cookies to serve ads. See Section 4.</li>
       </ul>
       <p>You can disable cookies in your browser settings at any time. All tools will continue to work without cookies.</p>
+      <p>Our analytics consent choice is stored in your browser's localStorage under the key <code>gimg-consent</code>. Nothing is sent to Google Analytics until you accept. You can change your choice at any time: <a href="#" id="consentSettings">Cookie settings</a>. You can also remove the stored hand-off image with <button type="button" class="link-button" id="clearLocalData">Clear locally stored data</button>.</p>
 
       <h2>4. Third-Party Advertising</h2>
       <p>We may display advertisements served by third-party networks, including <strong>Google AdSense</strong>. These networks may use cookies to serve ads based on your prior visits to this or other websites.</p>
@@ -110,7 +105,7 @@
       <p>You can consult the respective third-party privacy policies for more detailed information on their practices and instructions on how to opt out.</p>
 
       <h2>5. Analytics Services</h2>
-      <p>We use Google Analytics 4 (measurement ID <code>G-7VTV63NF2Z</code>) to understand how visitors use the site. It collects standard usage data such as pages viewed, approximate location (city level), browser and device type, referring page, and visit duration. This data is aggregated and does not identify you personally. Google may set analytics cookies for this purpose.</p>
+      <p>We use Google Analytics 4 (measurement ID <code>G-7VTV63NF2Z</code>) to understand how visitors use the site. It collects standard usage data such as pages viewed, approximate location (city level), browser and device type, referring page, and visit duration. This data is aggregated and does not identify you personally. Google may set analytics cookies for this purpose. Analytics storage is denied by default and only enabled if you accept the consent bar.</p>
       <p>You can opt out at any time with the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics Opt-out Browser Add-on</a>, or by blocking cookies in your browser settings. Our tools themselves process files locally and never send your images to us or to Google.</p>
 
       <h2>6. GDPR — Your Rights (EU/EEA Users)</h2>
@@ -147,7 +142,21 @@
 
   <footer class="footer">
     <p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p>
-    <p><a href="privacy">Privacy Policy</a> · <a href="about">About</a> · <a href="contact">Contact</a></p>
+    <p><a href="privacy">Privacy Policy</a> · <a href="about">About</a> · <a href="contact">Contact</a> · <a href="terms">Terms</a></p>
   </footer>
+  <script src="js/image-handoff.js"></script>
+  <script>
+    (function () {
+      var clearBtn = document.getElementById('clearLocalData');
+      if (clearBtn) clearBtn.addEventListener('click', function () {
+        ImageHandoff.clear().then(function () { clearBtn.textContent = 'Cleared'; });
+      });
+      var consentLink = document.getElementById('consentSettings');
+      if (consentLink) consentLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (window.gimgConsent) gimgConsent.open();
+      });
+    })();
+  </script>
 </body>
 </html>

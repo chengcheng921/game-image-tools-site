@@ -83,6 +83,8 @@
         };
         t.oncomplete = function () {
           if (!rec || !rec.blob) { resolve(null); return; }
+          // Stale handoff data is discarded instead of loaded (deleted above either way)
+          if (rec.ts && Date.now() - rec.ts > 10 * 60 * 1000) { resolve(null); return; }
           // convert to File so each tool's existing handleFile (file.name / file.size) needs no changes
           try {
             resolve(new File([rec.blob], rec.name || 'image', { type: rec.blob.type || 'image/png' }));

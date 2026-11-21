@@ -2,14 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7VTV63NF2Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-7VTV63NF2Z");
-  </script>
+  <!-- Google Analytics 4 with consent gating (see js/analytics.js) -->
+  <script src="/js/analytics.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="max-image-preview:large">
   <title>About — GameImage.tools</title>
@@ -90,7 +84,7 @@
 
       <h2>What Makes Us Different</h2>
       <ul>
-        <li><strong>Local-first processing.</strong> Every tool runs entirely in your browser using JavaScript and Canvas API. Your files are processed on your own device and never uploaded to a server. Once you close the tab, the data is gone.</li>
+        <li><strong>Local-first processing.</strong> Every tool runs entirely in your browser using JavaScript and Canvas API. Your files are processed on your own device and never uploaded to a server. If you use the hand-off buttons to send a result into another tool, that single image is kept in your browser's IndexedDB for up to 10 minutes and then deleted. <button type="button" class="link-button" id="clearLocalData">Clear locally stored data</button></li>
         <li><strong>No registration.</strong> No accounts, no email addresses, no passwords. Open a tool, use it, done.</li>
         <li><strong>Free forever.</strong> Our tools are supported by unobtrusive advertising — no subscriptions, no watermarks, no hidden paywalls.</li>
         <li><strong>Built for gamers.</strong> Preset aspect ratios for avatars and wallpapers, compression presets tuned for Discord's upload limits, palette extraction for stream overlays and thumbnails.</li>
@@ -125,7 +119,21 @@
 
   <footer class="footer">
     <p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p>
-    <p><a href="privacy">Privacy Policy</a> · <a href="about">About</a> · <a href="contact">Contact</a></p>
+    <p><a href="privacy">Privacy Policy</a> · <a href="about">About</a> · <a href="contact">Contact</a> · <a href="terms">Terms</a></p>
   </footer>
+  <script src="js/image-handoff.js"></script>
+  <script>
+    (function () {
+      var clearBtn = document.getElementById('clearLocalData');
+      if (clearBtn) clearBtn.addEventListener('click', function () {
+        ImageHandoff.clear().then(function () { clearBtn.textContent = 'Cleared'; });
+      });
+      var consentLink = document.getElementById('consentSettings');
+      if (consentLink) consentLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (window.gimgConsent) gimgConsent.open();
+      });
+    })();
+  </script>
 </body>
 </html>
