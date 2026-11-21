@@ -1,12 +1,13 @@
 /* Analytics with cookie consent
- * GA4 is loaded with Google Consent Mode v2 defaults set to denied.
- * analytics_storage is only granted after the visitor clicks Accept; the
- * choice is stored in localStorage and can be changed via gimgConsent.open().
+ * gtag.js is not loaded at all until the visitor clicks Accept, so no GA cookie
+ * can be written beforehand. The choice is stored in localStorage and can be
+ * changed later via gimgConsent.open().
  */
 (function () {
   var ID = 'G-7VTV63NF2Z';
   var KEY = 'gimg-consent';
   var choice = null;
+  var loaded = false;
 
   try {
     choice = localStorage.getItem(KEY);
@@ -16,31 +17,36 @@
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = gtag;
 
-  // Must run before gtag.js loads so no analytics cookie is written by default
+  // Keeps the door open for ad consent once AdSense is live; analytics is
+  // granted only through enable() below.
   gtag('consent', 'default', {
     ad_storage: 'denied',
     ad_user_data: 'denied',
     ad_personalization: 'denied',
-    analytics_storage: choice === 'granted' ? 'granted' : 'denied',
+    analytics_storage: 'denied',
     wait_for_update: 500
   });
 
-  var script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
-  document.head.appendChild(script);
+  function enable() {
+    if (loaded) return;
+    loaded = true;
 
-  gtag('js', new Date());
-  gtag('config', ID);
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+    document.head.appendChild(script);
+
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    gtag('js', new Date());
+    gtag('config', ID);
+  }
 
   function save(value) {
     choice = value;
     try {
       localStorage.setItem(KEY, value);
     } catch (e) {}
-    gtag('consent', 'update', {
-      analytics_storage: value === 'granted' ? 'granted' : 'denied'
-    });
+    if (value === 'granted') enable();
     var bar = document.getElementById('consent-bar');
     if (bar) bar.remove();
     document.body.classList.remove('has-consent-bar');
@@ -69,10 +75,11 @@
     document.body.classList.add('has-consent-bar');
   }
 
-  // Allow the privacy page to let visitors change their choice later
   window.gimgConsent = { open: show };
 
-  if (!choice) {
+  if (choice === 'granted') {
+    enable();
+  } else if (!choice) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', show);
     } else {
