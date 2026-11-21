@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google Analytics 4 with consent gating (see js/analytics.js) -->
+  <script src="/js/analytics.js" defer></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="max-image-preview:large">
+  <title>Game UI Color Palette From Concept Art: A Practical Workflow</title>
+  <meta name="description" content="Turn concept art into a usable game UI palette: extract dominant colors, assign roles, check contrast, and export HEX or RGB tokens without uploading the artwork.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .article { max-width: 760px; margin: 0 auto; }
+    .article h1 { font-size: 2rem; margin-bottom: 8px; }
+    .article .meta { color: var(--color-text-secondary); font-size: 14px; margin-bottom: 32px; }
+    .article h2 { font-size: 1.4rem; margin-top: 36px; margin-bottom: 12px; }
+    .article p, .article li { line-height: 1.8; color: var(--color-text-secondary); margin-bottom: 12px; }
+    .article a { color: var(--color-blue); }
+    .back-link { display: inline-block; margin-bottom: 24px; color: var(--color-blue); text-decoration: none; }
+    .article table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 4px 0 20px; }
+    .article th, .article td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--color-border-light); }
+    .article th { color: var(--color-text); font-weight: 600; }
+    .article h3 { font-size: 1.05rem; margin-top: 22px; margin-bottom: 6px; }
+    .table-wrap { overflow-x: auto; }
+    .article code { font-size: 13px; background: var(--color-bg); padding: 1px 4px; border-radius: 3px; }
+  </style>
+
+  <link rel="canonical" href="https://gameimageeditor.com/blog/game-ui-color-palette">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="GameImage.tools">
+  <meta property="og:url" content="https://gameimageeditor.com/blog/game-ui-color-palette">
+  <meta property="og:title" content="Game UI Color Palette From Concept Art: A Practical Workflow">
+  <meta property="og:description" content="Turn concept art into a usable game UI palette: extract dominant colors, assign roles, check contrast, and export HEX or RGB tokens without uploading the artwork.">
+  <meta property="og:image" content="https://gameimageeditor.com/img/og/game-ui-color-palette.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Game UI Color Palette From Concept Art: A Practical Workflow">
+  <meta name="twitter:description" content="Turn concept art into a usable game UI palette: extract dominant colors, assign roles, check contrast, and export HEX or RGB tokens without uploading the artwork.">
+  <meta name="twitter:image" content="https://gameimageeditor.com/img/og/game-ui-color-palette.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Game UI Color Palette From Concept Art: A Practical Workflow",
+  "description": "Turn concept art into a usable game UI palette: extract dominant colors, assign roles, check contrast, and export HEX or RGB tokens without uploading the artwork.",
+  "image": [
+    "https://gameimageeditor.com/img/og/game-ui-color-palette.png"
+  ],
+  "datePublished": "2026-11-21",
+  "dateModified": "2026-11-21",
+  "author": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "url": "https://gameimageeditor.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "GameImage.tools",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gameimageeditor.com/og-image.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gameimageeditor.com/blog/game-ui-color-palette"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many colors should a game UI palette have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Aim for six to eight core colors with defined roles: background, surface, border, primary text, secondary text, accent, and one or two state colors. Extra tints and hover states should derive from those roles rather than becoming new base colors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I extract colors from a screenshot instead of concept art?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, but screenshots contain lighting, post-processing and compression artifacts that concept art may not. Sample a screenshot for accents or atmosphere, and sample flat concept art when you need stable surfaces and text colors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What contrast ratio should game UI text use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use 4.5:1 for normal body text and 3:1 for large text, icons and essential UI boundaries. Dark themes make low-contrast greys tempting, but thin interface text at 12 to 14 pixels needs the higher ratio to stay readable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do my extracted colors look muddy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Muddy results usually come from sampling a compressed JPEG, averaging too many pixels, or keeping mid-tone lighting instead of the intended local color. Sample a clean PNG, pick a few specific pixels, and raise saturation slightly after extraction."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://gameimageeditor.com/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Game UI Color Palette From Concept Art",
+      "item": "https://gameimageeditor.com/blog/game-ui-color-palette"
+    }
+  ]
+}
+</script>
+  <link rel="alternate" type="application/rss+xml" title="GameImage.tools Guides" href="https://gameimageeditor.com/feed.xml">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4"/><circle cx="15" cy="11" r="1"/><circle cx="18" cy="13" r="1"/></svg><span>GameImage.tools</span></a>
+      <ul class="nav-links"><li><a href="../">Home</a></li><li><a href="../#image-tools">Tools</a></li><li><a href="./">Blog</a></li></ul>
+    </div>
+  </nav>
+  <main class="tool-page">
+    <div class="article">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../">Home</a><span aria-hidden="true">/</span><a href="./">Blog</a><span aria-hidden="true">/</span><span aria-current="page">Game UI Color Palette From Concept Art</span>
+      </nav>
+      <a href="../" class="back-link">← Back to home</a>
+      <h1>Game UI Color Palette From Concept Art: A Practical Workflow</h1>
+      <p class="meta">Published on Nov 21, 2026 · 6 min read</p>
+
+      <p>Concept art already contains the palette your game needs. The problem is turning a painted image into interface colors that work on buttons, panels, damage numbers and tooltips. Sampling by eye produces a handful of pretty hex codes that fight each other once they are stacked in a menu. A short, repeatable workflow fixes that: extract a small set, assign each color a job, check contrast, and only then build components. Everything below can be done in the browser, so unreleased artwork never leaves your machine.</p>
+
+      <h2>Start With the Right Reference</h2>
+      <p>Pick one concept piece per biome or faction, not the full gallery. The best reference for UI work has large areas of readable local color, moderate lighting and no heavy bloom. A dramatic key-art painting with a single light source will give you mostly shadows and highlights, which are lighting decisions rather than base colors.</p>
+      <p>Use a PNG or a high-quality source file. A heavily compressed JPEG shifts colors around edges and fills gradients with noise, so the extracted swatches drift toward grey. If the only reference you have is a screenshot, expect to clean up the result manually.</p>
+
+      <h2>Extract Six to Eight Colors, Not Twenty</h2>
+      <p>The <a href="../palette">palette extractor</a> downscales the image, counts quantized pixel values and ranks the most frequent ones, returning up to twelve swatches. Frequency is a useful first filter: the colors that cover the most area are usually the ones that should define backgrounds and surfaces.</p>
+      <p>Do not ship all twelve. A game UI needs a small number of roles, not a large number of colors. Six to eight is enough to cover a dark background, a raised panel, a border, two text levels, an accent and a state color. Everything else — hover, pressed, disabled, selected — should be a tint or shade of one of those roles.</p>
+      <p>The automatic list is a starting point, not the answer. Click into the image to sample specific pixels when a swatch is close but not quite right, especially for accents and text colors that occupy little area and therefore rank low by frequency.</p>
+
+      <h2>Assign Roles Before You Name Colors</h2>
+      <p>Role-based naming prevents the classic problem where “blue” becomes the button color, the link color and the selection color, and nobody can change one without breaking the others. Write the role first, then pick the value that fits it.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Role</th><th>Example</th><th>What it controls</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Background</td><td><code>#0F172A</code></td><td>Full-screen backdrop, the darkest surface</td></tr>
+            <tr><td>Surface</td><td><code>#1E293B</code></td><td>Panels, cards, menus that sit above the background</td></tr>
+            <tr><td>Border</td><td><code>#334155</code></td><td>Dividers and panel outlines that stay visible without shouting</td></tr>
+            <tr><td>Text primary</td><td><code>#F8FAFC</code></td><td>Headings and the values players must read</td></tr>
+            <tr><td>Text secondary</td><td><code>#94A3B8</code></td><td>Labels, cooldowns, helper copy</td></tr>
+            <tr><td>Accent</td><td><code>#3B82F6</code></td><td>Primary action, selection, focus</td></tr>
+            <tr><td>Warning / danger</td><td><code>#F59E0B</code> / <code>#EF4444</code></td><td>Low health, destructive actions, error states</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>These values are an example of the structure, not a required palette. The point is that every color has exactly one job, and components reference roles instead of raw hex codes. When the art direction changes, you update seven values rather than hunting through every screen.</p>
+
+      <h2>Check Contrast While the Palette Is Still Small</h2>
+      <p>Contrast is the most common failure in dark game interfaces. A blue that looks vivid against white can disappear against a dark panel, and thin 12-pixel labels are the first casualties. Use the WCAG thresholds as a floor: 4.5:1 for normal body text, and 3:1 for large text, icons and essential UI boundaries.</p>
+      <p>Test each text role against every surface it can appear on, not just the main background. A tooltip may use a lighter panel than the inventory screen, and a modal may dim the area behind it. If the accent color fails 4.5:1 against a surface, keep it for large text, icons and fills, and use the primary text color for the label. Also check the palette in greyscale: if two states look identical without hue, they will be indistinguishable to colorblind players.</p>
+
+      <h2>Test at Real Size, Not at Artboard Size</h2>
+      <p>A palette that looks balanced in a 4K mockup can fall apart at 1280×720 or on a Steam Deck. Shrink a representative screen — an inventory, a settings page, a combat HUD — and check three things: can you still separate the surface from the background, is secondary text readable, and does the accent still mark the primary action. If the answer depends on saturation alone, add a value difference between the roles.</p>
+      <p>This is also the moment to check for accidental hard-coded colors. A single pure-white icon or pure-black shadow can make a carefully tuned dark palette look uneven, because it breaks the value range the rest of the UI follows.</p>
+
+      <h2>Convert the Palette Into Engine-Friendly Values</h2>
+      <p>HEX is convenient for design tools and CSS; engines often want RGB floats or linear color values. The <a href="../color">color format converter</a> translates between HEX, RGB and HSL without rounding surprises. HSL is especially useful for generating hover and pressed states: change lightness by a fixed amount and keep the hue stable instead of mixing in white or black.</p>
+      <p>Store the palette in one place — a data file, a theme asset or a small set of variables — and reference it from every widget. If the UI framework supports semantic tokens such as <code>surface-raised</code> or <code>text-muted</code>, map roles to those tokens rather than to literal colors. The concept art stays the source of the mood; the token file becomes the source of truth.</p>
+
+      <h2>Common Mistakes</h2>
+      <ul>
+        <li><strong>Too many accents.</strong> If everything is highlighted, nothing is. One accent plus one state color covers most interfaces.</li>
+        <li><strong>Sampling a compressed screenshot.</strong> JPEG noise and bloom push extracted colors toward grey and dull the result.</li>
+        <li><strong>Using hue as the only difference.</strong> Red and green states need different lightness or an icon, not just a different hue.</li>
+        <li><strong>Ignoring the value structure.</strong> Background, surface and border must sit at clearly different lightness levels or panels melt together.</li>
+        <li><strong>Pure black and pure white.</strong> They flatten the range and make every tint look washed out; near-black and near-white leave room for states.</li>
+        <li><strong>No disabled or focus states.</strong> These are part of the palette, not an afterthought; define them while the roles are still fresh.</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+      <h3>How many colors should a game UI palette have?</h3>
+      <p>Aim for six to eight core colors with defined roles: background, surface, border, primary text, secondary text, accent, and one or two state colors. Extra tints and hover states should derive from those roles rather than becoming new base colors.</p>
+
+      <h3>Can I extract colors from a screenshot instead of concept art?</h3>
+      <p>Yes, but screenshots contain lighting, post-processing and compression artifacts that concept art may not. Sample a screenshot for accents or atmosphere, and sample flat concept art when you need stable surfaces and text colors.</p>
+
+      <h3>What contrast ratio should game UI text use?</h3>
+      <p>Use 4.5:1 for normal body text and 3:1 for large text, icons and essential UI boundaries. Dark themes make low-contrast greys tempting, but thin interface text at 12 to 14 pixels needs the higher ratio to stay readable.</p>
+
+      <h3>Why do my extracted colors look muddy?</h3>
+      <p>Muddy results usually come from sampling a compressed JPEG, averaging too many pixels, or keeping mid-tone lighting instead of the intended local color. Sample a clean PNG, pick a few specific pixels, and raise saturation slightly after extraction.</p>
+
+      <h2>Related Guides</h2>
+      <ul>
+        <li><a href="how-to-extract-colors-from-image">How to Extract Colors From an Image</a></li>
+        <li><a href="hex-to-rgb-color-converter">HEX to RGB: Convert Colors Without Guessing</a></li>
+        <li><a href="png-vs-jpg-vs-webp-which-format">PNG vs JPG vs WebP: Which Format Should You Use?</a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="footer"><p>© 2026 GameImage.tools — Free online image tools for gamers<br>All processing is done locally in your browser.</p><p><a href="../privacy">Privacy Policy</a> · <a href="../about">About</a> · <a href="../contact">Contact</a> · <a href="../terms">Terms</a></p></footer>
+</body>
+</html>

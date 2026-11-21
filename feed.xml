@@ -5,8 +5,22 @@
     <link>https://gameimageeditor.com/blog/</link>
     <description>Practical guides for game screenshots, platform image sizes and file formats.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2026 05:55:15 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 09:00:00 +0000</lastBuildDate>
     <atom:link href="https://gameimageeditor.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Steam Store Screenshot Requirements: 1920×1080 and Review Rules</title>
+      <link>https://gameimageeditor.com/blog/steam-store-screenshot-requirements</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/steam-store-screenshot-requirements</guid>
+      <description>Steam store screenshots need 1920×1080 at 16:9 and at least five images. Covers review rejections, capture setup and a clean 1080p export workflow.</description>
+      <pubDate>Sat, 21 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Game UI Color Palette From Concept Art: A Practical Workflow</title>
+      <link>https://gameimageeditor.com/blog/game-ui-color-palette</link>
+      <guid isPermaLink="true">https://gameimageeditor.com/blog/game-ui-color-palette</guid>
+      <description>Extract a game UI palette from concept art: six to eight role-based colors, WCAG contrast checks, and HEX or RGB tokens, all processed locally.</description>
+      <pubDate>Sat, 21 Nov 2026 09:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>HEIC to PNG: Convert iPhone Photos Without Uploading Them</title>
       <link>https://gameimageeditor.com/blog/heic-to-png</link>
