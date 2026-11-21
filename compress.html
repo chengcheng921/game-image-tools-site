@@ -132,7 +132,8 @@
 
     <h2>PNG, JPG or WebP for a Compressed Screenshot?</h2>
     <p>All three outputs are built from the same pixels, so the choice is about what the destination accepts and how much detail you can afford to lose.</p>
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>Output</th><th>Compression</th><th>Transparency</th><th>Best for</th></tr>
       </thead>
@@ -142,6 +143,7 @@
         <tr><td>PNG</td><td>Lossless, palette reduced to 2–256 colours</td><td>Yes</td><td>UI text, pixel art, logos and overlays that must stay sharp</td></tr>
       </tbody>
     </table>
+      </div>
     <p>Inside this tool the PNG quality value does not control JPEG-style compression. It sets the size of the colour palette: quality 80 keeps about 205 colours, while quality 20 keeps about 51. Flat UI art survives that well; a photograph does not, because every gradient needs hundreds of tones.</p>
 
     <h2>Why the File Size Barely Changed</h2>
@@ -164,7 +166,8 @@
     <p>Common caps worth designing for: 500 KB for application and support forms, 256 KB for Discord emoji, 1 MB for Steam capsule and library artwork, 2 MB for a YouTube thumbnail. If a file still misses after all four steps, the source was probably too detailed for the format, and a tighter crop is the honest answer.</p>
 
     <h2>Recommended Settings by Screenshot Type</h2>
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>Screenshot</th><th>Output</th><th>Quality</th><th>Why</th></tr>
       </thead>
@@ -176,6 +179,7 @@
         <tr><td>Dark scenes with fine grain</td><td>WebP</td><td>80–90</td><td>JPEG blocks and bands in shadows first; WebP holds them together longer</td></tr>
       </tbody>
     </table>
+      </div>
 
     <h2>What Compression Cannot Do</h2>
     <p>Compression rewrites an existing picture; it cannot add detail. Upscaling a 720p capture afterwards will still look soft, and repeatedly saving the same JPEG at 60% will keep degrading it because every pass discards more data. Renaming a file from <code>.png</code> to <code>.jpg</code> does not change its contents either — the encoder has to run, which is what this page does.</p>

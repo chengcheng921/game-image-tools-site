@@ -130,7 +130,8 @@
     <p>Changing a file extension doesn't change the data inside — a renamed PNG is still a PNG, and strict apps will reject it. Real conversion re-encodes the image, which is what actually shrinks the file or adds compatibility with software that refuses certain formats.</p>
 
     <h2>Format Comparison at a Glance</h2>
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>Format</th><th>Compression</th><th>Transparency</th><th>Best for</th></tr>
       </thead>
@@ -140,6 +141,7 @@
         <tr><td>WebP</td><td>Lossy in this tool</td><td>Yes</td><td>Web pages, Discord and anywhere a small file matters more than legacy app support</td></tr>
       </tbody>
     </table>
+      </div>
     <p>This converter re-encodes through the browser canvas, so every output is a static image. Animated GIF or animated WebP input keeps only its first frame, and animated output is not produced here.</p>
 
     <h2>When PNG Is the Right Target</h2>

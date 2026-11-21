@@ -227,7 +227,8 @@
 
     <h2>Choose Dimensions by Destination</h2>
     <p>Platforms reject anything that is not the exact size, so the preset menu carries the numbers below and fills both fields for you. Choosing a preset also unlocks the aspect ratio on purpose, because a proportional scale would land on the wrong dimensions.</p>
-    <table>
+    <div class="table-wrap">
+<table>
       <thead>
         <tr><th>Destination</th><th>Asset</th><th>Pixels</th></tr>
       </thead>
@@ -247,6 +248,7 @@
         <tr><td>Desktop</td><td>Wallpaper</td><td>1920 × 1080, 2560 × 1440 or 3840 × 2160</td></tr>
       </tbody>
     </table>
+      </div>
 
     <h2>Resize Before or After Cropping?</h2>
     <p>Crop first. Cropping changes the aspect ratio, and every platform preset assumes one. If you resize to 1280 × 720 while the capture is still 21:9, the picture is either stretched or padded; cropping to 16:9 first gives the resizer clean geometry to work with. For a batch of assets from one capture, crop once at the largest target ratio, then export each size from that master instead of cropping five times.</p>
