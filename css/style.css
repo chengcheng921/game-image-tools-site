@@ -707,7 +707,7 @@ img {
   .nav-links a {
     display: inline-flex;
     align-items: center;
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 10px;
     font-size: 14px;
     white-space: nowrap;
