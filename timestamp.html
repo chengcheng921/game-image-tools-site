@@ -45,6 +45,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Timestamp Converter</span>
+    </nav>
     <h1>Timestamp Converter</h1>
     <p class="lead">Convert between Unix timestamps and dates. Multi-timezone support.</p>
     <div class="editor-panel">
@@ -91,6 +94,15 @@
       <p>Yes — the lower section takes any date and time and returns both the seconds and milliseconds timestamps.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="uuid">UUID Generator</a> — Generate unique identifiers for records that also carry a timestamp.</li>
+        <li><a href="url">URL Encode/Decode</a> — Inspect query strings where timestamps usually travel as parameters.</li>
+        <li><a href="json">JSON Formatter</a> — Format log payloads that store timestamps as raw epoch numbers.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -126,6 +138,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Timestamp Converter",
+      "item": "https://gameimageeditor.com/timestamp"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>

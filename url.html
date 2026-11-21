@@ -45,6 +45,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">URL Encode/Decode</span>
+    </nav>
     <h1>URL Encode/Decode</h1>
     <p class="lead">Encode and decode URLs, handle special characters.</p>
     <div class="editor-panel">
@@ -93,6 +96,15 @@
       <p>No — anyone can decode it instantly. It's a transport format, not encryption. And since this tool runs locally in your browser, whatever you paste here never leaves your device.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="base64">Base64 Encode/Decode</a> — Encode binary or non-ASCII payloads that percent-encoding cannot represent cleanly.</li>
+        <li><a href="json">JSON Formatter</a> — Validate the request body after you decode its URL-encoded fields.</li>
+        <li><a href="timestamp">Timestamp Converter</a> — Decode the Unix timestamps commonly found in API query strings.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -128,6 +140,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "URL Encode/Decode",
+      "item": "https://gameimageeditor.com/url"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>

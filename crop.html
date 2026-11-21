@@ -73,6 +73,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Crop Image</span>
+    </nav>
     <h1 data-i18n="crop.title">Crop Image</h1>
     <p class="lead" data-i18n="crop.lead">Trim your screenshot to focus on the action. Drag the box to reposition, drag the handles to resize.</p>
 
@@ -179,6 +182,15 @@
       <p>Images up to 20MB are supported, and everything is processed locally in your browser — nothing is uploaded, no account needed.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="resize">Resize Image</a> — Set the final pixel dimensions after cropping to match a platform upload spec.</li>
+        <li><a href="rotate">Rotate / Flip Image</a> — Straighten a sideways screenshot before you choose the crop area.</li>
+        <li><a href="compress">Compress Image</a> — Compress the cropped result if the platform still rejects the file size.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -214,6 +226,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Crop Image",
+      "item": "https://gameimageeditor.com/crop"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">

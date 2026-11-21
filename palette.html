@@ -63,6 +63,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Color Palette Extractor</span>
+    </nav>
     <h1 data-i18n="palette.title">Color Palette Extractor</h1>
     <p class="lead" data-i18n="palette.lead">Extract dominant colors and palette from screenshots. Click a color to copy its value.</p>
 
@@ -121,6 +124,15 @@
       <p>Yes — fully and mostly transparent pixels are skipped so they don't pollute your palette. And as always, everything runs locally: your image is never uploaded.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="color">Color Format Converter</a> — Turn the extracted HEX values into RGB or HSL for your design tool.</li>
+        <li><a href="compress">Compress Image</a> — Shrink the screenshot you are sampling when you only need it for reference.</li>
+        <li><a href="convert">Convert Image Format</a> — Save the sampled screenshot in a format your editor or moodboard tool accepts.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -156,6 +168,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Color Palette Extractor",
+      "item": "https://gameimageeditor.com/palette"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">

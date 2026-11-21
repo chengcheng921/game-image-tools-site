@@ -48,6 +48,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Resize Image</span>
+    </nav>
     <h1 data-i18n="resize.title">Resize Image</h1>
     <p class="lead" data-i18n="resize.lead">Change your screenshot dimensions by pixels or percentage. Perfect for avatars, thumbnails and wallpapers.</p>
 
@@ -232,6 +235,15 @@
       <p>No. Presets unlock the aspect ratio on purpose, because platforms reject anything that is not the exact size. If your artwork has a different ratio, crop it to that ratio first, then resize — otherwise it will be stretched.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="crop">Crop Image</a> — Crop to the target aspect ratio before resizing, otherwise platform presets will stretch the art.</li>
+        <li><a href="compress">Compress Image</a> — Shrink the resized file afterwards without touching the new dimensions.</li>
+        <li><a href="convert">Convert Image Format</a> — Export the same dimensions as WebP when you need a smaller upload.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -269,6 +281,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Resize Image",
+      "item": "https://gameimageeditor.com/resize"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">

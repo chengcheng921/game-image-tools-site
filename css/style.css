@@ -827,32 +827,48 @@ img {
 }
 
 
-/* Related guides block at the end of blog posts */
-.related-guides {
+/* Related tools / guides blocks at the end of tool pages and blog posts */
+.related-guides,
+.related-tools {
   margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid var(--color-border-light);
 }
-.related-guides h2 {
+.related-guides h2,
+.related-tools h2 {
   font-size: 18px;
   margin: 0 0 12px;
   color: var(--color-text-primary);
 }
-.related-guides ul {
+.related-guides ul,
+.related-tools ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   gap: 10px;
 }
-.related-guides a {
+.related-guides a,
+.related-tools a {
   color: var(--color-blue);
   text-decoration: none;
   font-size: 15px;
 }
-.related-guides a:hover {
+.related-guides a:hover,
+.related-tools a:hover {
   color: var(--color-blue-hover);
   text-decoration: underline;
+}
+.related-tools li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+/* Two stacked blocks share one separator instead of drawing two borders */
+.related-tools + .related-guides {
+  margin-top: 24px;
+  padding-top: 0;
+  border-top: none;
 }
 
 /* Breadcrumbs (blog posts) */

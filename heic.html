@@ -44,6 +44,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">HEIC to JPG / PNG</span>
+    </nav>
     <h1>HEIC to JPG / PNG</h1>
     <p class="lead">Convert iPhone HEIC photos to JPG or PNG. Batch conversion, 100% local browser processing.</p>
     <div class="drop-zone" id="dropZone">
@@ -91,6 +94,15 @@
       <p>HEIC to JPG conversion re-encodes the image. Using a quality setting of 95% (our default) produces a visually indistinguishable result from the original.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="convert">Convert Image Format</a> — Convert the resulting JPG or PNG onward to WebP when the file is still too large.</li>
+        <li><a href="compress">Compress Image</a> — Compress the converted photo before attaching it to email or a support ticket.</li>
+        <li><a href="resize">Resize Image</a> — Scale iPhone photos down to forum, avatar or wallpaper dimensions.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -126,6 +138,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "HEIC to JPG / PNG",
+      "item": "https://gameimageeditor.com/heic"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser. Photos are never uploaded.</p>

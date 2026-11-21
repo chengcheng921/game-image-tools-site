@@ -54,6 +54,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Rotate / Flip Image</span>
+    </nav>
     <h1 data-i18n="rotate.title">Rotate / Flip Image</h1>
     <p class="lead" data-i18n="rotate.lead">Rotate or flip your game screenshots. Fix orientation or create mirror effects.</p>
 
@@ -148,6 +151,15 @@
       <p>PNG, JPG, and WebP images up to 20MB. Everything runs locally in your browser — no upload, no account, completely free.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="crop">Crop Image</a> — Crop away the empty corners created by rotating a non-square image.</li>
+        <li><a href="resize">Resize Image</a> — Match a platform's exact dimensions once the orientation is fixed.</li>
+        <li><a href="convert">Convert Image Format</a> — Save the rotated result as WebP or JPEG for a smaller file.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -183,6 +195,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Rotate / Flip Image",
+      "item": "https://gameimageeditor.com/rotate"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">

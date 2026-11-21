@@ -48,6 +48,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Word Counter</span>
+    </nav>
     <h1>Word Counter</h1>
     <p class="lead">Count characters, words, sentences, and estimated reading time in real time.</p>
     <div class="drop-zone" id="dropZone">
@@ -103,6 +106,15 @@
       <li><a href="url">URL Encoder</a></li>
     </ul>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="json">JSON Formatter</a> — Check a text value against a field limit after formatting the document.</li>
+        <li><a href="url">URL Encode/Decode</a> — Measure decoded text rather than percent-encoded characters when counting.</li>
+        <li><a href="epub">EPUB Converter</a> — Turn a finished manuscript into an ebook once the word count is settled.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -138,6 +150,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Word Counter",
+      "item": "https://gameimageeditor.com/wordcount"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>

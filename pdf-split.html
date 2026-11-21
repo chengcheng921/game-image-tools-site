@@ -45,6 +45,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Split PDF</span>
+    </nav>
     <h1>Split PDF</h1>
     <p class="lead">Split a PDF into multiple files by page range.</p>
     <div class="drop-zone" id="dropZone">
@@ -101,6 +104,15 @@
       <p>Password-protected or unusually structured PDFs can't be parsed in the browser. Open the file in your PDF reader, print/save it as a fresh unprotected PDF, then try again.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="pdf-merge">Merge PDF Files</a> — Recombine the useful pages into a single document.</li>
+        <li><a href="pdf-to-image">PDF to Image</a> — Turn each split page into a PNG or JPG for review.</li>
+        <li><a href="compress">Compress Image</a> — Shrink extracted page images before sharing them.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -136,6 +148,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Split PDF",
+      "item": "https://gameimageeditor.com/pdf-split"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>

@@ -45,6 +45,9 @@
     </div>
   </nav>
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">QR Code Generator</span>
+    </nav>
     <h1>QR Code Generator</h1>
     <p class="lead">Generate QR codes. Enter URL or text, customize colors and size, download as PNG.</p>
     <div class="editor-panel">
@@ -110,6 +113,15 @@
       <li><a href="uuid">UUID Generator</a></li>
     </ul>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="url">URL Encode/Decode</a> — Encode a long link as a QR code, and verify it stays readable after percent-encoding.</li>
+        <li><a href="color">Color Format Converter</a> — Pick a foreground and background pair with enough contrast to scan.</li>
+        <li><a href="convert">Convert Image Format</a> — Turn a logo into PNG so transparency survives when you place it next to the code.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -145,6 +157,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "QR Code Generator",
+      "item": "https://gameimageeditor.com/qr"
+    }
+  ]
+}
+</script>
   </main>
     <footer class="footer">
     <p>© 2026 GameImage.tools — Free Online Tools — All processing runs locally in your browser.</p>

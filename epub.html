@@ -53,6 +53,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">EPUB Converter</span>
+    </nav>
     <h1 data-i18n="epub.title">EPUB Converter</h1>
     <p class="lead" data-i18n="epub.lead">Convert TXT, HTML, Markdown and PDF files to EPUB ebooks.</p>
 
@@ -126,6 +129,15 @@
       <p>PDF conversion extracts the text only — images and complex layout aren't carried over. TXT, Markdown, and HTML sources convert with their text structure intact. Files up to 20MB, processed 100% locally.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="wordcount">Word Counter</a> — Check the manuscript length before you convert it into an ebook.</li>
+        <li><a href="pdf-to-image">PDF to Image</a> — Pull a cover or illustrations out of a PDF before building the EPUB.</li>
+        <li><a href="convert">Convert Image Format</a> — Prepare cover art in PNG or JPEG at the size EPUB readers expect.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -160,6 +172,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "EPUB Converter",
+      "item": "https://gameimageeditor.com/epub"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">

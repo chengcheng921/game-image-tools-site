@@ -48,6 +48,9 @@
   </nav>
 
   <main class="tool-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="./">Home</a><span aria-hidden="true">/</span><span aria-current="page">Compress Image</span>
+    </nav>
     <h1 data-i18n="compress.title">Compress Image</h1>
     <p class="lead" data-i18n="compress.lead">Shrink your game screenshot file size while preserving quality. Great for sharing on Discord, forums or social media.</p>
 
@@ -141,6 +144,15 @@
       <p>This tool currently processes one image at a time. You can open multiple browser tabs to compress several simultaneously.</p>
     </details>
 
+    <div class="related-tools">
+      <h2>Related Tools</h2>
+      <ul>
+        <li><a href="resize">Resize Image</a> — Downscale a 4K capture to 1920px first; fewer pixels means a smaller file at the same quality setting.</li>
+        <li><a href="convert">Convert Image Format</a> — Switch to WebP or JPEG when lossless PNG compression cannot reach your target size.</li>
+        <li><a href="crop">Crop Image</a> — Trim HUD, black bars and duplicate UI so you are not paying bytes for pixels you never wanted.</li>
+      </ul>
+    </div>
+
     <div class="related-guides">
       <h2>Related Guides</h2>
       <ul>
@@ -181,6 +193,26 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://gameimageeditor.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compress Image",
+      "item": "https://gameimageeditor.com/compress"
+    }
+  ]
+}
+</script>
   </main>
 
     <footer class="footer">
